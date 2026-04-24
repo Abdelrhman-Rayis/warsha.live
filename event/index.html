@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warsha Live Event</title>
+    <meta name="description" content="A polished event landing page for Warsha Live workshops and cohorts.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f4efe6;
+            --surface: rgba(255, 255, 255, 0.78);
+            --surface-strong: #ffffff;
+            --text: #171717;
+            --muted: #5f5a53;
+            --line: rgba(23, 23, 23, 0.1);
+            --accent: #0f766e;
+            --accent-2: #b45309;
+            --shadow: 0 18px 50px rgba(18, 18, 18, 0.12);
+            --radius-xl: 28px;
+            --radius-lg: 20px;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: 'Manrope', system-ui, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(15, 118, 110, 0.14), transparent 32%),
+                radial-gradient(circle at right center, rgba(180, 83, 9, 0.12), transparent 28%),
+                linear-gradient(180deg, #fbf8f2 0%, var(--bg) 45%, #f7f2ea 100%);
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .page-shell {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-shell::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: linear-gradient(rgba(23, 23, 23, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(23, 23, 23, 0.03) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: linear-gradient(180deg, rgba(0,0,0,0.6), transparent 82%);
+            pointer-events: none;
+            opacity: 0.35;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: rgba(244, 239, 230, 0.75);
+            border-bottom: 1px solid rgba(23, 23, 23, 0.08);
+        }
+
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 0;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+
+        .brand-mark {
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--text), #3e3e3e);
+            color: white;
+            display: grid;
+            place-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: var(--muted);
+            font-size: 0.96rem;
+            font-weight: 600;
+        }
+
+        .nav a:hover { color: var(--text); }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            padding: 14px 20px;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease;
+        }
+
+        .btn:hover { transform: translateY(-1px); }
+
+        .btn-primary {
+            background: var(--text);
+            color: #fff;
+            box-shadow: 0 12px 30px rgba(23, 23, 23, 0.18);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.62);
+            border-color: rgba(23, 23, 23, 0.12);
+            color: var(--text);
+        }
+
+        .hero {
+            padding: 36px 0 26px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+        }
+
+        .eyebrow-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 0 5px rgba(15, 118, 110, 0.12);
+        }
+
+        h1, h2, h3 {
+            margin: 0;
+            letter-spacing: -0.05em;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.4rem, 8vw, 7.2rem);
+            line-height: 0.92;
+            margin-top: 18px;
+            max-width: 10ch;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1.06rem;
+            line-height: 1.75;
+        }
+
+        .hero-copy {
+            max-width: 640px;
+            margin-top: 18px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .pill {
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.76);
+            border: 1px solid var(--line);
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .hero-panel {
+            position: relative;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.66));
+            border: 1px solid rgba(23, 23, 23, 0.08);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+            padding: 22px;
+        }
+
+        .panel-card {
+            background: var(--surface-strong);
+            border-radius: 22px;
+            border: 1px solid rgba(23, 23, 23, 0.08);
+            padding: 20px;
+        }
+
+        .speaker-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 18px;
+        }
+
+        .speaker-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--accent), #155e75);
+            color: white;
+            display: grid;
+            place-items: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .panel-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(15, 118, 110, 0.08);
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .panel-title {
+            font-size: 1.9rem;
+            margin-top: 10px;
+            max-width: 11ch;
+            line-height: 0.95;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .panel-list {
+            display: grid;
+            gap: 10px;
+            margin: 18px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .panel-list li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            padding: 12px 14px;
+            border-radius: 16px;
+            background: rgba(244, 239, 230, 0.65);
+            border: 1px solid rgba(23, 23, 23, 0.06);
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .panel-list span {
+            color: var(--accent-2);
+            font-weight: 800;
+        }
+
+        .section {
+            padding: 18px 0 6px;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: end;
+            margin-bottom: 18px;
+        }
+
+        .section-kicker {
+            color: var(--accent);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+
+        .section h2 {
+            font-size: clamp(2rem, 3vw, 3.25rem);
+            max-width: 13ch;
+            line-height: 0.98;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .section-desc {
+            max-width: 520px;
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid rgba(23, 23, 23, 0.08);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: 0 8px 30px rgba(18, 18, 18, 0.06);
+            backdrop-filter: blur(10px);
+        }
+
+        .card h3 {
+            font-size: 1.12rem;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .agenda {
+            display: grid;
+            gap: 12px;
+        }
+
+        .agenda-item {
+            display: grid;
+            grid-template-columns: 92px 1fr;
+            gap: 16px;
+            align-items: start;
+            padding: 18px 20px;
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.68);
+            border: 1px solid rgba(23, 23, 23, 0.08);
+        }
+
+        .agenda-time {
+            font-weight: 800;
+            color: var(--accent-2);
+        }
+
+        .agenda-item h3 { margin-bottom: 6px; }
+
+        .speaker-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .speaker-card {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .speaker-card .speaker-avatar {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            flex: 0 0 auto;
+        }
+
+        .speaker-card strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1.05rem;
+        }
+
+        .speaker-card span {
+            color: var(--accent);
+            font-size: 0.88rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .faq {
+            display: grid;
+            gap: 12px;
+        }
+
+        .faq-item {
+            border-radius: 18px;
+            border: 1px solid rgba(23, 23, 23, 0.08);
+            background: rgba(255, 255, 255, 0.72);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: transparent;
+            border: 0;
+            padding: 18px 18px;
+            color: var(--text);
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 220ms ease;
+            padding: 0 18px;
+            color: var(--muted);
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+            padding-bottom: 18px;
+        }
+
+        .cta {
+            margin: 34px 0 44px;
+        }
+
+        .cta-inner {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 18px;
+            align-items: center;
+            padding: 28px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, rgba(23, 23, 23, 0.98), rgba(15, 118, 110, 0.92));
+            color: white;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.24);
+        }
+
+        .cta h2 {
+            max-width: 14ch;
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .cta p {
+            color: rgba(255, 255, 255, 0.84);
+            max-width: 48ch;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--text);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: white;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .footer {
+            padding: 20px 0 40px;
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding-top: 18px;
+            border-top: 1px solid rgba(23, 23, 23, 0.08);
+        }
+
+        @media (max-width: 980px) {
+            .hero-grid,
+            .grid-3,
+            .speaker-grid,
+            .cta-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .section-head {
+                flex-direction: column;
+                align-items: start;
+            }
+
+            .nav { display: none; }
+
+            .cta-actions {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container { width: min(100% - 20px, 1180px); }
+
+            .topbar-inner { padding: 14px 0; }
+
+            .hero { padding-top: 24px; }
+
+            .hero h1 { max-width: none; }
+
+            .agenda-item {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <div class="container topbar-inner">
+                <a class="brand" href="../index.html">
+                    <span class="brand-mark">W</span>
+                    <span>Warsha Live</span>
+                </a>
+                <nav class="nav" aria-label="Primary">
+                    <a href="#overview">Overview</a>
+                    <a href="#agenda">Agenda</a>
+                    <a href="#speakers">Speakers</a>
+                    <a href="#faq">FAQ</a>
+                </nav>
+                <a class="btn btn-primary" href="#register">Reserve a Seat</a>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero container" id="overview">
+                <div class="hero-grid">
+                    <div>
+                        <div class="eyebrow"><span class="eyebrow-dot"></span> Live Event Series · Spring 2026</div>
+                        <h1>Design a research workshop people actually want to join.</h1>
+                        <div class="hero-copy">
+                            <p>Warsha Live is a focused event page for high-trust educational events, inspired by the clarity and editorial energy of modern cohort platforms. It is built to present one event with a strong story, clear schedule, and a direct path to registration.</p>
+                        </div>
+                        <div class="hero-actions">
+                            <a class="btn btn-primary" href="#register">Reserve your place</a>
+                            <a class="btn btn-secondary" href="#agenda">View agenda</a>
+                        </div>
+                        <div class="meta-row">
+                            <span class="pill">May 6, 2026</span>
+                            <span class="pill">6:00 PM GMT+3</span>
+                            <span class="pill">Limited to 40 attendees</span>
+                            <span class="pill">Online live session</span>
+                        </div>
+                    </div>
+
+                    <aside class="hero-panel" aria-label="Event summary">
+                        <div class="panel-card">
+                            <div class="speaker-row">
+                                <div>
+                                    <div class="panel-badge">Featured session</div>
+                                    <h2 class="panel-title">Research, writing, and responsible AI in one evening.</h2>
+                                </div>
+                                <div class="speaker-avatar">M</div>
+                            </div>
+                            <ul class="panel-list">
+                                <li><span>01</span><div><strong>Clear framing</strong><br>Learn how to structure a compelling event story and agenda.</div></li>
+                                <li><span>02</span><div><strong>Practical workshop</strong><br>See examples of research workflows, live prompts, and outputs.</div></li>
+                                <li><span>03</span><div><strong>Direct registration</strong><br>Give attendees one obvious next step with no friction.</div></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="section container">
+                <div class="section-head">
+                    <div>
+                        <div class="section-kicker">Why it works</div>
+                        <h2>Built like a premium cohort landing page, but fully original.</h2>
+                    </div>
+                    <p class="section-desc">The layout uses strong typography, generous spacing, a restrained palette, and a clear content hierarchy so the page feels polished rather than cluttered.</p>
+                </div>
+                <div class="grid-3">
+                    <article class="card">
+                        <h3>Editorial hero</h3>
+                        <p>A large headline, concise subcopy, and event metadata communicate value immediately.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Structured agenda</h3>
+                        <p>Attendees can scan the schedule in seconds and understand what they get from the event.</p>
+                    </article>
+                    <article class="card">
+                        <h3>High-conversion CTA</h3>
+                        <p>The call to action stays visible, simple, and repeated at the right moments.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section container" id="agenda">
+                <div class="section-head">
+                    <div>
+                        <div class="section-kicker">Agenda</div>
+                        <h2>What happens during the event</h2>
+                    </div>
+                    <p class="section-desc">A short, high-value live session designed for students, researchers, and educators who want a cleaner way to think about research and AI tools.</p>
+                </div>
+
+                <div class="agenda">
+                    <div class="agenda-item">
+                        <div class="agenda-time">18:00</div>
+                        <div>
+                            <h3>Opening and framing</h3>
+                            <p>We define the challenge, the audience, and the learning promise behind the event.</p>
+                        </div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="agenda-time">18:20</div>
+                        <div>
+                            <h3>Live walkthrough</h3>
+                            <p>See a practical demonstration of research planning, AI prompting, and content flow.</p>
+                        </div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="agenda-time">18:45</div>
+                        <div>
+                            <h3>Case discussion</h3>
+                            <p>Review how to turn a broad topic into a useful event, course, or learning experience.</p>
+                        </div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="agenda-time">19:00</div>
+                        <div>
+                            <h3>Q&A and next steps</h3>
+                            <p>Attendees get answers, resources, and a direct path to the next cohort or workshop.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section container" id="speakers">
+                <div class="section-head">
+                    <div>
+                        <div class="section-kicker">Speakers</div>
+                        <h2>Who is leading the session</h2>
+                    </div>
+                    <p class="section-desc">A small, focused speaker lineup keeps the event authoritative without overwhelming the page.</p>
+                </div>
+
+                <div class="speaker-grid">
+                    <article class="card speaker-card">
+                        <div class="speaker-avatar">A</div>
+                        <div>
+                            <span>Host</span>
+                            <strong>Abdelrhman</strong>
+                            <p>Research educator and facilitator guiding the session from idea to structured outcomes.</p>
+                        </div>
+                    </article>
+                    <article class="card speaker-card">
+                        <div class="speaker-avatar" style="background:linear-gradient(135deg, var(--accent-2), #78350f);">W</div>
+                        <div>
+                            <span>Panelist</span>
+                            <strong>Wesal</strong>
+                            <p>Content and learning design support for examples, framing, and participant takeaways.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section container" id="faq">
+                <div class="section-head">
+                    <div>
+                        <div class="section-kicker">FAQ</div>
+                        <h2>Frequently asked questions</h2>
+                    </div>
+                    <p class="section-desc">A simple accordion helps visitors find answers quickly without adding visual noise.</p>
+                </div>
+
+                <div class="faq">
+                    <div class="faq-item open">
+                        <button class="faq-question" type="button">Is this page meant to be the public event landing page?<span>+</span></button>
+                        <div class="faq-answer"><p>Yes. It is designed as a dedicated event landing page under <strong>/event/</strong> with a high-conversion structure.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button">Can I connect this to a registration form later?<span>+</span></button>
+                        <div class="faq-answer"><p>Yes. The CTA can point to a form, checkout flow, or calendar booking link without changing the layout.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button">Does the page work on mobile?<span>+</span></button>
+                        <div class="faq-answer"><p>Yes. The layout collapses into a single-column view and keeps the CTA and content hierarchy intact.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta container" id="register">
+                <div class="cta-inner">
+                    <div>
+                        <div class="section-kicker" style="color: rgba(255,255,255,0.72);">Register</div>
+                        <h2>Reserve a seat for the next Warsha Live session.</h2>
+                        <p>Keep the experience concise, focused, and easy to act on. This page is ready for a signup form or external registration flow.</p>
+                    </div>
+                    <div class="cta-actions">
+                        <a class="btn btn-light" href="../index.html">Back to site</a>
+                        <a class="btn btn-ghost" href="#overview">Back to top</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="container footer">
+            <div class="footer-row">
+                <span>Warsha Live Event Page</span>
+                <span>Built for the warsha.live repository</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach((button) => {
+            button.addEventListener('click', () => {
+                const item = button.closest('.faq-item');
+                item.classList.toggle('open');
+                const symbol = button.querySelector('span');
+                if (symbol) {
+                    symbol.textContent = item.classList.contains('open') ? '−' : '+';
+                }
+            });
+        });
+
+        document.querySelectorAll('.faq-item').forEach((item) => {
+            const isOpen = item.classList.contains('open');
+            const symbol = item.querySelector('.faq-question span');
+            if (symbol) {
+                symbol.textContent = isOpen ? '−' : '+';
+            }
+        });
+    </script>
+</body>
+</html>
