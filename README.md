@@ -1,250 +1,247 @@
-# منصة التعلم الإلكترونية 🎓
-## Learning Platform
+# Learning Platform
 
-منصة تعليمية متكاملة لتقديم تجربة تعلمية فعّالة وتفاعلية.
-
----
-
-## 📋 المميزات الرئيسية
-
-### ✨ للطلاب
-- 📚 **عرض الكورسات**: استعرض مئات الكورسات المتاحة
-- 🎯 **التسجيل والدفع**: نظام تسجيل آمن مع خيارات دفع متعددة
-- 💬 **التفاعل المباشر**: غرفة نقاش تفاعلية مع المعلمين والطلاب
-- 🤖 **المساعد الذكي**: AI يجيب على أسئلتك التعليمية 24/7
-- 👤 **الملف الشخصي**: تتبع الكورسات المسجل بها والتقدم
-- 🌍 **دعم اللغات**: واجهة ثنائية اللغة (عربي/إنجليزي)
-
-### 👨‍🏫 للمعلمين
-- 📊 **لوحة التحكم**: إحصائيات شاملة عن الطلاب والكورسات
-- 📝 **إنشاء الكورسات**: إضافة كورسات جديدة بسهولة
-- ⭐ **التقييمات**: تتبع تقييمات الطلاب والأداء
-- 👥 **إدارة الطلاب**: معلومات شاملة عن الطلاب المسجلين
+A complete educational platform designed to provide an effective and interactive learning experience.
 
 ---
 
-## 🚀 كيفية الاستخدام
+## Key Features
 
-### البدء السريع
+### For Students
+- Browse available courses and explore details.
+- Register and simulate payment in a guided flow.
+- Join interactive chat discussions with instructors and peers.
+- Use the AI assistant for education-focused questions, available 24/7.
+- Track enrolled courses and progress from the profile section.
+- Switch between Arabic and English interfaces.
 
-1. **افتح المشروع محلياً** عبر تشغيل الخادم:
-	```bash
-	npm start
-	```
-2. افتح الرابط:
-	```
-	http://localhost:3000
-	```
-3. اختر اللغة المفضلة (العربية أو الإنجليزية)
-4. استكشف الموقع
-
-### تشغيل المساعد الذكي محلياً
-
-- الدردشة الذكية تتصل الآن بـ `http://localhost:3000/api/ai`
-- إذا كان الخادم يعمل فستحصل على ردود محلية مباشرة
-- إذا تعذر الاتصال، سيظهر رد احتياطي داخل المتصفح
-
-### خطوات المستخدم
-
-#### 1️⃣ التسجيل والدخول
-- انقر على "إنشاء حساب" لإنشاء حساب جديد
-- أدخل البيانات المطلوبة (الاسم، البريد، كلمة المرور، نوع المستخدم)
-- يمكنك الدخول بـ تسجيل الدخول بعد الإنشاء
-
-#### 2️⃣ استعراض الكورسات
-- انقر على "الكورسات" من القائمة العلوية
-- شاهد جميع الكورسات المتاحة
-- انقر على أي كورس لرؤية التفاصيل الكاملة
-
-#### 3️⃣ التسجيل في كورس
-- انقر على "التسجيل الآن" في صفحة الكورس
-- ملء بيانات البطاقة الائتمانية
-- تأكيد الدفع والتسجيل
-
-#### 4️⃣ التفاعل مع المجتمع
-- انقر على "الدردشة" للمشاركة في النقاشات
-- اكتب رسالتك واضغط إرسال
-- تواصل مع المعلمين والطلاب الآخرين
-
-#### 5️⃣ عرض الملف الشخصي
-- انقر على "الملف الشخصي"
-- شاهد معلوماتك والكورسات المسجل بها
-- تتبع تقدمك في كل كورس
-
-#### 6️⃣ التواصل مع المساعد الذكي
-- انقر على "🤖 المساعد الذكي" من القائمة
-- اطرح أي سؤال تعليمي
-- استخدم الاقتراحات السريعة
-- احصل على إجابات فورية 24/7
+### For Instructors
+- Access a dashboard with student and course insights.
+- Add and manage new courses.
+- Monitor ratings and student feedback.
+- Review enrolled student information.
 
 ---
 
-## 🤖 المساعد الذكي (AI Assistant)
+## Getting Started
 
-### المميزات
-- 🧠 **ركز على التعليم**: يجيب على الأسئلة التعليمية والدراسية
-- ⏰ **متاح 24/7**: اطرح أسئلتك في أي وقت
-- 🌍 **ثنائي اللغة**: يتكلم العربية والإنجليزية
-- 💡 **اقتراحات ذكية**: استخدم الأسئلة المقترحة بسرعة
-- 📚 **موثوق ومفيد**: إجابات مفصلة ودقيقة
+### Quick Start
 
-### الأسئلة التي يمكنك طرحها
-- ✅ شرح منهجية البحث العلمي
-- ✅ كيفية كتابة مقدمة البحث
-- ✅ تقنيات الدراسة الفعالة
-- ✅ كيفية تنظيم وقتك
-- ✅ معلومات عن الكورسات
-- ✅ المساعدة في الدفع والتسجيل
-- ✅ أي سؤال تعليمي آخر
+1. Start the local server:
 
-### كيفية الاستخدام
-1. اضغط على **"🤖 المساعد الذكي"** من القائمة
-2. اكتب سؤالك في حقل الإدخال
-3. اضغط **"إرسال"** أو استخدم الأسئلة المقترحة
-4. احصل على إجابة فورية
-
----
-
-## 📊 الكورسات المتاحة
-
-### 1. منهجية البحث في العلوم الاجتماعية
-- **السعر**: 45 دولار
-- **المعلم**: عبدالرحمن
-- **التقييم**: ⭐ 4.8
-- **الطلاب**: 150
-- **المحاضرات**: 12
-
-### 2. تحليل البيانات الإحصائية
-- **السعر**: 50 دولار
-- **المعلم**: وصال
-- **التقييم**: ⭐ 4.7
-- **الطلاب**: 120
-- **المحاضرات**: 15
-
-### 3. كتابة البحث العلمي
-- **السعر**: 40 دولار
-- **المعلم**: الدكتور أحمد
-- **التقييم**: ⭐ 4.9
-- **الطلاب**: 200
-- **المحاضرات**: 10
-
-### 4. استخدام الذكاء الاصطناعي في البحث
-- **السعر**: 55 دولار
-- **المعلم**: عبدالرحمن
-- **التقييم**: ⭐ 4.6
-- **الطلاب**: 85
-- **المحاضرات**: 14
-
----
-
-## 🔐 حسابات التجربة
-
-### حساب طالب تجريبي
-- **البريد**: student@test.com
-- **كلمة المرور**: password123
-
-### حساب معلم تجريبي
-- **البريد**: instructor@test.com
-- **كلمة المرور**: password123
-
----
-
-## 🎨 التصميم والميزات التقنية
-
-### التصميم
-- ✅ **ريسبونسيف**: يعمل على جميع الأجهزة (هاتف، تابلت، كمبيوتر)
-- ✅ **حديث ومينيمالست**: واجهة نظيفة وسهلة الاستخدام
-- ✅ **سلس وسريع**: أداء عالي وتحميل سريع
-
-### الميزات التقنية
-- **HTML5**: بنية حديثة وآمنة
-- **CSS3**: تصميم متقدم مع animations
-- **JavaScript**: تفاعلية عالية بدون الحاجة لخادم
-- **LocalStorage**: حفظ البيانات محليا على الجهاز
-
----
-
-## 📁 هيكل الملفات
-
+```bash
+npm start
 ```
+
+2. Open the app:
+
+```text
+http://localhost:3000
+```
+
+3. Choose your preferred language (Arabic or English).
+4. Explore the platform.
+
+### Run the AI Assistant Locally
+
+- The chat UI connects to `http://localhost:3000/api/ai`.
+- If the server is running, you will get local API responses.
+- If not reachable, the browser shows a fallback response.
+
+### User Flow
+
+#### 1. Register and Sign In
+- Click `Create Account` to create a new account.
+- Enter required details: name, email, password, and user role.
+- Sign in after successful registration.
+
+#### 2. Browse Courses
+- Open the `Courses` section from the top navigation.
+- Review available courses.
+- Open any course to view full details.
+
+#### 3. Enroll in a Course
+- Click `Enroll Now` on a course page.
+- Enter payment details.
+- Confirm payment and enrollment.
+
+#### 4. Join Community Chat
+- Open the `Chat` section.
+- Write and send messages.
+- Interact with instructors and other students.
+
+#### 5. View Profile
+- Open the `Profile` section.
+- Review personal details and enrolled courses.
+- Track progress for each enrolled course.
+
+#### 6. Use the AI Assistant
+- Open `AI Assistant` from the navigation.
+- Ask any education-related question.
+- Use quick prompts for faster interactions.
+- Receive instant answers.
+
+---
+
+## AI Assistant
+
+### Highlights
+- Focused on educational and academic support.
+- Available 24/7.
+- Supports Arabic and English.
+- Offers smart prompt suggestions.
+- Provides practical and detailed responses.
+
+### Example Questions
+- How do I structure social science research methodology?
+- How do I write a strong research introduction?
+- What are effective study techniques?
+- How can I improve my time management for learning?
+- What courses are available on the platform?
+- How does registration and payment work?
+
+### How to Use
+1. Open `AI Assistant` from the top menu.
+2. Type your question in the input field.
+3. Click `Send` or choose a suggested prompt.
+4. Read the generated response.
+
+---
+
+## Available Courses
+
+### 1. Research Methodology in Social Sciences
+- Price: $45
+- Instructor: Abdelrhman
+- Rating: 4.8
+- Students: 150
+- Lectures: 12
+
+### 2. Statistical Data Analysis
+- Price: $50
+- Instructor: Wesal
+- Rating: 4.7
+- Students: 120
+- Lectures: 15
+
+### 3. Academic Research Writing
+- Price: $40
+- Instructor: Dr. Ahmed
+- Rating: 4.9
+- Students: 200
+- Lectures: 10
+
+### 4. Using AI in Research
+- Price: $55
+- Instructor: Abdelrhman
+- Rating: 4.6
+- Students: 85
+- Lectures: 14
+
+---
+
+## Demo Accounts
+
+### Student Account
+- Email: `student@test.com`
+- Password: `password123`
+
+### Instructor Account
+- Email: `instructor@test.com`
+- Password: `password123`
+
+---
+
+## Design and Technical Details
+
+### Design
+- Responsive layout for phone, tablet, and desktop.
+- Clean and modern user interface.
+- Fast and smooth interaction patterns.
+
+### Technical Stack
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- LocalStorage for local browser data persistence
+
+---
+
+## Project Structure
+
+```text
 learning-platform/
-├── index.html          # الملف الرئيسي للموقع
-├── styles.css          # ملف التصميم
-├── app.js              # ملف JavaScript للتفاعلية
-└── README.md           # هذا الملف
+├── index.html          # Main application page
+├── styles.css          # Styling
+├── app.js              # App interactivity and logic
+└── README.md           # Project documentation
 ```
 
 ---
 
-## 🌐 اللغات المدعومة
+## Supported Languages
 
-### العربية 🇸🇦
-- واجهة كاملة بالعربية
-- توجيه داخل لليمين (RTL)
+### Arabic
+- Full Arabic UI support
+- Right-to-left (RTL) layout
 
-### الإنجليزية 🇺🇸
-- واجهة كاملة بالإنجليزية
-- توجيه طبيعي (LTR)
+### English
+- Full English UI support
+- Left-to-right (LTR) layout
 
-**للتبديل بين اللغات**: انقر على زر اللغة في أعلى الصفحة (EN/AR)
-
----
-
-## 💾 البيانات والتخزين
-
-جميع البيانات يتم تخزينها محليا على جهازك:
-- ✅ بيانات المستخدمين
-- ✅ الكورسات المسجل بها
-- ✅ رسائل الدردشة
-- ✅ الملف الشخصي
-
-**ملاحظة**: البيانات تُمسح عند مسح سجل المتصفح أو بيانات التطبيقات.
+Switch languages using the `EN/AR` toggle in the top bar.
 
 ---
 
-## 🚀 التطوير المستقبلي
+## Data Storage
 
-### ميزات مخطط إضافتها:
-- ⏳ نظام فيديو للمحاضرات
-- ⏳ تحميل الملفات والموارد
-- ⏳ اختبارات وتقييمات آلية
-- ⏳ شهادات رقمية
-- ⏳ نظام مراسلة خاص
-- ⏳ إشعارات فورية
-- ⏳ دعم الدفع الحقيقي
-- ⏳ تكامل مع وسائل التواصل
+All data is stored locally in the browser using LocalStorage, including:
+- User account data
+- Enrolled courses
+- Chat messages
+- Profile information
+
+Note: Data is removed if browser storage or site data is cleared.
 
 ---
 
-## 📞 الدعم والمساعدة
+## Future Roadmap
 
-إذا واجهت أي مشاكل:
-1. تأكد من تفعيل JavaScript في المتصفح
-2. مسّح cache المتصفح وأعد تحميل الصفحة
-3. جرب متصفح مختلف
-
----
-
-## 📜 الترخيص
-
-هذا المشروع مفتوح المصدر ومتاح للاستخدام الحر.
-
----
-
-## 👨‍💻 الفريق
-
-تم تطوير هذه المنصة كجزء من مشروع **منهجية البحث في العلوم الاجتماعية**
-
-**الفريق:**
-- 👤 عبدالرحمن - المدير التقني
-- 👤 وصال - مسؤول المحتوى
-- 👤 منظم الاجتماع - مدير المشروع
+Planned enhancements include:
+- Video lecture system
+- File and resource uploads
+- Automated quizzes and assessments
+- Digital certificates
+- Private messaging
+- Real-time notifications
+- Real payment gateway integration
+- Social platform integrations
 
 ---
 
-**تاريخ الإنشاء**: 2 أبريل 2026
-**الإصدار**: 1.0.0
+## Support
+
+If you face issues:
+1. Make sure JavaScript is enabled in your browser.
+2. Clear browser cache/site data and reload.
+3. Try a different browser.
 
 ---
 
-**شكراً لاستخدامك منصة التعلم الإلكترونية! 🎓**
+## License
+
+This project is open source and available for general use.
+
+---
+
+## Team
+
+This platform was developed as part of the **Research Methodology in Social Sciences** project.
+
+- Abdelrhman - Technical Lead
+- Wesal - Content Lead
+- Meeting Organizer - Project Manager
+
+---
+
+Created: April 2, 2026
+Version: 1.0.0
