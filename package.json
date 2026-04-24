@@ -1,0 +1,12 @@
+{
+  "name": "learning-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Learning platform with local AI chatbot",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "puppeteer": "^24.40.0"
+  }
+}

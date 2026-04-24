@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Open Source Educational Platforms</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-align: center;
+        }
+        
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+        }
+        
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        th {
+            padding: 18px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1em;
+            border: none;
+        }
+        
+        td {
+            padding: 16px 18px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.95em;
+            color: #333;
+        }
+        
+        tbody tr:hover {
+            background-color: #f8f9ff;
+        }
+        
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .platform-name {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 1.05em;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        
+        .badge-lms {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .badge-mooc {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+        
+        .badge-content {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .badge-app {
+            background-color: #fff3e0;
+            color: #f57c00;
+        }
+        
+        .recommendations {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .recommendations h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .recommendation-item {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .recommendation-item::before {
+            content: "★";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 1.2em;
+        }
+        
+        .recommendation-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .recommendation-desc {
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            tbody tr:hover {
+                background-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 Best Open Source Educational Platforms</h1>
+        <p class="subtitle">A Comprehensive Comparison of Learning Management Systems & Education Platforms</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Platform</th>
+                    <th>Type</th>
+                    <th>Key Features</th>
+                    <th>Best For</th>
+                    <th>Learning Experience</th>
+                    <th>Community Support</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="platform-name">🎯 Moodle</td>
+                    <td><span class="badge badge-lms">LMS</span></td>
+                    <td>Course management, quizzes, forums, gradebook, customizable</td>
+                    <td>K-12, Higher Ed, Corporate</td>
+                    <td>Excellent</td>
+                    <td>Very Active</td>
+                </tr>
+                <tr>
+                    <td class="platform-name">📚 Open edX</td>
+                    <td><span class="badge badge-mooc">MOOC Platform</span></td>
+                    <td>Video hosting, interactive content, certificates, analytics</td>
+                    <td>Online courses, Universities</td>
+                    <td>Excellent</td>
+                    <td>Active</td>
+                </tr>
+                <tr>
+                    <td class="platform-name">🎨 Canvas LMS</td>
+                    <td><span class="badge badge-lms">LMS</span></td>
+                    <td>Intuitive UI, mobile app, rich media support, analytics</td>
+                    <td>Universities, Schools</td>
+                    <td>Outstanding</td>
+                    <td>Active</td>
+                </tr>
+                <tr>
+                    <td class="platform-name">🌐 Joomla LMS</td>
+                    <td><span class="badge badge-lms">LMS</span></td>
+                    <td>Content management, built on Joomla, flexible</td>
+                    <td>Small to Medium institutions</td>
+                    <td>Good</td>
+                    <td>Moderate</td>
+                </tr>
+                <tr>
+                    <td class="platform-name">⚙️ ILIAS</td>
+                    <td><span class="badge badge-lms">LMS</span></td>
+                    <td>Scalable, SCORM compliant, testing/assessment tools</td>
+                    <td>Educational institutions</td>
+                    <td>Very Good</td>
+                    <td>Active</td>
+                </tr>
+                <tr>
+                    <td class="platform-name">♿ ATutor</td>
+                    <td><span class="badge badge-lms">LMS</span></td>
+                    <td>Accessibility focused, WCAG compliant, lightweight</td>
+                    <td>Special education, Accessibility-first</td>
+                    <td>Good</td>
+                    <td>Small</td>
+                </tr>
+                <tr>
+                    <td class="platform-name">🧠 Tutor</td>
+                    <td><span class="badge badge-app">Learning App</span></td>
+                    <td>Personalized learning, AI-driven, open source alternative</td>
+                    <td>Individual learners</td>
+                    <td>Excellent</td>
+                    <td>Growing</td>
+                </tr>
+                <tr>
+                    <td class="platform-name">📖 OpenStax</td>
+                    <td><span class="badge badge-content">OER Content</span></td>
+                    <td>Free textbooks, peer-reviewed, highly visual</td>
+                    <td>Students, Teachers</td>
+                    <td>Outstanding</td>
+                    <td>Academic</td>
+                </tr>
+                <tr>
+                    <td class="platform-name">🚀 Claroline</td>
+                    <td><span class="badge badge-lms">LMS</span></td>
+                    <td>Simplistic interface, lightweight, easy deployment</td>
+                    <td>Developing regions, Small schools</td>
+                    <td>Good</td>
+                    <td>Small</td>
+                </tr>
+                <tr>
+                    <td class="platform-name">💎 Coursera (GitHub)</td>
+                    <td><span class="badge badge-mooc">Course Platform</span></td>
+                    <td>Free courses, open content repository</td>
+                    <td>Learners, Instructors</td>
+                    <td>Excellent</td>
+                    <td>Very Active</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="recommendations">
+            <h2>⭐ Top Recommendations by Use Case</h2>
+            
+            <div class="recommendation-item">
+                <div class="recommendation-title">Best Overall LMS</div>
+                <div class="recommendation-desc"><strong>Moodle</strong> - Most feature-rich and widely adopted solution for educational institutions</div>
+            </div>
+            
+            <div class="recommendation-item">
+                <div class="recommendation-title">Best for MOOCs</div>
+                <div class="recommendation-desc"><strong>Open edX</strong> - Purpose-built platform for massive online courses with excellent analytics</div>
+            </div>
+            
+            <div class="recommendation-item">
+                <div class="recommendation-title">Best User Experience</div>
+                <div class="recommendation-desc"><strong>Canvas LMS</strong> - Most intuitive interface with excellent mobile support</div>
+            </div>
+            
+            <div class="recommendation-item">
+                <div class="recommendation-title">Best for Open Content</div>
+                <div class="recommendation-desc"><strong>OpenStax</strong> - Free, peer-reviewed educational materials with outstanding quality</div>
+            </div>
+            
+            <div class="recommendation-item">
+                <div class="recommendation-title">Best Budget Option</div>
+                <div class="recommendation-desc"><strong>ILIAS</strong> - Scalable, lightweight, and cost-effective for institutions</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

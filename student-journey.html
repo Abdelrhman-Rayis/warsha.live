@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رحلة التعلم - منصة التعليم الذكية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Tajawal:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            animation: slideDown 0.8s ease;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            animation: slideUp 0.8s ease;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover,
+        .nav-btn.active {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            right: 50%;
+            transform: translateX(50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            top: 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 52%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-right: 52%;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            right: 50%;
+            transform: translateX(50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid #667eea;
+            border-radius: 50%;
+            margin-top: 25px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            border-color: #764ba2;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-content:hover::before {
+            opacity: 1;
+        }
+
+        .timeline-title {
+            font-size: 1.4em;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .timeline-date {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .timeline-description {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .ai-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .ai-feature {
+            background: #f0f4ff;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+            border-right: 3px solid #667eea;
+            font-size: 0.9em;
+        }
+
+        .ai-feature strong {
+            color: #667eea;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.8s ease;
+        }
+
+        .stats-title {
+            text-align: center;
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 25px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        /* AI Integration Section */
+        .ai-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.8s ease;
+        }
+
+        .ai-section h2 {
+            text-align: center;
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .ai-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .ai-feature-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .ai-feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-left-color: #764ba2;
+        }
+
+        .ai-feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .ai-feature-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .ai-feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.8s ease;
+        }
+
+        .skills-section h2 {
+            text-align: center;
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .skill-item {
+            margin-bottom: 25px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 1s ease;
+            animation: progressFill 1s ease forwards;
+        }
+
+        .skill-item:nth-child(1) .skill-progress { animation-delay: 0.2s; }
+        .skill-item:nth-child(2) .skill-progress { animation-delay: 0.3s; }
+        .skill-item:nth-child(3) .skill-progress { animation-delay: 0.4s; }
+        .skill-item:nth-child(4) .skill-progress { animation-delay: 0.5s; }
+        .skill-item:nth-child(5) .skill-progress { animation-delay: 0.6s; }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes progressFill {
+            to {
+                width: var(--progress);
+            }
+        }
+
+        /* Interactive Elements */
+        .interactive-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .interactive-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 5px 50px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        .close-btn {
+            float: left;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .modal-title {
+            color: #667eea;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        .modal-text {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                right: 20px;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+                margin-right: 0;
+                padding-right: 80px;
+                text-align: right;
+            }
+
+            .timeline-dot {
+                right: 20px;
+                transform: translateX(0);
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Hidden Sections */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🎓 رحلة التعلم الذكية</h1>
+            <p>من البداية إلى الاحتراف - مع تكامل الذكاء الاصطناعي</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav>
+            <button class="nav-btn active" onclick="showSection('journey')">الرحلة التعليمية</button>
+            <button class="nav-btn" onclick="showSection('stats')">الإحصائيات</button>
+            <button class="nav-btn" onclick="showSection('ai')">تكامل الذكاء الاصطناعي</button>
+            <button class="nav-btn" onclick="showSection('skills')">المهارات المكتسبة</button>
+        </nav>
+
+        <!-- Journey Section -->
+        <section id="journey" class="section active">
+            <div class="timeline">
+                <!-- Stage 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">🚀 البداية: التسجيل والتوجيه</div>
+                        <div class="timeline-date">الأسبوع الأول</div>
+                        <div class="timeline-description">
+                            ينشئ الطالب حسابه ويكمل اختبار التقييم الأولي. يقوم الذكاء الاصطناعي بتحليل مستوى الطالب وتفضيلاته.
+                        </div>
+                        <div class="ai-feature">
+                            <strong>🤖 AI التقييم الذكي:</strong> تحليل فوري لمستوى المتعلم وتحديد نقاط القوة والضعف
+                        </div>
+                        <button class="interactive-btn" onclick="showModal('stage1')">اعرف المزيد</button>
+                    </div>
+                </div>
+
+                <!-- Stage 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">📚 اختيار المسار التعليمي</div>
+                        <div class="timeline-date">الأسبوع الثاني</div>
+                        <div class="timeline-description">
+                            يتلقى الطالب توصيات مخصصة حول أفضل المسارات والدورات المناسبة لأهدافه.
+                        </div>
+                        <div class="ai-feature">
+                            <strong>🤖 التوصيات الذكية:</strong> نظام توصيات يوصي بالمحتوى الأنسب لكل متعلم
+                        </div>
+                        <button class="interactive-btn" onclick="showModal('stage2')">اعرف المزيد</button>
+                    </div>
+                </div>
+
+                <!-- Stage 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">🎯 بدء الدورات الأولى</div>
+                        <div class="timeline-date">الأسبوع الثالث - السادس</div>
+                        <div class="timeline-description">
+                            يبدأ الطالب الدورات الأساسية مع الحصول على دعم فوري من مساعد ذكي متاح 24/7.
+                        </div>
+                        <div class="ai-feature">
+                            <strong>🤖 المساعد الذكي:</strong> دردشة فورية للإجابة على الأسئلة وتقديم الشروحات
+                        </div>
+                        <button class="interactive-btn" onclick="showModal('stage3')">اعرف المزيد</button>
+                    </div>
+                </div>
+
+                <!-- Stage 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">✅ الاختبارات والتقييم الذكي</div>
+                        <div class="timeline-date">الأسبوع السابع - التاسع</div>
+                        <div class="timeline-description">
+                            يخضع الطالب لاختبارات تكيفية تتعدل صعوبتها حسب أدائه، مع ملاحظات تفصيلية من الذكاء الاصطناعي.
+                        </div>
+                        <div class="ai-feature">
+                            <strong>🤖 الاختبارات التكيفية:</strong> أسئلة تتحول وتتطور حسب أداء الطالب في الوقت الفعلي
+                        </div>
+                        <button class="interactive-btn" onclick="showModal('stage4')">اعرف المزيد</button>
+                    </div>
+                </div>
+
+                <!-- Stage 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">📊 التحليل والتطور الشخصي</div>
+                        <div class="timeline-date">الأسبوع العاشر - الثاني عشر</div>
+                        <div class="timeline-description">
+                            يحصل الطالب على تقارير مفصلة عن تقدمه مع رؤى من الذكاء الاصطناعي حول المجالات التي تحتاج تحسين.
+                        </div>
+                        <div class="ai-feature">
+                            <strong>🤖 التحليل التنبؤي:</strong> توقعات دقيقة عن الأداء المستقبلي وتوصيات لتحسينه
+                        </div>
+                        <button class="interactive-btn" onclick="showModal('stage5')">اعرف المزيد</button>
+                    </div>
+                </div>
+
+                <!-- Stage 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">🏆 الإنجاز والشهادة</div>
+                        <div class="timeline-date">نهاية الدورة</div>
+                        <div class="timeline-description">
+                            ينال الطالب شهادة معترف بها مع توصيات من الذكاء الاصطناعي للخطوات المقبلة والفرص الوظيفية.
+                        </div>
+                        <div class="ai-feature">
+                            <strong>🤖 التخطيط المستقبلي:</strong> توصيات شخصية لمسارات التعلم التالي والفرص الوظيفية
+                        </div>
+                        <button class="interactive-btn" onclick="showModal('stage6')">اعرف المزيد</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="stats" class="section">
+            <div class="stats-section">
+                <h2>📈 إحصائيات الرحلة التعليمية</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">87%</div>
+                        <div class="stat-label">معدل إكمال الدورات</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">92%</div>
+                        <div class="stat-label">تحسن الأداء</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">ساعة تعليم</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">45</div>
+                        <div class="stat-label">اختبار أكملت</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Integration Section -->
+        <section id="ai" class="section">
+            <div class="ai-section">
+                <h2>🤖 كيف يتكامل الذكاء الاصطناعي</h2>
+                <div class="ai-features-grid">
+                    <div class="ai-feature-card">
+                        <div class="ai-feature-icon">🎯</div>
+                        <h3>التعليم المخصص</h3>
+                        <p>يتعلم الذكاء الاصطناعي من أسلوب كل متعلم ويقدم محتوى مخصص يناسب احتياجاته الفريدة.</p>
+                    </div>
+                    <div class="ai-feature-card">
+                        <div class="ai-feature-icon">⚡</div>
+                        <h3>التقييم الفوري</h3>
+                        <p>تصحيح فوري وملاحظات تفصيلية على جميع الإجابات مع شرح المفاهيم الصعبة.</p>
+                    </div>
+                    <div class="ai-feature-card">
+                        <div class="ai-feature-icon">📱</div>
+                        <h3>المساعد الذكي</h3>
+                        <p>دردشة فورية متاحة 24/7 للإجابة على الأسئلة وتقديم الشروحات الإضافية.</p>
+                    </div>
+                    <div class="ai-feature-card">
+                        <div class="ai-feature-icon">📊</div>
+                        <h3>التحليلات المتقدمة</h3>
+                        <p>رؤى عميقة عن أنماط التعلم والتقدم مع توقعات دقيقة للأداء المستقبلي.</p>
+                    </div>
+                    <div class="ai-feature-card">
+                        <div class="ai-feature-icon">🔄</div>
+                        <h3>التكيف المستمر</h3>
+                        <p>تعديل مستمر لصعوبة المحتوى والاختبارات بناءً على أداء المتعلم الفعلي.</p>
+                    </div>
+                    <div class="ai-feature-card">
+                        <div class="ai-feature-icon">🌟</div>
+                        <h3>التوجيه الذكي</h3>
+                        <p>توصيات شخصية عن أفضل الوقت للدراسة والموضوعات ذات الأولوية بناءً على أهدافك.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="skills-section">
+                <h2>💡 المهارات المكتسبة خلال الرحلة</h2>
+                
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>البرمجة وتطوير الويب</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress: 85%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>تحليل البيانات والذكاء الاصطناعي</span>
+                        <span>78%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress: 78%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>إدارة المشاريع والعمل الجماعي</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress: 90%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>التفكير الناقد وحل المشاكل</span>
+                        <span>88%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress: 88%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>التواصل والعرض الفعال</span>
+                        <span>82%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress: 82%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update nav buttons
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Modal functionality
+        const stageDetails = {
+            stage1: {
+                title: '🚀 البداية: التسجيل والتوجيه',
+                content: `
+                    <p>في هذه المرحلة الأولى من رحلتك التعليمية، ستقوم بـ:</p>
+                    <ul style="margin-right: 20px; margin-top: 15px; line-height: 2;">
+                        <li><strong>إنشاء حسابك الشخصي</strong> مع ملف تعريفي شامل</li>
+                        <li><strong>اختبار التقييم الأولي</strong> لتحديد مستواك الحالي</li>
+                        <li><strong>تحديد أهدافك التعليمية</strong> والمدة الزمنية المتوقعة</li>
+                        <li><strong>التعريف بنظام الذكاء الاصطناعي</strong> الذي سيرافقك في رحلتك</li>
+                    </ul>
+                    <p style="margin-top: 15px;">يقوم الذكاء الاصطناعي بتحليل إجاباتك وفهم أسلوب تعلمك بدقة.</p>
+                `
+            },
+            stage2: {
+                title: '📚 اختيار المسار التعليمي',
+                content: `
+                    <p>بعد التقييم الأولي، يقدم الذكاء الاصطناعي توصيات دقيقة:</p>
+                    <ul style="margin-right: 20px; margin-top: 15px; line-height: 2;">
+                        <li><strong>مسارات تعليمية مخصصة</strong> تناسب أهدافك ومستواك</li>
+                        <li><strong>دورات موصى بها</strong> بناءً على تحليل متقدم</li>
+                        <li><strong>ترتيب الموضوعات</strong> بناءً على الصعوبة والأهمية</li>
+                        <li><strong>تقدير الوقت المطلوب</strong> لكل دورة بدقة</li>
+                    </ul>
+                    <p style="margin-top: 15px;">يمكنك اختيار المسار الأنسب لك أو طلب تعديلات حسب احتياجاتك.</p>
+                `
+            },
+            stage3: {
+                title: '🎯 بدء الدورات الأولى',
+                content: `
+                    <p>الآن تبدأ رحلة التعلم الفعلية مع الدعم الكامل:</p>
+                    <ul style="margin-right: 20px; margin-top: 15px; line-height: 2;">
+                        <li><strong>محتوى تفاعلي وجذاب</strong> مع فيديوهات وتمارين عملية</li>
+                        <li><strong>مساعد ذكي للإجابة الفورية</strong> على كل استفساراتك</li>
+                        <li><strong>تتبع تقدمك الحي</strong> مع رؤى يومية عن أدائك</li>
+                        <li><strong>مجتمع للمتعلمين</strong> للتفاعل والتعاون</li>
+                    </ul>
+                    <p style="margin-top: 15px;">الذكاء الاصطناعي يتعلم من كل خطوة تتخذها ويتكيف معك.</p>
+                `
+            },
+            stage4: {
+                title: '✅ الاختبارات والتقييم الذكي',
+                content: `
+                    <p>التقييم الذكي يختلف عن الاختبارات التقليدية:</p>
+                    <ul style="margin-right: 20px; margin-top: 15px; line-height: 2;">
+                        <li><strong>اختبارات تكيفية</strong> تتعدل صعوبتها حسب أدائك</li>
+                        <li><strong>ملاحظات فورية وتفصيلية</strong> على كل إجابة</li>
+                        <li><strong>شروحات للمفاهيم الصعبة</strong> بطرق متعددة</li>
+                        <li><strong>تحديد فجوات المعرفة</strong> وتصويبها فوراً</li>
+                    </ul>
+                    <p style="margin-top: 15px;">الهدف هو التعلم والتطور وليس مجرد الحصول على درجات.</p>
+                `
+            },
+            stage5: {
+                title: '📊 التحليل والتطور الشخصي',
+                content: `
+                    <p>حصول على رؤى عميقة عن تقدمك:</p>
+                    <ul style="margin-right: 20px; margin-top: 15px; line-height: 2;">
+                        <li><strong>تقارير مفصلة عن الأداء</strong> قطاع قطاع</li>
+                        <li><strong>مقارنة مع معايير الأداء</strong> والمتعلمين الآخرين</li>
+                        <li><strong>توقعات للأداء المستقبلي</strong> بدقة عالية</li>
+                        <li><strong>خطة عمل مخصصة</strong> للتحسن السريع</li>
+                    </ul>
+                    <p style="margin-top: 15px;">كل التحليلات مدعومة بالبيانات والخوارزميات المتقدمة.</p>
+                `
+            },
+            stage6: {
+                title: '🏆 الإنجاز والشهادة',
+                content: `
+                    <p>تتويج رحلتك التعليمية بـ:</p>
+                    <ul style="margin-right: 20px; margin-top: 15px; line-height: 2;">
+                        <li><strong>شهادة معترف بها دولياً</strong> توثق إنجازاتك</li>
+                        <li><strong>بطاقة مهارات رقمية</strong> تظهر ما تعلمته</li>
+                        <li><strong>توصيات للفرص الوظيفية</strong> المناسبة لك</li>
+                        <li><strong>خطة تطور مستمرة</strong> للمراحل التالية</li>
+                    </ul>
+                    <p style="margin-top: 15px;">أنت الآن جاهز للخطوة التالية في حياتك المهنية!</p>
+                `
+            }
+        };
+
+        function showModal(stageId) {
+            const stage = stageDetails[stageId];
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="modal-title">${stage.title}</div>
+                <div class="modal-text">${stage.content}</div>
+            `;
+            document.getElementById('modal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('show');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                modal.classList.remove('show');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+[Unit]
+Description=Learning Platform
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/learning-platform
+ExecStart=/usr/bin/npm start
+Restart=always
+RestartSec=5
+Environment=NODE_ENV=production
+Environment=PORT=3000
+
+[Install]
+WantedBy=multi-user.target

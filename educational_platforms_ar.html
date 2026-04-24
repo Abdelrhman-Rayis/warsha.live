@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أفضل منصات التعليم المفتوحة المصدر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #fef9f3;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(139, 69, 19, 0.15);
+            padding: 50px;
+            border: 1px solid #e8d5c4;
+            position: relative;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(210, 180, 140, 0.03) 2px,
+                    rgba(210, 180, 140, 0.03) 4px
+                );
+            pointer-events: none;
+            border-radius: 8px;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            color: #5c3d2e;
+            margin-bottom: 10px;
+            font-size: 2.8em;
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .subtitle {
+            color: #8b6f47;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+            font-weight: 400;
+        }
+        
+        .decorative-line {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #8b6f47, transparent);
+            margin: 20px auto 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(139, 69, 19, 0.08);
+        }
+        
+        thead {
+            background: linear-gradient(135deg, #8b6f47 0%, #a0826d 100%);
+            color: #fef9f3;
+        }
+        
+        th {
+            padding: 20px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 1.05em;
+            border-bottom: 2px solid #5c3d2e;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #e8d5c4;
+            font-size: 0.98em;
+            color: #3d2817;
+            line-height: 1.6;
+        }
+        
+        tbody tr {
+            transition: background-color 0.2s ease;
+        }
+        
+        tbody tr:hover {
+            background-color: #faf5f0;
+        }
+        
+        tbody tr:nth-child(even) {
+            background-color: #fdf8f3;
+        }
+        
+        .platform-name {
+            font-weight: 600;
+            color: #8b6f47;
+            font-size: 1.08em;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 500;
+            border: 1px solid;
+        }
+        
+        .badge-lms {
+            background-color: #f0e6d2;
+            color: #8b6f47;
+            border-color: #d4b896;
+        }
+        
+        .badge-mooc {
+            background-color: #e8dcc8;
+            color: #704214;
+            border-color: #c4a574;
+        }
+        
+        .badge-content {
+            background-color: #e0d0ba;
+            color: #6b5d4f;
+            border-color: #c4b59d;
+        }
+        
+        .badge-app {
+            background-color: #d8cbb6;
+            color: #735e4f;
+            border-color: #bca885;
+        }
+        
+        .recommendations {
+            background: linear-gradient(135deg, #faf5f0 0%, #f5ede4 100%);
+            border-radius: 8px;
+            padding: 35px;
+            margin-top: 40px;
+            border: 1px solid #e8d5c4;
+            box-shadow: 0 2px 8px rgba(139, 69, 19, 0.08);
+        }
+        
+        .recommendations h2 {
+            color: #5c3d2e;
+            margin-bottom: 25px;
+            font-size: 1.6em;
+            font-weight: 700;
+        }
+        
+        .recommendation-item {
+            margin-bottom: 18px;
+            padding-right: 30px;
+            padding-left: 0;
+            position: relative;
+            background: white;
+            padding: 18px 25px;
+            border-radius: 6px;
+            border-right: 3px solid #8b6f47;
+        }
+        
+        .recommendation-item::before {
+            content: "✦";
+            position: absolute;
+            left: 12px;
+            color: #8b6f47;
+            font-size: 1em;
+        }
+        
+        .recommendation-title {
+            font-weight: 600;
+            color: #5c3d2e;
+            margin-bottom: 5px;
+            font-size: 1.05em;
+        }
+        
+        .recommendation-desc {
+            color: #6b5844;
+            font-size: 0.96em;
+            line-height: 1.6;
+        }
+        
+        .paper-texture {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%23f5e6d3" width="100" height="100"/><path fill="%23e8d5c4" d="M0 0h100v100H0z" opacity="0.1"/></svg>');
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        footer {
+            text-align: center;
+            color: #8b6f47;
+            margin-top: 30px;
+            font-size: 0.9em;
+            border-top: 1px solid #e8d5c4;
+            padding-top: 20px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border: none;
+                padding: 30px;
+            }
+            tbody tr:hover {
+                background-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="paper-texture"></div>
+    <div class="container">
+        <div class="content">
+            <h1>🎓 أفضل منصات التعليم المفتوحة المصدر</h1>
+            <p class="subtitle">دليل شامل لأنظمة إدارة التعلم الإلكترونية ومنصات التعليم</p>
+            <div class="decorative-line"></div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>المنصة</th>
+                        <th>النوع</th>
+                        <th>المميزات الرئيسية</th>
+                        <th>الأنسب لـ</th>
+                        <th>جودة التعليم</th>
+                        <th>دعم المجتمع</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="platform-name">🎯 Moodle</td>
+                        <td><span class="badge badge-lms">نظام إدارة تعلم</span></td>
+                        <td>إدارة الدورات، الاختبارات، المنتديات، دفتر العلامات، قابل للتخصيص</td>
+                        <td>التعليم الابتدائي والجامعي والشركات</td>
+                        <td>ممتازة</td>
+                        <td>نشطة جداً</td>
+                    </tr>
+                    <tr>
+                        <td class="platform-name">📚 Open edX</td>
+                        <td><span class="badge badge-mooc">منصة دورات ضخمة</span></td>
+                        <td>استضافة الفيديو، محتوى تفاعلي، شهادات، تحليلات</td>
+                        <td>الدورات الإلكترونية، الجامعات</td>
+                        <td>ممتازة</td>
+                        <td>نشطة</td>
+                    </tr>
+                    <tr>
+                        <td class="platform-name">🎨 Canvas LMS</td>
+                        <td><span class="badge badge-lms">نظام إدارة تعلم</span></td>
+                        <td>واجهة بديهية، تطبيق موبايل، دعم الوسائط الغنية، تحليلات</td>
+                        <td>الجامعات والمدارس</td>
+                        <td>ممتازة جداً</td>
+                        <td>نشطة</td>
+                    </tr>
+                    <tr>
+                        <td class="platform-name">🌐 Joomla LMS</td>
+                        <td><span class="badge badge-lms">نظام إدارة تعلم</span></td>
+                        <td>إدارة المحتوى، مبني على Joomla، مرن</td>
+                        <td>المؤسسات الصغيرة والمتوسطة</td>
+                        <td>جيدة</td>
+                        <td>معتدلة</td>
+                    </tr>
+                    <tr>
+                        <td class="platform-name">⚙️ ILIAS</td>
+                        <td><span class="badge badge-lms">نظام إدارة تعلم</span></td>
+                        <td>قابل للتوسع، متوافق مع SCORM، أدوات الاختبار والتقييم</td>
+                        <td>المؤسسات التعليمية</td>
+                        <td>ممتازة جداً</td>
+                        <td>نشطة</td>
+                    </tr>
+                    <tr>
+                        <td class="platform-name">♿ ATutor</td>
+                        <td><span class="badge badge-lms">نظام إدارة تعلم</span></td>
+                        <td>تركيز على الوصولية، متوافق WCAG، خفيف الوزن</td>
+                        <td>التعليم الخاص، التركيز على الوصولية</td>
+                        <td>جيدة</td>
+                        <td>صغيرة</td>
+                    </tr>
+                    <tr>
+                        <td class="platform-name">🧠 Tutor</td>
+                        <td><span class="badge badge-app">تطبيق تعلم</span></td>
+                        <td>تعليم شخصي، مدفوع بالذكاء الاصطناعي، بديل مفتوح المصدر</td>
+                        <td>المتعلمون الفرديون</td>
+                        <td>ممتازة</td>
+                        <td>متنامية</td>
+                    </tr>
+                    <tr>
+                        <td class="platform-name">📖 OpenStax</td>
+                        <td><span class="badge badge-content">محتوى تعليمي مفتوح</span></td>
+                        <td>كتب مدرسية مجانية، محكمة الأقران، بصرية عالية</td>
+                        <td>الطلاب والمعلمون</td>
+                        <td>ممتازة جداً</td>
+                        <td>أكاديمية</td>
+                    </tr>
+                    <tr>
+                        <td class="platform-name">🚀 Claroline</td>
+                        <td><span class="badge badge-lms">نظام إدارة تعلم</span></td>
+                        <td>واجهة بسيطة، خفيف الوزن، سهل النشر</td>
+                        <td>الدول النامية، المدارس الصغيرة</td>
+                        <td>جيدة</td>
+                        <td>صغيرة</td>
+                    </tr>
+                    <tr>
+                        <td class="platform-name">💎 Coursera (GitHub)</td>
+                        <td><span class="badge badge-mooc">منصة دورات</span></td>
+                        <td>دورات مجانية، مستودع محتوى مفتوح</td>
+                        <td>المتعلمون والمدربون</td>
+                        <td>ممتازة</td>
+                        <td>نشطة جداً</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="recommendations">
+                <h2>⭐ التوصيات الأفضل حسب حالة الاستخدام</h2>
+                
+                <div class="recommendation-item">
+                    <div class="recommendation-title">أفضل نظام إدارة تعليم شامل</div>
+                    <div class="recommendation-desc"><strong>Moodle</strong> - الحل الأكثر غنى بالميزات والمعتمد على نطاق واسع في المؤسسات التعليمية</div>
+                </div>
+                
+                <div class="recommendation-item">
+                    <div class="recommendation-title">الأفضل للدورات الضخمة على الإنترنت</div>
+                    <div class="recommendation-desc"><strong>Open edX</strong> - منصة مصممة خصيصاً للدورات الضخمة مع تحليلات ممتازة</div>
+                </div>
+                
+                <div class="recommendation-item">
+                    <div class="recommendation-title">أفضل تجربة مستخدم</div>
+                    <div class="recommendation-desc"><strong>Canvas LMS</strong> - الواجهة الأكثر بديهية مع دعم موبايل ممتاز</div>
+                </div>
+                
+                <div class="recommendation-item">
+                    <div class="recommendation-title">الأفضل للمحتوى التعليمي المفتوح</div>
+                    <div class="recommendation-desc"><strong>OpenStax</strong> - مواد تعليمية مجانية محكمة الأقران بجودة عالية</div>
+                </div>
+                
+                <div class="recommendation-item">
+                    <div class="recommendation-title">أفضل خيار اقتصادي</div>
+                    <div class="recommendation-desc"><strong>ILIAS</strong> - حل قابل للتوسع وخفيف الوزن وفعال من حيث التكلفة للمؤسسات</div>
+                </div>
+            </div>
+            
+            <footer>
+                <p>📄 هذا الدليل يقدم معلومات عن أفضل منصات التعليم المفتوحة المصدر المتاحة حالياً</p>
+                <p style="margin-top: 10px; font-size: 0.85em;">تاريخ الإنشاء: 3 أبريل 2026</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
