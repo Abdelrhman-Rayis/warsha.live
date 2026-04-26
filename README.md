@@ -239,7 +239,7 @@ This platform was developed as part of the **Research Methodology in Social Scie
 
 - Abdelrhman - Technical Lead
 - Wesal - Content Lead
-- Meeting Organizer - Project Manager
+- Mazin - Manager
 
 ---
 
