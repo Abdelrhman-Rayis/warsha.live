@@ -141,10 +141,89 @@ const server = http.createServer((req, res) => {
 
         // 2. Send Welcome Email via Resend
         const https = require('https');
-        const emailHtml = data.lang === 'ar' 
-          ? `<div dir="rtl" style="font-family: Arial, sans-serif; line-height: 1.6;"><h2>أهلاً بك في الذكاء الاصطناعي في الخليج!</h2><p>مرحباً ${data.name}،<br><br>سعيدون بانضمامك لنا. ستصلك النشرة الأولى صباح يوم الأحد القادم.</p><p>أطيب التحيات،<br>فريق التحرير</p></div>`
-          : `<div style="font-family: Arial, sans-serif; line-height: 1.6;"><h2>Welcome to AI in Khaleej!</h2><p>Hi ${data.name},<br><br>We're thrilled to have you. You will receive your first briefing this coming Sunday morning.</p><p>Best regards,<br>The Editorial Team</p></div>`;
+        const emailHtmlEN = `<div style="font-family: Arial, sans-serif; max-width: 650px; margin: 0 auto; line-height: 1.65; color: #1a1f2e; padding: 20px;">
+<div style="border-bottom: 2px solid #b08d3c; padding-bottom: 20px; margin-bottom: 28px;">
+  <h2 style="font-family: Georgia, serif; font-size: 28px; font-weight: 600; margin: 0 0 8px; letter-spacing: -0.01em;">Issue #001: The agent moment has arrived.</h2>
+  <p style="color: #8b6e2c; font-size: 13px; font-weight: 600; text-transform: uppercase; margin: 0;">What Gulf faculty should do this semester</p>
+</div>
 
+<p>Hi ${data.name},</p>
+<p>Welcome to <strong>AI in the Khaleej Classroom</strong>. Below is your first briefing. Read in ~8 minutes. Use on Monday.</p>
+
+<div style="background: #f8f6f0; border-left: 4px solid #b08d3c; padding: 20px; margin: 24px 0; border-radius: 0 8px 8px 0;">
+  <p style="margin: 0 0 10px;"><strong>Cold open:</strong> Two weeks ago OpenAI published guidance on Workspace Agents for higher education. Anthropic and Google are moving the same direction. The era of AI as a chatbot is ending. The era of AI as a workflow tied to your real work has begun.</p>
+  <p style="margin: 0; font-size: 14px; color: #5b6478;">This is not a vendor pitch. It is a structural change.</p>
+</div>
+
+<h3 style="font-family: Georgia, serif; font-size: 20px; margin: 28px 0 12px;">01. A pedagogy pattern: the course-specific GPT</h3>
+<p><strong>What it is:</strong> A Custom GPT that holds your course readings, rubric, and persona. Students get a 24/7 study partner tethered to <em>your</em> course.</p>
+<p><strong>Build it this week:</strong> Pick one course, decide the GPT's job, feed it your materials (syllabus, slides, good/bad student work samples), write the system prompt, pilot with 5 students.</p>
+
+<div style="background: #1a1f2e; color: #e2e8f0; padding: 20px; border-radius: 8px; margin: 16px 0; font-family: monospace; font-size: 12px; line-height: 1.6;">
+<strong>Starter system prompt:</strong><br><br>
+You are a study partner for [COURSE NAME]. Your job is to help students [PICK ONE: understand difficult concepts / improve their writing / practice problem-solving / prepare for exams].<br><br>
+- Never write a complete assignment for a student.<br>
+- Always cite which course material your answer is grounded in.<br>
+- When a student is wrong, guide them toward the correct frame.<br>
+- Language: respond in the language the student writes to you in.
+</div>
+
+<p><strong>Caveats for Gulf classrooms:</strong> Arabic-language reasoning quality is behind English. For Arabic courses, expect to spend more time correcting during the pilot. A sanctioned course GPT strengthens academic integrity.</p>
+
+<h3 style="font-family: Georgia, serif; font-size: 20px; margin: 28px 0 12px;">02. A tool worth your time: NotebookLM</h3>
+<p>Google's research notebook. Upload sources, ask questions, get passage-level citations. Built for the <em>researcher's</em> workflow. For literature reviews, dissertation supervision, and grant prep.</p>
+<p><strong>Arabic limitations:</strong> Audio overviews are English-only. OCR on Arabic-script PDFs is inconsistent. Citation accuracy: ~80% for Arabic vs ~95% for English. Verify before quoting.</p>
+
+<h3 style="font-family: Georgia, serif; font-size: 20px; margin: 28px 0 12px;">03. A regional signal: agents are coming, no Gulf accreditor has guidance yet</h3>
+<p>None of the Gulf regulatory frameworks (UAE's PDPL, Saudi's PDPL/SDAIA, Qatar's Law 13) were written with AI agents in mind. An agent that takes actions is not what those frameworks contemplated.</p>
+<p><strong>Your move:</strong> Do not deploy agents in institutional systems without written sign-off from IT and the dean. If you lead a department, this is the moment to put a one-page AI agent-use addendum in front of governance.</p>
+
+<div style="border-top: 1px solid #e6e1d4; margin: 32px 0; padding-top: 20px;">
+  <p><strong>What's next:</strong> Issue #002 (next Sunday) covers the minus/plus/times AI grading framework, plus an Arabic academic translation workflow that beats Google Translate.</p>
+  <p><strong>Subscribe:</strong> Founding subscribers lock in $48/month for life. Annual rate: $450.</p>
+</div>
+
+<p style="color: #5b6478; font-size: 13px; margin-top: 32px; border-top: 1px solid #e6e1d4; padding-top: 16px;">
+  &mdash; Mazin<br>
+  AI in the Khaleej Classroom<br>
+  <em>To shape future issues, reply with one question you want answered.</em>
+</p>
+</div>`;
+        const emailHtmlAR = `<div dir="rtl" style="font-family: Arial, sans-serif; max-width: 650px; margin: 0 auto; line-height: 1.8; color: #1a1f2e; padding: 20px; text-align: right;">
+<div style="border-bottom: 2px solid #b08d3c; padding-bottom: 20px; margin-bottom: 28px;">
+  <h2 style="font-family: Georgia, serif; font-size: 26px; font-weight: 600; margin: 0 0 8px;">العدد الأول: لحظة الوكلاء الأذكياء قد وصلت.</h2>
+  <p style="color: #8b6e2c; font-size: 13px; font-weight: 600; margin: 0;">ما الذي يجب على أعضاء هيئة التدريس في الخليج فعله هذا الفصل</p>
+</div>
+
+<p>مرحباً ${data.name}،</p>
+<p>أهلاً بك في <strong>الذكاء الاصطناعي في الفصل الخليجي</strong>. هذه نشرتك الأولى. اقرأ في 8 دقائق. استخدمها يوم الاثنين.</p>
+
+<div style="background: #f8f6f0; border-right: 4px solid #b08d3c; padding: 20px; margin: 24px 0; border-radius: 8px 0 0 8px;">
+  <p style="margin: 0 0 10px;"><strong>المقدمة:</strong> نشرت OpenAI توجيهات عن وكلاء مساحة العمل للتعليم العالي. Anthropic و Google في الاتجاه نفسه. انتهى عصر الذكاء الاصطناعي كدردشة. بدأ عصر الذكاء الاصطناعي كسير عمل.</p>
+</div>
+
+<h3 style="font-size: 18px; margin: 28px 0 12px;">٠١. نمط تعليمي: GPT مخصص لمقررك</h3>
+<p>نموذج ذكي مرتبط بمحتوى مقررك ومعاييرك. خمس خطوات للتطبيق هذا الأسبوع مع نموذج جاهز. ملاحظة: جودة العربية لا تزال متأخرة، فتوقع تصحيحاً إضافياً.</p>
+
+<h3 style="font-size: 18px; margin: 28px 0 12px;">٠٢. أداة: NotebookLM من Google</h3>
+<p>ممتازة للبحث بالإنجليزية. تحفظات للعربية: الملخصات الصوتية لا تدعم العربية، ودقة OCR على المصادر القديمة ضعيفة، ودقة الاستشهاد أقل بـ 15%.</p>
+
+<h3 style="font-size: 18px; margin: 28px 0 12px;">٠٣. إشارة إقليمية: لا إرشادات خليجية للوكلاء بعد</h3>
+<p>الأطر التنظيمية في الإمارات والسعودية وقطر كُتبت قبل الوكلاء. لا تنشر وكيلاً في الأنظمة المؤسسية دون موافقة خطية.</p>
+
+<div style="border-top: 1px solid #e6e1d4; margin: 32px 0; padding-top: 20px;">
+  <p><strong>العدد القادم:</strong> إطار minus/plus/times AI مع نموذج تقييم كامل، وسير عمل للترجمة الأكاديمية العربية.</p>
+  <p><strong>اشترك:</strong> المشتركون المؤسسون بسعر 48$ شهرياً مدى الحياة. السنوي: 450$.</p>
+</div>
+
+<p style="color: #5b6478; font-size: 13px; margin-top: 32px; border-top: 1px solid #e6e1d4; padding-top: 16px;">
+  &mdash; مازن<br>
+  الذكاء الاصطناعي في الفصل الخليجي<br>
+  <em>لتشكيل الأعداد القادمة، رد بسؤال تود الإجابة عليه.</em>
+</p>
+</div>`;
+        const emailHtml = data.lang === 'ar' ? emailHtmlAR : emailHtmlEN;
+        
         const postData = JSON.stringify({
           from: 'newsletter@warsha.live',
           to: [data.email],
