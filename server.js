@@ -141,87 +141,180 @@ const server = http.createServer((req, res) => {
 
         // 2. Send Welcome Email via Resend
         const https = require('https');
-        const emailHtmlEN = `<div style="font-family: Arial, sans-serif; max-width: 650px; margin: 0 auto; line-height: 1.65; color: #1a1f2e; padding: 20px;">
-<div style="border-bottom: 2px solid #b08d3c; padding-bottom: 20px; margin-bottom: 28px;">
-  <h2 style="font-family: Georgia, serif; font-size: 28px; font-weight: 600; margin: 0 0 8px; letter-spacing: -0.01em;">Issue #001: The agent moment has arrived.</h2>
-  <p style="color: #8b6e2c; font-size: 13px; font-weight: 600; text-transform: uppercase; margin: 0;">What Gulf faculty should do this semester</p>
-</div>
+        const emailHtmlEN = `<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f5f2eb;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f2eb;padding:40px 0;">
+<tr><td align="center">
+<table width="620" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
 
-<p>Hi ${data.name},</p>
-<p>Welcome to <strong>AI in the Khaleej Classroom</strong>. Below is your first briefing. Read in ~8 minutes. Use on Monday.</p>
+  <!-- Header -->
+  <tr><td style="background:#1a1f2e;padding:36px 40px;text-align:center;">
+    <div style="font-family:Georgia,serif;font-size:13px;font-weight:600;color:#b08d3c;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">AI in the Khaleej Classroom</div>
+    <div style="font-family:Georgia,serif;font-size:26px;font-weight:600;color:#ffffff;line-height:1.2;letter-spacing:-0.01em;">Issue #001<br>The agent moment has arrived.</div>
+    <div style="font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:14px;color:#8b92a5;margin-top:10px;">What Gulf faculty should do this semester</div>
+  </td></tr>
 
-<div style="background: #f8f6f0; border-left: 4px solid #b08d3c; padding: 20px; margin: 24px 0; border-radius: 0 8px 8px 0;">
-  <p style="margin: 0 0 10px;"><strong>Cold open:</strong> Two weeks ago OpenAI published guidance on Workspace Agents for higher education. Anthropic and Google are moving the same direction. The era of AI as a chatbot is ending. The era of AI as a workflow tied to your real work has begun.</p>
-  <p style="margin: 0; font-size: 14px; color: #5b6478;">This is not a vendor pitch. It is a structural change.</p>
-</div>
+  <!-- Body -->
+  <tr><td style="padding:36px 40px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:15px;line-height:1.7;color:#1a1f2e;">
+    
+    <p style="margin:0 0 20px;">Hi ${data.name},</p>
+    <p style="margin:0 0 20px;">Welcome to <strong>AI in the Khaleej Classroom</strong>. Your first briefing is below. Read in ~8 minutes. Use on Monday.</p>
 
-<h3 style="font-family: Georgia, serif; font-size: 20px; margin: 28px 0 12px;">01. A pedagogy pattern: the course-specific GPT</h3>
-<p><strong>What it is:</strong> A Custom GPT that holds your course readings, rubric, and persona. Students get a 24/7 study partner tethered to <em>your</em> course.</p>
-<p><strong>Build it this week:</strong> Pick one course, decide the GPT's job, feed it your materials (syllabus, slides, good/bad student work samples), write the system prompt, pilot with 5 students.</p>
+    <!-- Cold Open Block -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#faf8f3;border-left:4px solid #b08d3c;margin:24px 0;border-radius:0 8px 8px 0;">
+    <tr><td style="padding:20px 24px;">
+      <p style="margin:0 0 8px;font-size:14px;font-weight:600;color:#8b6e2c;">COLD OPEN</p>
+      <p style="margin:0;font-size:14px;color:#5b6478;">OpenAI published guidance on Workspace Agents for higher education. Anthropic and Google are moving the same direction. <strong>The era of AI as a chatbot is ending. The era of AI as a workflow tied to your real work has begun.</strong> This is not a vendor pitch. It is a structural change.</p>
+    </td></tr></table>
 
-<div style="background: #1a1f2e; color: #e2e8f0; padding: 20px; border-radius: 8px; margin: 16px 0; font-family: monospace; font-size: 12px; line-height: 1.6;">
-<strong>Starter system prompt:</strong><br><br>
-You are a study partner for [COURSE NAME]. Your job is to help students [PICK ONE: understand difficult concepts / improve their writing / practice problem-solving / prepare for exams].<br><br>
-- Never write a complete assignment for a student.<br>
-- Always cite which course material your answer is grounded in.<br>
-- When a student is wrong, guide them toward the correct frame.<br>
-- Language: respond in the language the student writes to you in.
-</div>
+    <!-- Section 01 -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin:28px 0 0;">
+    <tr><td>
+      <table cellpadding="0" cellspacing="0"><tr>
+        <td style="font-family:Georgia,serif;font-size:42px;font-weight:600;color:#b08d3c;opacity:0.35;vertical-align:top;line-height:1;padding-right:12px;">01</td>
+        <td style="font-family:Georgia,serif;font-size:18px;font-weight:600;color:#1a1f2e;line-height:1.3;">A pedagogy pattern: the course-specific GPT</td>
+      </tr></table>
+      <p style="margin:12px 0 0;font-size:14px;"><strong>What it is:</strong> A Custom GPT that holds your course readings, rubric, and teaching persona. Students get a 24/7 study partner tethered to <em>your</em> course.</p>
+      
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#1a1f2e;border-radius:8px;margin:16px 0;">
+      <tr><td style="padding:20px 24px;font-family:Menlo,Monaco,monospace;font-size:11px;line-height:1.65;color:#e2e8f0;">
+        <strong style="color:#b08d3c;">Starter system prompt</strong><br><br>
+        You are a study partner for [COURSE NAME]. Your job is to help students understand difficult concepts.<br><br>
+        &bull; Never write a complete assignment<br>
+        &bull; Always cite course material<br>
+        &bull; Guide students toward correct reasoning<br>
+        &bull; Match the student's language
+      </td></tr></table>
 
-<p><strong>Caveats for Gulf classrooms:</strong> Arabic-language reasoning quality is behind English. For Arabic courses, expect to spend more time correcting during the pilot. A sanctioned course GPT strengthens academic integrity.</p>
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#fff8e7;border:1px solid #e6d5a8;border-radius:8px;margin:12px 0;">
+      <tr><td style="padding:14px 18px;font-size:13px;color:#8b6e2c;">
+        <strong>&#9888; Gulf classroom note:</strong> Arabic-language reasoning quality is behind English. For Arabic courses, budget extra pilot time.
+      </td></tr></table>
+    </td></tr></table>
 
-<h3 style="font-family: Georgia, serif; font-size: 20px; margin: 28px 0 12px;">02. A tool worth your time: NotebookLM</h3>
-<p>Google's research notebook. Upload sources, ask questions, get passage-level citations. Built for the <em>researcher's</em> workflow. For literature reviews, dissertation supervision, and grant prep.</p>
-<p><strong>Arabic limitations:</strong> Audio overviews are English-only. OCR on Arabic-script PDFs is inconsistent. Citation accuracy: ~80% for Arabic vs ~95% for English. Verify before quoting.</p>
+    <!-- Section 02 -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin:32px 0 0;">
+    <tr><td>
+      <table cellpadding="0" cellspacing="0"><tr>
+        <td style="font-family:Georgia,serif;font-size:42px;font-weight:600;color:#b08d3c;opacity:0.35;vertical-align:top;line-height:1;padding-right:12px;">02</td>
+        <td style="font-family:Georgia,serif;font-size:18px;font-weight:600;color:#1a1f2e;line-height:1.3;">A tool worth your time: NotebookLM</td>
+      </tr></table>
+      <p style="margin:12px 0 0;font-size:14px;">Google's research notebook &mdash; upload sources, ask questions, get passage-level citations. Built for the <em>researcher's</em> workflow. Excellent for literature reviews, dissertation supervision, and grant prep.</p>
+      <p style="font-size:14px;"><strong>Arabic limitations:</strong> Audio overviews are English-only. OCR on Arabic PDFs is inconsistent. Citation accuracy: ~80% for Arabic vs ~95% for English.</p>
+    </td></tr></table>
 
-<h3 style="font-family: Georgia, serif; font-size: 20px; margin: 28px 0 12px;">03. A regional signal: agents are coming, no Gulf accreditor has guidance yet</h3>
-<p>None of the Gulf regulatory frameworks (UAE's PDPL, Saudi's PDPL/SDAIA, Qatar's Law 13) were written with AI agents in mind. An agent that takes actions is not what those frameworks contemplated.</p>
-<p><strong>Your move:</strong> Do not deploy agents in institutional systems without written sign-off from IT and the dean. If you lead a department, this is the moment to put a one-page AI agent-use addendum in front of governance.</p>
+    <!-- Section 03 -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin:32px 0 0;">
+    <tr><td>
+      <table cellpadding="0" cellspacing="0"><tr>
+        <td style="font-family:Georgia,serif;font-size:42px;font-weight:600;color:#b08d3c;opacity:0.35;vertical-align:top;line-height:1;padding-right:12px;">03</td>
+        <td style="font-family:Georgia,serif;font-size:18px;font-weight:600;color:#1a1f2e;line-height:1.3;">Agents are coming. No Gulf accreditor has guidance yet.</td>
+      </tr></table>
+      <p style="margin:12px 0 0;font-size:14px;">None of the Gulf regulatory frameworks were written with AI agents in mind. An agent that <em>takes actions</em> is not what those frameworks contemplated.</p>
+      
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#fef2f2;border-left:4px solid #dc2626;margin:16px 0;border-radius:0 8px 8px 0;">
+      <tr><td style="padding:16px 20px;font-size:13px;color:#991b1b;">
+        <strong>Your move:</strong> Do not deploy agents in institutional systems without written sign-off from IT and the dean. Lead the governance conversation now.
+      </td></tr></table>
+    </td></tr></table>
 
-<div style="border-top: 1px solid #e6e1d4; margin: 32px 0; padding-top: 20px;">
-  <p><strong>What's next:</strong> Issue #002 (next Sunday) covers the minus/plus/times AI grading framework, plus an Arabic academic translation workflow that beats Google Translate.</p>
-  <p><strong>Subscribe:</strong> Founding subscribers lock in $48/month for life. Annual rate: $450.</p>
-</div>
+    <!-- Divider -->
+    <tr><td style="padding:0 40px;"><hr style="border:0;border-top:1px solid #e6e1d4;margin:32px 0;"></td></tr>
 
-<p style="color: #5b6478; font-size: 13px; margin-top: 32px; border-top: 1px solid #e6e1d4; padding-top: 16px;">
-  &mdash; Mazin<br>
-  AI in the Khaleej Classroom<br>
-  <em>To shape future issues, reply with one question you want answered.</em>
-</p>
-</div>`;
-        const emailHtmlAR = `<div dir="rtl" style="font-family: Arial, sans-serif; max-width: 650px; margin: 0 auto; line-height: 1.8; color: #1a1f2e; padding: 20px; text-align: right;">
-<div style="border-bottom: 2px solid #b08d3c; padding-bottom: 20px; margin-bottom: 28px;">
-  <h2 style="font-family: Georgia, serif; font-size: 26px; font-weight: 600; margin: 0 0 8px;">العدد الأول: لحظة الوكلاء الأذكياء قد وصلت.</h2>
-  <p style="color: #8b6e2c; font-size: 13px; font-weight: 600; margin: 0;">ما الذي يجب على أعضاء هيئة التدريس في الخليج فعله هذا الفصل</p>
-</div>
+    <!-- Next -->
+    <tr><td style="padding:0 40px 36px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:14px;line-height:1.7;color:#1a1f2e;">
+      <p style="margin:0 0 8px;"><strong>Issue #002 next Sunday:</strong> The minus/plus/times AI grading framework, ready-to-adapt rubric, and an Arabic translation workflow that beats Google Translate.</p>
+      <p style="margin:0;color:#5b6478;">Founding subscribers lock in $48/month for life. Annual: $450.</p>
+    </td></tr>
 
-<p>مرحباً ${data.name}،</p>
-<p>أهلاً بك في <strong>الذكاء الاصطناعي في الفصل الخليجي</strong>. هذه نشرتك الأولى. اقرأ في 8 دقائق. استخدمها يوم الاثنين.</p>
+  </td></tr>
 
-<div style="background: #f8f6f0; border-right: 4px solid #b08d3c; padding: 20px; margin: 24px 0; border-radius: 8px 0 0 8px;">
-  <p style="margin: 0 0 10px;"><strong>المقدمة:</strong> نشرت OpenAI توجيهات عن وكلاء مساحة العمل للتعليم العالي. Anthropic و Google في الاتجاه نفسه. انتهى عصر الذكاء الاصطناعي كدردشة. بدأ عصر الذكاء الاصطناعي كسير عمل.</p>
-</div>
+  <!-- Footer -->
+  <tr><td style="background:#faf8f3;padding:24px 40px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:12px;color:#8b92a5;border-top:1px solid #e6e1d4;">
+    <p style="margin:0 0 4px;">&mdash; Mazin</p>
+    <p style="margin:0;">AI in the Khaleej Classroom &middot; Weekly briefing for Gulf faculty</p>
+    <p style="margin:4px 0 0;">Reply with one question to shape a future issue.</p>
+  </td></tr>
 
-<h3 style="font-size: 18px; margin: 28px 0 12px;">٠١. نمط تعليمي: GPT مخصص لمقررك</h3>
-<p>نموذج ذكي مرتبط بمحتوى مقررك ومعاييرك. خمس خطوات للتطبيق هذا الأسبوع مع نموذج جاهز. ملاحظة: جودة العربية لا تزال متأخرة، فتوقع تصحيحاً إضافياً.</p>
+</table>
+</td></tr></table>
+</body>
+</html>`;
+        const emailHtmlAR = `<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body dir="rtl" style="margin:0;padding:0;background:#f5f2eb;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f2eb;padding:40px 0;">
+<tr><td align="center">
+<table width="620" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
 
-<h3 style="font-size: 18px; margin: 28px 0 12px;">٠٢. أداة: NotebookLM من Google</h3>
-<p>ممتازة للبحث بالإنجليزية. تحفظات للعربية: الملخصات الصوتية لا تدعم العربية، ودقة OCR على المصادر القديمة ضعيفة، ودقة الاستشهاد أقل بـ 15%.</p>
+  <tr><td style="background:#1a1f2e;padding:36px 40px;text-align:center;">
+    <div style="font-family:Georgia,serif;font-size:13px;font-weight:600;color:#b08d3c;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">AI in the Khaleej Classroom</div>
+    <div style="font-family:'IBM Plex Sans Arabic',Arial,sans-serif;font-size:24px;font-weight:700;color:#ffffff;line-height:1.4;">العدد الأول<br>لحظة الوكلاء الأذكياء قد وصلت.</div>
+    <div style="font-family:'IBM Plex Sans Arabic',Arial,sans-serif;font-size:14px;color:#8b92a5;margin-top:10px;">ما الذي يجب على أعضاء هيئة التدريس في الخليج فعله هذا الفصل</div>
+  </td></tr>
 
-<h3 style="font-size: 18px; margin: 28px 0 12px;">٠٣. إشارة إقليمية: لا إرشادات خليجية للوكلاء بعد</h3>
-<p>الأطر التنظيمية في الإمارات والسعودية وقطر كُتبت قبل الوكلاء. لا تنشر وكيلاً في الأنظمة المؤسسية دون موافقة خطية.</p>
+  <tr><td style="padding:36px 40px;font-family:'IBM Plex Sans Arabic',Arial,sans-serif;font-size:15px;line-height:1.8;color:#1a1f2e;text-align:right;">
+    
+    <p style="margin:0 0 20px;">مرحباً ${data.name}،</p>
+    <p style="margin:0 0 20px;">أهلاً بك في <strong>الذكاء الاصطناعي في الفصل الخليجي</strong>. نشرتك الأولى أدناه.</p>
 
-<div style="border-top: 1px solid #e6e1d4; margin: 32px 0; padding-top: 20px;">
-  <p><strong>العدد القادم:</strong> إطار minus/plus/times AI مع نموذج تقييم كامل، وسير عمل للترجمة الأكاديمية العربية.</p>
-  <p><strong>اشترك:</strong> المشتركون المؤسسون بسعر 48$ شهرياً مدى الحياة. السنوي: 450$.</p>
-</div>
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#faf8f3;border-right:4px solid #b08d3c;margin:24px 0;border-radius:8px 0 0 8px;">
+    <tr><td style="padding:20px 24px;">
+      <p style="margin:0 0 8px;font-size:14px;font-weight:600;color:#8b6e2c;">المقدمة</p>
+      <p style="margin:0;font-size:14px;color:#5b6478;">انتهى عصر الذكاء الاصطناعي كدردشة. بدأ عصر الذكاء الاصطناعي كسير عمل. هذا تحوّل هيكلي، لا حملة تسويقية.</p>
+    </td></tr></table>
 
-<p style="color: #5b6478; font-size: 13px; margin-top: 32px; border-top: 1px solid #e6e1d4; padding-top: 16px;">
-  &mdash; مازن<br>
-  الذكاء الاصطناعي في الفصل الخليجي<br>
-  <em>لتشكيل الأعداد القادمة، رد بسؤال تود الإجابة عليه.</em>
-</p>
-</div>`;
+    <!-- 01 -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin:28px 0 0;">
+    <tr><td>
+      <table cellpadding="0" cellspacing="0"><tr>
+        <td style="font-family:Georgia,serif;font-size:42px;font-weight:600;color:#b08d3c;opacity:0.35;vertical-align:top;line-height:1;padding-left:12px;">01</td>
+        <td style="font-family:'IBM Plex Sans Arabic',Arial,sans-serif;font-size:18px;font-weight:700;color:#1a1f2e;line-height:1.4;">نمط تعليمي: GPT مخصص لمقررك</td>
+      </tr></table>
+      <p style="margin:12px 0 0;font-size:14px;">نموذج ذكي مرتبط بمحتوى مقررك ومعايير تقييمك. خمس خطوات للتطبيق مع نموذج جاهز للنسخ. للفصول العربية: جودة الاستدلال أقل، فتوقع تصحيحاً إضافياً.</p>
+    </td></tr></table>
+
+    <!-- 02 -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin:32px 0 0;">
+    <tr><td>
+      <table cellpadding="0" cellspacing="0"><tr>
+        <td style="font-family:Georgia,serif;font-size:42px;font-weight:600;color:#b08d3c;opacity:0.35;vertical-align:top;line-height:1;padding-left:12px;">02</td>
+        <td style="font-family:'IBM Plex Sans Arabic',Arial,sans-serif;font-size:18px;font-weight:700;color:#1a1f2e;line-height:1.4;">NotebookLM من Google</td>
+      </tr></table>
+      <p style="margin:12px 0 0;font-size:14px;">أداة بحثية ممتازة بالإنجليزية. الملخصات الصوتية لا تدعم العربية. دقة OCR على المصادر العربية القديمة ضعيفة. دقة الاستشهاد أقل بـ 15%.</p>
+    </td></tr></table>
+
+    <!-- 03 -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin:32px 0 0;">
+    <tr><td>
+      <table cellpadding="0" cellspacing="0"><tr>
+        <td style="font-family:Georgia,serif;font-size:42px;font-weight:600;color:#b08d3c;opacity:0.35;vertical-align:top;line-height:1;padding-left:12px;">03</td>
+        <td style="font-family:'IBM Plex Sans Arabic',Arial,sans-serif;font-size:18px;font-weight:700;color:#1a1f2e;line-height:1.4;">لا إرشادات خليجية للوكلاء بعد</td>
+      </tr></table>
+      <p style="margin:12px 0 0;font-size:14px;">الأطر التنظيمية في الخليج كُتبت قبل الوكلاء. لا تنشر وكيلاً في الأنظمة المؤسسية دون موافقة خطية.</p>
+    </td></tr></table>
+
+  </td></tr>
+
+  <tr><td style="padding:0 40px;"><hr style="border:0;border-top:1px solid #e6e1d4;margin:32px 0;"></td></tr>
+
+  <tr><td style="padding:0 40px 36px;font-family:'IBM Plex Sans Arabic',Arial,sans-serif;font-size:14px;line-height:1.8;color:#1a1f2e;text-align:right;">
+    <p style="margin:0 0 8px;"><strong>العدد القادم:</strong> إطار minus/plus/times AI مع نموذج تقييم كامل، وسير عمل للترجمة الأكاديمية العربية.</p>
+    <p style="margin:0;color:#5b6478;">المشتركون المؤسسون: 48$ شهرياً مدى الحياة.</p>
+  </td></tr>
+
+  <tr><td style="background:#faf8f3;padding:24px 40px;text-align:center;font-family:'IBM Plex Sans Arabic',Arial,sans-serif;font-size:12px;color:#8b92a5;border-top:1px solid #e6e1d4;">
+    <p style="margin:0 0 4px;">&mdash; مازن</p>
+    <p style="margin:0;">الذكاء الاصطناعي في الفصل الخليجي &middot; نشرة أسبوعية لأعضاء هيئة التدريس في الخليج</p>
+  </td></tr>
+
+</table>
+</td></tr></table>
+</body>
+</html>`;
         const emailHtml = data.lang === 'ar' ? emailHtmlAR : emailHtmlEN;
         
         const postData = JSON.stringify({
