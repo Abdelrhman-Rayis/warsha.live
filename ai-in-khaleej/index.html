@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI in the Khaleej Classroom: A weekly briefing for Gulf university faculty</title>
-<meta name="description" content="A weekly briefing for faculty in Gulf universities on how to teach, research, and lead with AI. Curated from OpenAI, Anthropic, Google, and the best of academic practice." />
-
+<title>Issue #001 — AI in the Khaleej Classroom</title>
+<meta name="description" content="The agent moment has arrived. What Gulf faculty should do this semester. A weekly briefing curated from OpenAI, Anthropic, Google, and the best of academic practice." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Fraunces:wght@500;600;700&display=swap" rel="stylesheet">
@@ -15,8 +14,10 @@
     --bg: #faf8f3;
     --ink: #1a1f2e;
     --muted: #5b6478;
+    --muted-light: #8b92a5;
     --accent: #b08d3c;
     --accent-dark: #8b6e2c;
+    --accent-light: rgba(176,141,60,0.08);
     --card: #ffffff;
     --border: #e6e1d4;
     --serif: 'Fraunces', Georgia, serif;
@@ -25,365 +26,264 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
     font-family: var(--sans);
     background: var(--bg);
     color: var(--ink);
-    line-height: 1.6;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
   }
 
-  html[lang="ar"] body { font-family: var(--sans-ar); }
+  .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
 
-  .container {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  /* Top bar */
-  .topbar {
-    padding: 24px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .topbar-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .brand {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 18px;
-    letter-spacing: -0.01em;
-  }
-  html[lang="ar"] .brand { font-family: var(--sans-ar); font-weight: 700; }
-
-  .lang-toggle {
-    display: flex;
-    gap: 4px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 4px;
-    font-size: 13px;
-  }
-  .lang-toggle button {
-    border: 0;
-    background: transparent;
-    padding: 6px 14px;
-    border-radius: 999px;
-    cursor: pointer;
-    color: var(--muted);
-    font-weight: 500;
-    font-family: inherit;
-  }
-  .lang-toggle button.active {
-    background: var(--ink);
-    color: white;
-  }
+  /* Top Navigation Bar */
+  .topbar { padding: 24px 0; border-bottom: 1px solid var(--border); }
+  .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+  .brand { font-family: var(--serif); font-weight: 600; font-size: 18px; letter-spacing: -0.01em; }
+  .lang-toggle { display: flex; gap: 4px; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 4px; font-size: 13px; }
+  .lang-toggle button { border: 0; background: transparent; padding: 6px 14px; border-radius: 999px; cursor: pointer; color: var(--muted); font-weight: 500; font-family: inherit; }
+  .lang-toggle button.active { background: var(--ink); color: white; }
 
   /* Hero */
-  .hero {
-    padding: 80px 0 64px;
-    text-align: center;
-  }
-  .eyebrow {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent-dark);
-    margin-bottom: 20px;
-    padding: 6px 14px;
-    border: 1px solid var(--accent);
-    border-radius: 999px;
-    background: rgba(176, 141, 60, 0.06);
-  }
-  html[lang="ar"] .eyebrow { letter-spacing: 0; }
+  .hero { padding: 80px 0 64px; text-align: center; border-top: 0; }
+  .eyebrow { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-dark); margin-bottom: 20px; padding: 6px 14px; border: 1px solid var(--accent); border-radius: 999px; background: var(--accent-light); }
+  h1 { font-family: var(--serif); font-size: clamp(34px, 5.5vw, 48px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 600; margin-bottom: 16px; }
+  .subhead { font-size: 18px; color: var(--muted); max-width: 560px; margin: 0 auto 28px; }
+  .issue-meta { font-size: 13px; color: var(--muted-light); margin-bottom: 8px; }
 
-  h1 {
-    font-family: var(--serif);
-    font-size: clamp(36px, 6vw, 52px);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-  html[lang="ar"] h1 { font-family: var(--sans-ar); font-weight: 700; line-height: 1.3; }
-
-  .subhead {
-    font-size: 18px;
-    color: var(--muted);
-    max-width: 560px;
-    margin: 0 auto 36px;
-  }
-
-  .cta {
-    display: inline-block;
-    background: var(--ink);
-    color: white;
-    padding: 16px 32px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 16px;
-    text-decoration: none;
-    transition: transform 0.15s, background 0.15s;
-    font-family: inherit;
-    border: 0;
-    cursor: pointer;
-  }
-  .cta:hover {
-    background: #000;
-    transform: translateY(-1px);
-  }
-  .cta-meta {
-    display: block;
-    margin-top: 14px;
-    font-size: 13px;
-    color: var(--muted);
-  }
-
-  /* Section */
-  section { padding: 56px 0; border-top: 1px solid var(--border); }
-  .section-eyebrow {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent-dark);
-    margin-bottom: 12px;
-  }
-  html[lang="ar"] .section-eyebrow { letter-spacing: 0; }
-  h2 {
-    font-family: var(--serif);
-    font-size: 30px;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    font-weight: 600;
-    margin-bottom: 24px;
-  }
-  html[lang="ar"] h2 { font-family: var(--sans-ar); font-weight: 700; line-height: 1.4; }
+  /* Section Styles */
+  section { padding: 48px 0; border-top: 1px solid var(--border); }
+  .section-num { font-family: var(--serif); font-size: 48px; line-height: 1; color: var(--accent); opacity: 0.4; margin-bottom: -8px; font-weight: 600; }
+  h2 { font-family: var(--serif); font-size: 28px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 600; margin-bottom: 20px; }
+  h3 { font-family: var(--serif); font-size: 20px; line-height: 1.3; font-weight: 600; margin: 32px 0 12px; }
+  p { color: var(--ink); font-size: 16px; margin-bottom: 16px; }
   p.lead { color: var(--muted); font-size: 17px; }
 
-  /* Issue cards */
-  .cards {
-    display: grid;
-    gap: 14px;
-    margin-top: 28px;
-  }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px 24px;
-  }
-  .card-num {
-    font-family: var(--serif);
-    font-size: 14px;
-    color: var(--accent-dark);
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-  .card-title {
-    font-weight: 600;
-    font-size: 16px;
-    margin-bottom: 4px;
-  }
-  .card-desc {
-    color: var(--muted);
-    font-size: 15px;
-  }
+  /* Bullet Lists */
+  .bullet-list { list-style: none; margin: 12px 0 24px; }
+  .bullet-list li { padding: 10px 0; border-bottom: 1px solid var(--border); color: var(--muted); font-size: 15px; display: flex; align-items: flex-start; gap: 10px; }
+  .bullet-list li:last-child { border-bottom: 0; }
+  .bullet-list li::before { content: "→"; color: var(--accent); font-weight: 700; flex-shrink: 0; }
 
-  /* Audience list */
-  .audience {
-    list-style: none;
-    margin-top: 20px;
-  }
-  .audience li {
-    padding: 14px 0;
-    border-bottom: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 16px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  .audience li:last-child { border-bottom: 0; }
-  .audience li::before {
-    content: "→";
-    color: var(--accent);
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  html[dir="rtl"] .audience li::before { content: "←"; }
+  /* Callout Box */
+  .callout { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 12px 12px 0; padding: 24px; margin: 28px 0; }
+  .callout-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-dark); margin-bottom: 10px; }
+  .callout p { font-size: 14px; color: var(--muted); margin-bottom: 0; }
+  .callout p + p { margin-top: 10px; }
 
-  /* Pricing */
-  .pricing {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 36px 32px;
-    text-align: center;
-    margin-top: 24px;
-  }
-  .price {
-    font-family: var(--serif);
-    font-size: 48px;
-    font-weight: 600;
-    line-height: 1;
-    margin: 8px 0 4px;
-  }
-  .price-period {
-    color: var(--muted);
-    font-size: 15px;
-    margin-bottom: 24px;
-  }
-  .price-features {
-    list-style: none;
-    margin: 24px 0;
-    text-align: start;
-  }
-  .price-features li {
-    padding: 8px 0;
-    color: var(--muted);
-    font-size: 15px;
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-  }
-  .price-features li::before {
-    content: "✓";
-    color: var(--accent);
-    font-weight: 700;
-    flex-shrink: 0;
-  }
+  /* Prompt Block (Code-like) */
+  .prompt-block { background: var(--ink); color: #e2e8f0; border-radius: 12px; padding: 28px; margin: 24px 0; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 13px; line-height: 1.65; white-space: pre-wrap; word-wrap: break-word; }
 
-  /* Founder */
-  .founder {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px;
-    margin-top: 24px;
-  }
-  .founder-label {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent-dark);
-    margin-bottom: 12px;
-  }
-  html[lang="ar"] .founder-label { letter-spacing: 0; }
+  /* Pricing Section */
+  .pricing { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 40px 36px; text-align: center; margin: 28px 0; }
+  .price { font-family: var(--serif); font-size: 48px; font-weight: 600; line-height: 1; margin: 12px 0 4px; }
+  .price-period { color: var(--muted); font-size: 15px; margin-bottom: 24px; }
+  .price-features { list-style: none; margin: 24px 0; text-align: start; }
+  .price-features li { padding: 8px 0; color: var(--muted); font-size: 15px; display: flex; gap: 10px; align-items: flex-start; }
+  .price-features li::before { content: "✓"; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+  /* Founder Note */
+  .founder { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; margin: 32px 0; }
+  .founder-label { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-dark); margin-bottom: 12px; }
   .founder p { color: var(--muted); font-size: 15px; }
-  .founder p + p { margin-top: 12px; }
+
+  /* Subscribe Form */
+  .sub-form { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+  .sub-form input { width: 100%; padding: 14px 16px; border: 1px solid var(--border); border-radius: 8px; font-size: 15px; font-family: inherit; background: var(--bg); color: var(--ink); }
+  .sub-form input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+  .cta { display: inline-block; background: var(--ink); color: white; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 15px; text-decoration: none; transition: background 0.15s, transform 0.15s; font-family: inherit; border: 0; cursor: pointer; width: 100%; text-align: center; }
+  .cta:hover { background: #000; transform: translateY(-1px); }
+  .cta-meta { display: block; margin-top: 14px; font-size: 13px; color: var(--muted); }
+  .form-msg { margin-top: 12px; font-weight: 600; font-size: 14px; }
+
+  /* Divider */
+  hr.divider { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
 
   /* Footer */
-  footer {
-    padding: 40px 0;
-    text-align: center;
-    color: var(--muted);
-    font-size: 13px;
-    border-top: 1px solid var(--border);
-  }
+  footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); }
+  footer p + p { margin-top: 6px; }
 
-  /* Hide non-active language */
+  /* Arabic style overrides */
+  .ar-section { font-family: var(--sans-ar); direction: rtl; text-align: right; }
+  .ar-section h2 { font-family: var(--sans-ar); font-weight: 700; line-height: 1.5; }
+  .ar-section h3 { font-family: var(--sans-ar); font-weight: 700; }
+  .ar-section .bullet-list li::before { content: "←"; }
+  .ar-section .callout { border-left: 0; border-right: 4px solid var(--accent); border-radius: 12px 0 0 12px; }
+  .ar-section .prompt-block { direction: ltr; text-align: left; }
+  .ar-section .sub-form input { text-align: right; }
+
+  /* Hide non-active language sections */
   [data-lang]:not(.active) { display: none; }
 
-  /* RTL adjustments */
-  html[dir="rtl"] {
-    text-align: right;
-  }
-  html[dir="rtl"] .topbar-inner,
-  html[dir="rtl"] .lang-toggle {
-    direction: ltr;
-  }
-  html[dir="rtl"] .hero { text-align: center; }
-  html[dir="rtl"] .pricing { text-align: center; }
-
   @media (max-width: 600px) {
-    .hero { padding: 56px 0 40px; }
-    section { padding: 40px 0; }
+    .hero { padding: 48px 0 36px; }
+    section { padding: 36px 0; }
+    h1 { font-size: 30px; }
+    h2 { font-size: 23px; }
     .pricing { padding: 28px 22px; }
+    .prompt-block { padding: 20px; font-size: 12px; }
   }
 </style>
 </head>
 <body>
 
-<!-- Top bar -->
 <div class="topbar">
   <div class="container topbar-inner">
-    <div class="brand" data-lang="en">AI in the Khaleej Classroom</div>
-    <div class="brand active" data-lang="ar" style="display:none;">الذكاء الاصطناعي في الفصل الخليجي</div>
+    <div class="brand">AI in the Khaleej Classroom</div>
     <div class="lang-toggle">
-      <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
-      <button id="btn-ar" onclick="setLang('ar')">عربي</button>
+      <button id="btn-en" class="active" onclick="switchLang('en')">EN</button>
+      <button id="btn-ar" onclick="switchLang('ar')">عربي</button>
     </div>
   </div>
 </div>
 
-<!-- ============ ENGLISH ============ -->
+<!-- ==================== ENGLISH ==================== -->
 <div data-lang="en" class="active">
 
-<section class="hero" style="border-top:0">
+<section class="hero">
   <div class="container">
-    <span class="eyebrow">For Gulf university faculty</span>
-    <h1>Teach, research, and lead with AI.</h1>
-    <p class="subhead">A weekly briefing curated from OpenAI, Anthropic, Google, and the best of academic practice, translated into what actually works in Khaleej classrooms.</p>
-    <a href="#subscribe" class="cta">Subscribe</a>
-    <span class="cta-meta">Issue #001 is free. From Issue #002, paid editions at $48 / month. Founding subscribers lock in $48 for life.</span>
+    <span class="eyebrow">Issue #001 &middot; Open Access</span>
+    <h1>The agent moment has arrived. Here is what Gulf faculty should do this semester.</h1>
+    <p class="subhead">A weekly briefing for faculty in Gulf universities on how to teach, research, and lead with AI. Curated from OpenAI, Anthropic, Google, and the best of academic practice.</p>
+    <a href="#subscribe-en" class="cta" style="width:auto; display:inline-block;">Subscribe free</a>
+    <span class="cta-meta">Issue #001 is open access. From Issue #002, paid editions at $48 / month. Founding subscribers lock in $48 for life.</span>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="section-eyebrow">What you get</div>
-    <h2>Every issue, three things you can use on Sunday morning.</h2>
-    <p class="lead">Stay on the leading edge of current practices, live pilots, and the sharpest thinking on AI in higher education, distilled for the Gulf context.</p>
-    <div class="cards">
-      <div class="card">
-        <div class="card-num">01</div>
-        <div class="card-title">A pedagogy pattern, broken down</div>
-        <div class="card-desc">How a professor at Maryland, Harvard, or Sciences Po actually used AI in a course: what they did, what worked, what failed. With the prompt or assignment they used.</div>
-      </div>
-      <div class="card">
-        <div class="card-num">02</div>
-        <div class="card-title">A tool worth your time</div>
-        <div class="card-desc">One AI tool (Custom GPT, agent, Claude project, or NotebookLM workflow), tested for academic use. Including where it falls short for Arabic-language teaching.</div>
-      </div>
-      <div class="card">
-        <div class="card-num">03</div>
-        <div class="card-title">A video worth your 20 minutes</div>
-        <div class="card-desc">One curated talk, panel, or interview each week (from OpenAI Forum, university keynotes, and research labs), with the three takeaways that matter and a "watch if you teach…" filter so you only commit when it fits your role.</div>
-      </div>
+    <div class="section-num">Cold open</div>
+    <p>Two weeks ago OpenAI quietly published three pieces of guidance aimed at higher education: an introduction to "Workspace Agents," a manifesto called <em>Hello Education, Meet Agents</em>, and a builder's guide. Anthropic's education team has been moving in the same direction for months. Google has launched NotebookLM Plus for institutions. Microsoft's Copilot is now bundled into the Office licenses most of our universities already pay for.</p>
+    <p>If you read all of this end-to-end (as I did so you do not have to), the message is the same: <strong>the era of "AI as a chatbot you visit" is ending. The era of "AI as a workflow tied to your real work" has begun.</strong></p>
+    <p>This is not a vendor pitch. This is a structural change in what AI does. And it lands on Gulf faculty at an awkward moment: most of our institutions still have not finalized policy for the <em>previous</em> phase. Custom GPTs and AI tutors are still being debated in many curriculum committees. Now agents are arriving.</p>
+    <p>For faculty treating this as one more vendor cycle, the next two years will be turbulent. For those treating it as a structural change in how universities operate, it is the largest professional opportunity of the decade. This newsletter is built for the second group.</p>
+    <p>Three things this week.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-num">01</div>
+    <h2>A pedagogy pattern, broken down: the course-specific GPT</h2>
+
+    <p><strong>What it is.</strong> A Custom GPT (or Claude Project, or Gemini Gem; same idea) that holds your course readings, your rubric, and a persona that responds the way you would. Students get a 24/7 study partner that is tethered to <em>your</em> course rather than to the open internet.</p>
+
+    <p><strong>Why it works.</strong> It solves three problems at once: (1) office-hour scarcity, (2) student over-reliance on generic ChatGPT for homework help that bypasses your learning objectives, and (3) the "but my professor said it differently" gap between course material and outside sources.</p>
+
+    <p><strong>Where this comes from.</strong> Harvard's CS50 program has run CS50.ai (the Duck) as an institutional AI tutor for two years. The OpenAI Forum's <em>Harvard's AI-Enhanced Classroom</em> video documents how this scaled to other Harvard courses. The University of Maryland faculty stories show the same pattern adapted for writing and engineering classes by individual professors, not central IT.</p>
+
+    <h3>The five-step recipe (build it this week)</h3>
+    <ol class="bullet-list">
+      <li><strong>Pick one course.</strong> Ideally one you teach again next semester so the work compounds.</li>
+      <li><strong>Decide the GPT's job.</strong> Pick <em>one</em>: explain hard concepts on demand, give feedback on draft writing, generate practice problems, or be an exam study tutor. Do not try to do all four at once.</li>
+      <li><strong>Feed it your materials.</strong> Upload syllabus, slides, readings (where copyright permits), and 3–5 examples of <em>good</em> student work and <em>bad</em> student work with your written feedback. The good/bad pair is what teaches the GPT your standards.</li>
+      <li><strong>Write the system prompt</strong> (template below; paste it into Custom GPT instructions or Claude Project instructions and edit).</li>
+      <li><strong>Pilot with 5 students before you release it broadly.</strong> Ask them to break it. Fix what breaks.</li>
+    </ol>
+
+    <h3>Starter system prompt</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:8px;">Copy, paste, edit the bracketed parts:</p>
+    <div class="prompt-block">You are a study partner for [COURSE NAME], taught by [INSTRUCTOR NAME] at [UNIVERSITY]. Your job is to help students [PICK ONE: understand difficult concepts / improve their writing / practice problem-solving / prepare for exams]. You speak in a [warm but rigorous / formal / Socratic] register.
+
+<strong>Hard rules:</strong>
+- Never write a complete assignment for a student. If asked, redirect them to think through the next step.
+- Always cite which course material your answer is grounded in. If the answer is not in the course material, say so explicitly.
+- When a student is wrong, do not just give the right answer. Ask them what reasoning led them there, then guide them toward the correct frame.
+- If a student asks something outside the scope of this course, suggest they raise it in office hours.
+
+<strong>Voice:</strong> match the teaching style in the uploaded materials. When uncertain, lean toward the questioning style modeled in the example feedback you have been trained on.
+
+<strong>Language:</strong> respond in the language the student writes to you in. For Arabic-language responses, use Modern Standard Arabic unless the student writes in dialect, in which case match their register.</div>
+
+    <div class="callout">
+      <div class="callout-label">Honest caveats for Gulf classrooms</div>
+      <p><strong>Arabic-language pedagogy:</strong> Custom GPTs respond in Arabic, but their reasoning quality on Arabic-language sources is meaningfully behind English. If your course materials are primarily Arabic, expect to spend more time correcting subtle errors during the pilot phase.</p>
+      <p><strong>Academic integrity policy:</strong> this pattern works best when you tell students the GPT exists and is sanctioned. The grey-market version (where students use ChatGPT off the side of the desk) is the version that erodes integrity. A sanctioned course GPT, with logged use, actually <em>strengthens</em> your hand in integrity conversations.</p>
+      <p><strong>Branch campuses with strict IT policies:</strong> check whether Custom GPTs require a paid OpenAI account your students may not have. Claude Projects (free tier) and Google's Gemini Gems (bundled with Google Workspace for Education) are the workarounds.</p>
     </div>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="section-eyebrow">Who it's for</div>
-    <h2>Faculty who want to lead, not just react.</h2>
-    <ul class="audience">
-      <li>Lecturers and professors at Gulf universities, whether public, private, or branch campuses.</li>
-      <li>Department chairs and program directors making AI policy this semester.</li>
-      <li>Centers for Teaching & Learning building faculty development programs.</li>
-      <li>Researchers integrating AI into Arabic-language scholarship.</li>
-    </ul>
+    <div class="section-num">02</div>
+    <h2>A tool worth your time: NotebookLM</h2>
+
+    <p><strong>What it is.</strong> Google's research notebook tool. You upload sources (PDFs, articles, slides, your own notes) and ask questions. It answers only from those sources, with citations to the exact passage. There is also an "audio overview" feature that turns your sources into a podcast-style discussion between two synthetic voices.</p>
+
+    <p><strong>Why it earns its place.</strong> NotebookLM is the first AI tool I have tested that is built for the <em>researcher's</em> workflow rather than the writer's. It refuses to invent. It cites. It is faster than re-reading. For literature reviews, dissertation supervision, and grant prep, the ROI is high.</p>
+
+    <h3>Three concrete uses I tested this month</h3>
+    <ol class="bullet-list">
+      <li><strong>Literature review acceleration.</strong> Upload 20 PDFs from your reading list, ask "What are the disagreements between these authors on [topic]?" The answer comes back grounded with passage-level citations you can click into.</li>
+      <li><strong>Lecture prep.</strong> Upload your slides plus three good papers. Ask "What is one strong question I could ask students at the end of this lecture to expose the trickiest concept?" Useful even when the answer needs editing.</li>
+      <li><strong>Student source-evaluation exercises.</strong> Upload one weak source and one strong source. Ask the notebook to compare their argument quality. Then have students do the same exercise unaided and compare. A genuinely good seminar activity.</li>
+    </ol>
+
+    <div class="callout">
+      <div class="callout-label">Where it falls short for Arabic-language work</div>
+      <p><strong>Audio overviews do not support Arabic.</strong> English only. So the most viral feature is unavailable to Arabic-language scholarship.</p>
+      <p><strong>OCR on Arabic-script PDFs is inconsistent.</strong> Scanned books from Gulf publishers, especially older ones, are frequently mis-OCR'd before NotebookLM can index them. Run the PDFs through a dedicated Arabic OCR pass first (ABBYY FineReader, Adobe Acrobat Pro, or Tesseract with Arabic language packs) before uploading.</p>
+      <p><strong>Citation accuracy is lower</strong> on Arabic sources than English sources in my testing: about 80% vs 95%. Verify citations before quoting.</p>
+    </div>
+
+    <p><strong>The bottom line.</strong> Use NotebookLM for English-language research workflows where it is excellent. For Arabic, treat it as a draft assistant that needs verification, not a finished-answer machine. If you need an Arabic-first alternative, Claude's file-upload feature handles Arabic PDFs slightly better in my testing, though without the citation-snapping precision of NotebookLM.</p>
   </div>
 </section>
 
-<section id="subscribe">
+<section>
   <div class="container">
-    <div class="section-eyebrow">Subscribe</div>
-    <h2>Issue #001 free. Paid from Issue #002. Founding subscribers lock in $48 for life.</h2>
+    <div class="section-num">03</div>
+    <h2>A regional signal: agents are coming, but no Gulf accreditor has guidance yet</h2>
+
+    <p>The most important thing happening in our region right now is not a launch. It is a silence.</p>
+
+    <p>OpenAI, Anthropic, and Google have all moved aggressively into "agent" territory in the last two months. An agent is fundamentally different from a chatbot: it can take actions on your behalf across systems, hold context across multiple steps, and execute multi-stage workflows. OpenAI's <em>Workspace Agents</em> document spells out concrete higher-ed use cases: course change request triage, faculty AI support intake, weekly student services trends, grant readiness, accreditation evidence collection.</p>
+
+    <p>Each of these touches data and decisions that are subject to ministerial, accreditation, and data-residency rules in the Gulf:</p>
+
+    <ul class="bullet-list">
+      <li><strong>UAE:</strong> PDPL (Federal Decree-Law 45 of 2021) governs personal data; the CAA (Commission for Academic Accreditation) sets standards for licensed programs; ADEK and DubaiNow have their own AI strategies referenced in official documents.</li>
+      <li><strong>Saudi Arabia:</strong> PDPL (effective September 2024 with full enforcement now in force), MoE accreditation through the ETEC, and SDAIA's national AI strategy framing things like the Saudi Charter for AI Ethics.</li>
+      <li><strong>Qatar:</strong> data-protection rules under Law No. 13 of 2016 and its updates; QNRF and Education City institutions each have their own evolving guidance.</li>
+      <li><strong>Bahrain, Kuwait, Oman:</strong> each with growing privacy frameworks and ministry-level digital strategies.</li>
+    </ul>
+
+    <p><strong>The structural problem.</strong> None of these frameworks were written with agents in mind. They were written for "AI" understood as a model that returns an output. An agent that <em>takes actions</em> (files a course change request, sends an email on behalf of the registrar, edits a record in your SIS) is not what those frameworks contemplated. The ambiguity is real, and the personal liability sits on the faculty member who deploys an unsanctioned agent inside an institutional system, not on the vendor that built it.</p>
+
+    <div class="callout">
+      <div class="callout-label">What this means for you this semester</div>
+      <p><strong>If you are a faculty member:</strong> do not deploy an agent that takes actions in institutional systems without IT and your dean's office signing off in writing. The personal liability surface is genuinely unclear.</p>
+      <p><strong>If you are a department chair or program director:</strong> this is the time to put a one-page "AI agent use" addendum in front of your university's governance committee. Do not wait for the ministry. Lead.</p>
+      <p><strong>If you sit on an accreditation self-study committee:</strong> ask now whether your standards explicitly cover AI tools that <em>act</em>, not just AI tools that <em>answer</em>. They almost certainly do not.</p>
+    </div>
+
+    <p><strong>Watch for, in the next 90 days.</strong> I expect at least one Gulf ministry to issue interim agent guidance before September 2026. Saudi's SDAIA and the UAE's MoE have both been most active on AI policy generally; my bet is on one of them moving first. When that happens, this newsletter will translate it into faculty-actionable language within 48 hours.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>What's next, and what changes</h2>
+    <p><strong>Issue #001 closes the open-access phase of this newsletter.</strong> From Issue #002 onward, full editions are for paid subscribers at $48 per month. The first 100 subscribers become founding members and lock in $48 as their permanent rate. The standard rate will rise as the publication grows, but founding members keep $48 for life. The annual founding rate is $450, equivalent to ten months paid for twelve months of access.</p>
+    <p><strong>Issue #002 (next Sunday)</strong> breaks down the "minus AI / plus AI / times AI" framework pioneered by Greg Niemeyer at UC Berkeley and now spreading through Gulf classrooms. You get the complete grading rubric, ready to adapt to your discipline this semester, plus a tested workflow for Arabic-language academic translation that beats Google Translate on technical terminology.</p>
+    <p><strong>Issue #003:</strong> a side-by-side comparison of ChatGPT Edu, Claude for Education, and Google's Gemini for Education. Pricing, data residency, what each does well, and the exact questions to ask in a procurement conversation.</p>
+
+    <div class="founder">
+      <div class="founder-label">A note from the editor</div>
+      <p>I started this because every Gulf faculty member I know is being asked the same thing: "What's our AI policy? How are we using AI in teaching?" Almost none of us have the time to read every report, watch every webinar, and test every tool.</p>
+      <p>This newsletter does that work for you. One Sunday morning email. Read in 8 minutes. Use on Monday.</p>
+      <p>&mdash; Mazin</p>
+    </div>
+  </div>
+</section>
+
+<section id="subscribe-en">
+  <div class="container">
+    <h2>Subscribe. Issue #001 free. Paid from Issue #002.</h2>
     <div class="pricing">
-      <div class="card-num">Founding subscriber (first 100 only)</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--accent-dark);font-weight:600;margin-bottom:6px;">Founding subscriber (first 100 only)</div>
       <div class="price">$48</div>
       <div class="price-period">per month, paid from Issue #002 onward. Annual founding rate: $450 / year.</div>
       <ul class="price-features">
@@ -391,199 +291,172 @@
         <li>Searchable archive of every past issue</li>
         <li>Direct reply access, so your questions shape future issues</li>
         <li>Bilingual editions (English + Arabic key points)</li>
-        <li>Founding rate locked in for life: your $48 never increases as the standard rate rises</li>
-        <li>Forwardable Arabic executive summary in each issue, for institutional reimbursement requests</li>
+        <li>Founding rate locked in for life: your $48 never increases</li>
+        <li>Forwardable Arabic executive summary for institutional reimbursement</li>
       </ul>
-      <!-- Replace SUBSTACK_URL with your live Substack subscribe link, e.g. https://aikhaleejclassroom.substack.com/subscribe -->
-      
-      <form id="en-subscribe-form" style="display:flex;flex-direction:column;gap:12px;margin-top:20px;text-align:left;">
-        <input type="text" id="en-name" placeholder="Your Name" required style="padding:12px; border:1px solid #ccc; font-size:16px;">
-        <input type="email" id="en-email" placeholder="Your Email" required style="padding:12px; border:1px solid #ccc; font-size:16px;">
-        <input type="text" id="en-role" placeholder="University / Role (Optional)" style="padding:12px; border:1px solid #ccc; font-size:16px;">
-        <button type="submit" class="cta" style="border:none; cursor:pointer;">Subscribe</button>
-        <div id="en-msg" style="margin-top:10px; font-weight:bold;"></div>
+
+      <form id="en-subscribe-form" class="sub-form">
+        <input type="text" id="en-name" placeholder="Your Name" required>
+        <input type="email" id="en-email" placeholder="Your Email" required>
+        <input type="text" id="en-role" placeholder="University / Role (Optional)">
+        <button type="submit" class="cta">Subscribe</button>
+        <div id="en-msg" class="form-msg"></div>
       </form>
-
-      <span class="cta-meta">Issue #001 lands free in your inbox. Paid checkout opens with Issue #002 next Sunday. Cancel anytime.</span>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="founder">
-      <div class="founder-label">A note from the editor</div>
-      <p>I started this because every Gulf faculty member I know is being asked the same thing: "What's our AI policy? How are we using AI in teaching?" Almost none of us have the time to read every report, watch every webinar, and test every tool.</p>
-      <p>This newsletter does that work for you. One Sunday morning email. Read in 8 minutes. Use on Monday.</p>
-      <p>Mazin</p>
+      <span class="cta-meta">Issue #001 lands free in your inbox. Cancel anytime.</span>
     </div>
   </div>
 </section>
 
 </div>
 
-<!-- ============ ARABIC ============ -->
-<div data-lang="ar">
+<!-- ==================== ARABIC ==================== -->
+<div data-lang="ar" class="ar-section">
 
-<section class="hero" style="border-top:0">
+<section class="hero">
   <div class="container">
-    <span class="eyebrow">لأعضاء هيئة التدريس في جامعات الخليج</span>
-    <h1>درّس وابحث وقُد بالذكاء الاصطناعي.</h1>
-    <p class="subhead">نشرة أسبوعية مختارة من OpenAI و Anthropic و Google ومن أفضل الممارسات الأكاديمية، مترجمة إلى ما يعمل فعلاً في الفصول الخليجية.</p>
-    
-      <form id="ar-subscribe-form" style="display:flex;flex-direction:column;gap:12px;margin-top:20px;text-align:right;">
-        <input type="text" id="ar-name" placeholder="الاسم" required style="padding:12px; border:1px solid #ccc; font-size:16px; text-align:right;">
-        <input type="email" id="ar-email" placeholder="البريد الإلكتروني" required style="padding:12px; border:1px solid #ccc; font-size:16px; text-align:right;">
-        <input type="text" id="ar-role" placeholder="الجامعة / المسمى الوظيفي (اختياري)" style="padding:12px; border:1px solid #ccc; font-size:16px; text-align:right;">
-        <button type="submit" class="cta" style="border:none; cursor:pointer;">اشترك الآن</button>
-        <div id="ar-msg" style="margin-top:10px; font-weight:bold;"></div>
-      </form>
-
-    <span class="cta-meta">العدد الأول مجاناً. من العدد الثاني، الإصدارات الكاملة بـ 48 دولار شهرياً. المشتركون المؤسسون يحتفظون بسعر 48 دولار مدى الحياة.</span>
+    <span class="eyebrow">العدد الأول &middot; وصول مفتوح</span>
+    <h1>لحظة الوكلاء الأذكياء قد وصلت. ما الذي يجب على أعضاء هيئة التدريس في الخليج فعله هذا الفصل.</h1>
+    <p class="subhead">نشرة أسبوعية لأعضاء هيئة التدريس في جامعات الخليج حول كيفية التدريس والبحث والقيادة بالذكاء الاصطناعي. مختارة من OpenAI و Anthropic و Google وأفضل الممارسات الأكاديمية.</p>
+    <a href="#subscribe-ar" class="cta" style="width:auto; display:inline-block;">اشترك مجاناً</a>
+    <span class="cta-meta">العدد الأول مجاني. من العدد الثاني، الإصدارات الكاملة بـ 48 دولار شهرياً. المشتركون المؤسسون يحتفظون بسعر 48 دولار مدى الحياة.</span>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="section-eyebrow">ماذا ستحصل</div>
-    <h2>في كل عدد، ثلاثة أشياء يمكنك استخدامها صباح الأحد.</h2>
-    <p class="lead">ابقَ في الطليعة: أحدث الممارسات، التجارب الميدانية الجارية، وأقوى الأفكار في الذكاء الاصطناعي والتعليم العالي، مُكثّفة للسياق الخليجي.</p>
-    <div class="cards">
-      <div class="card">
-        <div class="card-num">٠١</div>
-        <div class="card-title">نمط تعليمي مُحلَّل</div>
-        <div class="card-desc">كيف استخدم أستاذ في جامعة ميريلاند أو هارفارد أو ساينس بو الذكاء الاصطناعي في مقرر دراسي: ماذا فعل، ما الذي نجح، وما الذي فشل. مع النص أو الواجب المستخدم.</div>
-      </div>
-      <div class="card">
-        <div class="card-num">٠٢</div>
-        <div class="card-title">أداة تستحق وقتك</div>
-        <div class="card-desc">أداة ذكاء اصطناعي واحدة (GPT مخصص، وكيل ذكي، مشروع Claude، أو NotebookLM)، مُختبَرة للاستخدام الأكاديمي. مع ملاحظة أين تقصر للتعليم باللغة العربية.</div>
-      </div>
-      <div class="card">
-        <div class="card-num">٠٣</div>
-        <div class="card-title">فيديو يستحق ٢٠ دقيقة من وقتك</div>
-        <div class="card-desc">حلقة نقاش أو محاضرة أو مقابلة مختارة كل أسبوع (من منتدى OpenAI ومحاضرات الجامعات ومختبرات البحث)، مع أهم ثلاث خلاصات وتوصية واضحة بـ"شاهده إن كنت تُدرّس..." لتلتزم بالوقت فقط عندما يناسب دورك.</div>
-      </div>
+    <div class="section-num">المقدمة</div>
+    <p>قبل أسبوعين، نشرت OpenAI بهدوء ثلاث وثائق توجيهية تستهدف التعليم العالي: مقدمة عن "وكلاء مساحة العمل"، وبيان بعنوان <em>مرحباً بالتعليم، تعرّف على الوكلاء</em>، ودليل للمطورين. فريق التعليم في Anthropic يتحرك في الاتجاه نفسه منذ أشهر. أطلقت Google أداة NotebookLM Plus للمؤسسات. و Copilot من Microsoft أصبح الآن مدمجاً في تراخيص Office التي تدفع معظم جامعاتنا ثمنها بالفعل.</p>
+    <p>إن قرأت كل هذا من البداية إلى النهاية (كما فعلت أنا كي لا تضطر أنت لفعله)، فالرسالة واحدة: <strong>انتهى عصر "الذكاء الاصطناعي كدردشة تزورها". بدأ عصر "الذكاء الاصطناعي كسير عمل مرتبط بمهامك الفعلية".</strong></p>
+    <p>هذا ليس ترويجاً لبائع. هذا تحوّل هيكلي. وهو يصطدم بأعضاء هيئة التدريس في الخليج في لحظة محرجة: معظم مؤسساتنا لم تنته بعد من وضع سياسات للمرحلة <em>السابقة</em>. نماذج GPT المخصصة والمُدرّسين الأذكياء لا تزال قيد النقاش في العديد من لجان المناهج. والآن يصل الوكلاء.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-num">٠١</div>
+    <h2>نمط تعليمي مُحلَّل: GPT مخصص لمقررك الدراسي</h2>
+
+    <p><strong>ما هو.</strong> نموذج GPT مخصص (أو مشروع Claude، أو Gem من Gemini؛ الفكرة واحدة) يحمل محتوى مقررك، ومعايير تقييمك، ويستجيب بالطريقة التي تستجيب بها أنت. يحصل الطلاب على شريك دراسة متاح 24/7 مرتبط <em>بمقررك</em> أنت، لا بالإنترنت المفتوح.</p>
+
+    <p><strong>لماذا ينجح.</strong> يحل ثلاث مشاكل دفعة واحدة: (1) ندرة الساعات المكتبية، (2) اعتماد الطلاب المفرط على ChatGPT العام للمساعدة في الواجبات متجاوزاً أهدافك التعليمية، و (3) فجوة "لكن أستاذي قالها بشكل مختلف" بين مادة المقرر والمصادر الخارجية.</p>
+
+    <h3>الوصفة من خمس خطوات (ابنها هذا الأسبوع)</h3>
+    <ol class="bullet-list">
+      <li><strong>اختر مقرراً واحداً.</strong> يفضل أن تعيد تدريسه الفصل القادم كي يتراكم العمل.</li>
+      <li><strong>حدد وظيفة النموذج.</strong> اختر <em>واحدة</em>: شرح المفاهيم الصعبة عند الطلب، إعطاء تغذية راجعة على مسودات الكتابة، توليد تمارين تدريبية، أو التحضير للامتحانات.</li>
+      <li><strong>زوّده بموادك.</strong> ارفع المنهج، الشرائح، القراءات (حيث تسمح حقوق النشر)، و3–5 أمثلة لعمل طلابي <em>جيد</em> وآخر <em>سيء</em> مع ملاحظاتك. الثنائية "جيد/سيء" هي ما يُعلّم النموذج معاييرك.</li>
+      <li><strong>اكتب موجه النظام</strong> (القالب في النص الإنجليزي أعلاه).</li>
+      <li><strong>جرّبه مع 5 طلاب قبل النشر الواسع.</strong> اطلب منهم كسره. أصلح ما يُكسر.</li>
+    </ol>
+
+    <div class="callout">
+      <div class="callout-label">تحفظات صريحة للفصول الخليجية</div>
+      <p><strong>جودة اللغة العربية:</strong> نماذج GPT المخصصة تستجيب بالعربية، لكن جودة استدلالها على المصادر العربية متأخرة بشكل ملحوظ عن الإنجليزية. إن كانت مواد مقررك بالعربية أساساً، توقع قضاء وقت أطول في تصحيح أخطاء دقيقة خلال المرحلة التجريبية.</p>
+      <p><strong>سياسات النزاهة الأكاديمية:</strong> هذا النمط يعمل بأفضل صورة حين تخبر الطلاب بوجود النموذج وتقرّه. النسخة غير المصرّح بها هي التي تآكل النزاهة. النموذج المقرّ، مع استخدام موثّق، يقوّي موقفك في نقاشات النزاهة.</p>
     </div>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="section-eyebrow">لمن هذه النشرة</div>
-    <h2>أعضاء هيئة تدريس يقودون، لا يكتفون بردّ الفعل.</h2>
-    <ul class="audience">
-      <li>محاضرون وأساتذة في جامعات الخليج، سواء كانت حكومية أو خاصة أو فروع جامعات دولية.</li>
-      <li>رؤساء أقسام ومديرو برامج يضعون سياسات الذكاء الاصطناعي هذا الفصل.</li>
-      <li>مراكز التدريس والتعلم التي تبني برامج تطوير لأعضاء هيئة التدريس.</li>
-      <li>الباحثون الذين يدمجون الذكاء الاصطناعي في الدراسات باللغة العربية.</li>
-    </ul>
+    <div class="section-num">٠٢</div>
+    <h2>أداة تستحق وقتك: NotebookLM</h2>
+
+    <p><strong>ما هي.</strong> أداة دفاتر بحثية من Google. ترفع مصادر (PDFs، مقالات، شرائح، ملاحظاتك) وتطرح أسئلة. تجيب فقط من تلك المصادر، مع استشهادات دقيقة. هناك أيضاً ميزة "الملخص الصوتي" التي تحوّل مصادرك إلى نقاش بأسلوب البودكاست بين صوتين اصطناعيين.</p>
+
+    <p><strong>لماذا تستحق مكانها.</strong> NotebookLM هي أول أداة ذكاء اصطناعي جرّبتها مبنية لسير عمل <em>الباحث</em> لا سير عمل الكاتب. ترفض الاختلاق. تستشهد. أسرع من إعادة القراءة. لمراجعات الأدبيات، والإشراف على الرسائل، والتحضير للمنح، العائد مرتفع.</p>
+
+    <div class="callout">
+      <div class="callout-label">تحفظات صريحة للعمل باللغة العربية</div>
+      <p><strong>الملخصات الصوتية لا تدعم العربية.</strong> الإنجليزية فقط. الميزة الأكثر انتشاراً غير متاحة للبحث بالعربية.</p>
+      <p><strong>دقة الاستشهاد أقل</strong> على المصادر العربية مقارنة بالإنجليزية في اختباري: حوالي 80% مقابل 95%. تحقق من الاستشهادات قبل الاقتباس.</p>
+    </div>
+
+    <p><strong>الخلاصة.</strong> استخدم NotebookLM لسير عمل البحث بالإنجليزية حيث هي ممتازة. للعربية، عاملها كمساعد مسودة يحتاج تدقيقاً، لا كآلة إجابات جاهزة.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-num">٠٣</div>
+    <h2>إشارة إقليمية: الوكلاء قادمون، لكن لا توجد إرشادات من أي جهة اعتماد خليجية بعد</h2>
+
+    <p>أهم ما يحدث في منطقتنا الآن ليس إطلاقاً. إنه صمت.</p>
+
+    <p>تحركت OpenAI و Anthropic و Google جميعاً بقوة نحو "الوكلاء" في الشهرين الماضيين. الوكيل مختلف جوهرياً عن الدردشة: يمكنه اتخاذ إجراءات نيابة عنك عبر أنظمة متعددة، والاحتفاظ بالسياق عبر خطوات متعددة، وتنفيذ سير عمل متعدد المراحل.</p>
+
+    <p>كل من هذه يمس بيانات وقرارات تخضع لقواعد وزارية واعتمادية وإقامة البيانات في الخليج: الإمارات (PDPL وهيئة الاعتماد الأكاديمي)، السعودية (PDPL وهيئة تقويم التعليم والتدريب وسدايا)، قطر (القانون 13 لسنة 2016 ومؤسسات المدينة التعليمية)، والبحرين والكويت وعُمان.</p>
+
+    <p><strong>المشكلة الهيكلية.</strong> لم تُكتب أي من هذه الأطر والوكلاء في الاعتبار. كُتبت لـ "ذكاء اصطناعي" يُفهم كنموذج يُرجع مخرَجات. وكيل <em>يتخذ إجراءات</em> (يقدّم طلب تغيير مقرر، يرسل بريداً نيابة عن المسجل، يعدّل سجلاً في نظام معلومات الطالب) ليس ما تصورته تلك الأطر. الغموض حقيقي، والمسؤولية الشخصية تقع على عضو هيئة التدريس الذي ينشر وكيلاً غير مصرح به داخل نظام مؤسسي.</p>
+
+    <div class="callout">
+      <div class="callout-label">ما يعنيه هذا لك هذا الفصل</div>
+      <p><strong>إن كنت عضواً في هيئة التدريس:</strong> لا تنشر وكيلاً يتخذ إجراءات في الأنظمة المؤسسية دون موافقة خطية من تقنية المعلومات ومكتب العميد. سطح المسؤولية الشخصية غير واضح فعلاً.</p>
+      <p><strong>إن كنت رئيس قسم أو مدير برنامج:</strong> هذا وقت وضع ملحق من صفحة واحدة "استخدام وكيل الذكاء الاصطناعي" أمام لجنة الحوكمة في جامعتك. لا تنتظر الوزارة. قُد.</p>
+    </div>
   </div>
 </section>
 
 <section id="subscribe-ar">
   <div class="container">
-    <div class="section-eyebrow">اشترك</div>
-    <h2>العدد الأول مجاناً. مدفوع من العدد الثاني. المشتركون المؤسسون يحتفظون بسعر 48 دولار مدى الحياة.</h2>
+    <h2>اشترك. العدد الأول مجاناً. مدفوع من العدد الثاني.</h2>
     <div class="pricing">
-      <div class="card-num">مشترك مؤسس (أول 100 مشترك فقط)</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--accent-dark);font-weight:600;margin-bottom:6px;">مشترك مؤسس (أول 100 مشترك فقط)</div>
       <div class="price">48$</div>
       <div class="price-period">شهرياً، تبدأ المدفوعات من العدد الثاني. السعر السنوي للمؤسسين: 450 دولار.</div>
       <ul class="price-features">
         <li>عدد أسبوعي، صباح الأحد بتوقيت الخليج</li>
         <li>أرشيف قابل للبحث لكل الأعداد السابقة</li>
         <li>وصول مباشر للرد، فأسئلتك تُشكّل الأعداد القادمة</li>
-        <li>إصدارات ثنائية اللغة (إنجليزي + ملخصات عربية للنقاط الرئيسية)</li>
-        <li>سعر المؤسسين مثبّت مدى الحياة: 48 دولار لا يرتفع لك حتى لو ارتفع السعر القياسي</li>
-        <li>ملخص تنفيذي بالعربية في كل عدد، قابل لإعادة الإرسال لطلبات السداد المؤسسي</li>
+        <li>إصدارات ثنائية اللغة (إنجليزي + ملخصات عربية)</li>
+        <li>سعر المؤسسين مثبّت مدى الحياة: 48 دولار لا يرتفع لك</li>
+        <li>ملخص تنفيذي بالعربية في كل عدد لطلبات السداد المؤسسي</li>
       </ul>
-      
-      <form id="ar-subscribe-form" style="display:flex;flex-direction:column;gap:12px;margin-top:20px;text-align:right;">
-        <input type="text" id="ar-name" placeholder="الاسم" required style="padding:12px; border:1px solid #ccc; font-size:16px; text-align:right;">
-        <input type="email" id="ar-email" placeholder="البريد الإلكتروني" required style="padding:12px; border:1px solid #ccc; font-size:16px; text-align:right;">
-        <input type="text" id="ar-role" placeholder="الجامعة / المسمى الوظيفي (اختياري)" style="padding:12px; border:1px solid #ccc; font-size:16px; text-align:right;">
-        <button type="submit" class="cta" style="border:none; cursor:pointer;">اشترك الآن</button>
-        <div id="ar-msg" style="margin-top:10px; font-weight:bold;"></div>
+
+      <form id="ar-subscribe-form" class="sub-form">
+        <input type="text" id="ar-name" placeholder="الاسم" required style="text-align:right;">
+        <input type="email" id="ar-email" placeholder="البريد الإلكتروني" required style="text-align:right;">
+        <input type="text" id="ar-role" placeholder="الجامعة / المسمى الوظيفي (اختياري)" style="text-align:right;">
+        <button type="submit" class="cta">اشترك الآن</button>
+        <div id="ar-msg" class="form-msg"></div>
       </form>
-
-      <span class="cta-meta">العدد الأول يصلك مجاناً. تفتح بوابة الدفع مع العدد الثاني الأحد القادم. إلغاء في أي وقت.</span>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="founder">
-      <div class="founder-label">كلمة من المحرر</div>
-      <p>بدأت هذه النشرة لأن كل عضو هيئة تدريس خليجي أعرفه يُطرح عليه نفس السؤال: "ما سياستنا تجاه الذكاء الاصطناعي؟ كيف نستخدمه في التدريس؟" ولا أحد منا تقريباً لديه الوقت لقراءة كل تقرير، ومتابعة كل ندوة، واختبار كل أداة.</p>
-      <p>هذه النشرة تقوم بهذا العمل نيابةً عنك. بريد إلكتروني واحد صباح الأحد. يُقرأ في 8 دقائق. تستخدمه يوم الإثنين.</p>
-      <p>مازن</p>
+      <span class="cta-meta">العدد الأول مجاناً. إلغاء الاشتراك في أي وقت.</span>
     </div>
   </div>
 </section>
 
 </div>
 
+<!-- Footer -->
 <footer>
   <div class="container">
-    <div data-lang="en" class="active">© 2026 AI in the Khaleej Classroom · A briefing for Gulf university faculty</div>
-    <div data-lang="ar" style="display:none;">© 2026 الذكاء الاصطناعي في الفصل الخليجي · نشرة لأعضاء هيئة التدريس في جامعات الخليج</div>
+    <p><strong>AI in the Khaleej Classroom</strong> is a weekly briefing for faculty in Gulf universities.</p>
+    <p>Issue #001 &middot; Open Access &middot; Published Sunday</p>
   </div>
 </footer>
 
+<!-- Language Switcher -->
 <script>
-  function setLang(lang) {
-    const html = document.documentElement;
-    html.lang = lang;
-    html.dir = lang === 'ar' ? 'rtl' : 'ltr';
+function switchLang(lang) {
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-lang]').forEach(el => el.classList.remove('active'));
+  document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
+}
 
-    document.querySelectorAll('[data-lang]').forEach(el => {
-      if (el.dataset.lang === lang) {
-        el.classList.add('active');
-        el.style.display = '';
-      } else {
-        el.classList.remove('active');
-        el.style.display = 'none';
-      }
-    });
-
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
-
-    try { localStorage.setItem('preferred-lang', lang); } catch (e) {}
-  }
-
-  // Restore preference
-  try {
-    const saved = localStorage.getItem('preferred-lang');
-    if (saved === 'ar') setLang('ar');
-  } catch (e) {}
-</script>
-
-
-<script>
+// Subscribe handler
 async function handleSubscribe(e, lang) {
   e.preventDefault();
   const msgEl = document.getElementById(lang + '-msg');
   const btn = e.target.querySelector('button');
   btn.disabled = true;
   btn.innerText = lang === 'en' ? 'Subscribing...' : 'جاري الاشتراك...';
-  
-  const payload = {
-    name: document.getElementById(lang + '-name').value,
-    email: document.getElementById(lang + '-email').value,
-    role: document.getElementById(lang + '-role').value,
-    lang: lang
-  };
-  
+  const payload = { name: document.getElementById(lang + '-name').value, email: document.getElementById(lang + '-email').value, role: document.getElementById(lang + '-role').value, lang: lang };
   try {
-    const res = await fetch('/api/subscribe-ai', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    
-    if(res.ok) {
+    const res = await fetch('/api/subscribe-ai', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    if (res.ok) {
       msgEl.style.color = 'green';
       msgEl.innerText = lang === 'en' ? 'Success! Check your inbox for the welcome email.' : 'تم الاشتراك! تفقد بريدك الإلكتروني.';
       e.target.reset();
@@ -592,18 +465,16 @@ async function handleSubscribe(e, lang) {
       msgEl.style.color = 'red';
       msgEl.innerText = data.error || (lang === 'en' ? 'An error occurred.' : 'حدث خطأ.');
     }
-  } catch(err) {
+  } catch (err) {
     msgEl.style.color = 'red';
     msgEl.innerText = lang === 'en' ? 'An error occurred.' : 'حدث خطأ.';
   }
-  
   btn.disabled = false;
   btn.innerText = lang === 'en' ? 'Subscribe' : 'اشترك الآن';
 }
-
 document.getElementById('en-subscribe-form')?.addEventListener('submit', (e) => handleSubscribe(e, 'en'));
 document.getElementById('ar-subscribe-form')?.addEventListener('submit', (e) => handleSubscribe(e, 'ar'));
 </script>
-</body>
 
+</body>
 </html>
