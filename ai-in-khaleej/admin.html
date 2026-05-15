@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Subscribers — AI in Khaleej</title>
+<style>
+  :root {
+    --bg: #faf8f3;
+    --ink: #1a1f2e;
+    --muted: #5b6478;
+    --accent: #b08d3c;
+    --card: #ffffff;
+    --border: #e6e1d4;
+    --red: #dc2626;
+    --green: #047857;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+  .hdr {
+    background: var(--ink);
+    color: white;
+    padding: 16px 0;
+  }
+  .hdr-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hdr h1 { font-size: 18px; font-weight: 600; font-family: 'Georgia', serif; }
+  .hdr .count { font-size: 13px; color: #8b92a5; }
+
+  .toolbar {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 20px 0;
+    flex-wrap: wrap;
+  }
+  .search {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--card);
+    color: var(--ink);
+  }
+  .search:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(176,141,60,0.12); }
+
+  .btn {
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--ink);
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .btn:hover { background: #f3f1eb; }
+  .btn--danger { color: var(--red); border-color: #fecaca; background: #fff5f5; }
+  .btn--danger:hover { background: #fee2e2; }
+
+  .table-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th {
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    background: #faf8f3;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 12px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink);
+  }
+  tr:last-child td { border-bottom: 0; }
+  tr:hover td { background: #fdfcf9; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 600; }
+  .badge--en { background: #dbeafe; color: #1e40af; }
+  .badge--ar { background: #fef3c7; color: #92400e; }
+
+  .export-bar { padding: 12px 16px; background: #faf8f3; border-top: 1px solid var(--border); display: flex; gap: 10px; align-items: center; }
+  .export-bar .btn { padding: 7px 14px; font-size: 12px; }
+
+  .empty { text-align: center; padding: 48px; color: var(--muted); font-size: 14px; }
+
+  /* Auth overlay */
+  .auth-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  .auth-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 36px;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .auth-card h2 { font-family: 'Georgia', serif; font-size: 20px; margin-bottom: 8px; }
+  .auth-card p { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+  .auth-card input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .auth-card input:focus { outline: none; border-color: var(--accent); }
+  .auth-card .err { color: var(--red); font-size: 12px; margin-top: 6px; }
+
+  @media (max-width: 600px) {
+    th, td { padding: 10px 12px; font-size: 12px; }
+    .toolbar { flex-direction: column; align-items: stretch; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Auth overlay -->
+<div id="auth-overlay" class="auth-overlay">
+  <div class="auth-card">
+    <h2>Subscriber Dashboard</h2>
+    <p>Enter the access key to view registered subscribers.</p>
+    <input type="password" id="auth-key" placeholder="Access key" autofocus>
+    <button class="btn" onclick="authenticate()" style="width:100%;margin-top:4px;">Unlock</button>
+    <p id="auth-err" class="err"></p>
+  </div>
+</div>
+
+<!-- Main App (hidden until auth) -->
+<div id="app" style="display:none;">
+
+<div class="hdr">
+  <div class="hdr-inner">
+    <h1>AI in Khaleej — Subscribers</h1>
+    <span class="count" id="total-count">—</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="toolbar">
+    <input type="text" class="search" id="search" placeholder="Search by name, email, or university..." oninput="renderTable()">
+    <button class="btn" onclick="exportCSV()">Export CSV</button>
+    <button class="btn btn--danger" onclick="clearAll()">Clear All</button>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>University / Role</th>
+          <th>Language</th>
+          <th>Subscribed</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <tr class="empty"><td colspan="6">Loading...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div>
+
+<script>
+const API_KEY = 'gateflow2026';
+let allSubscribers = [];
+
+function authenticate() {
+  const key = document.getElementById('auth-key').value.trim();
+  if (key === API_KEY) {
+    document.getElementById('auth-overlay').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    loadData();
+  } else {
+    document.getElementById('auth-err').innerText = 'Incorrect key.';
+  }
+}
+
+document.getElementById('auth-key').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') authenticate();
+});
+
+async function loadData() {
+  try {
+    const res = await fetch('/api/subscribers-ai?key=' + API_KEY);
+    allSubscribers = (await res.json()).reverse(); // newest first
+    renderTable();
+  } catch (e) {
+    document.getElementById('table-body').innerHTML = '<tr class="empty"><td colspan="6">Failed to load.</td></tr>';
+  }
+}
+
+function renderTable() {
+  const search = document.getElementById('search').value.toLowerCase();
+  const filtered = allSubscribers.filter(s => {
+    return (s.name || '').toLowerCase().includes(search) ||
+           (s.email || '').toLowerCase().includes(search) ||
+           (s.role || '').toLowerCase().includes(search);
+  });
+
+  document.getElementById('total-count').innerText = filtered.length + ' subscriber' + (filtered.length !== 1 ? 's' : '');
+
+  if (filtered.length === 0) {
+    document.getElementById('table-body').innerHTML = '<tr class="empty"><td colspan="6">No subscribers found.</td></tr>';
+    return;
+  }
+
+  document.getElementById('table-body').innerHTML = filtered.map((s, i) => `
+    <tr>
+      <td>${filtered.length - i}</td>
+      <td><strong>${esc(s.name)}</strong></td>
+      <td>${esc(s.email)}</td>
+      <td>${esc(s.role || '—')}</td>
+      <td><span class="badge badge--${s.lang === 'ar' ? 'ar' : 'en'}">${s.lang === 'ar' ? 'عربي' : 'EN'}</span></td>
+      <td>${fmtDate(s.timestamp)}</td>
+    </tr>
+  `).join('');
+}
+
+function esc(str) {
+  const div = document.createElement('div');
+  div.textContent = str || '';
+  return div.innerHTML;
+}
+
+function fmtDate(ts) {
+  if (!ts) return '—';
+  const d = new Date(ts);
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) + ' ' +
+         d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+}
+
+function exportCSV() {
+  const header = 'Name,Email,Role,Language,Timestamp\n';
+  const rows = allSubscribers.map(s => `"${s.name||''}","${s.email||''}","${s.role||''}","${s.lang||''}","${s.timestamp||''}"`).join('\n');
+  const blob = new Blob([header + rows], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'ai-khaleej-subscribers.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function clearAll() {
+  if (!confirm('Delete all subscriber data? This cannot be undone.')) return;
+  // Create an empty file by posting to a reset endpoint
+  fetch('/api/subscribers-reset?key=' + API_KEY, { method: 'POST' })
+    .then(() => { allSubscribers = []; renderTable(); })
+    .catch(() => alert('Failed to clear.'));
+}
+</script>
+
+</body>
+</html>

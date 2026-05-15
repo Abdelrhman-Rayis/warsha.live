@@ -362,6 +362,46 @@ const server = http.createServer((req, res) => {
   }
 
 
+  
+  if (req.method === 'POST' && req.url.startsWith('/api/subscribers-reset')) {
+    const urlParams = new URLSearchParams(req.url.split('?')[1] || '');
+    const key = urlParams.get('key') || '';
+    if (key !== 'gateflow2026') {
+      sendJson(res, 403, { error: 'Unauthorized' });
+      return;
+    }
+    try {
+      const dbPath = path.join(rootDir, 'ai-in-khaleej', 'subscribers.json');
+      fs.writeFileSync(dbPath, '[]');
+      sendJson(res, 200, { success: true });
+    } catch (err) {
+      sendJson(res, 500, { error: 'Failed to reset' });
+    }
+    return;
+  }
+
+  if (req.method === 'GET' && req.url.startsWith('/api/subscribers-ai')) {
+    const urlParams = new URLSearchParams(req.url.split('?')[1] || '');
+    const key = urlParams.get('key') || '';
+    if (key !== 'gateflow2026') {
+      sendJson(res, 403, { error: 'Unauthorized' });
+      return;
+    }
+    try {
+      const dbPath = path.join(rootDir, 'ai-in-khaleej', 'subscribers.json');
+      if (fs.existsSync(dbPath)) {
+        const data = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+        sendJson(res, 200, data);
+      } else {
+        sendJson(res, 200, []);
+      }
+    } catch (err) {
+      sendJson(res, 500, { error: 'Failed to read subscribers' });
+    }
+    return;
+  }
+
+
   if (req.method === 'POST' && req.url === '/api/ai') {
     let body = '';
     req.on('data', chunk => {
