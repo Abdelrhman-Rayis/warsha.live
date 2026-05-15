@@ -1,9 +1,12 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const PORT = Number(process.env.PORT) || 3000;
 const rootDir = __dirname;
+const BBB_BASE_URL = (process.env.BBB_BASE_URL || '').replace(/\/$/, '');
+const BBB_SECRET = process.env.BBB_SECRET || '';
 
 const mimeTypes = {
   '.html': 'text/html; charset=utf-8',
@@ -67,6 +70,45 @@ function guessReply(message, lang) {
   return dict.default;
 }
 
+function toSafeMeetingId(raw) {
+  return String(raw || 'general-workshop')
+    .toLowerCase()
+    .replace(/[^a-z0-9-_]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '')
+    .slice(0, 80);
+}
+
+function bbbChecksum(callName, queryString) {
+  return crypto
+    .createHash('sha1')
+    .update(callName + queryString + BBB_SECRET)
+    .digest('hex');
+}
+
+function buildBbbUrl(callName, params) {
+  const query = new URLSearchParams(params).toString();
+  const checksum = bbbChecksum(callName, query);
+  return `${BBB_BASE_URL}/api/${callName}?${query}&checksum=${checksum}`;
+}
+
+async function ensureMeetingExists({ meetingId, meetingName }) {
+  const createUrl = buildBbbUrl('create', {
+    name: meetingName,
+    meetingID: meetingId,
+    attendeePW: 'ap',
+    moderatorPW: 'mp',
+    welcome: 'Welcome to your live workshop on Warsha.',
+    muteOnStart: 'false',
+    allowStartStopRecording: 'false'
+  });
+
+  const response = await fetch(createUrl, { method: 'GET' });
+  if (!response.ok) {
+    throw new Error('Failed to create or access meeting on BigBlueButton');
+  }
+}
+
 const server = http.createServer((req, res) => {
   if (req.method === 'OPTIONS') {
     res.writeHead(204, {
@@ -99,7 +141,57 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  const requestPath = req.url === '/' ? '/index.html' : req.url.split('?')[0];
+  if (req.method === 'POST' && req.url === '/api/bbb/join') {
+    if (!BBB_BASE_URL || !BBB_SECRET) {
+      sendJson(res, 500, {
+        error: 'BigBlueButton is not configured on the server. Please set BBB_BASE_URL and BBB_SECRET.'
+      });
+      return;
+    }
+
+    let body = '';
+    req.on('data', chunk => {
+      body += chunk.toString();
+      if (body.length > 1e6) {
+        req.destroy();
+      }
+    });
+
+    req.on('end', async () => {
+      try {
+        const parsed = body ? JSON.parse(body) : {};
+        const meetingId = toSafeMeetingId(parsed.meetingId || parsed.courseId || parsed.courseName);
+        const meetingName = String(parsed.meetingName || parsed.courseName || 'Live Workshop');
+        const fullName = String(parsed.fullName || parsed.userName || 'Guest');
+        const role = parsed.role === 'instructor' ? 'instructor' : 'student';
+        const password = role === 'instructor' ? 'mp' : 'ap';
+
+        if (!meetingId) {
+          sendJson(res, 400, { error: 'meetingId is required.' });
+          return;
+        }
+
+        await ensureMeetingExists({ meetingId, meetingName });
+
+        const joinUrl = buildBbbUrl('join', {
+          fullName,
+          meetingID: meetingId,
+          password,
+          redirect: 'true'
+        });
+
+        sendJson(res, 200, { joinUrl, meetingId, role });
+      } catch (error) {
+        sendJson(res, 500, {
+          error: error.message || 'Unable to create or join BigBlueButton meeting.'
+        });
+      }
+    });
+    return;
+  }
+
+  const rawPath = req.url === '/' ? '/index.html' : req.url.split('?')[0];
+  const requestPath = (rawPath === '/events' || rawPath === '/events/') ? '/event/index.html' : rawPath;
   const filePath = path.join(rootDir, requestPath);
 
   if (!filePath.startsWith(rootDir)) {
@@ -109,20 +201,23 @@ const server = http.createServer((req, res) => {
   }
 
   fs.stat(filePath, (error, stats) => {
-    if (error || !stats.isFile()) {
+    if (error) {
       res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
       res.end('Not Found');
       return;
     }
 
-    fs.readFile(filePath, (readError, data) => {
+    const targetPath = stats.isDirectory() ? path.join(filePath, 'index.html') : filePath;
+
+    fs.readFile(targetPath, (readError, data) => {
       if (readError) {
-        res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
-        res.end('Internal Server Error');
+        const statusCode = readError.code === 'ENOENT' ? 404 : 500;
+        res.writeHead(statusCode, { 'Content-Type': 'text/plain; charset=utf-8' });
+        res.end(statusCode === 404 ? 'Not Found' : 'Internal Server Error');
         return;
       }
 
-      res.writeHead(200, { 'Content-Type': getContentType(filePath) });
+      res.writeHead(200, { 'Content-Type': getContentType(targetPath) });
       res.end(data);
     });
   });
