@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1546 423" width="1546" height="423">
+  <title>AI in the Khaleej Classroom — Substack cover banner</title>
+  <desc>Cream banner with serif wordmark, thin gold horizontal rule, and Arabic subtitle.</desc>
+  <rect width="1546" height="423" fill="#faf8f3"/>
+  <text x="773" y="200" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="72" font-weight="500" fill="#1a1f2e" text-anchor="middle" letter-spacing="-1">AI in the Khaleej Classroom</text>
+  <line x1="713" y1="232" x2="833" y2="232" stroke="#b08d3c" stroke-width="2"/>
+  <text x="773" y="282" font-family="'IBM Plex Sans Arabic', 'Tahoma', 'Arial', sans-serif" font-size="32" font-weight="500" fill="#5b6478" text-anchor="middle">الذكاء الاصطناعي في الفصل الخليجي</text>
+  <text x="773" y="338" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="20" font-weight="400" fill="#5b6478" text-anchor="middle" letter-spacing="0.5">A weekly briefing on AI for faculty in Gulf universities</text>
+</svg>

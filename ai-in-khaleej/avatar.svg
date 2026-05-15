@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>AI in the Khaleej Classroom — avatar</title>
+  <desc>Serif K monogram on a cream background, ringed by a thin gold border.</desc>
+  <circle cx="256" cy="256" r="256" fill="#faf8f3"/>
+  <circle cx="256" cy="256" r="244" fill="none" stroke="#b08d3c" stroke-width="6"/>
+  <text x="256" y="328" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="280" font-weight="500" fill="#1a1f2e" text-anchor="middle" letter-spacing="-4">K.</text>
+</svg>

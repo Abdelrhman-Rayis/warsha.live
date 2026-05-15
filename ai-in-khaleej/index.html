@@ -1,26 +1,540 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI in Khaleej | الذكاء الاصطناعي في الخليج</title>
-    <style>
-        body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
-        h1 { font-size: 3rem; color: #38bdf8; margin-bottom: 0.5rem; }
-        h2 { font-size: 1.5rem; font-weight: 400; color: #94a3b8; margin-top: 0; }
-        p { max-width: 600px; line-height: 1.6; color: #cbd5e1; font-size: 1.1rem; }
-        .en-text { direction: ltr; margin-top: 2rem; font-family: system-ui, sans-serif; }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI in the Khaleej Classroom: A weekly briefing for Gulf university faculty</title>
+<meta name="description" content="A weekly briefing for faculty in Gulf universities on how to teach, research, and lead with AI. Curated from OpenAI, Anthropic, Google, and the best of academic practice." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Fraunces:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #faf8f3;
+    --ink: #1a1f2e;
+    --muted: #5b6478;
+    --accent: #b08d3c;
+    --accent-dark: #8b6e2c;
+    --card: #ffffff;
+    --border: #e6e1d4;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --sans-ar: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html[lang="ar"] body { font-family: var(--sans-ar); }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Top bar */
+  .topbar {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .brand {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+  html[lang="ar"] .brand { font-family: var(--sans-ar); font-weight: 700; }
+
+  .lang-toggle {
+    display: flex;
+    gap: 4px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px;
+    font-size: 13px;
+  }
+  .lang-toggle button {
+    border: 0;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    color: var(--muted);
+    font-weight: 500;
+    font-family: inherit;
+  }
+  .lang-toggle button.active {
+    background: var(--ink);
+    color: white;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 80px 0 64px;
+    text-align: center;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    margin-bottom: 20px;
+    padding: 6px 14px;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    background: rgba(176, 141, 60, 0.06);
+  }
+  html[lang="ar"] .eyebrow { letter-spacing: 0; }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 6vw, 52px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  html[lang="ar"] h1 { font-family: var(--sans-ar); font-weight: 700; line-height: 1.3; }
+
+  .subhead {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 36px;
+  }
+
+  .cta {
+    display: inline-block;
+    background: var(--ink);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    transition: transform 0.15s, background 0.15s;
+    font-family: inherit;
+    border: 0;
+    cursor: pointer;
+  }
+  .cta:hover {
+    background: #000;
+    transform: translateY(-1px);
+  }
+  .cta-meta {
+    display: block;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* Section */
+  section { padding: 56px 0; border-top: 1px solid var(--border); }
+  .section-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    margin-bottom: 12px;
+  }
+  html[lang="ar"] .section-eyebrow { letter-spacing: 0; }
+  h2 {
+    font-family: var(--serif);
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  html[lang="ar"] h2 { font-family: var(--sans-ar); font-weight: 700; line-height: 1.4; }
+  p.lead { color: var(--muted); font-size: 17px; }
+
+  /* Issue cards */
+  .cards {
+    display: grid;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+  }
+  .card-num {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--accent-dark);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .card-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .card-desc {
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  /* Audience list */
+  .audience {
+    list-style: none;
+    margin-top: 20px;
+  }
+  .audience li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .audience li:last-child { border-bottom: 0; }
+  .audience li::before {
+    content: "→";
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  html[dir="rtl"] .audience li::before { content: "←"; }
+
+  /* Pricing */
+  .pricing {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 32px;
+    text-align: center;
+    margin-top: 24px;
+  }
+  .price {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1;
+    margin: 8px 0 4px;
+  }
+  .price-period {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  .price-features {
+    list-style: none;
+    margin: 24px 0;
+    text-align: start;
+  }
+  .price-features li {
+    padding: 8px 0;
+    color: var(--muted);
+    font-size: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .price-features li::before {
+    content: "✓";
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* Founder */
+  .founder {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-top: 24px;
+  }
+  .founder-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    margin-bottom: 12px;
+  }
+  html[lang="ar"] .founder-label { letter-spacing: 0; }
+  .founder p { color: var(--muted); font-size: 15px; }
+  .founder p + p { margin-top: 12px; }
+
+  /* Footer */
+  footer {
+    padding: 40px 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Hide non-active language */
+  [data-lang]:not(.active) { display: none; }
+
+  /* RTL adjustments */
+  html[dir="rtl"] {
+    text-align: right;
+  }
+  html[dir="rtl"] .topbar-inner,
+  html[dir="rtl"] .lang-toggle {
+    direction: ltr;
+  }
+  html[dir="rtl"] .hero { text-align: center; }
+  html[dir="rtl"] .pricing { text-align: center; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 56px 0 40px; }
+    section { padding: 40px 0; }
+    .pricing { padding: 28px 22px; }
+  }
+</style>
 </head>
 <body>
-    <h1>الذكاء الاصطناعي في الخليج</h1>
-    <h2>تمكين الابتكار وبناء المستقبل</h2>
-    <p>منصة مخصصة لتعزيز وتطوير أبحاث وتطبيقات الذكاء الاصطناعي في منطقة الخليج العربي.</p>
-    
-    <div class="en-text">
-        <h1 style="color: #fff; font-size: 2.5rem;">AI in Khaleej</h1>
-        <h2>Empowering Innovation, Building the Future</h2>
-        <p>A dedicated platform for advancing Artificial Intelligence research, applications, and education across the Gulf region.</p>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="brand" data-lang="en">AI in the Khaleej Classroom</div>
+    <div class="brand active" data-lang="ar" style="display:none;">الذكاء الاصطناعي في الفصل الخليجي</div>
+    <div class="lang-toggle">
+      <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+      <button id="btn-ar" onclick="setLang('ar')">عربي</button>
     </div>
+  </div>
+</div>
+
+<!-- ============ ENGLISH ============ -->
+<div data-lang="en" class="active">
+
+<section class="hero" style="border-top:0">
+  <div class="container">
+    <span class="eyebrow">For Gulf university faculty</span>
+    <h1>Teach, research, and lead with AI.</h1>
+    <p class="subhead">A weekly briefing curated from OpenAI, Anthropic, Google, and the best of academic practice, translated into what actually works in Khaleej classrooms.</p>
+    <a href="#subscribe" class="cta">Subscribe</a>
+    <span class="cta-meta">Issue #001 is free. From Issue #002, paid editions at $48 / month. Founding subscribers lock in $48 for life.</span>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">What you get</div>
+    <h2>Every issue, three things you can use on Sunday morning.</h2>
+    <p class="lead">Stay on the leading edge of current practices, live pilots, and the sharpest thinking on AI in higher education, distilled for the Gulf context.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <div class="card-title">A pedagogy pattern, broken down</div>
+        <div class="card-desc">How a professor at Maryland, Harvard, or Sciences Po actually used AI in a course: what they did, what worked, what failed. With the prompt or assignment they used.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <div class="card-title">A tool worth your time</div>
+        <div class="card-desc">One AI tool (Custom GPT, agent, Claude project, or NotebookLM workflow), tested for academic use. Including where it falls short for Arabic-language teaching.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <div class="card-title">A video worth your 20 minutes</div>
+        <div class="card-desc">One curated talk, panel, or interview each week (from OpenAI Forum, university keynotes, and research labs), with the three takeaways that matter and a "watch if you teach…" filter so you only commit when it fits your role.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Who it's for</div>
+    <h2>Faculty who want to lead, not just react.</h2>
+    <ul class="audience">
+      <li>Lecturers and professors at Gulf universities, whether public, private, or branch campuses.</li>
+      <li>Department chairs and program directors making AI policy this semester.</li>
+      <li>Centers for Teaching & Learning building faculty development programs.</li>
+      <li>Researchers integrating AI into Arabic-language scholarship.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="subscribe">
+  <div class="container">
+    <div class="section-eyebrow">Subscribe</div>
+    <h2>Issue #001 free. Paid from Issue #002. Founding subscribers lock in $48 for life.</h2>
+    <div class="pricing">
+      <div class="card-num">Founding subscriber (first 100 only)</div>
+      <div class="price">$48</div>
+      <div class="price-period">per month, paid from Issue #002 onward. Annual founding rate: $450 / year.</div>
+      <ul class="price-features">
+        <li>Weekly issue, Sunday morning Gulf time</li>
+        <li>Searchable archive of every past issue</li>
+        <li>Direct reply access, so your questions shape future issues</li>
+        <li>Bilingual editions (English + Arabic key points)</li>
+        <li>Founding rate locked in for life: your $48 never increases as the standard rate rises</li>
+        <li>Forwardable Arabic executive summary in each issue, for institutional reimbursement requests</li>
+      </ul>
+      <!-- Replace SUBSTACK_URL with your live Substack subscribe link, e.g. https://aikhaleejclassroom.substack.com/subscribe -->
+      <a href="SUBSTACK_URL_HERE" class="cta">Subscribe</a>
+      <span class="cta-meta">Issue #001 lands free in your inbox. Paid checkout opens with Issue #002 next Sunday. Cancel anytime.</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="founder">
+      <div class="founder-label">A note from the editor</div>
+      <p>I started this because every Gulf faculty member I know is being asked the same thing: "What's our AI policy? How are we using AI in teaching?" Almost none of us have the time to read every report, watch every webinar, and test every tool.</p>
+      <p>This newsletter does that work for you. One Sunday morning email. Read in 8 minutes. Use on Monday.</p>
+      <p>Mazin</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ ARABIC ============ -->
+<div data-lang="ar">
+
+<section class="hero" style="border-top:0">
+  <div class="container">
+    <span class="eyebrow">لأعضاء هيئة التدريس في جامعات الخليج</span>
+    <h1>درّس وابحث وقُد بالذكاء الاصطناعي.</h1>
+    <p class="subhead">نشرة أسبوعية مختارة من OpenAI و Anthropic و Google ومن أفضل الممارسات الأكاديمية، مترجمة إلى ما يعمل فعلاً في الفصول الخليجية.</p>
+    <a href="#subscribe-ar" class="cta">اشترك</a>
+    <span class="cta-meta">العدد الأول مجاناً. من العدد الثاني، الإصدارات الكاملة بـ 48 دولار شهرياً. المشتركون المؤسسون يحتفظون بسعر 48 دولار مدى الحياة.</span>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">ماذا ستحصل</div>
+    <h2>في كل عدد، ثلاثة أشياء يمكنك استخدامها صباح الأحد.</h2>
+    <p class="lead">ابقَ في الطليعة: أحدث الممارسات، التجارب الميدانية الجارية، وأقوى الأفكار في الذكاء الاصطناعي والتعليم العالي، مُكثّفة للسياق الخليجي.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">٠١</div>
+        <div class="card-title">نمط تعليمي مُحلَّل</div>
+        <div class="card-desc">كيف استخدم أستاذ في جامعة ميريلاند أو هارفارد أو ساينس بو الذكاء الاصطناعي في مقرر دراسي: ماذا فعل، ما الذي نجح، وما الذي فشل. مع النص أو الواجب المستخدم.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">٠٢</div>
+        <div class="card-title">أداة تستحق وقتك</div>
+        <div class="card-desc">أداة ذكاء اصطناعي واحدة (GPT مخصص، وكيل ذكي، مشروع Claude، أو NotebookLM)، مُختبَرة للاستخدام الأكاديمي. مع ملاحظة أين تقصر للتعليم باللغة العربية.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">٠٣</div>
+        <div class="card-title">فيديو يستحق ٢٠ دقيقة من وقتك</div>
+        <div class="card-desc">حلقة نقاش أو محاضرة أو مقابلة مختارة كل أسبوع (من منتدى OpenAI ومحاضرات الجامعات ومختبرات البحث)، مع أهم ثلاث خلاصات وتوصية واضحة بـ"شاهده إن كنت تُدرّس..." لتلتزم بالوقت فقط عندما يناسب دورك.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">لمن هذه النشرة</div>
+    <h2>أعضاء هيئة تدريس يقودون، لا يكتفون بردّ الفعل.</h2>
+    <ul class="audience">
+      <li>محاضرون وأساتذة في جامعات الخليج، سواء كانت حكومية أو خاصة أو فروع جامعات دولية.</li>
+      <li>رؤساء أقسام ومديرو برامج يضعون سياسات الذكاء الاصطناعي هذا الفصل.</li>
+      <li>مراكز التدريس والتعلم التي تبني برامج تطوير لأعضاء هيئة التدريس.</li>
+      <li>الباحثون الذين يدمجون الذكاء الاصطناعي في الدراسات باللغة العربية.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="subscribe-ar">
+  <div class="container">
+    <div class="section-eyebrow">اشترك</div>
+    <h2>العدد الأول مجاناً. مدفوع من العدد الثاني. المشتركون المؤسسون يحتفظون بسعر 48 دولار مدى الحياة.</h2>
+    <div class="pricing">
+      <div class="card-num">مشترك مؤسس (أول 100 مشترك فقط)</div>
+      <div class="price">48$</div>
+      <div class="price-period">شهرياً، تبدأ المدفوعات من العدد الثاني. السعر السنوي للمؤسسين: 450 دولار.</div>
+      <ul class="price-features">
+        <li>عدد أسبوعي، صباح الأحد بتوقيت الخليج</li>
+        <li>أرشيف قابل للبحث لكل الأعداد السابقة</li>
+        <li>وصول مباشر للرد، فأسئلتك تُشكّل الأعداد القادمة</li>
+        <li>إصدارات ثنائية اللغة (إنجليزي + ملخصات عربية للنقاط الرئيسية)</li>
+        <li>سعر المؤسسين مثبّت مدى الحياة: 48 دولار لا يرتفع لك حتى لو ارتفع السعر القياسي</li>
+        <li>ملخص تنفيذي بالعربية في كل عدد، قابل لإعادة الإرسال لطلبات السداد المؤسسي</li>
+      </ul>
+      <a href="SUBSTACK_URL_HERE" class="cta">اشترك</a>
+      <span class="cta-meta">العدد الأول يصلك مجاناً. تفتح بوابة الدفع مع العدد الثاني الأحد القادم. إلغاء في أي وقت.</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="founder">
+      <div class="founder-label">كلمة من المحرر</div>
+      <p>بدأت هذه النشرة لأن كل عضو هيئة تدريس خليجي أعرفه يُطرح عليه نفس السؤال: "ما سياستنا تجاه الذكاء الاصطناعي؟ كيف نستخدمه في التدريس؟" ولا أحد منا تقريباً لديه الوقت لقراءة كل تقرير، ومتابعة كل ندوة، واختبار كل أداة.</p>
+      <p>هذه النشرة تقوم بهذا العمل نيابةً عنك. بريد إلكتروني واحد صباح الأحد. يُقرأ في 8 دقائق. تستخدمه يوم الإثنين.</p>
+      <p>مازن</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="container">
+    <div data-lang="en" class="active">© 2026 AI in the Khaleej Classroom · A briefing for Gulf university faculty</div>
+    <div data-lang="ar" style="display:none;">© 2026 الذكاء الاصطناعي في الفصل الخليجي · نشرة لأعضاء هيئة التدريس في جامعات الخليج</div>
+  </div>
+</footer>
+
+<script>
+  function setLang(lang) {
+    const html = document.documentElement;
+    html.lang = lang;
+    html.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      if (el.dataset.lang === lang) {
+        el.classList.add('active');
+        el.style.display = '';
+      } else {
+        el.classList.remove('active');
+        el.style.display = 'none';
+      }
+    });
+
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
+
+    try { localStorage.setItem('preferred-lang', lang); } catch (e) {}
+  }
+
+  // Restore preference
+  try {
+    const saved = localStorage.getItem('preferred-lang');
+    if (saved === 'ar') setLang('ar');
+  } catch (e) {}
+</script>
+
 </body>
 </html>
