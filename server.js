@@ -20,6 +20,7 @@ if (!process.env.BBB_BASE_URL || !process.env.BBB_SECRET) {
 // On-disk registry of active classes -- survives node restarts but is
 // just a JSON file. Fine for a single 1GB node and zero dependencies.
 const CLASSES_DB_PATH = path.join(rootDir, 'data', 'classes.json');
+const USERS_DB_PATH = path.join(rootDir, 'data', 'users.json');
 
 const mimeTypes = {
   '.html': 'text/html; charset=utf-8',
@@ -502,6 +503,41 @@ const server = http.createServer((req, res) => {
         sendJson(res, 200, { reply });
       } catch (error) {
         sendJson(res, 400, { error: 'Invalid request body' });
+      }
+    });
+    return;
+  }
+
+  // ---------------------------------------------------------------
+  // POST /api/register
+  // Body: { name, email, password }
+  // ---------------------------------------------------------------
+  if (req.method === 'POST' && req.url === '/api/register') {
+    let body = '';
+    req.on('data', (chunk) => { body += chunk.toString(); if (body.length > 1e5) req.destroy(); });
+    req.on('end', () => {
+      try {
+        const { name, email, password } = JSON.parse(body);
+        if (!name || !email || !password || password.length < 6) {
+          sendJson(res, 400, { error: 'Name, valid email, and password (6+ chars) required.' });
+          return;
+        }
+        const dir = path.dirname(USERS_DB_PATH);
+        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+        let users = [];
+        if (fs.existsSync(USERS_DB_PATH)) {
+          users = JSON.parse(fs.readFileSync(USERS_DB_PATH, 'utf8'));
+        }
+        if (users.find(u => u.email === email)) {
+          sendJson(res, 409, { error: 'An account with this email already exists.' });
+          return;
+        }
+        const newUser = { id: Date.now(), name, email, password, role: 'instructor', joinedDate: new Date().toISOString() };
+        users.push(newUser);
+        fs.writeFileSync(USERS_DB_PATH, JSON.stringify(users, null, 2));
+        sendJson(res, 201, { message: 'Account created.', user: { id: newUser.id, name, email, role: 'instructor' } });
+      } catch (err) {
+        sendJson(res, 500, { error: err.message || 'Registration failed.' });
       }
     });
     return;

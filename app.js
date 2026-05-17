@@ -1,5 +1,5 @@
 // Security Functions
-const REGISTRATION_FORM_URL = 'https://forms.gle/6p7VRDxTpvNNS81F9';
+const REGISTRATION_FORM_URL = null; // deprecated — no longer used
 
 function sanitizeInput(input) {
     // Prevent XSS by escaping HTML characters
@@ -502,7 +502,44 @@ function handleRegister(event) {
         event.preventDefault();
     }
 
-    openRegistrationForm();
+    const name = document.getElementById('regName').value.trim();
+    const email = document.getElementById('regEmail').value.trim();
+    const password = document.getElementById('regPassword').value.trim();
+    const statusEl = document.getElementById('regStatus');
+
+    if (!name || !email || !password) {
+        statusEl.textContent = 'Please fill in all fields.';
+        statusEl.style.color = '#991b1b';
+        return;
+    }
+
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    if (users.find(u => u.email === email)) {
+        statusEl.textContent = 'An account with this email already exists.';
+        statusEl.style.color = '#991b1b';
+        return;
+    }
+
+    const newUser = {
+        id: Date.now(),
+        name,
+        email,
+        password, // in production, hash this server-side
+        role: 'instructor',
+        joinedDate: new Date().toISOString()
+    };
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+
+    statusEl.textContent = 'Account created! You can now log in.';
+    statusEl.style.color = '#15543a';
+    document.getElementById('registerForm').reset();
+
+    // Auto-close after 1.5s and open login
+    setTimeout(() => {
+        closeRegisterModal();
+        showLogin();
+    }, 1500);
 }
 
 // Modal Functions
