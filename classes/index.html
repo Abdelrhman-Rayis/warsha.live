@@ -67,6 +67,23 @@
     <div class="classes-grid">
 
       <section class="class-card">
+        <span class="role-tag">Student</span>
+        <h2>Join a class</h2>
+        <form id="joinForm">
+          <label for="joinMeetingId">Meeting ID (from your educator)</label>
+          <input id="joinMeetingId" name="meetingId" required placeholder="warsha-xxxxxxxx" maxlength="80">
+
+          <label for="joinName">Your name</label>
+          <input id="joinName" name="name" required placeholder="e.g. Aya" maxlength="60">
+
+          <button type="submit" id="joinBtn">Join class</button>
+        </form>
+        <div id="joinStatus" class="status-msg"></div>
+      </section>
+
+      <div class="or-divider"><span>OR</span></div>
+
+      <section class="class-card">
         <span class="role-tag">Educator</span>
         <h2>Start a new class</h2>
         <form id="createForm">
@@ -83,23 +100,6 @@
           <strong>Share this with your students:</strong>
           <code id="shareLink"></code>
         </div>
-      </section>
-
-      <div class="or-divider"><span>OR</span></div>
-
-      <section class="class-card">
-        <span class="role-tag">Student</span>
-        <h2>Join a class</h2>
-        <form id="joinForm">
-          <label for="joinMeetingId">Meeting ID (from your educator)</label>
-          <input id="joinMeetingId" name="meetingId" required placeholder="warsha-xxxxxxxx" maxlength="80">
-
-          <label for="joinName">Your name</label>
-          <input id="joinName" name="name" required placeholder="e.g. Aya" maxlength="60">
-
-          <button type="submit" id="joinBtn">Join class</button>
-        </form>
-        <div id="joinStatus" class="status-msg"></div>
       </section>
 
     </div>
