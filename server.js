@@ -155,6 +155,16 @@ function randomToken(bytes = 12) {
   return crypto.randomBytes(bytes).toString('hex');
 }
 
+// Same hash as client-side so server-stored passwords match localStorage
+function hashPasswordCl(password) {
+  let hash = 0;
+  for (let i = 0; i < password.length; i++) {
+    hash = ((hash << 5) - hash) + password.charCodeAt(i);
+    hash = hash & hash;
+  }
+  return String(Math.abs(hash));
+}
+
 // Calls BBB `create` and returns the persisted class record.
 // Idempotent on meetingId: a second call for the same id refreshes
 // the meeting on BBB but reuses the originally-issued passwords, so
@@ -544,12 +554,38 @@ const server = http.createServer(async (req, res) => {
           sendJson(res, 409, { error: 'An account with this email already exists.' });
           return;
         }
-        const newUser = { id: Date.now(), name, email, password, role: 'instructor', joinedDate: new Date().toISOString() };
+        const newUser = { id: Date.now(), name, email, password: hashPasswordCl(password), role: 'instructor', joinedDate: new Date().toISOString() };
         users.push(newUser);
         fs.writeFileSync(USERS_DB_PATH, JSON.stringify(users, null, 2));
         sendJson(res, 201, { message: 'Account created.', user: { id: newUser.id, name, email, role: 'instructor' } });
       } catch (err) {
         sendJson(res, 500, { error: err.message || 'Registration failed.' });
+      }
+    });
+    return;
+  }
+
+  // ---------------------------------------------------------------
+  // POST /api/login — check credentials against users.json
+  // ---------------------------------------------------------------
+  if (req.method === 'POST' && req.url === '/api/login') {
+    let body = '';
+    req.on('data', (chunk) => { body += chunk.toString(); if (body.length > 1e5) req.destroy(); });
+    req.on('end', () => {
+      try {
+        const { email, password } = JSON.parse(body);
+        if (!email || !password) { sendJson(res, 400, { error: 'Email and password required.' }); return; }
+        let users = [];
+        if (fs.existsSync(USERS_DB_PATH)) users = JSON.parse(fs.readFileSync(USERS_DB_PATH, 'utf8'));
+        const hashed = hashPasswordCl(password);
+        const user = users.find(u => u.email === email && u.password === hashed);
+        if (user) {
+          sendJson(res, 200, { id: user.id, name: user.name, email: user.email, role: user.role, joinedDate: user.joinedDate });
+        } else {
+          sendJson(res, 401, { error: 'Incorrect email or password.' });
+        }
+      } catch (err) {
+        sendJson(res, 500, { error: err.message || 'Login failed.' });
       }
     });
     return;

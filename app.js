@@ -554,25 +554,47 @@ function updateNavigation() {
 }
 
 // Authentication
-function handleLogin(event) {
+async function handleLogin(event) {
     event.preventDefault();
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
 
-    // Hash password before comparing
     const hashedPassword = hashPassword(password);
-    const user = users.find(u => u.email === email && u.password === hashedPassword);
+
+    // 1. Try localStorage first
+    let user = users.find(u => u.email === email && u.password === hashedPassword);
+
+    // 2. Fallback to server
+    if (!user) {
+        try {
+            const resp = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            if (resp.ok) {
+                user = await resp.json();
+                // Sync to localStorage
+                users.push({ id: user.id, name: user.name, email: user.email, password: hashedPassword, role: user.role, joinedDate: user.joinedDate });
+                localStorage.setItem('users', JSON.stringify(users));
+            }
+        } catch (err) {
+            console.error('Server login failed:', err);
+        }
+    }
+
     if (user) {
         currentUser = user;
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
         closeLoginModal();
+        document.getElementById('loginForm').reset();
         updateNavigation();
         showHome();
         alert((currentLang === 'ar' ? 'مرحبا ' : 'Welcome, ') + currentUser.name + (currentLang === 'ar' ? '! تم تسجيل الدخول بنجاح' : '. You have logged in successfully.'));
     } else {
         alert(currentLang === 'ar' ? 'البريد الإلكتروني أو كلمة المرور غير صحيحة' : 'Incorrect email or password.');
+        document.getElementById('loginForm').reset();
     }
-    document.getElementById('loginForm').reset();
 }
 
 function handleRegister(event) {
@@ -602,7 +624,7 @@ function handleRegister(event) {
         id: Date.now(),
         name,
         email,
-        password, // in production, hash this server-side
+        password: hashPassword(password),
         role: 'instructor',
         joinedDate: new Date().toISOString()
     };
