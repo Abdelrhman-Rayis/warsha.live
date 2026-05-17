@@ -102,7 +102,7 @@
         });
         const data = await resp.json();
         if (!resp.ok) throw new Error(data.error || 'Failed');
-        setStatus(status, 'success', 'Class ready. Opening BigBlueButton in a new tab…');
+        setStatus(status, 'success', 'Class ready. Opening warsha.live Classroom in a new tab…');
         const shareUrl = location.origin + '/classes/?join=' + encodeURIComponent(data.meetingId);
         document.getElementById('shareLink').textContent = shareUrl + '\nMeeting ID: ' + data.meetingId;
         share.classList.add('visible');
