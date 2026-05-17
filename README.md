@@ -47,6 +47,23 @@ http://localhost:3000
 - If the server is running, you will get local API responses.
 - If not reachable, the browser shows a fallback response.
 
+### BigBlueButton Integration
+
+The platform supports live workshop sessions using BigBlueButton.
+
+Set these environment variables before starting the server:
+
+```bash
+export BBB_BASE_URL="https://your-bbb-server.com/bigbluebutton"
+export BBB_SECRET="your-shared-secret"
+npm start
+```
+
+After configuration:
+- Students who are enrolled can join live sessions from course cards/details.
+- Instructors join as moderators.
+- Meetings are created automatically (or reused) by the backend route `POST /api/bbb/join`.
+
 ### User Flow
 
 #### 1. Register and Sign In

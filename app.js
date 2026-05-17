@@ -20,6 +20,11 @@ function hashPassword(password) {
     return 'hashed_' + Math.abs(hash).toString(16);
 }
 
+function getProfilePhotoUrl(name, size = 64) {
+    const seed = encodeURIComponent((name || 'Instructor').trim());
+    return `https://api.dicebear.com/9.x/initials/svg?seed=${seed}&radius=50&size=${size}&backgroundType=gradientLinear`;
+}
+
 // Role Selection Helper
 function selectRole(role) {
     // Update hidden select value
@@ -53,7 +58,7 @@ const translations = {
         feature3Title: 'شهادات معترفة',
         feature3Desc: 'احصل على شهادة بعد إنهاء الكورس بنجاح',
         ctaTitle: 'ابدأ رحلتك التعليمية اليوم',
-        coursesTitle: 'الكورسات المتاحة',
+        coursesTitle: 'ورش العمل المتاحة',
         loginTitle: 'تسجيل الدخول',
         emailLabel: 'البريد الإلكتروني:',
         passwordLabel: 'كلمة المرور:',
@@ -66,14 +71,14 @@ const translations = {
         loginLink: 'لديك حساب بالفعل؟',
         chatTitle: 'غرفة النقاش التفاعلية',
         profileTitle: 'الملف الشخصي',
-        myCoursesTitle: 'كورساتي',
+        myCoursesTitle: 'ورش العمل الخاصة بي',
         dashboardTitle: 'لوحة التحكم - المعلم',
         studentCountTitle: 'عدد الطلاب',
-        courseCountTitle: 'عدد الكورسات',
+        courseCountTitle: 'عدد ورش العمل',
         ratingTitle: 'التقييم الكلي',
-        createCourseTitle: 'إنشاء كورس جديد',
-        courseNameLabel: 'اسم الكورس:',
-        courseDescLabel: 'وصف الكورس:',
+        createCourseTitle: 'إنشاء ورشة جديدة',
+        courseNameLabel: 'اسم الورشة:',
+        courseDescLabel: 'وصف الورشة:',
         coursePriceLabel: 'السعر (دولار):',
         paymentTitle: 'إتمام الدفع',
         cardLabel: 'رقم البطاقة:',
@@ -92,7 +97,7 @@ const translations = {
         feature2Desc: 'Discuss your ideas directly with the instructor and peers',
         feature3Title: 'Useful Deliverables',
         feature3Desc: 'Finish with tangible outputs you can build into real research work',
-        coursesTitle: 'Available Courses',
+        coursesTitle: 'Live Workshops',
         ctaTitle: 'Apply for the 2026 Cohort',
         loginTitle: 'Log In',
         emailLabel: 'Email:',
@@ -106,14 +111,14 @@ const translations = {
         loginLink: 'Already have an account?',
         chatTitle: 'Discussion Room',
         profileTitle: 'My Profile',
-        myCoursesTitle: 'My Courses',
+        myCoursesTitle: 'My Workshops',
         dashboardTitle: 'Instructor Dashboard',
         studentCountTitle: 'Students',
-        courseCountTitle: 'Courses',
+        courseCountTitle: 'Workshops',
         ratingTitle: 'Overall Rating',
-        createCourseTitle: 'Create a New Course',
-        courseNameLabel: 'Course Name:',
-        courseDescLabel: 'Course Description:',
+        createCourseTitle: 'Create a New Workshop',
+        courseNameLabel: 'Workshop Name:',
+        courseDescLabel: 'Workshop Description:',
         coursePriceLabel: 'Price (USD):',
         paymentTitle: 'Complete Payment',
         cardLabel: 'Card Number:',
@@ -133,7 +138,7 @@ let coursesData = JSON.parse(localStorage.getItem('courses')) || [
         desc_ar: 'تعلم المبادئ الأساسية للبحث العلمي والدراسات الاجتماعية',
         desc_en: 'Learn the fundamentals of scientific research and social studies',
         price: 45,
-        instructor: 'Abdulrahman',
+        instructor: 'Mazin',
         rating: 4.8,
         students: 150,
         lectures: 12
@@ -189,10 +194,18 @@ let users = JSON.parse(localStorage.getItem('users')) || [];
 let enrolledCourses = JSON.parse(localStorage.getItem('enrolledCourses')) || {};
 let chatMessages = JSON.parse(localStorage.getItem('chatMessages')) || defaultChatMessages;
 
+const ADMIN_USER = {
+    id: 1013,
+    name: 'admin',
+    email: 'admin@demo.com',
+    password: hashPassword('123'),
+    role: 'instructor'
+};
+
 // Initialize demo data if first time
 function initializeDemoData() {
     const seededInstructorNames = {
-        1: 'Abdulrahman',
+        1: 'Mazin',
         2: 'Wisal',
         3: 'Dr. Ahmed',
         4: 'Abdulrahman'
@@ -231,8 +244,16 @@ function initializeDemoData() {
             { id: 1009, name: 'Reem Khaled', email: 'reem@demo.com', password: hashPassword('demo123'), role: 'student' },
             { id: 1010, name: 'Omar Mahmoud', email: 'iomarmahmo@demo.com', password: hashPassword('demo123'), role: 'student' },
             { id: 1011, name: 'Zaid Ibrahim', email: 'zaid@demo.com', password: hashPassword('demo123'), role: 'student' },
-            { id: 1012, name: 'Meira Saeed', email: 'meira@demo.com', password: hashPassword('demo123'), role: 'student' }
+            { id: 1012, name: 'Meira Saeed', email: 'meira@demo.com', password: hashPassword('demo123'), role: 'student' },
+            ADMIN_USER
         ];
+        localStorage.setItem('users', JSON.stringify(users));
+    }
+
+    // Ensure admin user exists even if localStorage already has users
+    const hasAdminUser = users.some((user) => user.email === ADMIN_USER.email);
+    if (!hasAdminUser) {
+        users.push(ADMIN_USER);
         localStorage.setItem('users', JSON.stringify(users));
     }
 
@@ -248,7 +269,8 @@ function initializeDemoData() {
         1009: 'Reem Khaled',
         1010: 'Omar Mahmoud',
         1011: 'Zaid Ibrahim',
-        1012: 'Meira Saeed'
+        1012: 'Meira Saeed',
+        1013: 'admin'
     };
 
     users = users.map((user) => {
@@ -516,6 +538,67 @@ function openRegistrationForm() {
     window.open(REGISTRATION_FORM_URL, '_blank', 'noopener,noreferrer');
 }
 
+function canJoinLiveWorkshop(courseId) {
+    if (!currentUser) {
+        return false;
+    }
+
+    if (currentUser.role === 'instructor') {
+        return true;
+    }
+
+    const key = `${currentUser.id}_${courseId}`;
+    return Boolean(enrolledCourses[key]);
+}
+
+async function joinLiveWorkshop(courseId) {
+    if (!currentUser) {
+        alert(currentLang === 'ar' ? 'برجاء تسجيل الدخول أولا' : 'Please login first');
+        showLogin();
+        return;
+    }
+
+    if (!canJoinLiveWorkshop(courseId)) {
+        alert(currentLang === 'ar' ? 'سجل في الورشة أولاً للانضمام للجلسة المباشرة' : 'Please enroll in this workshop first to join the live session.');
+        return;
+    }
+
+    const course = coursesData.find(c => c.id === courseId);
+    if (!course) {
+        alert(currentLang === 'ar' ? 'تعذر العثور على الورشة' : 'Workshop not found');
+        return;
+    }
+
+    const courseName = currentLang === 'ar' ? course.name_ar : course.name_en;
+
+    try {
+        const response = await fetch('/api/bbb/join', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                meetingId: `workshop-${course.id}`,
+                courseId: course.id,
+                meetingName: courseName,
+                courseName,
+                fullName: currentUser.name,
+                role: currentUser.role
+            })
+        });
+
+        const data = await response.json();
+        if (!response.ok || !data.joinUrl) {
+            throw new Error(data.error || 'Failed to join meeting');
+        }
+
+        window.open(data.joinUrl, '_blank', 'noopener,noreferrer');
+    } catch (error) {
+        const fallback = currentLang === 'ar'
+            ? 'تعذر فتح جلسة BigBlueButton. تحقق من إعدادات الخادم.'
+            : 'Could not open BigBlueButton session. Check server configuration.';
+        alert(`${fallback}\n${error.message || ''}`.trim());
+    }
+}
+
 function logout() {
     currentUser = null;
     localStorage.removeItem('currentUser');
@@ -535,13 +618,18 @@ function displayCourses() {
     coursesData.forEach(course => {
         const courseName = currentLang === 'ar' ? course.name_ar : course.name_en;
         const courseDesc = currentLang === 'ar' ? course.desc_ar : course.desc_en;
+        const instructorPhoto = getProfilePhotoUrl(course.instructor, 128);
 
         const courseCard = document.createElement('div');
         courseCard.className = 'course-card';
+        const canJoinLive = canJoinLiveWorkshop(course.id);
         courseCard.innerHTML = `
             <div class="course-header">
                 <h3>${courseName}</h3>
-                <p style="font-size: 0.9rem; opacity: 0.9">${course.instructor}</p>
+                <div class="instructor-chip">
+                    <img class="instructor-avatar" src="${instructorPhoto}" alt="${course.instructor}" loading="lazy">
+                    <p>${course.instructor}</p>
+                </div>
             </div>
             <div class="course-body">
                 <p>${courseDesc}</p>
@@ -552,9 +640,14 @@ function displayCourses() {
             </div>
             <div class="course-footer">
                 <span class="price">$${course.price}</span>
-                <button class="btn-primary" onclick="viewCourseDetails(${course.id})">
-                    ${currentLang === 'ar' ? 'عرض التفاصيل' : 'View Details'}
-                </button>
+                <div class="course-actions">
+                    <button class="btn-primary" onclick="viewCourseDetails(${course.id})">
+                        ${currentLang === 'ar' ? 'عرض التفاصيل' : 'View Details'}
+                    </button>
+                    <button class="btn-secondary btn-live" onclick="joinLiveWorkshop(${course.id})" ${canJoinLive ? '' : 'disabled'}>
+                        ${currentLang === 'ar' ? 'جلسة مباشرة' : 'Live Session'}
+                    </button>
+                </div>
             </div>
         `;
         coursesGrid.appendChild(courseCard);
@@ -565,6 +658,7 @@ function viewCourseDetails(courseId) {
     const course = coursesData.find(c => c.id === courseId);
     const courseName = currentLang === 'ar' ? course.name_ar : course.name_en;
     const courseDesc = currentLang === 'ar' ? course.desc_ar : course.desc_en;
+    const instructorPhoto = getProfilePhotoUrl(course.instructor, 160);
 
     hideAllSections();
     document.getElementById('courseDetailSection').classList.add('active');
@@ -574,7 +668,10 @@ function viewCourseDetails(courseId) {
         <div style="background: white; padding: 2rem; border-radius: 10px; max-width: 1000px; margin: 0 auto;">
             <div style="background: linear-gradient(135deg, #6366f1, #ec4899); color: white; padding: 2rem; border-radius: 10px; margin-bottom: 2rem;">
                 <h2>${courseName}</h2>
-                <p>${course.instructor}</p>
+                <div class="instructor-detail-row">
+                    <img class="instructor-avatar instructor-avatar-lg" src="${instructorPhoto}" alt="${course.instructor}" loading="lazy">
+                    <p>${course.instructor}</p>
+                </div>
                 <div style="margin-top: 1rem; display: flex; gap: 2rem;">
                     <div>
                         <strong>${currentLang === 'ar' ? 'التقييم' : 'Rating'}:</strong> ⭐ ${course.rating}
@@ -603,6 +700,9 @@ function viewCourseDetails(courseId) {
             <div style="display: flex; gap: 1rem;">
                 <button class="btn-primary" onclick="enrollCourse(${course.id})">
                     ${currentLang === 'ar' ? 'التسجيل الآن' : 'Enroll Now'} - $${course.price}
+                </button>
+                <button class="btn-secondary btn-live" onclick="joinLiveWorkshop(${course.id})" ${canJoinLiveWorkshop(course.id) ? '' : 'disabled'}>
+                    ${currentLang === 'ar' ? 'انضمام للجلسة المباشرة' : 'Join Live Workshop'}
                 </button>
                 <button class="btn-secondary" onclick="showCourses()">
                     ${currentLang === 'ar' ? 'العودة' : 'Back'}
@@ -1259,6 +1359,7 @@ window.handleLogin = handleLogin;
 window.handleRegister = handleRegister;
 window.logout = logout;
 window.viewCourseDetails = viewCourseDetails;
+window.joinLiveWorkshop = joinLiveWorkshop;
 window.enrollCourse = enrollCourse;
 window.sendMessage = sendMessage;
 window.showDashboard = showDashboard;

@@ -13,39 +13,95 @@ const invoices = [
     name: 'نادين جعفر المدني احمد',
     email: 'nadeenjaffer@gmail.com',
     paymentDate: '23/4/2026',
-    paymentMethod: 'بنك الخرطوم (بنكك)',
+    paymentTime: '12:12 PM',
+    currency: 'جنيه سوداني',
+    paymentMethod: 'بنك الخرطوم(بنكك)',
     amount: '100,000 جنيه سوداني',
-    note: 'تم إعداد هذه الفاتورة بناءً على البيانات المحدثة.',
+    note: 'تم إعداد هذه الفاتورة بناءً على بيانات السداد المحدثة.',
   },
   {
     invoiceNumber: 'FSSR-2026-002',
     fileSlug: 'invoice-02-alnour',
     name: 'النور مصطفى النور محمد',
     email: 'alnourmustafa97@gmail.com',
-    paymentDate: '23/4/2026',
-    paymentMethod: 'بنك الخرطوم (بنكك)',
+    paymentDate: '24/4/2026',
+    paymentTime: '11:51 PM',
+    currency: 'جنيه سوداني',
+    paymentMethod: 'بنك الخرطوم(بنكك)',
     amount: '100,000 جنيه سوداني',
-    note: 'تم إعداد هذه الفاتورة بناءً على البيانات المحدثة.',
+    note: 'تم إعداد هذه الفاتورة بناءً على بيانات السداد المحدثة.',
   },
   {
     invoiceNumber: 'FSSR-2026-003',
     fileSlug: 'invoice-03-elham',
     name: 'إلهام عامر محمد أحمد',
     email: 'elhamelhamelham99@gmail.com',
-    paymentDate: '23/4/2026',
-    paymentMethod: 'بنك الخرطوم (بنكك)',
+    paymentDate: '25/4/2026',
+    paymentTime: 'غير مذكور',
+    currency: 'جنيه سوداني',
+    paymentMethod: 'بنك الخرطوم(بنكك)',
     amount: '200,000 جنيه سوداني',
-    note: 'تم إعداد هذه الفاتورة بناءً على البيانات المحدثة.',
+    note: 'تم إعداد هذه الفاتورة بناءً على بيانات السداد المحدثة.',
   },
   {
     invoiceNumber: 'FSSR-2026-004',
     fileSlug: 'invoice-04-sittana',
     name: 'ستنا عبدالله سيداحمد محمد',
     email: 'sittana8@gmail.com',
-    paymentDate: '23/4/2026',
+    paymentDate: '26/4/2026',
+    paymentTime: '17:56 PM',
+    currency: 'جنيه سوداني',
+    paymentMethod: 'بنك الخرطوم(بنكك)',
+    amount: '200,000 جنيه سوداني',
+    note: 'تم إعداد هذه الفاتورة بناءً على بيانات السداد المحدثة.',
+  },
+  {
+    invoiceNumber: 'FSSR-2026-005',
+    fileSlug: 'invoice-05-musa',
+    name: 'موسى ادريس عامر',
+    email: 'musaidrees520@gmail.com',
+    paymentDate: '24/4/2026',
+    paymentTime: '10:34 AM',
+    currency: 'جنيه سوداني',
+    paymentMethod: 'بنك الخرطوم(بنكك)',
+    amount: '200,000 جنيه سوداني',
+    note: 'تم إعداد هذه الفاتورة بناءً على بيانات السداد المحدثة.',
+  },
+  {
+    invoiceNumber: 'FSSR-2026-006',
+    fileSlug: 'invoice-06-khadija',
+    name: 'خديجة برير',
+    email: 'khadijabhar4@gmail.com',
+    paymentDate: '3/5/2026',
+    paymentTime: '12:40',
+    currency: 'جنيه سوداني',
     paymentMethod: 'بنك الخرطوم (بنكك)',
     amount: '200,000 جنيه سوداني',
-    note: 'تم إعداد هذه الفاتورة بناءً على البيانات المحدثة.',
+    note: 'تم إعداد هذه الفاتورة بناءً على بيانات السداد المحدثة.',
+  },
+  {
+    invoiceNumber: 'FSSR-2026-007',
+    fileSlug: 'invoice-07-ruba',
+    name: 'ربى نزار',
+    email: 'rubanazar154@gmail.com',
+    paymentDate: '28/4/2026',
+    paymentTime: '09:05 PM',
+    currency: 'جنيه سوداني',
+    paymentMethod: 'بنك الخرطوم (بنكك)',
+    amount: '200,000 جنيه سوداني',
+    note: 'تم إعداد هذه الفاتورة بناءً على بيانات السداد المحدثة.',
+  },
+  {
+    invoiceNumber: 'FSSR-2026-008',
+    fileSlug: 'invoice-08-salma',
+    name: 'سلمى الفاضل',
+    email: 'salmaelfadil.view@gmail.com',
+    paymentDate: '5/5/2026',
+    paymentTime: '12:38 PM',
+    currency: 'دولار',
+    paymentMethod: 'Wise',
+    amount: '50$',
+    note: 'تم إعداد هذه الفاتورة بناءً على بيانات السداد المحدثة.',
   },
 ];
 
@@ -465,6 +521,14 @@ function buildInvoiceHtml(invoice) {
               <div class="detail-row">
                 <div class="detail-label">تاريخ الدفع</div>
                 <div class="detail-value ltr">${invoice.paymentDate}</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label">وقت الدفع</div>
+                <div class="detail-value ltr">${invoice.paymentTime}</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label">العملة</div>
+                <div class="detail-value">${invoice.currency}</div>
               </div>
               <div class="detail-row">
                 <div class="detail-label">وسيلة الدفع</div>
