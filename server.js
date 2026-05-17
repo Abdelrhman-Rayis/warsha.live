@@ -21,6 +21,18 @@ if (!process.env.BBB_BASE_URL || !process.env.BBB_SECRET) {
 // just a JSON file. Fine for a single 1GB node and zero dependencies.
 const CLASSES_DB_PATH = path.join(rootDir, 'data', 'classes.json');
 const USERS_DB_PATH = path.join(rootDir, 'data', 'users.json');
+const WORKSHOPS_DB_PATH = path.join(rootDir, 'data', 'workshops.json');
+
+// Stripe — optional. Falls back gracefully if no secret key is set.
+const STRIPE_SECRET = process.env.STRIPE_SECRET || '';
+let stripe = null;
+if (STRIPE_SECRET) {
+  try {
+    stripe = require('stripe')(STRIPE_SECRET);
+  } catch (e) {
+    console.warn('[stripe] module not installed or key invalid:', e.message);
+  }
+}
 
 const mimeTypes = {
   '.html': 'text/html; charset=utf-8',
@@ -194,7 +206,7 @@ function buildJoinUrl({ record, fullName, role }) {
   });
 }
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
   if (req.method === 'OPTIONS') {
     res.writeHead(204, {
       'Access-Control-Allow-Origin': '*',
@@ -540,6 +552,117 @@ const server = http.createServer((req, res) => {
         sendJson(res, 500, { error: err.message || 'Registration failed.' });
       }
     });
+    return;
+  }
+
+  // ---------------------------------------------------------------
+  // GET /api/workshops — list all workshops with enrollment counts
+  // ---------------------------------------------------------------
+  if (req.method === 'GET' && req.url === '/api/workshops') {
+    try {
+      const db = JSON.parse(fs.readFileSync(WORKSHOPS_DB_PATH, 'utf8'));
+      const list = db.map(w => ({
+        id: w.id, title: w.title, description: w.description,
+        instructor: w.instructor, price: w.price, currency: w.currency,
+        duration: w.duration, startDate: w.startDate, avatar: w.avatar,
+        enrolledCount: w.enrolled.length
+      }));
+      sendJson(res, 200, list);
+    } catch (err) {
+      sendJson(res, 500, { error: 'Failed to load workshops.' });
+    }
+    return;
+  }
+
+  // ---------------------------------------------------------------
+  // POST /api/workshop/enroll
+  // Body: { workshopId, userEmail }
+  // Free → enrolled instantly. Paid → returns Stripe checkout URL.
+  // ---------------------------------------------------------------
+  if (req.method === 'POST' && req.url === '/api/workshop/enroll') {
+    let body = '';
+    req.on('data', (chunk) => { body += chunk.toString(); if (body.length > 1e5) req.destroy(); });
+    req.on('end', async () => {
+      try {
+        const { workshopId, userEmail } = JSON.parse(body);
+        if (!workshopId) { sendJson(res, 400, { error: 'workshopId required.' }); return; }
+        const db = JSON.parse(fs.readFileSync(WORKSHOPS_DB_PATH, 'utf8'));
+        const w = db.find(x => x.id === workshopId);
+        if (!w) { sendJson(res, 404, { error: 'Workshop not found.' }); return; }
+
+        if (w.price === 0) {
+          // Free workshop — enroll immediately
+          if (!w.enrolled.includes(userEmail)) w.enrolled.push(userEmail);
+          fs.writeFileSync(WORKSHOPS_DB_PATH, JSON.stringify(db, null, 2));
+          sendJson(res, 200, { enrolled: true, workshopId: w.id, title: w.title });
+        } else if (!stripe) {
+          // Paid but no Stripe configured
+          sendJson(res, 503, { error: 'Payment system not yet configured. Stripe secret key missing.' });
+        } else {
+          // Paid workshop — create Stripe Checkout Session
+          const DOMAIN = process.env.SITE_DOMAIN || 'https://warsha.live';
+          const session = await stripe.checkout.sessions.create({
+            line_items: [{
+              price_data: {
+                currency: w.currency,
+                product_data: { name: w.title },
+                unit_amount: w.price * 100, // cents
+              },
+              quantity: 1,
+            }],
+            mode: 'payment',
+            success_url: `${DOMAIN}/api/workshop/payment-success?session_id={CHECKOUT_SESSION_ID}&workshop_id=${workshopId}&email=${encodeURIComponent(userEmail)}`,
+            cancel_url: `${DOMAIN}/`,
+            metadata: { workshopId, userEmail },
+          });
+          sendJson(res, 200, { stripeUrl: session.url });
+        }
+      } catch (err) {
+        sendJson(res, 500, { error: err.message || 'Enrollment failed.' });
+      }
+    });
+    return;
+  }
+
+  // ---------------------------------------------------------------
+  // GET /api/workshop/payment-success — Stripe callback
+  // ---------------------------------------------------------------
+  if (req.method === 'GET' && req.url.startsWith('/api/workshop/payment-success')) {
+    const u = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+    const sessionId = u.searchParams.get('session_id');
+    const workshopId = u.searchParams.get('workshop_id');
+    const email = u.searchParams.get('email');
+    try {
+      if (!stripe || !sessionId) {
+        sendJson(res, 400, { error: 'Invalid payment session.' });
+        return;
+      }
+      const session = await stripe.checkout.sessions.retrieve(sessionId);
+      if (session.payment_status !== 'paid') {
+        res.writeHead(302, { Location: '/' });
+        res.end();
+        return;
+      }
+      // Enroll the user
+      const db = JSON.parse(fs.readFileSync(WORKSHOPS_DB_PATH, 'utf8'));
+      const w = db.find(x => x.id === workshopId);
+      if (w && email && !w.enrolled.includes(email)) w.enrolled.push(email);
+      if (w) fs.writeFileSync(WORKSHOPS_DB_PATH, JSON.stringify(db, null, 2));
+      // Redirect to a nice success page or the home page
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end(`<!DOCTYPE html><html><head><meta charset="utf-8"><title>Enrolled!</title>
+<style>body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;background:#f8f9fa;margin:0;}
+.card{background:#fff;padding:3rem;border-radius:12px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,0.08);max-width:480px;}
+.card h1{color:#15543a;margin:0 0 1rem;} .card p{color:#5b6478;margin:0 0 1.5rem;}
+.card a{display:inline-block;padding:0.75rem 2rem;background:#1a1f2e;color:#fff;border-radius:8px;text-decoration:none;font-weight:600;}
+</style></head><body><div class="card">
+<h1>✓ You're enrolled!</h1><p>${w ? 'Welcome to <b>' + w.title + '</b>.' : 'You now have access to the workshop.'}</p>
+<p>Your instructor will share the live class link before the start date.</p>
+<a href="/">Back to Warsha</a></div></body></html>`);
+    } catch (err) {
+      res.writeHead(302, { Location: '/' });
+      res.end();
+    }
     return;
   }
 

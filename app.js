@@ -409,6 +409,84 @@ function updateLanguage() {
 function showHome() {
     hideAllSections();
     document.getElementById('homeSection').classList.add('active');
+    loadTrendingWorkshops();
+}
+
+// -------- Workshop enrollment (free / paid) --------
+
+async function loadTrendingWorkshops() {
+    const grid = document.getElementById('trendingGrid');
+    if (!grid) return;
+    try {
+        const resp = await fetch('/api/workshops');
+        if (!resp.ok) throw new Error('Failed');
+        const workshops = await resp.json();
+        grid.innerHTML = workshops.map(w => {
+            const isFree = w.price === 0;
+            const priceLabel = isFree ? 'Free' : `$${w.price} ${w.currency.toUpperCase()}`;
+            const badgeClass = isFree ? 'free' : 'paid';
+            return `<article class="trend-card">
+                <span class="trend-price-badge ${badgeClass}">${priceLabel}</span>
+                <h4>${w.title}</h4>
+                <p class="trend-meta">${w.duration} · Starts ${new Date(w.startDate).toLocaleDateString('en-US', {month:'short',day:'numeric'})}</p>
+                <p class="trend-host">
+                    <img class="trend-host-avatar" src="${w.avatar}" alt="${w.instructor}" loading="lazy">
+                    <span>By ${w.instructor}</span>
+                </p>
+                <button class="trend-enroll-btn ${badgeClass}" onclick="enrollWorkshop('${w.id}', ${w.price}, '${w.title.replace(/'/g, "\\'")}')">
+                    ${isFree ? 'Join Free →' : 'Enroll — $' + w.price}
+                </button>
+            </article>`;
+        }).join('');
+    } catch (err) {
+        console.error('Failed to load workshops', err);
+        grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#991b1b;">Could not load workshops.</p>';
+    }
+}
+
+async function enrollWorkshop(workshopId, price, title) {
+    if (!currentUser || !currentUser.email) {
+        showLogin();
+        return;
+    }
+    if (price > 0) {
+        // Show loading state
+        const btn = event.target;
+        const origText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Redirecting to payment…';
+        try {
+            const resp = await fetch('/api/workshop/enroll', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ workshopId, userEmail: currentUser.email })
+            });
+            const data = await resp.json();
+            if (data.stripeUrl) {
+                window.location.href = data.stripeUrl;
+            } else {
+                alert(data.error || 'Payment is not available yet.');
+            }
+        } catch (err) {
+            alert('Enrollment failed: ' + err.message);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = origText;
+        }
+    } else {
+        // Free workshop — enroll instantly
+        const resp = await fetch('/api/workshop/enroll', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ workshopId, userEmail: currentUser.email })
+        });
+        const data = await resp.json();
+        if (data.enrolled) {
+            alert('✓ You\'re enrolled in "' + title + '"! Your instructor will share the live class link.');
+        } else {
+            alert(data.error || 'Enrollment failed.');
+        }
+    }
 }
 
 function openRooms(event) {
@@ -1404,3 +1482,5 @@ window.handleCreateCourse = handleCreateCourse;
 window.viewCourseStudents = viewCourseStudents;
 window.continueCourse = continueCourse;
 window.handlePayment = handlePayment;
+window.enrollWorkshop = enrollWorkshop;
+window.loadTrendingWorkshops = loadTrendingWorkshops;

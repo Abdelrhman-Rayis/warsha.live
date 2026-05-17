@@ -2584,6 +2584,35 @@ html[lang="en"] .module-highlight {
     box-shadow: 0 6px 16px rgba(22, 34, 62, 0.15);
 }
 
+.trend-price-badge {
+    display: inline-block;
+    padding: 0.15rem 0.65rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+}
+.trend-price-badge.free { background: #d4edda; color: #15543a; }
+.trend-price-badge.paid { background: #faf3e0; color: #b08d3c; }
+
+.trend-enroll-btn {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    text-decoration: none;
+}
+.trend-enroll-btn.free { background: #15543a; color: #fff; }
+.trend-enroll-btn.free:hover { background: #0e3b28; }
+.trend-enroll-btn.paid { background: #b08d3c; color: #fff; }
+.trend-enroll-btn.paid:hover { background: #8c6e2a; }
+
 @media (max-width: 680px) {
     .instructor-avatar {
         width: 2.9rem;
