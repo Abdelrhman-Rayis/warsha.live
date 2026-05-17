@@ -31,6 +31,28 @@
     .share-block code { display: block; word-break: break-all; padding: 0.5rem; background: #fff; border: 1px solid #e6e1d4; border-radius: 4px; margin-top: 0.5rem; font-size: 0.78rem; color: #5b6478; }
     .back-link { display: inline-block; margin-bottom: 1.5rem; color: #5b6478; text-decoration: none; font-size: 0.9rem; }
     .back-link:hover { color: #1a1f2e; }
+    .or-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 0;
+    }
+    .or-divider::before, .or-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: #d6d0c2;
+    }
+    .or-divider span {
+        padding: 0 1.5rem;
+        color: #9ca3af;
+        font-weight: 700;
+        font-size: 1.1rem;
+        letter-spacing: 0.1em;
+    }
+    @media (max-width: 720px) {
+        .or-divider { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -61,6 +83,8 @@
           <code id="shareLink"></code>
         </div>
       </section>
+
+      <div class="or-divider"><span>OR</span></div>
 
       <section class="class-card">
         <span class="role-tag">Student</span>

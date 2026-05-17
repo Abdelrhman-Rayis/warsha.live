@@ -572,6 +572,7 @@ async function showCategory(category) {
             const isFree = w.price === 0;
             const badgeClass = isFree ? 'free' : 'paid';
             const priceLabel = isFree ? 'Free' : '$' + w.price;
+            const isDemo = w.id.startsWith('demo-');
             return `<div class="category-card">
                 <span class="trend-price-badge ${badgeClass}">${priceLabel}</span>
                 <h3>${w.title}</h3>
@@ -580,7 +581,10 @@ async function showCategory(category) {
                     <img src="${w.avatar}" alt="${w.instructor}">
                     <span>By ${w.instructor}</span>
                 </p>
-                ${w.id.startsWith('demo-') ? '<span class="demo-badge">Demo</span>' : ''}
+                <div style="display:flex;align-items:center;gap:0.75rem;margin-top:1rem;">
+                    ${isDemo ? '<span class="demo-badge">Demo</span>' : `<button class="trend-enroll-btn ${badgeClass}" onclick="enrollWorkshop('${w.id}', ${w.price}, '${w.title.replace(/'/g, "\\'")}')">${isFree ? 'Join Free →' : 'Enroll — $' + w.price}</button>`}
+                    ${isDemo ? '<button class="trend-enroll-btn paid" style="opacity:0.6;cursor:not-allowed;" disabled>Coming Soon</button>' : ''}
+                </div>
             </div>`;
         }).join('');
     } catch (err) {
