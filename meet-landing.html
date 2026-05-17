@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>warsha.live — Start a Meeting</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 2.5rem;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .logo { font-size: 2rem; font-weight: 700; color: #1a1f2e; margin-bottom: 0.25rem; }
+        .sub { color: #5b6478; margin-bottom: 2rem; font-size: 0.95rem; }
+        label {
+            display: block;
+            text-align: left;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1a1f2e;
+            margin-bottom: 0.35rem;
+        }
+        input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d6d0c2;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+            font-family: inherit;
+        }
+        input:focus { outline: none; border-color: #b08d3c; }
+        button {
+            width: 100%;
+            padding: 0.85rem;
+            background: #1a1f2e;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        button:hover { background: #2a3142; }
+        button:disabled { opacity: 0.6; cursor: wait; }
+        .result {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            background: #f0f9f3;
+            border: 1px solid #b5e0c5;
+            border-radius: 10px;
+            display: none;
+        }
+        .result.visible { display: block; }
+        .result h3 { color: #15543a; margin-bottom: 0.5rem; font-size: 1rem; }
+        .link-box {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+        .link-box input {
+            flex: 1;
+            padding: 0.5rem;
+            font-family: monospace;
+            font-size: 0.82rem;
+            background: #fff;
+            border: 2px solid #b08d3c;
+            border-radius: 6px;
+            margin: 0;
+        }
+        .link-box button {
+            width: auto;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            border-radius: 6px;
+        }
+        .error {
+            background: #fef2f2;
+            border-color: #fecaca;
+            color: #991b1b;
+        }
+        .join-btn {
+            display: inline-block;
+            margin-top: 0.75rem;
+            padding: 0.65rem 1.5rem;
+            background: #15543a;
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .join-btn:hover { background: #0e3b28; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="logo">warsha.live</div>
+        <p class="sub">Create a live classroom in seconds</p>
+        <form id="meetingForm">
+            <label for="roomName">Room name</label>
+            <input id="roomName" placeholder="e.g. Week 3 — Research Methods" required maxlength="80">
+            <label for="yourName">Your name</label>
+            <input id="yourName" placeholder="e.g. Dr. Abdallah" required maxlength="60">
+            <button type="submit" id="createBtn">Create Meeting</button>
+        </form>
+        <div id="result" class="result">
+            <h3>✓ Meeting created!</h3>
+            <p id="meetingInfo" style="font-size:0.9rem;color:#5b6478;"></p>
+            <div class="link-box">
+                <input id="meetingLink" readonly onclick="this.select();copyLink()">
+                <button onclick="copyLink()">Copy</button>
+            </div>
+            <a id="joinBtn" class="join-btn" href="#" target="_blank">Join as Host →</a>
+        </div>
+        <p style="margin-top:1.5rem;font-size:0.8rem;color:#9ca3af;">
+            Powered by <a href="https://warsha.live" style="color:#b08d3c;text-decoration:none;">warsha.live</a>
+        </p>
+    </div>
+
+    <script>
+        const form = document.getElementById('meetingForm');
+        const result = document.getElementById('result');
+        const API = 'https://warsha.live/api/class/create';
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('createBtn');
+            btn.disabled = true;
+            btn.textContent = 'Creating…';
+            result.classList.remove('visible');
+
+            try {
+                const resp = await fetch(API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        className: document.getElementById('roomName').value.trim(),
+                        educatorName: document.getElementById('yourName').value.trim()
+                    })
+                });
+                const data = await resp.json();
+                if (!resp.ok) throw new Error(data.error || 'Failed');
+
+                const joinLink = 'https://warsha.live' + data.moderatorJoinUrl;
+                const studentLink = 'https://warsha.live/classes/?join=' + encodeURIComponent(data.meetingId);
+
+                document.getElementById('meetingInfo').innerHTML =
+                    '<strong>Meeting ID:</strong> <code style="background:#fff;padding:0.2rem 0.5rem;border-radius:4px;">' + data.meetingId + '</code><br>' +
+                    'Share this with students to join.';
+                document.getElementById('meetingLink').value = studentLink;
+                document.getElementById('joinBtn').href = joinLink;
+                result.classList.add('visible');
+            } catch (err) {
+                result.classList.add('visible');
+                result.className = 'result error visible';
+                result.innerHTML = '<p>❌ ' + err.message + '</p>';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Create Meeting';
+            }
+        });
+
+        function copyLink() {
+            const input = document.getElementById('meetingLink');
+            input.select();
+            navigator.clipboard.writeText(input.value).catch(() => {
+                document.execCommand('copy');
+            });
+        }
+    </script>
+</body>
+</html>
