@@ -12,7 +12,7 @@
     .classes-header { text-align: center; margin-bottom: 2.5rem; }
     .classes-header h1 { font-size: 2rem; margin: 0 0 0.5rem; color: #1a1f2e; }
     .classes-header p { color: #5b6478; margin: 0; }
-    .classes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .classes-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.5rem; align-items: start; }
     @media (max-width: 720px) { .classes-grid { grid-template-columns: 1fr; } }
     .class-card { background: #fff; border: 1px solid #e6e1d4; border-radius: 12px; padding: 1.75rem; box-shadow: 0 1px 4px rgba(0,0,0,0.03); }
     .class-card h2 { margin: 0 0 0.4rem; font-size: 1.25rem; color: #1a1f2e; }
@@ -36,6 +36,7 @@
         align-items: center;
         justify-content: center;
         padding: 1rem 0;
+        align-self: center;
     }
     .or-divider::before, .or-divider::after {
         content: '';
