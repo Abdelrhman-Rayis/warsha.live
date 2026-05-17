@@ -2675,6 +2675,65 @@ html[lang="en"] .module-highlight {
 .my-workshop-empty p { margin: 0 0 1.5rem; }
 @media (max-width: 720px) { .my-workshops-grid { grid-template-columns: 1fr; } }
 
+/* --- Category Page --- */
+.category-wrap {
+    max-width: 920px;
+    margin: 2rem auto;
+    padding: 0 1.25rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.category-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+.category-header h1 {
+    font-size: 2.25rem;
+    color: #1a1f2e;
+    margin: 0 0 0.4rem;
+}
+.category-header p {
+    color: #5b6478;
+    font-size: 1.05rem;
+    margin: 0;
+}
+.category-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+.category-card {
+    background: #fff;
+    border: 1px solid #e6e1d4;
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    transition: box-shadow 0.2s;
+}
+.category-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.category-card h3 {
+    margin: 0.5rem 0 0.65rem;
+    color: #1a1f2e;
+    font-size: 1.2rem;
+}
+.cat-meta {
+    color: #5b6478;
+    font-size: 0.88rem;
+    margin: 0 0 1rem;
+}
+.demo-badge {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.15rem 0.6rem;
+    background: #f0f0f5;
+    color: #6f7388;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+@media (max-width: 720px) { .category-grid { grid-template-columns: 1fr; } }
+
 @media (max-width: 680px) {
     .instructor-avatar {
         width: 2.9rem;

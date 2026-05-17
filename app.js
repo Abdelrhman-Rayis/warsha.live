@@ -534,6 +534,60 @@ async function filterWorkshops(category) {
     }
 }
 
+// Full category page with demo data fallback
+async function showCategory(category) {
+    const section = document.getElementById('categorySection');
+    const title = document.getElementById('categoryTitle');
+    const desc = document.getElementById('categoryDesc');
+    const grid = document.getElementById('categoryGrid');
+    hideAllSections();
+    section.classList.add('active');
+    title.textContent = category;
+    desc.textContent = 'Workshops in ' + category + '.';
+    grid.innerHTML = '<p style="color:#5b6478;">Loading…</p>';
+
+    try {
+        const resp = await fetch('/api/workshops');
+        const all = resp.ok ? await resp.json() : [];
+        let filtered = all.filter(w => w.category === category);
+
+        // Pad with demo workshops if fewer than 3
+        while (filtered.length < 3) {
+            const demo = {
+                id: 'demo-' + Date.now() + '-' + filtered.length,
+                title: category + ' Workshop ' + (filtered.length + 1),
+                instructor: 'Warsha Instructor',
+                duration: '4 weeks',
+                startDate: '2026-06-01',
+                price: filtered.length % 2 === 0 ? 0 : 39,
+                currency: 'usd',
+                avatar: 'https://api.dicebear.com/9.x/initials/svg?seed=Warsha&radius=50&size=120&backgroundType=gradientLinear',
+                category: category,
+                enrolledCount: Math.floor(Math.random() * 20)
+            };
+            filtered.push(demo);
+        }
+
+        grid.innerHTML = filtered.map(w => {
+            const isFree = w.price === 0;
+            const badgeClass = isFree ? 'free' : 'paid';
+            const priceLabel = isFree ? 'Free' : '$' + w.price;
+            return `<div class="category-card">
+                <span class="trend-price-badge ${badgeClass}">${priceLabel}</span>
+                <h3>${w.title}</h3>
+                <p class="cat-meta">${w.duration} · Starts ${new Date(w.startDate).toLocaleDateString('en-US', {month:'short',day:'numeric'})} · ${w.enrolledCount || 0} enrolled</p>
+                <p class="wksh-instructor">
+                    <img src="${w.avatar}" alt="${w.instructor}">
+                    <span>By ${w.instructor}</span>
+                </p>
+                ${w.id.startsWith('demo-') ? '<span class="demo-badge">Demo</span>' : ''}
+            </div>`;
+        }).join('');
+    } catch (err) {
+        grid.innerHTML = '<p style="color:#991b1b;">Could not load ' + category + ' workshops.</p>';
+    }
+}
+
 function openRooms(event) {
     if (event) event.preventDefault();
     window.open('/classes', '_blank', 'noopener');
@@ -1586,3 +1640,4 @@ window.enrollWorkshop = enrollWorkshop;
 window.loadTrendingWorkshops = loadTrendingWorkshops;
 window.showMyWorkshops = showMyWorkshops;
 window.filterWorkshops = filterWorkshops;
+window.showCategory = showCategory;

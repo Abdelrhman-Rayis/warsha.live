@@ -29,12 +29,12 @@
                         </div>
                     </div>
                     <div class="market-category-row" id="categoryRow">
-                        <span onclick="filterWorkshops('Research')">Research</span>
-                        <span onclick="filterWorkshops('Product')">Product</span>
-                        <span onclick="filterWorkshops('AI')">AI</span>
-                        <span onclick="filterWorkshops('Design')">Design</span>
-                        <span onclick="filterWorkshops('Leadership')">Leadership</span>
-                        <span onclick="filterWorkshops('Founder Skills')">Founder Skills</span>
+                        <span onclick="showCategory('Research')">Research</span>
+                        <span onclick="showCategory('Product')">Product</span>
+                        <span onclick="showCategory('AI')">AI</span>
+                        <span onclick="showCategory('Design')">Design</span>
+                        <span onclick="showCategory('Leadership')">Leadership</span>
+                        <span onclick="showCategory('Founder Skills')">Founder Skills</span>
                     </div>
                 </section>
 
@@ -252,6 +252,20 @@
                     </div>
                 </div>
             </div>
+    </div>
+
+    <!-- Category Page -->
+    <div id="categorySection" class="section">
+        <div class="category-wrap">
+            <a class="back-link" href="#" onclick="showHome(); return false;">&larr; Back to Warsha</a>
+            <header class="category-header">
+                <h1 id="categoryTitle">Category</h1>
+                <p id="categoryDesc">Workshops in this category.</p>
+            </header>
+            <div class="category-grid" id="categoryGrid">
+                <p style="color:#5b6478;">Loading workshops…</p>
+            </div>
+        </div>
     </div>
 
     <!-- My Workshops -->
