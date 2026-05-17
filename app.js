@@ -371,6 +371,11 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         showHome();
     }
+
+    // Auto-open My Workshops from payment success redirect
+    if (new URLSearchParams(location.search).get('my-workshops') === '1') {
+        setTimeout(() => { if (currentUser) showMyWorkshops(); }, 500);
+    }
 });
 
 function applyLanguageState() {
@@ -483,6 +488,7 @@ async function enrollWorkshop(workshopId, price, title) {
         const data = await resp.json();
         if (data.enrolled) {
             alert('✓ You\'re enrolled in "' + title + '"! Your instructor will share the live class link.');
+            if (confirm('View your workshops?')) showMyWorkshops();
         } else {
             alert(data.error || 'Enrollment failed.');
         }
@@ -498,6 +504,39 @@ function showCourses() {
     hideAllSections();
     document.getElementById('coursesSection').classList.add('active');
     displayCourses();
+}
+
+async function showMyWorkshops() {
+    if (!currentUser || !currentUser.email) {
+        showLogin();
+        return;
+    }
+    hideAllSections();
+    document.getElementById('myWorkshopsSection').classList.add('active');
+    const grid = document.getElementById('myWorkshopsGrid');
+    grid.innerHTML = '<p style="color:#5b6478;">Loading…</p>';
+    try {
+        const resp = await fetch('/api/my-workshops?email=' + encodeURIComponent(currentUser.email));
+        if (!resp.ok) throw new Error('Failed');
+        const workshops = await resp.json();
+        if (workshops.length === 0) {
+            grid.innerHTML = '<div class="my-workshop-empty"><p>You haven\'t enrolled in any workshops yet.</p><button class="btn-primary" onclick="showHome()">Browse Workshops</button></div>';
+            return;
+        }
+        grid.innerHTML = workshops.map(w => `
+            <div class="my-workshop-card">
+                <span class="trend-price-badge ${w.price === 0 ? 'free' : 'paid'}">${w.price === 0 ? 'Free' : '$' + w.price}</span>
+                <h3>${w.title}</h3>
+                <p class="wksh-meta">${w.duration} · Starts ${new Date(w.startDate).toLocaleDateString('en-US', {month:'short',day:'numeric'})}</p>
+                <div class="wksh-instructor">
+                    <img src="${w.avatar}" alt="${w.instructor}">
+                    <span>By ${w.instructor}</span>
+                </div>
+            </div>
+        `).join('');
+    } catch (err) {
+        grid.innerHTML = '<p style="color:#991b1b;">Could not load your workshops.</p>';
+    }
 }
 
 function showChat() {
@@ -1506,3 +1545,4 @@ window.continueCourse = continueCourse;
 window.handlePayment = handlePayment;
 window.enrollWorkshop = enrollWorkshop;
 window.loadTrendingWorkshops = loadTrendingWorkshops;
+window.showMyWorkshops = showMyWorkshops;

@@ -592,6 +592,25 @@ const server = http.createServer(async (req, res) => {
   }
 
   // ---------------------------------------------------------------
+  // GET /api/my-workshops?email=...  — enrolled workshops for a user
+  // ---------------------------------------------------------------
+  if (req.method === 'GET' && req.url.startsWith('/api/my-workshops')) {
+    const u = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+    const email = u.searchParams.get('email') || '';
+    try {
+      const db = JSON.parse(fs.readFileSync(WORKSHOPS_DB_PATH, 'utf8'));
+      const enrolled = db.filter(w => w.enrolled.includes(email)).map(w => ({
+        id: w.id, title: w.title, instructor: w.instructor,
+        duration: w.duration, startDate: w.startDate, price: w.price, avatar: w.avatar
+      }));
+      sendJson(res, 200, enrolled);
+    } catch (err) {
+      sendJson(res, 500, { error: 'Failed to load your workshops.' });
+    }
+    return;
+  }
+
+  // ---------------------------------------------------------------
   // GET /api/workshops — list all workshops with enrollment counts
   // ---------------------------------------------------------------
   if (req.method === 'GET' && req.url === '/api/workshops') {
@@ -694,7 +713,7 @@ const server = http.createServer(async (req, res) => {
 </style></head><body><div class="card">
 <h1>✓ You're enrolled!</h1><p>${w ? 'Welcome to <b>' + w.title + '</b>.' : 'You now have access to the workshop.'}</p>
 <p>Your instructor will share the live class link before the start date.</p>
-<a href="/">Back to Warsha</a></div></body></html>`);
+<a href="/">Back to Warsha</a> &nbsp; <a href="/?my-workshops=1">View My Workshops →</a></div></body></html>`);
     } catch (err) {
       res.writeHead(302, { Location: '/' });
       res.end();
