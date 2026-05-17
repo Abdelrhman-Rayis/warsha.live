@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Classes | Warsha</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .classes-wrap { max-width: 880px; margin: 4rem auto; padding: 0 1.25rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .classes-header { text-align: center; margin-bottom: 2.5rem; }
+    .classes-header h1 { font-size: 2rem; margin: 0 0 0.5rem; color: #1a1f2e; }
+    .classes-header p { color: #5b6478; margin: 0; }
+    .classes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 720px) { .classes-grid { grid-template-columns: 1fr; } }
+    .class-card { background: #fff; border: 1px solid #e6e1d4; border-radius: 12px; padding: 1.75rem; box-shadow: 0 1px 4px rgba(0,0,0,0.03); }
+    .class-card h2 { margin: 0 0 0.4rem; font-size: 1.25rem; color: #1a1f2e; }
+    .class-card .role-tag { display: inline-block; font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; color: #b08d3c; font-weight: 600; margin-bottom: 1rem; }
+    .class-card label { display: block; font-size: 0.85rem; color: #1a1f2e; margin-bottom: 0.35rem; font-weight: 500; }
+    .class-card input { width: 100%; padding: 0.65rem 0.85rem; border: 1px solid #d6d0c2; border-radius: 8px; font-size: 0.95rem; margin-bottom: 1rem; box-sizing: border-box; font-family: inherit; }
+    .class-card input:focus { outline: none; border-color: #b08d3c; }
+    .class-card button { width: 100%; padding: 0.75rem; background: #1a1f2e; color: #fff; border: 0; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; }
+    .class-card button:hover { background: #2a3142; }
+    .class-card button:disabled { opacity: 0.6; cursor: wait; }
+    .status-msg { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.9rem; display: none; }
+    .status-msg.error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; display: block; }
+    .status-msg.success { background: #f0f9f3; color: #15543a; border: 1px solid #b5e0c5; display: block; }
+    .share-block { margin-top: 1rem; padding: 0.85rem 1rem; background: #faf8f3; border-radius: 8px; font-size: 0.85rem; display: none; }
+    .share-block.visible { display: block; }
+    .share-block code { display: block; word-break: break-all; padding: 0.5rem; background: #fff; border: 1px solid #e6e1d4; border-radius: 4px; margin-top: 0.5rem; font-size: 0.78rem; color: #5b6478; }
+    .back-link { display: inline-block; margin-bottom: 1.5rem; color: #5b6478; text-decoration: none; font-size: 0.9rem; }
+    .back-link:hover { color: #1a1f2e; }
+  </style>
+</head>
+<body>
+  <div class="classes-wrap">
+    <a class="back-link" href="/">&larr; Back to Warsha</a>
+    <header class="classes-header">
+      <h1>Live Classes</h1>
+      <p>Start a session as an educator, or join one as a student.</p>
+    </header>
+
+    <div class="classes-grid">
+
+      <section class="class-card">
+        <span class="role-tag">Educator</span>
+        <h2>Start a new class</h2>
+        <form id="createForm">
+          <label for="className">Class name</label>
+          <input id="className" name="className" required placeholder="e.g. Intro to Research Design" maxlength="80">
+
+          <label for="educatorName">Your name</label>
+          <input id="educatorName" name="educatorName" required placeholder="e.g. Dr. Mazin" maxlength="60">
+
+          <button type="submit" id="createBtn">Create &amp; join as moderator</button>
+        </form>
+        <div id="createStatus" class="status-msg"></div>
+        <div id="shareBlock" class="share-block">
+          <strong>Share this with your students:</strong>
+          <code id="shareLink"></code>
+        </div>
+      </section>
+
+      <section class="class-card">
+        <span class="role-tag">Student</span>
+        <h2>Join a class</h2>
+        <form id="joinForm">
+          <label for="joinMeetingId">Meeting ID (from your educator)</label>
+          <input id="joinMeetingId" name="meetingId" required placeholder="warsha-xxxxxxxx" maxlength="80">
+
+          <label for="joinName">Your name</label>
+          <input id="joinName" name="name" required placeholder="e.g. Aya" maxlength="60">
+
+          <button type="submit" id="joinBtn">Join class</button>
+        </form>
+        <div id="joinStatus" class="status-msg"></div>
+      </section>
+
+    </div>
+  </div>
+
+  <script>
+    function setStatus(el, type, message) {
+      el.className = 'status-msg ' + type;
+      el.textContent = message;
+    }
+
+    document.getElementById('createForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('createBtn');
+      const status = document.getElementById('createStatus');
+      const share = document.getElementById('shareBlock');
+      const className = document.getElementById('className').value.trim();
+      const educatorName = document.getElementById('educatorName').value.trim();
+      btn.disabled = true;
+      btn.textContent = 'Creating…';
+      share.classList.remove('visible');
+      try {
+        const resp = await fetch('/api/class/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ className, educatorName })
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.error || 'Failed');
+        setStatus(status, 'success', 'Class ready. Opening BigBlueButton in a new tab…');
+        const shareUrl = location.origin + '/classes/?join=' + encodeURIComponent(data.meetingId);
+        document.getElementById('shareLink').textContent = shareUrl + '\nMeeting ID: ' + data.meetingId;
+        share.classList.add('visible');
+        window.open(data.moderatorJoinUrl, '_blank', 'noopener');
+      } catch (err) {
+        setStatus(status, 'error', err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Create & join as moderator';
+      }
+    });
+
+    document.getElementById('joinForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const meetingId = document.getElementById('joinMeetingId').value.trim();
+      const name = document.getElementById('joinName').value.trim();
+      if (!meetingId || !name) return;
+      const url = '/api/class/join?meetingId=' + encodeURIComponent(meetingId)
+                + '&name=' + encodeURIComponent(name)
+                + '&role=attendee';
+      window.open(url, '_blank', 'noopener');
+    });
+
+    // Prefill the student form if linked via /classes/?join=<meetingId>.
+    const prefill = new URLSearchParams(location.search).get('join');
+    if (prefill) {
+      document.getElementById('joinMeetingId').value = prefill;
+      document.getElementById('joinName').focus();
+    }
+  </script>
+</body>
+</html>

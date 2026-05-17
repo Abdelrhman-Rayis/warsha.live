@@ -411,6 +411,11 @@ function showHome() {
     document.getElementById('homeSection').classList.add('active');
 }
 
+function openRooms(event) {
+    if (event) event.preventDefault();
+    window.open('/classes', '_blank', 'noopener');
+}
+
 function showCourses() {
     hideAllSections();
     document.getElementById('coursesSection').classList.add('active');
@@ -571,30 +576,25 @@ async function joinLiveWorkshop(courseId) {
 
     const courseName = currentLang === 'ar' ? course.name_ar : course.name_en;
 
+    const isModerator = currentUser.role === 'instructor' || currentUser.role === 'admin';
+
     try {
-        const response = await fetch('/api/bbb/join', {
+        const createResp = await fetch('/api/class/create', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                meetingId: `workshop-${course.id}`,
-                courseId: course.id,
-                meetingName: courseName,
-                courseName,
-                fullName: currentUser.name,
-                role: currentUser.role
-            })
+            body: JSON.stringify({ className: courseName, educatorName: currentUser.name })
         });
+        const data = await createResp.json();
+        if (!createResp.ok) throw new Error(data.error || 'Failed to create class');
 
-        const data = await response.json();
-        if (!response.ok || !data.joinUrl) {
-            throw new Error(data.error || 'Failed to join meeting');
-        }
-
-        window.open(data.joinUrl, '_blank', 'noopener,noreferrer');
+        const joinUrl = isModerator
+            ? data.moderatorJoinUrl
+            : `/api/class/join?meetingId=${encodeURIComponent(data.meetingId)}&name=${encodeURIComponent(currentUser.name)}&role=attendee`;
+        window.open(joinUrl, '_blank', 'noopener');
     } catch (error) {
         const fallback = currentLang === 'ar'
-            ? 'تعذر فتح جلسة BigBlueButton. تحقق من إعدادات الخادم.'
-            : 'Could not open BigBlueButton session. Check server configuration.';
+            ? 'تعذر فتح الجلسة. تحقق من إعدادات الخادم.'
+            : 'Could not open the live class. Check server configuration.';
         alert(`${fallback}\n${error.message || ''}`.trim());
     }
 }

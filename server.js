@@ -5,8 +5,23 @@ const crypto = require('crypto');
 
 const PORT = Number(process.env.PORT) || 3000;
 const rootDir = __dirname;
-const BBB_BASE_URL = (process.env.BBB_BASE_URL || '').replace(/\/$/, '');
-const BBB_SECRET = process.env.BBB_SECRET || '';
+
+// BigBlueButton API.
+// In production these come from the systemd unit (Environment=...).
+// For local dev we fall back to the public Blindside test server so
+// the app boots cold without any extra setup -- never use these
+// defaults in production.
+const BBB_DEFAULT_URL = 'https://test-install.blindsidenetworks.com/bigbluebutton';
+const BBB_DEFAULT_SECRET = '8cd8ef52e8e101574e400365b55e11a6';
+const BBB_BASE_URL = (process.env.BBB_BASE_URL || BBB_DEFAULT_URL).replace(/\/+$/, '');
+const BBB_SECRET = process.env.BBB_SECRET || BBB_DEFAULT_SECRET;
+if (!process.env.BBB_BASE_URL || !process.env.BBB_SECRET) {
+  console.warn('[BBB] Using PUBLIC TEST SERVER defaults. Set BBB_BASE_URL and BBB_SECRET for production.');
+}
+
+// On-disk registry of active classes -- survives node restarts but is
+// just a JSON file. Fine for a single 1GB node and zero dependencies.
+const CLASSES_DB_PATH = path.join(rootDir, 'data', 'classes.json');
 
 const mimeTypes = {
   '.html': 'text/html; charset=utf-8',
@@ -70,15 +85,12 @@ function guessReply(message, lang) {
   return dict.default;
 }
 
-function toSafeMeetingId(raw) {
-  return String(raw || 'general-workshop')
-    .toLowerCase()
-    .replace(/[^a-z0-9-_]/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '')
-    .slice(0, 80);
-}
-
+// ---------------------------------------------------------------
+// BigBlueButton helpers
+// ---------------------------------------------------------------
+// Every BBB API call is signed: checksum = SHA1(callName + queryString + sharedSecret).
+// `URLSearchParams` produces the *exact* canonical query string BBB
+// expects (RFC 3986 percent-encoding, key=value pairs joined by &).
 function bbbChecksum(callName, queryString) {
   return crypto
     .createHash('sha1')
@@ -92,21 +104,95 @@ function buildBbbUrl(callName, params) {
   return `${BBB_BASE_URL}/api/${callName}?${query}&checksum=${checksum}`;
 }
 
-async function ensureMeetingExists({ meetingId, meetingName }) {
-  const createUrl = buildBbbUrl('create', {
-    name: meetingName,
-    meetingID: meetingId,
-    attendeePW: 'ap',
-    moderatorPW: 'mp',
-    welcome: 'Welcome to your live workshop on Warsha.',
+// Tiny XML scraper: BBB responses are flat <returncode>/<meetingID>/<messageKey>/...
+// elements. Avoiding a real XML dep keeps the prod box dependency-free.
+function extractXmlValue(xml, tag) {
+  const m = xml.match(new RegExp(`<${tag}>([^<]*)</${tag}>`, 'i'));
+  return m ? m[1].trim() : null;
+}
+
+function fetchBbb(url) {
+  return new Promise((resolve, reject) => {
+    const lib = url.startsWith('https') ? require('https') : http;
+    const req = lib.get(url, (resp) => {
+      let body = '';
+      resp.on('data', (c) => { body += c; });
+      resp.on('end', () => resolve({ status: resp.statusCode, body }));
+    });
+    req.on('error', reject);
+    req.setTimeout(15000, () => req.destroy(new Error('BBB request timed out')));
+  });
+}
+
+function readClassesDb() {
+  try {
+    if (!fs.existsSync(CLASSES_DB_PATH)) return {};
+    return JSON.parse(fs.readFileSync(CLASSES_DB_PATH, 'utf8'));
+  } catch (err) {
+    console.error('[classes] failed to read db, starting empty:', err.message);
+    return {};
+  }
+}
+
+function writeClassesDb(db) {
+  const dir = path.dirname(CLASSES_DB_PATH);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(CLASSES_DB_PATH, JSON.stringify(db, null, 2));
+}
+
+function randomToken(bytes = 12) {
+  return crypto.randomBytes(bytes).toString('hex');
+}
+
+// Calls BBB `create` and returns the persisted class record.
+// Idempotent on meetingId: a second call for the same id refreshes
+// the meeting on BBB but reuses the originally-issued passwords, so
+// any join links already in users' hands keep working.
+async function createBbbClass({ className }) {
+  const db = readClassesDb();
+  const existing = Object.values(db).find((c) => c.name === className);
+  let record = existing || {
+    meetingId: `warsha-${randomToken(6)}`,
+    name: className,
+    attendeePW: randomToken(),
+    moderatorPW: randomToken(),
+    createdAt: new Date().toISOString()
+  };
+
+  const url = buildBbbUrl('create', {
+    name: record.name,
+    meetingID: record.meetingId,
+    attendeePW: record.attendeePW,
+    moderatorPW: record.moderatorPW,
+    welcome: 'Welcome to your live class on Warsha.',
+    record: 'false',
     muteOnStart: 'false',
     allowStartStopRecording: 'false'
   });
 
-  const response = await fetch(createUrl, { method: 'GET' });
-  if (!response.ok) {
-    throw new Error('Failed to create or access meeting on BigBlueButton');
+  const { status, body } = await fetchBbb(url);
+  if (status !== 200) {
+    throw new Error(`BBB create returned HTTP ${status}`);
   }
+  const returncode = extractXmlValue(body, 'returncode');
+  if (returncode !== 'SUCCESS') {
+    const msg = extractXmlValue(body, 'message') || 'unknown error';
+    throw new Error(`BBB create failed: ${msg}`);
+  }
+
+  db[record.meetingId] = record;
+  writeClassesDb(db);
+  return record;
+}
+
+function buildJoinUrl({ record, fullName, role }) {
+  const password = role === 'moderator' ? record.moderatorPW : record.attendeePW;
+  return buildBbbUrl('join', {
+    fullName,
+    meetingID: record.meetingId,
+    password,
+    redirect: 'true'
+  });
 }
 
 const server = http.createServer((req, res) => {
@@ -423,52 +509,68 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  if (req.method === 'POST' && req.url === '/api/bbb/join') {
-    if (!BBB_BASE_URL || !BBB_SECRET) {
-      sendJson(res, 500, {
-        error: 'BigBlueButton is not configured on the server. Please set BBB_BASE_URL and BBB_SECRET.'
-      });
-      return;
-    }
-
+  // ---------------------------------------------------------------
+  // POST /api/class/create
+  // Body: { className: string }
+  // Resp: { meetingId, className, moderatorJoinUrl, attendeeJoinUrl }
+  // The moderator URL is what the educator clicks to start the class;
+  // attendeeJoinUrl is what they share with students.
+  // ---------------------------------------------------------------
+  if (req.method === 'POST' && req.url === '/api/class/create') {
     let body = '';
-    req.on('data', chunk => {
+    req.on('data', (chunk) => {
       body += chunk.toString();
-      if (body.length > 1e6) {
-        req.destroy();
-      }
+      if (body.length > 1e5) req.destroy();
     });
-
     req.on('end', async () => {
       try {
         const parsed = body ? JSON.parse(body) : {};
-        const meetingId = toSafeMeetingId(parsed.meetingId || parsed.courseId || parsed.courseName);
-        const meetingName = String(parsed.meetingName || parsed.courseName || 'Live Workshop');
-        const fullName = String(parsed.fullName || parsed.userName || 'Guest');
-        const role = parsed.role === 'instructor' ? 'instructor' : 'student';
-        const password = role === 'instructor' ? 'mp' : 'ap';
-
-        if (!meetingId) {
-          sendJson(res, 400, { error: 'meetingId is required.' });
+        const className = String(parsed.className || '').trim();
+        if (!className) {
+          sendJson(res, 400, { error: 'className is required' });
           return;
         }
-
-        await ensureMeetingExists({ meetingId, meetingName });
-
-        const joinUrl = buildBbbUrl('join', {
-          fullName,
-          meetingID: meetingId,
-          password,
-          redirect: 'true'
+        const educatorName = String(parsed.educatorName || 'Educator').trim();
+        const record = await createBbbClass({ className });
+        sendJson(res, 200, {
+          meetingId: record.meetingId,
+          className: record.name,
+          moderatorJoinUrl: `/api/class/join?meetingId=${encodeURIComponent(record.meetingId)}&name=${encodeURIComponent(educatorName)}&role=moderator`,
+          attendeeJoinUrl: `/api/class/join?meetingId=${encodeURIComponent(record.meetingId)}&name=Student&role=attendee`
         });
-
-        sendJson(res, 200, { joinUrl, meetingId, role });
       } catch (error) {
-        sendJson(res, 500, {
-          error: error.message || 'Unable to create or join BigBlueButton meeting.'
-        });
+        sendJson(res, 500, { error: error.message || 'Failed to create class' });
       }
     });
+    return;
+  }
+
+  // ---------------------------------------------------------------
+  // GET /api/class/join?meetingId=...&name=...&role=moderator|attendee
+  // - Default: 302 redirect to the signed BBB join URL.
+  // - With ?format=json: returns { joinUrl } so the SPA can decide.
+  // ---------------------------------------------------------------
+  if (req.method === 'GET' && req.url.startsWith('/api/class/join')) {
+    const u = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+    const meetingId = u.searchParams.get('meetingId') || '';
+    const fullName = (u.searchParams.get('name') || 'Guest').slice(0, 80);
+    const role = u.searchParams.get('role') === 'moderator' ? 'moderator' : 'attendee';
+    const wantsJson = u.searchParams.get('format') === 'json';
+
+    const db = readClassesDb();
+    const record = db[meetingId];
+    if (!record) {
+      sendJson(res, 404, { error: 'Class not found. Ask the educator to start it.' });
+      return;
+    }
+
+    const joinUrl = buildJoinUrl({ record, fullName, role });
+    if (wantsJson) {
+      sendJson(res, 200, { joinUrl, meetingId, role });
+    } else {
+      res.writeHead(302, { Location: joinUrl });
+      res.end();
+    }
     return;
   }
 
@@ -507,4 +609,5 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => {
   console.log(`Local platform running at http://localhost:${PORT}`);
+  console.log(`BBB endpoint:    ${BBB_BASE_URL}`);
 });
