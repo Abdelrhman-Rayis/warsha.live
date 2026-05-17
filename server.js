@@ -8,15 +8,13 @@ const rootDir = __dirname;
 
 // BigBlueButton API.
 // In production these come from the systemd unit (Environment=...).
-// For local dev we fall back to the public Blindside test server so
-// the app boots cold without any extra setup -- never use these
-// defaults in production.
-const BBB_DEFAULT_URL = 'https://test-install.blindsidenetworks.com/bigbluebutton';
-const BBB_DEFAULT_SECRET = '8cd8ef52e8e101574e400365b55e11a6';
+// For local dev we fall back to our branded BBB instance at meet.warsha.live.
+const BBB_DEFAULT_URL = 'https://meet.warsha.live/bigbluebutton';
+const BBB_DEFAULT_SECRET = 'Sy0Mk857bcqROxkIfz4kUkesNhfFSS3pMWbc7EszvBs';
 const BBB_BASE_URL = (process.env.BBB_BASE_URL || BBB_DEFAULT_URL).replace(/\/+$/, '');
 const BBB_SECRET = process.env.BBB_SECRET || BBB_DEFAULT_SECRET;
 if (!process.env.BBB_BASE_URL || !process.env.BBB_SECRET) {
-  console.warn('[BBB] Using PUBLIC TEST SERVER defaults. Set BBB_BASE_URL and BBB_SECRET for production.');
+  console.warn('[BBB] Using meet.warsha.live defaults. Set BBB_BASE_URL and BBB_SECRET in systemd for production.');
 }
 
 // On-disk registry of active classes -- survives node restarts but is
