@@ -2370,6 +2370,13 @@ html[lang="en"] .module-highlight {
     font-weight: 500;
     font-size: 0.95rem;
 }
+.market-category-row span {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.market-category-row span:hover {
+    color: #fff;
+}
 
 .market-hero {
     margin-top: 0;

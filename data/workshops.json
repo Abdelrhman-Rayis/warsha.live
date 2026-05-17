@@ -11,7 +11,8 @@
     "avatar": "https://api.dicebear.com/9.x/initials/svg?seed=Mazin%20Abdallah&radius=50&size=120&backgroundType=gradientLinear",
     "enrolled": [],
     "liveClassId": null,
-    "createdAt": "2026-04-20T10:00:00.000Z"
+    "createdAt": "2026-04-20T10:00:00.000Z",
+    "category": "Research"
   },
   {
     "id": "wksh-prompting-qual",
@@ -25,12 +26,13 @@
     "avatar": "https://api.dicebear.com/9.x/initials/svg?seed=Wesal%20Hassan&radius=50&size=120&backgroundType=gradientLinear",
     "enrolled": [],
     "liveClassId": null,
-    "createdAt": "2026-04-18T10:00:00.000Z"
+    "createdAt": "2026-04-18T10:00:00.000Z",
+    "category": "AI"
   },
   {
     "id": "wksh-cohort-business",
     "title": "Build Your First Paid Cohort Workshop",
-    "description": "Go from idea to paying students in 4 weeks — curriculum, pricing, launch.",
+    "description": "Go from idea to paying students in 4 weeks \u2014 curriculum, pricing, launch.",
     "instructor": "Abdelrhman Rayis",
     "price": 79,
     "currency": "usd",
@@ -39,7 +41,8 @@
     "avatar": "https://api.dicebear.com/9.x/initials/svg?seed=Abdelrhman%20Rayis&radius=50&size=120&backgroundType=gradientLinear",
     "enrolled": [],
     "liveClassId": null,
-    "createdAt": "2026-04-15T10:00:00.000Z"
+    "createdAt": "2026-04-15T10:00:00.000Z",
+    "category": "Product"
   },
   {
     "id": "wksh-academic-writing",
@@ -53,7 +56,8 @@
     "avatar": "https://api.dicebear.com/9.x/initials/svg?seed=Dr.%20Ahmed%20Salim&radius=50&size=120&backgroundType=gradientLinear",
     "enrolled": [],
     "liveClassId": null,
-    "createdAt": "2026-04-22T10:00:00.000Z"
+    "createdAt": "2026-04-22T10:00:00.000Z",
+    "category": "Research"
   },
   {
     "id": "wksh-facilitation",
@@ -67,7 +71,8 @@
     "avatar": "https://api.dicebear.com/9.x/initials/svg?seed=Rana%20Othman&radius=50&size=120&backgroundType=gradientLinear",
     "enrolled": [],
     "liveClassId": null,
-    "createdAt": "2026-04-19T10:00:00.000Z"
+    "createdAt": "2026-04-19T10:00:00.000Z",
+    "category": "Leadership"
   },
   {
     "id": "wksh-creator-funnel",
@@ -81,6 +86,7 @@
     "avatar": "https://api.dicebear.com/9.x/initials/svg?seed=Samir%20Nasser&radius=50&size=120&backgroundType=gradientLinear",
     "enrolled": [],
     "liveClassId": null,
-    "createdAt": "2026-04-21T10:00:00.000Z"
+    "createdAt": "2026-04-21T10:00:00.000Z",
+    "category": "Founder Skills"
   }
 ]

@@ -620,6 +620,7 @@ const server = http.createServer(async (req, res) => {
         id: w.id, title: w.title, description: w.description,
         instructor: w.instructor, price: w.price, currency: w.currency,
         duration: w.duration, startDate: w.startDate, avatar: w.avatar,
+        category: w.category || 'Research',
         enrolledCount: w.enrolled.length
       }));
       sendJson(res, 200, list);

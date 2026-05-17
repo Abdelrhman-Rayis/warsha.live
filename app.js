@@ -366,15 +366,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const parsedUser = JSON.parse(savedUser);
         currentUser = users.find((user) => user.id === parsedUser.id) || parsedUser;
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        showHome();
         updateNavigation();
-    } else {
-        showHome();
     }
 
     // Auto-open My Workshops from payment success redirect
-    if (new URLSearchParams(location.search).get('my-workshops') === '1') {
-        setTimeout(() => { if (currentUser) showMyWorkshops(); }, 500);
+    const showMy = new URLSearchParams(location.search).get('my-workshops') === '1';
+    if (showMy && currentUser) {
+        showMyWorkshops();
+    } else if (!showMy) {
+        showHome();
     }
 });
 
@@ -492,6 +492,45 @@ async function enrollWorkshop(workshopId, price, title) {
         } else {
             alert(data.error || 'Enrollment failed.');
         }
+    }
+}
+
+// Filter trending workshops by category
+async function filterWorkshops(category) {
+    const grid = document.getElementById('trendingGrid');
+    if (!grid) return;
+    // Highlight the active category
+    document.querySelectorAll('#categoryRow span').forEach(s => {
+        s.style.fontWeight = s.textContent.trim() === category ? '700' : '400';
+        s.style.color = s.textContent.trim() === category ? '#1a1f2e' : '#5b6478';
+    });
+    try {
+        const resp = await fetch('/api/workshops');
+        if (!resp.ok) throw new Error('Failed');
+        const workshops = await resp.json();
+        const filtered = workshops.filter(w => w.category === category);
+        if (filtered.length === 0) {
+            grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#5b6478;">No workshops in ' + category + ' yet.</p>';
+            return;
+        }
+        grid.innerHTML = filtered.map(w => {
+            const isFree = w.price === 0;
+            const badgeClass = isFree ? 'free' : 'paid';
+            return `<article class="trend-card">
+                <span class="trend-price-badge ${badgeClass}">${isFree ? 'Free' : '$' + w.price}</span>
+                <h4>${w.title}</h4>
+                <p class="trend-meta">${w.duration} · Starts ${new Date(w.startDate).toLocaleDateString('en-US', {month:'short',day:'numeric'})}</p>
+                <p class="trend-host">
+                    <img class="trend-host-avatar" src="${w.avatar}" alt="${w.instructor}" loading="lazy">
+                    <span>By ${w.instructor}</span>
+                </p>
+                <button class="trend-enroll-btn ${badgeClass}" onclick="enrollWorkshop('${w.id}', ${w.price}, '${w.title.replace(/'/g, "\\'")}')">
+                    ${isFree ? 'Join Free →' : 'Enroll — $' + w.price}
+                </button>
+            </article>`;
+        }).join('');
+    } catch (err) {
+        grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#991b1b;">Could not filter workshops.</p>';
     }
 }
 
@@ -1546,3 +1585,4 @@ window.handlePayment = handlePayment;
 window.enrollWorkshop = enrollWorkshop;
 window.loadTrendingWorkshops = loadTrendingWorkshops;
 window.showMyWorkshops = showMyWorkshops;
+window.filterWorkshops = filterWorkshops;
