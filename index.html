@@ -9,30 +9,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo" onclick="showHome()">Warsha</div>
-            <div class="lang-toggle">
-                <button id="langBtn" class="lang-btn" onclick="toggleLanguage()">AR</button>
-            </div>
-            <ul class="nav-links" id="navLinks" style="display:none;">
-                <li><a href="#" onclick="showHome()">Home</a></li>
-                <li><a href="event/">Event</a></li>
-                <li><a href="#" onclick="showCourses()">Courses</a></li>
-                <li><a href="/classes" class="nav-rooms">Live Classes</a></li>
-                <li><a href="#" onclick="showAI()">AI Guide</a></li>
-                <li><a href="#" onclick="showChat()">Chat</a></li>
-                <li id="dashboardNav" style="display:none;"><a href="#" onclick="showDashboard()">Dashboard</a></li>
-                <li><a href="#" onclick="showProfile()">Profile</a></li>
-                <li><a href="#" onclick="logout()" class="logout-btn">Log Out</a></li>
-            </ul>
-            <div id="authButtons" class="auth-buttons">
-                <button onclick="showLogin()" class="btn-auth">Log In</button>
-                <button onclick="showRegister()" class="btn-auth btn-register">Apply Now</button>
-            </div>
-        </div>
-    </nav>
 
     <!-- Main Container -->
     <div id="app">
