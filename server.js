@@ -572,6 +572,20 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // ---------------------------------------------------------------
+  // GET /api/classes — list active classes (meeting IDs + names)
+  // ---------------------------------------------------------------
+  if (req.method === 'GET' && req.url === '/api/classes') {
+    const db = readClassesDb();
+    const list = Object.entries(db).map(([id, c]) => ({
+      meetingId: id,
+      name: c.name,
+      createdAt: c.createdAt
+    }));
+    sendJson(res, 200, list);
+    return;
+  }
+
   const rawPath = req.url === '/' ? '/index.html' : req.url.split('?')[0];
   const requestPath = (rawPath === '/events' || rawPath === '/events/') ? '/event/index.html' : rawPath;
   const filePath = path.join(rootDir, requestPath);

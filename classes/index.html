@@ -104,9 +104,12 @@
         });
         const data = await resp.json();
         if (!resp.ok) throw new Error(data.error || 'Failed');
-        setStatus(status, 'success', 'Class ready. Opening warsha.live Classroom in a new tab…');
+        setStatus(status, 'success', 'Class ready! Opening warsha.live Classroom…');
         const shareUrl = location.origin + '/classes/?join=' + encodeURIComponent(data.meetingId);
-        document.getElementById('shareLink').textContent = shareUrl + '\nMeeting ID: ' + data.meetingId;
+        document.getElementById('shareLink').innerHTML =
+          '<strong>Meeting ID (copy this for students):</strong><br>' +
+          '<input readonly value="' + data.meetingId + '" style="width:100%;padding:0.5rem;margin:0.35rem 0;border:2px solid #b08d3c;border-radius:6px;font-family:monospace;font-size:1rem;text-align:center;background:#fff;" onclick="this.select();document.execCommand(\'copy\')">' +
+          '<br><small>Share link: ' + shareUrl + '</small>';
         share.classList.add('visible');
         window.open(data.moderatorJoinUrl, '_blank', 'noopener');
       } catch (err) {
