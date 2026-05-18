@@ -801,6 +801,39 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  // ---------------------------------------------------------------
+  // GET /api/recordings
+  // ---------------------------------------------------------------
+  if (req.method === 'GET' && req.url === '/api/recordings') {
+    try {
+      const url = buildBbbUrl('getRecordings', { state: 'published' });
+      const { status, body } = await fetchBbb(url);
+      if (status !== 200) throw new Error(`BBB returned HTTP ${status}`);
+      
+      const returncode = extractXmlValue(body, 'returncode');
+      if (returncode !== 'SUCCESS') throw new Error('Failed to fetch recordings');
+
+      const recordings = [];
+      const matches = body.match(/<recording>(.*?)<\/recording>/gs);
+      if (matches) {
+        for (const match of matches) {
+          const id = extractXmlValue(match, 'recordID');
+          const name = extractXmlValue(match, 'name');
+          const state = extractXmlValue(match, 'state');
+          const pbMatch = match.match(/<playback>.*?<format>.*?<url>(.*?)<\/url>.*?<\/format>.*?<\/playback>/s);
+          const pbUrl = pbMatch ? pbMatch[1].trim() : null;
+          if (pbUrl) {
+            recordings.push({ id, name, state, url: pbUrl });
+          }
+        }
+      }
+      sendJson(res, 200, recordings);
+    } catch (err) {
+      sendJson(res, 500, { error: err.message });
+    }
+    return;
+  }
+
   const rawPath = req.url === '/' ? '/index.html' : req.url.split('?')[0];
   const requestPath = (rawPath === '/events' || rawPath === '/events/') ? '/event/index.html' : rawPath;
   const filePath = path.join(rootDir, requestPath);
