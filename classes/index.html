@@ -104,14 +104,12 @@
 
     </div>
 
-    <!-- Recordings Section -->
-    <div style="margin-top: 4rem; border-top: 1px solid #e6e1d4; padding-top: 2.5rem;">
-      <h2 style="font-size: 1.5rem; color: #1a1f2e; margin-bottom: 0.5rem; text-align: center;">Past Class Recordings</h2>
-      <p style="color: #5b6478; text-align: center; margin-bottom: 2rem;">Watch previous live sessions and workshops.</p>
-      
-      <div id="recordingsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
-        <p style="color: #5b6478; text-align: center; grid-column: 1/-1;">Loading recordings...</p>
-      </div>
+    <!-- Recordings Section Removed -->
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="/recordings" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.5rem; background: #faf8f3; border: 1px solid #e6e1d4; border-radius: 8px; color: #1a1f2e; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+        Watch Past Recordings
+      </a>
     </div>
     
   </div>
@@ -173,35 +171,6 @@
       document.getElementById('joinMeetingId').value = prefill;
       document.getElementById('joinName').focus();
     }
-
-    // Load Past Recordings
-    async function loadRecordings() {
-      const grid = document.getElementById('recordingsGrid');
-      try {
-        const resp = await fetch('/api/recordings');
-        if (!resp.ok) throw new Error('Failed to fetch recordings');
-        const data = await resp.json();
-        
-        if (data.length === 0) {
-          grid.innerHTML = '<p style="color: #5b6478; text-align: center; grid-column: 1/-1;">No recordings available yet. After a class ends, recordings take a while to process before appearing here.</p>';
-          return;
-        }
-
-        grid.innerHTML = data.map(rec => `
-          <div style="background: #fff; border: 1px solid #e6e1d4; border-radius: 12px; padding: 1.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.03);">
-            <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; color: #1a1f2e;">${rec.name || 'Untitled Class'}</h3>
-            <p style="font-size: 0.85rem; color: #5b6478; margin-bottom: 1.25rem;">Status: <span style="display:inline-block; padding: 0.2rem 0.5rem; background: #e0f2fe; color: #0284c7; border-radius: 4px; font-weight: 500; font-size: 0.75rem; text-transform: uppercase;">${rec.state}</span></p>
-            <a href="${rec.url}" target="_blank" rel="noopener" style="display: block; text-align: center; width: 100%; padding: 0.75rem; background: #1a1f2e; color: #fff; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600;">Watch Recording</a>
-          </div>
-        `).join('');
-
-      } catch (err) {
-        grid.innerHTML = '<p style="color: #991b1b; text-align: center; grid-column: 1/-1;">Failed to load recordings.</p>';
-      }
-    }
-    
-    // Call loadRecordings when page loads
-    loadRecordings();
   </script>
 </body>
 </html>
