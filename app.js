@@ -44,7 +44,7 @@ function selectRole(role) {
 }
 
 // Language Management
-let currentLang = 'ar';
+let currentLang = 'en';
 
 const translations = {
     ar: {
@@ -358,7 +358,6 @@ function initializeDemoData() {
 // Initialize on page load
 initializeDemoData();
 document.addEventListener('DOMContentLoaded', () => {
-    updateLanguage();
     applyLanguageState();
 
     // Check if user is logged in
