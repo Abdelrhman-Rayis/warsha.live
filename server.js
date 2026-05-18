@@ -186,9 +186,9 @@ async function createBbbClass({ className }) {
     attendeePW: record.attendeePW,
     moderatorPW: record.moderatorPW,
     welcome: 'Welcome to your live class on Warsha.',
-    record: 'false',
+    record: 'true',
     muteOnStart: 'false',
-    allowStartStopRecording: 'false'
+    allowStartStopRecording: 'true'
   });
 
   const { status, body } = await fetchBbb(url);
