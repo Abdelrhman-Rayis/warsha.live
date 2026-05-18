@@ -675,10 +675,13 @@ function updateNavigation() {
     const navLinks = document.getElementById('navLinks');
     const authButtons = document.getElementById('authButtons');
     const dashboardNav = document.getElementById('dashboardNav');
+    const navUserName = document.getElementById('navUserName');
     
     if (currentUser) {
         if (navLinks) navLinks.style.display = 'flex';
         if (authButtons) authButtons.style.display = 'none';
+        if (navUserName) navUserName.textContent = currentUser.name || 'Dashboard';
+        
         // Show dashboard only for instructors/teachers
         if (dashboardNav) {
             dashboardNav.style.display = currentUser.role === 'instructor' ? 'block' : 'none';
