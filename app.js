@@ -677,14 +677,14 @@ function updateNavigation() {
     const dashboardNav = document.getElementById('dashboardNav');
     
     if (currentUser) {
-        navLinks.style.display = 'flex';
+        if (navLinks) navLinks.style.display = 'flex';
         if (authButtons) authButtons.style.display = 'none';
         // Show dashboard only for instructors/teachers
         if (dashboardNav) {
             dashboardNav.style.display = currentUser.role === 'instructor' ? 'block' : 'none';
         }
     } else {
-        navLinks.style.display = 'none';
+        if (navLinks) navLinks.style.display = 'none';
         if (authButtons) authButtons.style.display = 'flex';
     }
 }
