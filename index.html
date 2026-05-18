@@ -39,27 +39,35 @@
                 </section>
 
                 <section class="market-hero">
-                    <div class="market-hero-content">
-                        <p class="market-kicker">For independent creators</p>
-                        <h2>Build and launch <span>high-trust workshops</span> people pay for.</h2>
-                        <p class="market-sub">Create your own workshop page, run live cohort sessions, and grow your teaching business with a clean creator workflow.</p>
-                        <div class="market-hero-actions">
-                            <button class="btn-primary" onclick="window.location.href='/classes'">Create Your Workshop</button>
-                            <a class="btn-primary btn-primary-rooms" href="/classes">Host a Live Class &rarr;</a>
-                            <button class="btn-secondary" onclick="showCourses()">Explore Workshops</button>
-                            <button class="btn-secondary btn-secondary-soft" onclick="openAIFromHome('Help me define my workshop outcome, audience, and weekly structure.')">AI Workshop Assistant</button>
+                    <div class="market-hero-inner">
+                        <div class="market-hero-content">
+                            <p class="market-kicker">For independent creators</p>
+                            <h2>Build and launch <span>high-trust workshops</span> people pay for.</h2>
+                            <p class="market-sub">Create your own workshop page, run live cohort sessions, and grow your teaching business with a clean creator workflow.</p>
+                            <div class="market-hero-actions">
+                                <button class="btn-primary" onclick="window.location.href='/classes'">Create Your Workshop</button>
+                                <a class="btn-primary btn-primary-rooms" href="/classes">Host a Live Class &rarr;</a>
+                                <button class="btn-secondary" onclick="showCourses()">Explore Workshops</button>
+                                <button class="btn-secondary btn-secondary-soft" onclick="openAIFromHome('Help me define my workshop outcome, audience, and weekly structure.')">AI Workshop Assistant</button>
+                            </div>
+                        </div>
+                        <div class="market-hero-visual">
+                            <img src="/assets/images/hero_banner.png" alt="Warsha Educational Platform" style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 12px 32px rgba(0,0,0,0.2);">
                         </div>
                     </div>
-                    <div class="hero-props">
+                    <div class="hero-props" style="margin-top: 32px;">
                         <div class="hero-prop-card hero-prop-card-light">
+                            <img src="/assets/images/feature_1.png" alt="Cohorts" style="width: 100%; height: 160px; object-fit: cover; border-radius: 12px; margin-bottom: 1rem;">
                             <h3>Cohort-based workshops</h3>
                             <p>Run focused groups with clear outcomes and weekly sessions.</p>
                         </div>
                         <div class="hero-prop-card">
+                            <img src="/assets/images/feature_2.png" alt="Sprints" style="width: 100%; height: 160px; object-fit: cover; border-radius: 12px; margin-bottom: 1rem;">
                             <h3>1-day live sprints</h3>
                             <p>Host practical deep-dives your audience can apply immediately.</p>
                         </div>
                         <div class="hero-prop-card">
+                            <img src="/assets/images/feature_3.png" alt="AI Curriculum" style="width: 100%; height: 160px; object-fit: cover; border-radius: 12px; margin-bottom: 1rem;">
                             <h3>AI-assisted curriculum</h3>
                             <p>Draft outlines, session plans, and materials in less time.</p>
                         </div>
@@ -258,9 +266,12 @@
     <div id="categorySection" class="section">
         <div class="category-wrap">
             <a class="back-link" href="#" onclick="showHome(); return false;">&larr; Back to Warsha</a>
-            <header class="category-header">
-                <h1 id="categoryTitle">Category</h1>
-                <p id="categoryDesc">Workshops in this category.</p>
+            <header class="category-header" style="position: relative; overflow: hidden; padding: 3rem 2rem; border-radius: 16px; margin-bottom: 2rem; background: #060b2f;">
+                <img src="/assets/images/category_research.png" alt="Category Header" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.4; mix-blend-mode: overlay; z-index: 0;">
+                <div style="position: relative; z-index: 1;">
+                    <h1 id="categoryTitle" style="color: #fff; font-size: 2.5rem; margin-bottom: 0.5rem;">Category</h1>
+                    <p id="categoryDesc" style="color: rgba(255,255,255,0.8); font-size: 1.1rem;">Workshops in this category.</p>
+                </div>
             </header>
             <div class="category-grid" id="categoryGrid">
                 <p style="color:#5b6478;">Loading workshops…</p>
