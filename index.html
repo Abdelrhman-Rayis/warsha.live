@@ -140,6 +140,8 @@
             <div class="auth-container modal-box">
                 <button class="modal-close" onclick="closeLoginModal()">✕</button>
                 <h2 id="loginTitle">Log In</h2>
+                <div id="googleLoginBtn" style="display: flex; justify-content: center; margin-top: 1.5rem;"></div>
+                <div class="or-divider" style="margin: 1.5rem 0;"><span>OR</span></div>
                 <form id="loginForm" onsubmit="handleLogin(event)">
                     <div class="form-group">
                         <label id="emailLabel">Email:</label>
@@ -150,10 +152,6 @@
                         <input type="password" id="loginPassword" required>
                     </div>
                     <button type="submit" class="btn-primary">Log In</button>
-                    
-                    <div class="or-divider" style="margin: 1.5rem 0;"><span>OR</span></div>
-                    <div id="googleLoginBtn" style="display: flex; justify-content: center;"></div>
-
                 </form>
                 <p id="registerLink">Don't have an account? <a href="#" onclick="closeLoginModal(); showRegister();">Create one here</a></p>
             </div>
@@ -164,6 +162,8 @@
             <div class="auth-container modal-box">
                 <button class="modal-close" onclick="closeRegisterModal()">✕</button>
                 <h2>Create Your Account</h2>
+                <div id="googleRegisterBtn" style="display: flex; justify-content: center; margin-top: 1.5rem;"></div>
+                <div class="or-divider" style="margin: 1.5rem 0;"><span>OR</span></div>
                 <form id="registerForm" onsubmit="handleRegister(event)">
                     <div class="form-group">
                         <label>Full Name:</label>
@@ -178,10 +178,6 @@
                         <input type="password" id="regPassword" required minlength="6">
                     </div>
                     <button type="submit" class="btn-primary">Create Account</button>
-
-                    <div class="or-divider" style="margin: 1.5rem 0;"><span>OR</span></div>
-                    <div id="googleRegisterBtn" style="display: flex; justify-content: center;"></div>
-
                 </form>
                 <p id="regStatus" style="margin-top:1rem;text-align:center;"></p>
             </div>
