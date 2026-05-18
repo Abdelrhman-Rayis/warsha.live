@@ -428,7 +428,7 @@ async function loadTrendingWorkshops() {
         const workshops = await resp.json();
         grid.innerHTML = workshops.map(w => {
             const isFree = w.price === 0;
-            const priceLabel = isFree ? 'Free' : `$${w.price} ${w.currency.toUpperCase()}`;
+            const priceLabel = isFree ? 'Free' : `$${w.price} ${(w.currency || 'USD').toUpperCase()}`;
             const badgeClass = isFree ? 'free' : 'paid';
             return `<article class="trend-card">
                 <span class="trend-price-badge ${badgeClass}">${priceLabel}</span>
