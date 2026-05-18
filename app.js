@@ -1649,7 +1649,7 @@ window.showCategory = showCategory;
 // ---------------------------------------------------------------
 // Google OAuth Authentication 
 // ---------------------------------------------------------------
-const GOOGLE_CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID_HERE";
+const GOOGLE_CLIENT_ID = "570309664520-3d7k2qvc1l1hvs053svflarljn7u1rgm.apps.googleusercontent.com";
 
 function initializeGoogleAuth() {
     if (typeof google === 'undefined' || GOOGLE_CLIENT_ID === "YOUR_GOOGLE_CLIENT_ID_HERE") {
