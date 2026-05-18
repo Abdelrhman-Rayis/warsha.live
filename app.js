@@ -1645,3 +1645,89 @@ window.loadTrendingWorkshops = loadTrendingWorkshops;
 window.showMyWorkshops = showMyWorkshops;
 window.filterWorkshops = filterWorkshops;
 window.showCategory = showCategory;
+
+// ---------------------------------------------------------------
+// Google OAuth Authentication 
+// ---------------------------------------------------------------
+const GOOGLE_CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID_HERE";
+
+function initializeGoogleAuth() {
+    if (typeof google === 'undefined' || GOOGLE_CLIENT_ID === "YOUR_GOOGLE_CLIENT_ID_HERE") {
+        return;
+    }
+    
+    google.accounts.id.initialize({
+        client_id: GOOGLE_CLIENT_ID,
+        callback: handleGoogleCredentialResponse,
+        context: "use",
+        ux_mode: "popup"
+    });
+
+    const googleBtnConfig = { 
+        theme: "outline", 
+        size: "large", 
+        width: 300, 
+        text: "continue_with" 
+    };
+
+    const loginBtnNode = document.getElementById("googleLoginBtn");
+    const regBtnNode = document.getElementById("googleRegisterBtn");
+    
+    if (loginBtnNode) google.accounts.id.renderButton(loginBtnNode, googleBtnConfig);
+    if (regBtnNode) google.accounts.id.renderButton(regBtnNode, googleBtnConfig);
+}
+
+function handleGoogleCredentialResponse(response) {
+    // Decode the JWT token to get user info
+    const base64Url = response.credential.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    const googleUser = JSON.parse(jsonPayload);
+    
+    // Check if user already exists
+    let existingUser = users.find(u => u.email === googleUser.email);
+    
+    if (!existingUser) {
+        // Register the new Google user
+        existingUser = {
+            id: 'usr_' + Math.random().toString(36).substr(2, 9),
+            name: googleUser.name,
+            email: googleUser.email,
+            password: 'google_oauth_managed',
+            role: 'student', // Default role
+            avatar: googleUser.picture || getProfilePhotoUrl(googleUser.name)
+        };
+        users.push(existingUser);
+        localStorage.setItem('users', JSON.stringify(users));
+    }
+    
+    // Log them in
+    currentUser = existingUser;
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    
+    closeLoginModal();
+    closeRegisterModal();
+    updateNavigation();
+    
+    if (document.getElementById('myWorkshopsSection')) {
+        showMyWorkshops(); // Automatically jump to their dashboard
+    } else {
+        alert((currentLang === 'ar' ? 'مرحبا ' : 'Welcome, ') + currentUser.name + (currentLang === 'ar' ? '! تم تسجيل الدخول بنجاح' : '. You have logged in successfully.'));
+    }
+}
+
+// Re-render Google buttons whenever modals open
+const originalShowLogin = showLogin;
+showLogin = function() {
+    originalShowLogin();
+    initializeGoogleAuth();
+};
+
+const originalShowRegister = showRegister;
+showRegister = function() {
+    originalShowRegister();
+    initializeGoogleAuth();
+};

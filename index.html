@@ -12,6 +12,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 
@@ -135,6 +138,10 @@
                         <input type="password" id="loginPassword" required>
                     </div>
                     <button type="submit" class="btn-primary">Log In</button>
+                    
+                    <div class="or-divider" style="margin: 1.5rem 0;"><span>OR</span></div>
+                    <div id="googleLoginBtn" style="display: flex; justify-content: center;"></div>
+
                 </form>
                 <p id="registerLink">Don't have an account? <a href="#" onclick="closeLoginModal(); showRegister();">Create one here</a></p>
             </div>
@@ -159,6 +166,10 @@
                         <input type="password" id="regPassword" required minlength="6">
                     </div>
                     <button type="submit" class="btn-primary">Create Account</button>
+
+                    <div class="or-divider" style="margin: 1.5rem 0;"><span>OR</span></div>
+                    <div id="googleRegisterBtn" style="display: flex; justify-content: center;"></div>
+
                 </form>
                 <p id="regStatus" style="margin-top:1rem;text-align:center;"></p>
             </div>
