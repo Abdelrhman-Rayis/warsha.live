@@ -362,9 +362,24 @@ html[lang="ar"] body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary-color), #7c6ff5);
-    color: white;
-    box-shadow: var(--shadow-sm);
+    background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
+    color: #ffffff;
+    border: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #115e59 0%, #064e3b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 118, 110, 0.4);
 }
 
 .btn-primary:hover {
@@ -1145,10 +1160,24 @@ h1 {
 
 .lang-btn,
 .btn-primary {
-    background: #ff6600;
-    color: #111111;
-    box-shadow: none;
-    border: 1px solid #111111;
+    background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
+    color: #ffffff;
+    border: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #115e59 0%, #064e3b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 118, 110, 0.4);
 }
 
 .btn-primary:hover,
@@ -1725,8 +1754,24 @@ html[lang="en"] .hero-hook {
 }
 
 .brochure-actions .btn-primary {
-    background: var(--gold);
-    color: var(--ink);
+    background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
+    color: #ffffff;
+    border: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #115e59 0%, #064e3b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 118, 110, 0.4);
 }
 
 .brochure-actions .btn-primary:hover {
@@ -2444,9 +2489,24 @@ html[lang="en"] .module-highlight {
 }
 
 .market-hero-actions .btn-primary {
-    background: #f7cb77;
-    color: #171a2b;
+    background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
+    color: #ffffff;
+    border: none;
+    padding: 0.85rem 1.8rem;
     border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #115e59 0%, #064e3b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 118, 110, 0.4);
 }
 
 .market-hero-actions .btn-secondary {
@@ -2913,10 +2973,24 @@ body {
 
 .lang-btn,
 .btn-primary {
-    background: linear-gradient(135deg, var(--refresh-brand), #115e59);
-    color: #f8fffd;
-    border: 1px solid rgba(8, 67, 63, 0.85);
-    box-shadow: 0 10px 26px rgba(15, 118, 110, 0.22);
+    background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
+    color: #ffffff;
+    border: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #115e59 0%, #064e3b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 118, 110, 0.4);
 }
 
 .btn-primary:hover,
