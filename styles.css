@@ -362,20 +362,25 @@ html[lang="ar"] body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
+    background: #1a1f2e;
     color: #ffffff;
     border: none;
-    padding: 0.85rem 1.8rem;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 1rem;
+    padding: 0.8rem 1.75rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+    transition: background 0.2s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    letter-spacing: 0.02em;
 }
+
+.btn-primary:hover {
+    background: #000000;
+}
+
 .btn-primary:hover {
     background: linear-gradient(135deg, #115e59 0%, #064e3b 100%);
     transform: translateY(-2px);
@@ -1160,20 +1165,25 @@ h1 {
 
 .lang-btn,
 .btn-primary {
-    background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
+    background: #1a1f2e;
     color: #ffffff;
     border: none;
-    padding: 0.85rem 1.8rem;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 1rem;
+    padding: 0.8rem 1.75rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+    transition: background 0.2s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    letter-spacing: 0.02em;
 }
+
+.btn-primary:hover {
+    background: #000000;
+}
+
 .btn-primary:hover {
     background: linear-gradient(135deg, #115e59 0%, #064e3b 100%);
     transform: translateY(-2px);
@@ -1754,20 +1764,25 @@ html[lang="en"] .hero-hook {
 }
 
 .brochure-actions .btn-primary {
-    background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
+    background: #1a1f2e;
     color: #ffffff;
     border: none;
-    padding: 0.85rem 1.8rem;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 1rem;
+    padding: 0.8rem 1.75rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+    transition: background 0.2s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    letter-spacing: 0.02em;
 }
+
+.btn-primary:hover {
+    background: #000000;
+}
+
 .btn-primary:hover {
     background: linear-gradient(135deg, #115e59 0%, #064e3b 100%);
     transform: translateY(-2px);
@@ -2489,20 +2504,25 @@ html[lang="en"] .module-highlight {
 }
 
 .market-hero-actions .btn-primary {
-    background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
+    background: #1a1f2e;
     color: #ffffff;
     border: none;
-    padding: 0.85rem 1.8rem;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 1rem;
+    padding: 0.8rem 1.75rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+    transition: background 0.2s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    letter-spacing: 0.02em;
 }
+
+.btn-primary:hover {
+    background: #000000;
+}
+
 .btn-primary:hover {
     background: linear-gradient(135deg, #115e59 0%, #064e3b 100%);
     transform: translateY(-2px);
@@ -2973,20 +2993,25 @@ body {
 
 .lang-btn,
 .btn-primary {
-    background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
+    background: #1a1f2e;
     color: #ffffff;
     border: none;
-    padding: 0.85rem 1.8rem;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 1rem;
+    padding: 0.8rem 1.75rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+    transition: background 0.2s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    letter-spacing: 0.02em;
 }
+
+.btn-primary:hover {
+    background: #000000;
+}
+
 .btn-primary:hover {
     background: linear-gradient(135deg, #115e59 0%, #064e3b 100%);
     transform: translateY(-2px);
