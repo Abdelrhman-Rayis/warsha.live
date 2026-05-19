@@ -180,6 +180,24 @@
     if (prefill) {
       document.getElementById('joinMeetingId').value = prefill;
       document.getElementById('joinName').focus();
+      
+      // Hide educator elements to keep it clean for students joining via link
+      const cards = document.querySelectorAll('.class-card');
+      if (cards.length > 1) cards[1].style.display = 'none';
+      
+      const divider = document.querySelector('.or-divider');
+      if (divider) divider.style.display = 'none';
+      
+      const headerP = document.querySelector('.classes-header p');
+      if (headerP) headerP.style.display = 'none';
+      
+      // Center the single card nicely
+      const grid = document.querySelector('.classes-grid');
+      if (grid) {
+          grid.style.gridTemplateColumns = '1fr';
+          grid.style.maxWidth = '450px';
+          grid.style.margin = '0 auto';
+      }
     }
   </script>
 </body>
