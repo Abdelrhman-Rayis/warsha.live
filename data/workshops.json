@@ -2,7 +2,7 @@
   {
     "id": "wksh-ai-agentic",
     "title": "Foundation of AI Agentic Engineering",
-    "description": "Learn to design, build, and deploy autonomous AI agents capable of reasoning, using tools, and orchestrating complex workflows.<br><br><b>Course Structure (5 Units, 12 Lessons):</b><br>\u2022 Unit 1: \u0623\u0633\u0627\u0633\u064a\u0627\u062a \u0627\u0644\u0648\u0643\u0644\u0627\u0621 \u0627\u0644\u0623\u0630\u0643\u064a\u0627\u0621 (Fundamentals of AI Agents)<br>\u2022 Unit 2: \u0627\u0644\u0623\u062f\u0648\u0627\u062a \u0648\u0627\u0644\u0645\u0646\u0635\u0627\u062a (Tools and Platforms)<br>\u2022 Unit 3: \u062a\u0635\u0645\u064a\u0645 \u0623\u0648\u0644 \u0648\u0643\u064a\u0644 \u0630\u0643\u064a \u0644\u0643 (Designing Your First AI Agent)<br>\u2022 Unit 4: \u0633\u064a\u0631 \u0627\u0644\u0639\u0645\u0644 \u0648\u0627\u0644\u062a\u0639\u0627\u0648\u0646 (Workflows and Collaboration)<br>\u2022 Unit 5: \u0627\u0644\u0627\u062e\u062a\u0628\u0627\u0631 \u0648\u0627\u0644\u0645\u0645\u0627\u0631\u0633\u0627\u062a \u0627\u0644\u0641\u0636\u0644\u0649 (Testing and Best Practices)",
+    "description": "Learn to design, build, and deploy autonomous AI agents capable of reasoning, using tools, and orchestrating complex workflows.<br><br><b>Course Structure (5 Units, 12 Lessons):</b><br>• Unit 1: أساسيات الوكلاء الأذكياء (Fundamentals of AI Agents)<br>• Unit 2: الأدوات والمنصات (Tools and Platforms)<br>• Unit 3: تصميم أول وكيل ذكي لك (Designing Your First AI Agent)<br>• Unit 4: سير العمل والتعاون (Workflows and Collaboration)<br>• Unit 5: الاختبار والممارسات الفضلى (Testing and Best Practices)",
     "instructor": "Abdelrhman Rayis",
     "price": 0,
     "currency": "usd",
@@ -12,7 +12,47 @@
     "enrolled": [],
     "liveClassId": null,
     "createdAt": "2026-05-18T17:18:19.363738Z",
-    "category": "AI"
+    "category": "Course",
+    "curriculum": [
+      {
+        "title": "الوحدة الأولى: أساسيات الوكلاء الأذكياء",
+        "lessons": [
+          "الدرس الأول: ما هو الوكيل الذكي؟",
+          "الدرس الثاني: الأركان الأربعة للوكيل الذكي",
+          "الدرس الثالث: لماذا الوكلاء الأذكياء يُحدثون فرقاً؟",
+          "تدريب الوحدة الأولى: تفكيك مهمة يومية"
+        ]
+      },
+      {
+        "title": "الوحدة الثانية: الأدوات والمنصات",
+        "lessons": [
+          "طيف أدوات بناء الوكلاء",
+          "أبرز أُطر بناء الوكلاء - مايو 2026"
+        ]
+      },
+      {
+        "title": "الوحدة الثالثة: تصميم أول وكيل ذكي لك",
+        "lessons": [
+          "صياغة المهمّة - هندسة الأوامر",
+          "اختبار كسر الوكيل وإصلاحه"
+        ]
+      },
+      {
+        "title": "الوحدة الرابعة: سير العمل والتعاون",
+        "lessons": [
+          "أنماط سير عمل الوكلاء",
+          "مثال تطبيقيّ: نظام بحث وتقرير آليّ"
+        ]
+      },
+      {
+        "title": "الوحدة الخامسة: الاختبار والممارسات الفضلى",
+        "lessons": [
+          "دورة التطوير التكراريّة",
+          "مزالق شائعة - كيف تتجنّبها؟",
+          "نماذج لغوية عربيّة لتشغيل وكلائك"
+        ]
+      }
+    ]
   },
   {
     "id": "wksh-research-design",
@@ -47,7 +87,7 @@
   {
     "id": "wksh-cohort-business",
     "title": "Build Your First Paid Cohort Workshop",
-    "description": "Go from idea to paying students in 4 weeks \u2014 curriculum, pricing, launch.",
+    "description": "Go from idea to paying students in 4 weeks — curriculum, pricing, launch.",
     "instructor": "Abdelrhman Rayis",
     "price": 0,
     "currency": "usd",

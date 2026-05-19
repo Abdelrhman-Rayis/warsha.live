@@ -430,6 +430,7 @@ async function loadTrendingWorkshops() {
             const isFree = w.price === 0;
             const priceLabel = isFree ? 'Free' : `$${w.price} ${(w.currency || 'USD').toUpperCase()}`;
             const badgeClass = isFree ? 'free' : 'paid';
+            const syllabusBtn = w.curriculum ? `<button class="trend-enroll-btn" style="background: white; color: #6366f1; border: 1px solid #6366f1; margin-bottom: 0.5rem;" onclick="viewSyllabus('${w.id}')">View Syllabus</button>` : '';
             return `<article class="trend-card">
                 <span class="trend-price-badge ${badgeClass}">${priceLabel}</span>
                 <h4>${w.title}</h4>
@@ -516,6 +517,7 @@ async function filterWorkshops(category) {
         grid.innerHTML = filtered.map(w => {
             const isFree = w.price === 0;
             const badgeClass = isFree ? 'free' : 'paid';
+            const syllabusBtn = w.curriculum ? `<button class="trend-enroll-btn" style="background: white; color: #6366f1; border: 1px solid #6366f1; margin-bottom: 0.5rem;" onclick="viewSyllabus('${w.id}')">View Syllabus</button>` : '';
             return `<article class="trend-card">
                 <span class="trend-price-badge ${badgeClass}">${isFree ? 'Free' : '$' + w.price}</span>
                 <h4>${w.title}</h4>
@@ -1734,3 +1736,38 @@ showRegister = function() {
     originalShowRegister();
     initializeGoogleAuth();
 };
+
+
+function viewSyllabus(workshopId) {
+    fetch('/api/workshops').then(r => r.json()).then(workshops => {
+        const course = workshops.find(w => w.id === workshopId);
+        if (!course || !course.curriculum) return;
+        
+        hideAllSections();
+        const section = document.getElementById('syllabusSection');
+        if(section) section.style.display = 'block';
+        
+        document.getElementById('syllabusTitle').textContent = course.title;
+        document.getElementById('syllabusDesc').innerHTML = course.description;
+        
+        const acc = document.getElementById('syllabusAccordion');
+        acc.innerHTML = course.curriculum.map((unit, i) => `
+            <div style="border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; background: white;">
+                <div style="padding: 1rem 1.5rem; background: #f8fafc; font-weight: 600; color: #1e293b; border-bottom: 1px solid #e2e8f0;">
+                    ${unit.title}
+                </div>
+                <div style="padding: 1rem 1.5rem;">
+                    <ul style="list-style-type: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                        ${unit.lessons.map(lesson => `
+                            <li style="display: flex; align-items: flex-start; gap: 0.75rem; color: #475569;">
+                                <svg style="width: 20px; height: 20px; color: #6366f1; flex-shrink: 0; margin-top: 2px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>${lesson}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            </div>
+        `).join('');
+    });
+}
+window.viewSyllabus = viewSyllabus;
