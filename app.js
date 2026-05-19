@@ -577,6 +577,7 @@ async function showCategory(category) {
             const badgeClass = isFree ? 'free' : 'paid';
             const priceLabel = isFree ? 'Free' : '$' + w.price;
             const isDemo = w.id.startsWith('demo-');
+            const syllabusBtn = w.curriculum ? `<button class="trend-enroll-btn" style="background: white; color: #6366f1; border: 1px solid #6366f1;" onclick="viewSyllabus('${w.id}')">View Syllabus</button>` : '';
             return `<div class="category-card">
                 <span class="trend-price-badge ${badgeClass}">${priceLabel}</span>
                 <h3>${w.title}</h3>
