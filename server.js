@@ -227,6 +227,82 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  
+  // --- AI Agentic Course Applications ---
+  if (req.method === 'POST' && req.url === '/api/apply-ai') {
+    let body = '';
+    req.on('data', chunk => body += chunk.toString());
+    req.on('end', () => {
+      try {
+        const data = JSON.parse(body);
+        const appsPath = path.join(rootDir, 'data', 'ai_applications.json');
+        let apps = [];
+        if (fs.existsSync(appsPath)) {
+          apps = JSON.parse(fs.readFileSync(appsPath, 'utf8'));
+        }
+        data.id = 'app_' + Date.now();
+        data.timestamp = new Date().toISOString();
+        data.status = 'pending'; // pending, approved, rejected
+        apps.push(data);
+        fs.writeFileSync(appsPath, JSON.stringify(apps, null, 2));
+        
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: true, id: data.id }));
+      } catch (err) {
+        res.writeHead(400);
+        res.end(JSON.stringify({ error: 'Invalid data' }));
+      }
+    });
+    return;
+  }
+
+  const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
+  if (req.method === 'GET' && parsedUrl.pathname === '/api/applications-ai') {
+    if (parsedUrl.searchParams.get('key') !== 'gateflow2026') {
+      res.writeHead(403);
+      return res.end(JSON.stringify({ error: 'Unauthorized' }));
+    }
+    const appsPath = path.join(rootDir, 'data', 'ai_applications.json');
+    let apps = [];
+    if (fs.existsSync(appsPath)) {
+      apps = JSON.parse(fs.readFileSync(appsPath, 'utf8'));
+    }
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(apps));
+    return;
+  }
+
+  if (req.method === 'POST' && parsedUrl.pathname === '/api/applications-ai/status') {
+    if (parsedUrl.searchParams.get('key') !== 'gateflow2026') {
+      res.writeHead(403);
+      return res.end(JSON.stringify({ error: 'Unauthorized' }));
+    }
+    let body = '';
+    req.on('data', chunk => body += chunk.toString());
+    req.on('end', () => {
+      try {
+        const { id, status } = JSON.parse(body);
+        const appsPath = path.join(rootDir, 'data', 'ai_applications.json');
+        if (fs.existsSync(appsPath)) {
+          let apps = JSON.parse(fs.readFileSync(appsPath, 'utf8'));
+          const appIndex = apps.findIndex(a => a.id === id);
+          if (appIndex !== -1) {
+            apps[appIndex].status = status;
+            fs.writeFileSync(appsPath, JSON.stringify(apps, null, 2));
+            res.writeHead(200);
+            return res.end(JSON.stringify({ success: true }));
+          }
+        }
+        res.writeHead(404);
+        res.end(JSON.stringify({ error: 'Not found' }));
+      } catch (err) {
+        res.writeHead(400);
+        res.end(JSON.stringify({ error: 'Invalid data' }));
+      }
+    });
+    return;
+  }
+
   if (req.method === 'POST' && req.url === '/api/subscribe-ai') {
     let body = '';
     req.on('data', chunk => {

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Course Applications Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { background: #f8fafc; font-family: 'Manrope', sans-serif; }
+        .dashboard-container { max-width: 1200px; margin: 3rem auto; padding: 0 1.5rem; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+        .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .stat-card { background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .stat-value { font-size: 2rem; font-weight: 800; color: #0f766e; }
+        .stat-label { color: #64748b; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .applications-table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; }
+        .applications-table th, .applications-table td { padding: 1rem 1.5rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        .applications-table th { background: #f1f5f9; font-weight: 700; color: #1e293b; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .applications-table tr:last-child td { border-bottom: none; }
+        .applications-table tr:hover { background: #f8fafc; }
+        
+        .badge { padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 700; }
+        .badge-pending { background: #fef3c7; color: #d97706; }
+        .badge-approved { background: #d1fae5; color: #059669; }
+        .badge-rejected { background: #fee2e2; color: #dc2626; }
+        
+        .action-btn { padding: 0.4rem 0.8rem; border: none; border-radius: 6px; font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; margin-right: 0.5rem; }
+        .btn-approve { background: #10b981; color: white; }
+        .btn-approve:hover { background: #059669; }
+        .btn-reject { background: #ef4444; color: white; }
+        .btn-reject:hover { background: #dc2626; }
+
+        .auth-overlay { position: fixed; inset: 0; background: #f8fafc; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100; }
+        .auth-box { background: white; padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.05); width: 100%; max-width: 400px; text-align: center; }
+        .auth-box input { width: 100%; padding: 0.8rem; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+
+    <div id="authOverlay" class="auth-overlay">
+        <div class="auth-box">
+            <h2 style="margin-bottom: 1.5rem; color: #1e293b;">Admin Login</h2>
+            <input type="password" id="adminKey" placeholder="Enter Admin Key" onkeypress="if(event.key === 'Enter') checkAuth()">
+            <button class="btn-primary" style="width: 100%;" onclick="checkAuth()">Login</button>
+        </div>
+    </div>
+
+    <div class="dashboard-container" style="display: none;" id="dashboardContent">
+        <div class="header">
+            <h1 style="color: #1e293b;">AI Course Applications</h1>
+            <a href="/" class="btn-secondary" style="text-decoration: none;">&larr; Back to Platform</a>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-value" id="statTotal">0</div>
+                <div class="stat-label">Total Applications</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="statPending" style="color: #d97706;">0</div>
+                <div class="stat-label">Pending Review</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="statApproved" style="color: #059669;">0</div>
+                <div class="stat-label">Approved</div>
+            </div>
+        </div>
+
+        <div style="overflow-x: auto;">
+            <table class="applications-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Applicant</th>
+                        <th>Contact</th>
+                        <th>Status / Exp</th>
+                        <th>Application Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <tr><td colspan="6" style="text-align: center; padding: 2rem;">Loading applications...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let adminKey = '';
+        
+        // Auto login if key is in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('key')) {
+            document.getElementById('adminKey').value = urlParams.get('key');
+            checkAuth();
+        }
+
+        async function checkAuth() {
+            const key = document.getElementById('adminKey').value;
+            try {
+                const res = await fetch(`/api/applications-ai?key=${key}`);
+                if (res.ok) {
+                    adminKey = key;
+                    document.getElementById('authOverlay').style.display = 'none';
+                    document.getElementById('dashboardContent').style.display = 'block';
+                    const data = await res.json();
+                    renderDashboard(data);
+                } else {
+                    alert('Invalid Key');
+                }
+            } catch (err) {
+                alert('Connection error');
+            }
+        }
+
+        function renderDashboard(apps) {
+            apps.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            document.getElementById('statTotal').textContent = apps.length;
+            document.getElementById('statPending').textContent = apps.filter(a => a.status === 'pending').length;
+            document.getElementById('statApproved').textContent = apps.filter(a => a.status === 'approved').length;
+
+            const tbody = document.getElementById('tableBody');
+            if (apps.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 2rem;">No applications yet.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = apps.map(app => {
+                const date = new Date(app.timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+                
+                let statusBadge = '';
+                if (app.status === 'pending') statusBadge = '<span class="badge badge-pending">Pending</span>';
+                else if (app.status === 'approved') statusBadge = '<span class="badge badge-approved">Approved</span>';
+                else if (app.status === 'rejected') statusBadge = '<span class="badge badge-rejected">Rejected</span>';
+
+                let actions = '';
+                if (app.status === 'pending') {
+                    actions = `
+                        <button class="action-btn btn-approve" onclick="updateStatus('${app.id}', 'approved')">Approve</button>
+                        <button class="action-btn btn-reject" onclick="updateStatus('${app.id}', 'rejected')">Reject</button>
+                    `;
+                } else if (app.status === 'approved') {
+                    actions = `<button class="action-btn btn-reject" onclick="updateStatus('${app.id}', 'rejected')">Revoke</button>`;
+                } else {
+                    actions = `<button class="action-btn btn-approve" onclick="updateStatus('${app.id}', 'approved')">Approve</button>`;
+                }
+
+                return `
+                    <tr>
+                        <td style="color: #64748b; font-size: 0.9rem;">${date}</td>
+                        <td>
+                            <div style="font-weight: 700; color: #1e293b;">${app.name}</div>
+                            <div style="font-size: 0.85rem; color: #64748b;">${app.email}</div>
+                        </td>
+                        <td>
+                            <div style="font-size: 0.9rem;">${app.phone}</div>
+                            <div style="font-size: 0.85rem; color: #64748b;">${app.country}</div>
+                        </td>
+                        <td>
+                            <div style="font-size: 0.9rem; font-weight: 600;" dir="rtl">${app.status_ar || app.status || 'N/A'}</div>
+                            <div style="font-size: 0.85rem; color: #64748b;" dir="rtl">${app.experience}</div>
+                        </td>
+                        <td>${statusBadge}</td>
+                        <td>${actions}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        async function updateStatus(id, newStatus) {
+            try {
+                const res = await fetch(`/api/applications-ai/status?key=${adminKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id, status: newStatus })
+                });
+                
+                if (res.ok) {
+                    // Reload data
+                    checkAuth();
+                } else {
+                    alert('Error updating status');
+                }
+            } catch (err) {
+                alert('Connection error');
+            }
+        }
+    </script>
+</body>
+</html>

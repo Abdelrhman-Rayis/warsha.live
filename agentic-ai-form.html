@@ -179,27 +179,27 @@
             </div>
             
             <!-- In MVP, this prevents actual reload and fakes a success message, then redirects Home -->
-            <form class="form-body" onsubmit="event.preventDefault(); alert('تم استلام طلبك بنجاح. سيتم التواصل معك خلال ٣ أيام عمل عبر البريد الإلكتروني أو الواتساب.'); window.location.href='/';">
+            <form id="aiApplicationForm" class="form-body">
                 
                 <div class="form-group">
                     <label>1) البريد الإلكتروني (Email)</label>
-                    <input type="email" class="form-control" required placeholder="example@domain.com" dir="ltr" style="text-align: right;">
+                    <input type="email" id="email" name="email" class="form-control" required placeholder="example@domain.com" dir="ltr" style="text-align: right;">
                 </div>
                 
                 <div class="form-group">
                     <label>2) الاسم الكامل</label>
-                    <input type="text" class="form-control" required>
+                    <input type="text" id="name" name="name" class="form-control" required>
                 </div>
 
                 <div class="form-group">
                     <label>3) رقم واتساب أو تليغرام</label>
                     <span class="help-text">(مع مفتاح الدولة، مثال: 249+ أو 966+)</span>
-                    <input type="tel" class="form-control" dir="ltr" style="text-align: right;" required placeholder="+966 5X XXX XXXX">
+                    <input type="tel" id="phone" name="phone" class="form-control" dir="ltr" style="text-align: right;" required placeholder="+966 5X XXX XXXX">
                 </div>
 
                 <div class="form-group">
                     <label>4) البلد / المدينة</label>
-                    <input type="text" class="form-control" required>
+                    <input type="text" id="country" name="country" class="form-control" required>
                 </div>
 
                 <h3 style="margin: 3rem 0 2rem; color: #0f766e; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.8rem; font-size: 1.4rem;">الخلفية الأكاديمية والمهنية</h3>
@@ -217,7 +217,7 @@
                 <div class="form-group">
                     <label>6) عرّفنا بخلفيتك الأكاديمية أو المهنية بإيجاز</label>
                     <span class="help-text">يرجى ذكر التخصص، الجامعة أو جهة العمل، وسنة التخرج أو المرحلة الحالية باختصار.</span>
-                    <textarea class="form-control" required placeholder="تخصصي هو... تخرجت عام..."></textarea>
+                    <textarea id="background" name="background" class="form-control" required placeholder="تخصصي هو... تخرجت عام..."></textarea>
                 </div>
 
                 <div class="form-group">
@@ -235,5 +235,45 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.getElementById('aiApplicationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.querySelector('.btn-submit');
+            btn.disabled = true;
+            btn.textContent = 'جاري الإرسال...';
+            
+            const formData = {
+                email: document.getElementById('email').value,
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                country: document.getElementById('country').value,
+                status: document.querySelector('input[name="status"]:checked')?.value || '',
+                background: document.getElementById('background').value,
+                experience: document.querySelector('input[name="experience"]:checked')?.value || ''
+            };
+            
+            try {
+                const response = await fetch('/api/apply-ai', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (response.ok) {
+                    alert('تم استلام طلبك بنجاح. سيتم التواصل معك خلال ٣ أيام عمل عبر البريد الإلكتروني أو الواتساب.');
+                    window.location.href = '/';
+                } else {
+                    alert('حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى.');
+                    btn.disabled = false;
+                    btn.textContent = 'إرسال الطلب';
+                }
+            } catch (err) {
+                alert('حدث خطأ في الاتصال. يرجى المحاولة مرة أخرى.');
+                btn.disabled = false;
+                btn.textContent = 'إرسال الطلب';
+            }
+        });
+    </script>
 </body>
 </html>
