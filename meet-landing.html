@@ -3,141 +3,513 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>warsha.live — Start a Meeting</title>
+    <title>Meet - warsha.live</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://warsha.live/favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://warsha.live/apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Product+Sans:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #ffffff;
+            color: #202124;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            width: 100%;
+            height: 64px;
+        }
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #5f6368;
+            font-size: 1.35rem;
+            font-weight: 500;
+        }
+        .logo-wrap img {
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+        }
+        .logo-text {
+            color: #5f6368;
+        }
+        .logo-text span {
+            color: #202124;
+            font-weight: 500;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            color: #5f6368;
+            font-size: 1.1rem;
+        }
+        .datetime {
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        
+        /* Main Layout */
+        main {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 3rem;
+            width: 100%;
+            gap: 4rem;
+        }
+        
+        .left-panel {
+            flex: 1;
+            max-width: 580px;
+        }
+        
+        h1 {
+            font-size: clamp(2.2rem, 4vw, 2.75rem);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #202124;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1.125rem;
+            color: #5f6368;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            max-width: 480px;
+        }
+        
+        /* Action Area */
+        .action-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .btn-primary {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: inherit;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn-primary:hover {
+            background: #1b66c9;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+        
+        .join-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+        }
+        
+        .join-input-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .join-input-wrap svg {
+            position: absolute;
+            left: 12px;
+            color: #5f6368;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .join-input {
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid #5f6368;
+            border-radius: 4px;
+            font-size: 1rem;
+            width: 260px;
+            color: #202124;
+            transition: border-color 0.2s;
+        }
+        
+        .join-input:focus {
+            outline: none;
+            border-color: #1a73e8;
+            border-width: 2px;
+            padding: 0.75rem 1rem 0.75rem 2.5rem; /* prevent jump */
+        }
+        
+        .btn-text {
+            color: #1a73e8;
+            background: transparent;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+        }
+        
+        .btn-text:hover {
             background: #f8f9fa;
+        }
+        
+        .btn-text:disabled {
+            color: #3c4043;
+            opacity: 0.38;
+            cursor: default;
+            background: transparent;
+        }
+        
+        hr {
+            border: 0;
+            border-top: 1px solid #dadce0;
+            margin: 0;
+            width: 100%;
+            max-width: 480px;
+        }
+        
+        .learn-more {
+            margin-top: 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .learn-more a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        
+        .learn-more a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Right Panel */
+        .right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 500px;
+        }
+        
+        .illustration {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            background: #f8f9fa;
+            aspect-ratio: 1/1;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
         }
-        .card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 2.5rem;
-            max-width: 480px;
+        
+        .illustration img {
             width: 100%;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel-text {
             text-align: center;
+            max-width: 360px;
         }
-        .logo { font-size: 2rem; font-weight: 700; color: #1a1f2e; margin-bottom: 0.25rem; }
-        .sub { color: #5b6478; margin-bottom: 2rem; font-size: 0.95rem; }
-        label {
+        
+        .carousel-text h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        
+        .carousel-text p {
+            color: #5f6368;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        
+        /* Modal for New Meeting */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+        
+        .modal {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+        
+        .modal h2 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal label {
             display: block;
-            text-align: left;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #1a1f2e;
-            margin-bottom: 0.35rem;
+            font-size: 0.875rem;
+            color: #5f6368;
+            margin-bottom: 0.5rem;
         }
-        input {
+        
+        .modal input {
             width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid #d6d0c2;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            margin-bottom: 1.25rem;
-            font-family: inherit;
-        }
-        input:focus { outline: none; border-color: #b08d3c; }
-        button {
-            width: 100%;
-            padding: 0.85rem;
-            background: #1a1f2e;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
+            padding: 0.75rem;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
             font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: inherit;
         }
-        button:hover { background: #2a3142; }
-        button:disabled { opacity: 0.6; cursor: wait; }
-        .result {
-            margin-top: 1.5rem;
-            padding: 1.25rem;
-            background: #f0f9f3;
-            border: 1px solid #b5e0c5;
-            border-radius: 10px;
+        
+        .modal input:focus {
+            outline: none;
+            border-color: #1a73e8;
+            border-width: 2px;
+            padding: calc(0.75rem - 1px);
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+        
+        .btn-cancel {
+            background: transparent;
+            border: none;
+            color: #1a73e8;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .btn-cancel:hover { background: #f8f9fa; }
+
+        /* Created Meeting Result inside modal */
+        #resultBlock {
             display: none;
         }
-        .result.visible { display: block; }
-        .result h3 { color: #15543a; margin-bottom: 0.5rem; font-size: 1rem; }
         .link-box {
             display: flex;
             gap: 0.5rem;
-            margin-top: 0.75rem;
+            background: #f1f3f4;
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            align-items: center;
         }
         .link-box input {
-            flex: 1;
-            padding: 0.5rem;
-            font-family: monospace;
-            font-size: 0.82rem;
-            background: #fff;
-            border: 2px solid #b08d3c;
-            border-radius: 6px;
+            background: transparent;
+            border: none;
             margin: 0;
-        }
-        .link-box button {
-            width: auto;
-            padding: 0.5rem 1rem;
-            font-size: 0.85rem;
-            border-radius: 6px;
-        }
-        .error {
-            background: #fef2f2;
-            border-color: #fecaca;
-            color: #991b1b;
-        }
-        .join-btn {
-            display: inline-block;
-            margin-top: 0.75rem;
-            padding: 0.65rem 1.5rem;
-            background: #15543a;
-            color: #fff;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
+            padding: 0;
+            font-family: monospace;
             font-size: 0.9rem;
+            color: #202124;
+            width: 100%;
         }
-        .join-btn:hover { background: #0e3b28; }
+        .link-box input:focus { border: none; padding: 0; }
+        
+        @media (max-width: 900px) {
+            main {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+            .subtitle {
+                margin: 0 auto 2rem;
+            }
+            .action-row {
+                justify-content: center;
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .join-group {
+                width: 100%;
+            }
+            .join-input {
+                width: 100%;
+            }
+            hr { margin: 0 auto; }
+            .right-panel {
+                margin-top: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="logo">warsha.live</div>
-        <p class="sub">Create a live classroom in seconds</p>
-        <form id="meetingForm">
-            <label for="roomName">Room name</label>
-            <input id="roomName" placeholder="e.g. Week 3 — Research Methods" required maxlength="80">
-            <label for="yourName">Your name</label>
-            <input id="yourName" placeholder="e.g. Dr. Abdallah" required maxlength="60">
-            <button type="submit" id="createBtn">Create Meeting</button>
-        </form>
-        <div id="result" class="result">
-            <h3>✓ Meeting created!</h3>
-            <p id="meetingInfo" style="font-size:0.9rem;color:#5b6478;"></p>
-            <div class="link-box">
-                <input id="meetingLink" readonly onclick="this.select();copyLink()">
-                <button onclick="copyLink()">Copy</button>
-            </div>
-            <a id="joinBtn" class="join-btn" href="#" target="_blank">Join as Host →</a>
+
+    <header>
+        <a href="https://warsha.live" class="logo-wrap">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="24" rx="6" fill="#0f766e"/>
+                <path d="M7 15L12 10L17 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="logo-text">warsha.live <span>Meet</span></div>
+        </a>
+        <div class="header-right">
+            <span class="datetime" id="datetime">12:00 PM • Mon, May 19</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#5f6368"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#5f6368"><path d="M13.85 22.25h-3.7c-.74 0-1.36-.54-1.45-1.27l-.27-1.89c-.27-.14-.53-.29-.79-.46l-1.8.72c-.7.26-1.47-.03-1.81-.65L2.2 15.53c-.35-.66-.2-1.44.36-1.88l1.53-1.19c-.01-.15-.02-.3-.02-.46 0-.15.01-.31.02-.46l-1.52-1.19c-.59-.45-.74-1.26-.37-1.88l1.85-3.19c.34-.62 1.11-.9 1.79-.63l1.81.73c.26-.17.52-.32.78-.46l.27-1.91c.09-.7.71-1.25 1.44-1.25h3.7c.74 0 1.36.54 1.45 1.27l.27 1.89c.27.14.53.29.79.46l1.8-.72c.71-.26 1.48.03 1.82.65l1.84 3.18c.36.66.2 1.44-.36 1.88l-1.52 1.19c.01.15.02.3.02.46s-.01.31-.02.46l1.52 1.19c.56.45.72 1.23.37 1.86l-1.86 3.22c-.34.62-1.11.9-1.8.63l-1.8-.72c-.26.17-.52.32-.78.46l-.27 1.91c-.1.68-.72 1.22-1.46 1.22zm-3.23-2h2.76l.37-2.55.53-.22c.44-.18.88-.44 1.34-.78l.45-.34 2.38.96 1.38-2.4-2.03-1.58.07-.56c.03-.26.06-.51.06-.78s-.03-.53-.06-.78l-.07-.56 2.03-1.58-1.39-2.4-2.39.96-.45-.35c-.42-.32-.87-.58-1.33-.77l-.52-.22-.37-2.55h-2.76l-.37 2.55-.53.21c-.44.19-.88.44-1.34.79l-.45.33-2.38-.95-1.39 2.39 2.03 1.58-.07.56a7.17 7.17 0 00-.06.79c0 .26.02.53.06.78l.07.56-2.03 1.58 1.38 2.4 2.39-.96.45.35c.43.33.86.58 1.33.77l.53.22.38 2.55zM12 15.6c1.98 0 3.6-1.62 3.6-3.6s-1.62-3.6-3.6-3.6-3.6 1.62-3.6 3.6 1.62 3.6 3.6 3.6z"/></svg>
+            <div style="width:32px; height:32px; border-radius:50%; background:#1a73e8; color:white; display:flex; align-items:center; justify-content:center; font-weight:500; font-size:1rem;">W</div>
         </div>
-        <p style="margin-top:1.5rem;font-size:0.8rem;color:#9ca3af;">
-            Powered by <a href="https://warsha.live" style="color:#b08d3c;text-decoration:none;">warsha.live</a>
-        </p>
+    </header>
+
+    <main>
+        <div class="left-panel">
+            <h1>Premium video meetings.<br>Now free for everyone.</h1>
+            <p class="subtitle">We re-engineered the service we built for secure learning workshops, warsha.live, to make it free and available for all.</p>
+            
+            <div class="action-row">
+                <button class="btn-primary" onclick="openModal()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+                    New meeting
+                </button>
+                <div class="join-group">
+                    <div class="join-input-wrap">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 5H4c-1.1 0-1.99.9-1.99 2L2 17c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-9 3h2v2h-2V8zm0 3h2v2h-2v-2zM8 8h2v2H8V8zm0 3h2v2H8v-2zm-1 2H5v-2h2v2zm0-3H5V8h2v2zm9 7H8v-2h8v2zm0-4h-2v-2h2v2zm0-3h-2V8h2v2zm3 3h-2v-2h2v2zm0-3h-2V8h2v2z"/></svg>
+                        <input type="text" class="join-input" id="joinCode" placeholder="Enter a code or link" oninput="toggleJoinBtn()">
+                    </div>
+                    <button class="btn-text" id="joinBtn" disabled onclick="joinMeeting()">Join</button>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div class="learn-more">
+                <a href="https://warsha.live">Learn more about warsha.live</a>
+            </div>
+        </div>
+        
+        <div class="right-panel">
+            <div class="illustration">
+                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=600" alt="Video meeting illustration">
+            </div>
+            <div class="carousel-text">
+                <h3>Get a link you can share</h3>
+                <p>Click <strong>New meeting</strong> to get a link you can send to people you want to meet with</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="meetingModal">
+        <div class="modal">
+            <div id="createBlock">
+                <h2>Start a new meeting</h2>
+                <form id="meetingForm">
+                    <label for="roomName">Meeting name</label>
+                    <input id="roomName" placeholder="e.g. Planning Session" required maxlength="80">
+                    <label for="yourName">Your name</label>
+                    <input id="yourName" placeholder="e.g. Host" required maxlength="60">
+                    <div class="modal-actions">
+                        <button type="button" class="btn-cancel" onclick="closeModal()">Cancel</button>
+                        <button type="submit" class="btn-primary" id="createBtn" style="padding: 0.5rem 1rem;">Create</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="resultBlock">
+                <h2 style="margin-bottom: 0.5rem;">Here's the link to your meeting</h2>
+                <p style="font-size: 0.875rem; color: #5f6368; line-height: 1.5;">Copy this link and send it to people you want to meet with. Be sure to save it so you can use it later, too.</p>
+                <div class="link-box">
+                    <input id="meetingLink" readonly>
+                    <button class="btn-cancel" onclick="copyLink()" style="background: transparent; color: #5f6368; padding: 0.2rem;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                    </button>
+                </div>
+                <div class="modal-actions" style="margin-top: 1.5rem;">
+                    <a id="hostJoinBtn" class="btn-primary" href="#" style="text-decoration: none;">Join Meeting</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
+        // Update clock
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+            const dateStr = now.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+            document.getElementById('datetime').textContent = `${timeStr} • ${dateStr}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Join Input Toggle
+        const joinCodeInput = document.getElementById('joinCode');
+        const joinBtn = document.getElementById('joinBtn');
+        function toggleJoinBtn() {
+            joinBtn.disabled = joinCodeInput.value.trim().length === 0;
+        }
+
+        function joinMeeting() {
+            const code = joinCodeInput.value.trim();
+            if(code) {
+                // If it's a full link, extract ID, otherwise use as ID
+                const id = code.includes('join=') ? new URL(code).searchParams.get('join') : code;
+                window.location.href = `https://warsha.live/classes/?join=${encodeURIComponent(id)}`;
+            }
+        }
+
+        // Modal logic
+        const modal = document.getElementById('meetingModal');
+        const createBlock = document.getElementById('createBlock');
+        const resultBlock = document.getElementById('resultBlock');
+        
+        function openModal() {
+            modal.style.display = 'flex';
+            createBlock.style.display = 'block';
+            resultBlock.style.display = 'none';
+            document.getElementById('roomName').focus();
+        }
+        
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+        
+        // Close modal on click outside
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) closeModal();
+        });
+
+        // API Submission
         const form = document.getElementById('meetingForm');
-        const result = document.getElementById('result');
         const API = 'https://warsha.live/api/class/create';
 
         form.addEventListener('submit', async (e) => {
@@ -145,7 +517,6 @@
             const btn = document.getElementById('createBtn');
             btn.disabled = true;
             btn.textContent = 'Creating…';
-            result.classList.remove('visible');
 
             try {
                 const resp = await fetch(API, {
@@ -162,19 +533,17 @@
                 const joinLink = 'https://warsha.live' + data.moderatorJoinUrl;
                 const studentLink = 'https://warsha.live/classes/?join=' + encodeURIComponent(data.meetingId);
 
-                document.getElementById('meetingInfo').innerHTML =
-                    '<strong>Meeting ID:</strong> <code style="background:#fff;padding:0.2rem 0.5rem;border-radius:4px;">' + data.meetingId + '</code><br>' +
-                    'Share this with students to join.';
                 document.getElementById('meetingLink').value = studentLink;
-                document.getElementById('joinBtn').href = joinLink;
-                result.classList.add('visible');
+                document.getElementById('hostJoinBtn').href = joinLink;
+                
+                // Show Result
+                createBlock.style.display = 'none';
+                resultBlock.style.display = 'block';
             } catch (err) {
-                result.classList.add('visible');
-                result.className = 'result error visible';
-                result.innerHTML = '<p>❌ ' + err.message + '</p>';
+                alert('Error creating meeting: ' + err.message);
             } finally {
                 btn.disabled = false;
-                btn.textContent = 'Create Meeting';
+                btn.textContent = 'Create';
             }
         });
 
@@ -184,6 +553,11 @@
             navigator.clipboard.writeText(input.value).catch(() => {
                 document.execCommand('copy');
             });
+            // Show brief feedback
+            const btn = event.currentTarget;
+            const oldHtml = btn.innerHTML;
+            btn.innerHTML = '<span style="font-size:0.85rem; font-weight:500;">Copied</span>';
+            setTimeout(() => { btn.innerHTML = oldHtml; }, 2000);
         }
     </script>
 </body>
