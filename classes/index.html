@@ -123,7 +123,8 @@
   <script>
     
     // --- Autofill user names if logged in ---
-    document.addEventListener("DOMContentLoaded", () => {
+    // --- Autofill user names if logged in ---
+    window.addEventListener("load", () => {
       try {
         const savedUser = localStorage.getItem('currentUser');
         if (savedUser) {
