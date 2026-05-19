@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استمارة التقديم - هندسة وتصميم تطبيقات وكلاء الذكاء الاصطناعي</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        body { 
+            background: #f8fafc; 
+            font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif; 
+        }
+        .form-container { 
+            max-width: 700px; 
+            margin: 3rem auto; 
+            padding: 0 1rem; 
+        }
+        .form-card { 
+            background: white; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 16px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
+            overflow: hidden; 
+            margin-bottom: 2rem; 
+        }
+        .form-header { 
+            background: linear-gradient(135deg, #0f766e, #134e4a); 
+            color: white; 
+            padding: 2.5rem 2rem; 
+            border-bottom: 5px solid #f59e0b; 
+        }
+        .form-header h1 { 
+            font-size: 1.8rem; 
+            margin-bottom: 1rem; 
+            line-height: 1.4; 
+        }
+        .form-header p { 
+            font-size: 1.05rem; 
+            line-height: 1.7; 
+            opacity: 0.9; 
+            margin-bottom: 1.5rem; 
+        }
+        .important-notes { 
+            background: rgba(255,255,255,0.1); 
+            padding: 1.5rem; 
+            border-radius: 12px; 
+            margin-top: 1.5rem; 
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .important-notes strong { 
+            display: block; 
+            margin-bottom: 0.8rem; 
+            font-size: 1.15rem; 
+            color: #fcd34d; 
+        }
+        .important-notes ul { 
+            margin: 0; 
+            padding-right: 1.5rem; 
+            line-height: 1.8; 
+            font-size: 1rem;
+        }
+        .important-notes li {
+            margin-bottom: 0.5rem;
+        }
+        .form-body { 
+            padding: 3rem 2.5rem; 
+        }
+        .form-group { 
+            margin-bottom: 2rem; 
+        }
+        .form-group label { 
+            display: block; 
+            font-weight: 700; 
+            color: #1e293b; 
+            margin-bottom: 0.5rem; 
+            font-size: 1.1rem; 
+        }
+        .form-group .help-text { 
+            display: block; 
+            font-size: 0.9rem; 
+            color: #64748b; 
+            margin-bottom: 0.8rem; 
+        }
+        .form-control { 
+            width: 100%; 
+            padding: 0.8rem 1rem; 
+            border: 1px solid #cbd5e1; 
+            border-radius: 8px; 
+            font-family: inherit; 
+            font-size: 1rem; 
+            transition: all 0.2s; 
+            background: #f8fafc;
+        }
+        .form-control:focus { 
+            outline: none; 
+            border-color: #0f766e; 
+            background: white;
+            box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.1); 
+        }
+        textarea.form-control { 
+            min-height: 120px; 
+            resize: vertical; 
+        }
+        .radio-group { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 1rem; 
+        }
+        .radio-label { 
+            display: flex; 
+            align-items: center; 
+            gap: 0.75rem; 
+            cursor: pointer; 
+            font-size: 1.05rem; 
+            color: #334155; 
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .radio-label:hover {
+            background: #f1f5f9;
+        }
+        .radio-label input[type="radio"] { 
+            width: 1.2rem; 
+            height: 1.2rem; 
+            accent-color: #0f766e; 
+        }
+        .btn-submit { 
+            background: #0f766e; 
+            color: white; 
+            border: none; 
+            padding: 1.2rem 2rem; 
+            font-size: 1.2rem; 
+            font-weight: 700; 
+            border-radius: 999px; 
+            cursor: pointer; 
+            width: 100%; 
+            font-family: inherit; 
+            transition: all 0.2s; 
+            box-shadow: 0 4px 6px rgba(15, 118, 110, 0.2);
+        }
+        .btn-submit:hover { 
+            background: #0d655e; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(15, 118, 110, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar" style="box-shadow: 0 1px 3px rgba(0,0,0,0.05); border-bottom: 1px solid #e2e8f0; background: white;">
+        <div style="max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 1rem;">
+            <a href="/" style="text-decoration: none; font-size: 1.5rem; font-weight: 800; color: #1e293b; letter-spacing: -0.5px; font-family: 'Manrope', sans-serif;">Warsha</a>
+            <a href="/agentic-ai-course.html" class="btn-secondary" style="text-decoration: none; border-radius: 999px;">&larr; العودة للكورس</a>
+        </div>
+    </header>
+
+    <div class="form-container">
+        <div class="form-card">
+            <div class="form-header">
+                <h1>استمارة التقديم | كورس هندسة وتصميم تطبيقات وكلاء الذكاء الاصطناعي</h1>
+                <p>شكرًا لاهتمامك بالتسجيل في كورس هندسة وتصميم تطبيقات وكلاء الذكاء الاصطناعي.<br>
+                صُممت هذه الاستمارة للتعرّف على خلفيتك الأكاديمية أو المهنية، واهتماماتك، ومدى ملاءمة الكورس لاحتياجاتك الحالية.<br>
+                تستغرق تعبئة الاستمارة 3–5 دقائق فقط.</p>
+                
+                <div class="important-notes">
+                    <strong>مهم:</strong>
+                    <ul>
+                        <li>ملء الاستمارة لا يعني القبول النهائي</li>
+                        <li>عدد المقاعد محدود: 20 فقط</li>
+                        <li>رسوم الكورس: سيتم الإعلان عنها قريباً</li>
+                        <li>آخر موعد لتقديم الطلبات: 30 مايو ٢٠٢٦</li>
+                        <li>سيتم مراجعة جميع الطلبات والتواصل مع المقبولين خلال ٣ أيام عمل لتأكيد القبول وإكمال إجراءات الدفع</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- In MVP, this prevents actual reload and fakes a success message, then redirects Home -->
+            <form class="form-body" onsubmit="event.preventDefault(); alert('تم استلام طلبك بنجاح. سيتم التواصل معك خلال ٣ أيام عمل عبر البريد الإلكتروني أو الواتساب.'); window.location.href='/';">
+                
+                <div class="form-group">
+                    <label>1) البريد الإلكتروني (Email)</label>
+                    <input type="email" class="form-control" required placeholder="example@domain.com" dir="ltr" style="text-align: right;">
+                </div>
+                
+                <div class="form-group">
+                    <label>2) الاسم الكامل</label>
+                    <input type="text" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>3) رقم واتساب أو تليغرام</label>
+                    <span class="help-text">(مع مفتاح الدولة، مثال: 249+ أو 966+)</span>
+                    <input type="tel" class="form-control" dir="ltr" style="text-align: right;" required placeholder="+966 5X XXX XXXX">
+                </div>
+
+                <div class="form-group">
+                    <label>4) البلد / المدينة</label>
+                    <input type="text" class="form-control" required>
+                </div>
+
+                <h3 style="margin: 3rem 0 2rem; color: #0f766e; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.8rem; font-size: 1.4rem;">الخلفية الأكاديمية والمهنية</h3>
+
+                <div class="form-group">
+                    <label>5) ما وضعك الحالي؟</label>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="status" value="خريج/ة جديد/ة" required> خريج/ة جديد/ة</label>
+                        <label class="radio-label"><input type="radio" name="status" value="أعمل حاليًا"> أعمل حاليًا</label>
+                        <label class="radio-label"><input type="radio" name="status" value="أعمل وأدرس"> أعمل وأدرس</label>
+                        <label class="radio-label"><input type="radio" name="status" value="أخرى"> أخرى</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>6) عرّفنا بخلفيتك الأكاديمية أو المهنية بإيجاز</label>
+                    <span class="help-text">يرجى ذكر التخصص، الجامعة أو جهة العمل، وسنة التخرج أو المرحلة الحالية باختصار.</span>
+                    <textarea class="form-control" required placeholder="تخصصي هو... تخرجت عام..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>7) عدد سنوات الخبرة العملية</label>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="experience" value="أقل من سنة" required> أقل من سنة</label>
+                        <label class="radio-label"><input type="radio" name="experience" value="من سنة إلى 3 سنوات"> من سنة إلى 3 سنوات</label>
+                        <label class="radio-label"><input type="radio" name="experience" value="أكثر من 3 سنوات"> أكثر من 3 سنوات</label>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3.5rem;">
+                    <button type="submit" class="btn-submit">إرسال الطلب</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
