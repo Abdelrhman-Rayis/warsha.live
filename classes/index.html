@@ -54,7 +54,20 @@
     @media (max-width: 720px) {
         .or-divider { display: none; }
     }
-  </style>
+  
+    <style>
+      .classes-grid {
+          display: flex !important;
+          justify-content: center !important;
+          align-items: center !important;
+          min-height: 70vh !important;
+      }
+      .class-card {
+          width: 100%;
+          max-width: 500px;
+      }
+    </style>
+</style>
 </head>
 <body>
   <div class="classes-wrap">
@@ -64,7 +77,7 @@
       <p>Start a session as an educator, or join one as a student.</p>
     </header>
 
-    <div class="classes-grid">
+    <div class="classes-grid" style="display: flex; justify-content: center;">
 
       <section class="class-card" style="display:none;"></section>
 
