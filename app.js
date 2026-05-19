@@ -1779,3 +1779,15 @@ function viewSyllabus(workshopId) {
     });
 }
 window.viewSyllabus = viewSyllabus;
+
+
+function handleLaunchWarsha(event, url = '/classes') {
+    if (event) event.preventDefault();
+    if (!currentUser) {
+        alert(currentLang === 'ar' ? 'يرجى تسجيل الدخول أولاً' : 'Please log in or register first to launch a Warsha.');
+        showLogin();
+        return;
+    }
+    window.location.href = url;
+}
+window.handleLaunchWarsha = handleLaunchWarsha;
