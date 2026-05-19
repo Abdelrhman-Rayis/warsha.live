@@ -440,7 +440,7 @@ async function loadTrendingWorkshops() {
                     <span>By ${w.instructor}</span>
                 </p>
                 ${syllabusBtn}
-                <button class="trend-enroll-btn ${badgeClass}" onclick="enrollWorkshop('${w.id}', ${w.price}, '${w.title.replace(/'/g, "\\'")}')">
+                <button class="trend-enroll-btn ${badgeClass}" onclick="enrollWorkshop('${w.id}', ${w.price || 0}, '${w.title ? w.title.replace(/'/g, "\'") : ''}')">
                     ${isFree ? 'Join Free →' : 'Enroll — $' + w.price}
                 </button>
             </article>`;
@@ -528,7 +528,7 @@ async function filterWorkshops(category) {
                     <span>By ${w.instructor}</span>
                 </p>
                 ${syllabusBtn}
-                <button class="trend-enroll-btn ${badgeClass}" onclick="enrollWorkshop('${w.id}', ${w.price}, '${w.title.replace(/'/g, "\\'")}')">
+                <button class="trend-enroll-btn ${badgeClass}" onclick="enrollWorkshop('${w.id}', ${w.price || 0}, '${w.title ? w.title.replace(/'/g, "\'") : ''}')">
                     ${isFree ? 'Join Free →' : 'Enroll — $' + w.price}
                 </button>
             </article>`;
@@ -588,7 +588,7 @@ async function showCategory(category) {
                 </p>
                 <div style="display:flex;align-items:center;gap:0.75rem;margin-top:1rem;">
                     ${isDemo ? '<span class="demo-badge">Demo</span>' : `${syllabusBtn}
-                <button class="trend-enroll-btn ${badgeClass}" onclick="enrollWorkshop('${w.id}', ${w.price}, '${w.title.replace(/'/g, "\\'")}')">${isFree ? 'Join Free →' : 'Enroll — $' + w.price}</button>`}
+                <button class="trend-enroll-btn ${badgeClass}" onclick="enrollWorkshop('${w.id}', ${w.price || 0}, '${w.title ? w.title.replace(/'/g, "\'") : ''}')">${isFree ? 'Join Free →' : 'Enroll — $' + w.price}</button>`}
                     ${isDemo ? '<button class="trend-enroll-btn paid" style="opacity:0.6;cursor:not-allowed;" disabled>Coming Soon</button>' : ''}
                 </div>
             </div>`;
@@ -675,6 +675,10 @@ function showRegister() {
 function hideAllSections() {
     const sections = document.querySelectorAll('.section');
     sections.forEach(section => section.classList.remove('active'));
+    const syl = document.getElementById('syllabusSection');
+    if (syl) syl.style.display = 'none';
+    const cat = document.getElementById('categorySection');
+    if (cat) cat.classList.remove('active');
 }
 
 function updateNavigation() {
