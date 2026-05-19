@@ -439,6 +439,7 @@ async function loadTrendingWorkshops() {
                     <img class="trend-host-avatar" src="${w.avatar}" alt="${w.instructor}" loading="lazy">
                     <span>By ${w.instructor}</span>
                 </p>
+                ${syllabusBtn}
                 <button class="trend-enroll-btn ${badgeClass}" onclick="enrollWorkshop('${w.id}', ${w.price}, '${w.title.replace(/'/g, "\\'")}')">
                     ${isFree ? 'Join Free →' : 'Enroll — $' + w.price}
                 </button>
@@ -526,6 +527,7 @@ async function filterWorkshops(category) {
                     <img class="trend-host-avatar" src="${w.avatar}" alt="${w.instructor}" loading="lazy">
                     <span>By ${w.instructor}</span>
                 </p>
+                ${syllabusBtn}
                 <button class="trend-enroll-btn ${badgeClass}" onclick="enrollWorkshop('${w.id}', ${w.price}, '${w.title.replace(/'/g, "\\'")}')">
                     ${isFree ? 'Join Free →' : 'Enroll — $' + w.price}
                 </button>
@@ -584,7 +586,8 @@ async function showCategory(category) {
                     <span>By ${w.instructor}</span>
                 </p>
                 <div style="display:flex;align-items:center;gap:0.75rem;margin-top:1rem;">
-                    ${isDemo ? '<span class="demo-badge">Demo</span>' : `<button class="trend-enroll-btn ${badgeClass}" onclick="enrollWorkshop('${w.id}', ${w.price}, '${w.title.replace(/'/g, "\\'")}')">${isFree ? 'Join Free →' : 'Enroll — $' + w.price}</button>`}
+                    ${isDemo ? '<span class="demo-badge">Demo</span>' : `${syllabusBtn}
+                <button class="trend-enroll-btn ${badgeClass}" onclick="enrollWorkshop('${w.id}', ${w.price}, '${w.title.replace(/'/g, "\\'")}')">${isFree ? 'Join Free →' : 'Enroll — $' + w.price}</button>`}
                     ${isDemo ? '<button class="trend-enroll-btn paid" style="opacity:0.6;cursor:not-allowed;" disabled>Coming Soon</button>' : ''}
                 </div>
             </div>`;
