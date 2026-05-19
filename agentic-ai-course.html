@@ -4,240 +4,288 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foundation of AI Agentic Engineering - Warsha</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Learn to design, build, and deploy autonomous AI agents.">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    
+    <!-- Using the exact same fonts and styles as the main site -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    
     <style>
-        body { background: #f8fafc; }
+        /* Specific tweaks for the Arabic syllabus on top of the main styles */
+        .syllabus-container {
+            width: min(800px, calc(100% - 32px));
+            margin: 3rem auto;
+        }
+        
+        .syllabus-title {
+            color: var(--refresh-ink);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--refresh-line);
+        }
+        
         .syllabus-card {
-            border: 1px solid #e2e8f0; 
-            border-radius: 12px; 
-            overflow: hidden; 
-            background: white;
+            background: var(--refresh-card);
+            border: 1px solid var(--refresh-line);
+            border-radius: 12px;
             margin-bottom: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            transition: transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            transition: all 0.2s ease;
         }
+        
         .syllabus-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-color: var(--refresh-brand);
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.08);
         }
+        
         .syllabus-header {
-            padding: 1.25rem 1.5rem; 
-            background: #f1f5f9; 
-            font-weight: 700; 
-            color: #1e293b; 
-            border-bottom: 1px solid #e2e8f0; 
-            font-size: 1.1rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(15, 118, 110, 0.03);
+            border-bottom: 1px solid var(--refresh-line);
+            border-radius: 12px 12px 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+        
+        .syllabus-header-text {
+            font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+            direction: rtl;
+            font-weight: 700;
+            color: var(--refresh-ink);
+            font-size: 1.15rem;
+        }
+        
+        .syllabus-badge {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.8rem;
+            background: var(--refresh-line);
+            color: var(--refresh-slate);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
         .syllabus-body {
             padding: 1.5rem;
+            font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+            direction: rtl;
         }
+        
         .lesson-list {
-            list-style: none; 
-            padding: 0; 
-            margin: 0; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 1rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
         }
+        
         .lesson-item {
-            display: flex; 
-            align-items: flex-start; 
-            gap: 1rem; 
-            color: #475569;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            color: var(--refresh-slate);
             font-size: 1.05rem;
         }
+        
         .lesson-icon {
-            color: #ec4899;
+            color: var(--refresh-accentStrong);
+            color: #d97706; /* refresh-accent-strong fallback */
             flex-shrink: 0;
-            margin-top: 3px;
-        }
-        .arabic-text {
-            font-family: 'IBM Plex Sans Arabic', sans-serif;
-            direction: rtl;
-            text-align: right;
-            width: 100%;
+            margin-top: 4px;
         }
     </style>
 </head>
 <body>
 
-    <header class="navbar" style="box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-        <a href="/" style="text-decoration: none; font-size: 1.5rem; font-weight: 800; color: #1a1f2e; letter-spacing: -0.5px;">Warsha</a>
-        <a href="/" class="btn-secondary" style="text-decoration: none;">&larr; Back to Platform</a>
-    </header>
+    <div class="home-brochure">
+        <!-- Exact Top Navbar from main site -->
+        <section class="market-topband" style="background: white; border-bottom: 1px solid var(--refresh-line);">
+            <div class="market-brand-row">
+                <a href="/" style="text-decoration: none;"><h1 class="market-logo" style="color: var(--refresh-ink);">Warsha</h1></a>
+                <div style="flex: 1;"></div>
+                <div class="market-links">
+                    <a href="/" class="market-link-btn" style="text-decoration: none;">&larr; Back to Platform</a>
+                </div>
+            </div>
+        </section>
 
-    <main style="max-width: 800px; margin: 3rem auto; padding: 0 1.5rem;">
-        
-        <!-- Hero Section -->
-        <div style="background: linear-gradient(135deg, #1e1b4b, #4338ca, #ec4899); color: white; padding: 3rem 2.5rem; border-radius: 16px; margin-bottom: 3rem; box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);">
-            <div style="display: inline-block; background: rgba(255,255,255,0.2); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; backdrop-filter: blur(5px);">Course Category</div>
-            
-            <h1 style="font-size: 2.8rem; margin-bottom: 1rem; line-height: 1.2; letter-spacing: -1px;">Foundation of AI Agentic Engineering</h1>
-            
-            <p style="font-size: 1.15rem; opacity: 0.9; margin-bottom: 2.5rem; line-height: 1.6; max-width: 600px;">
-                Learn to design, build, and deploy autonomous AI agents capable of reasoning, using tools, and orchestrating complex workflows. From Zero to Hero!
-            </p>
-            
-            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
-                <div style="display: flex; align-items: center; gap: 1rem;">
-                    <img src="https://api.dicebear.com/9.x/initials/svg?seed=Abdelrhman%20Rayis&radius=50&size=120&backgroundType=gradientLinear" alt="Abdelrhman Rayis" style="width: 56px; height: 56px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3);">
-                    <div>
-                        <div style="font-weight: 700; font-size: 1.1rem;">Abdelrhman Rayis</div>
-                        <div style="font-size: 0.9rem; opacity: 0.8;">Lead Instructor</div>
+        <!-- Course Hero Section using Warsha's native hero styles -->
+        <div class="market-hero" style="margin-top: 2rem; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1);">
+            <div class="market-hero-inner">
+                <div class="market-hero-content">
+                    <p class="market-kicker">Course Curriculum</p>
+                    <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1.5rem;">Foundation of <span>AI Agentic Engineering</span></h2>
+                    <p class="market-sub" style="font-size: 1.1rem; line-height: 1.6; max-width: 90%;">
+                        Learn to design, build, and deploy autonomous AI agents capable of reasoning, using tools, and orchestrating complex workflows. From Zero to Hero!
+                    </p>
+                    
+                    <div class="market-hero-actions" style="margin-top: 2.5rem; align-items: center;">
+                        <img src="https://api.dicebear.com/9.x/initials/svg?seed=Abdelrhman%20Rayis&radius=50&size=120&backgroundType=gradientLinear" alt="Abdelrhman Rayis" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2);">
+                        <div style="color: white; margin-left: 0.5rem; margin-right: 1.5rem;">
+                            <div style="font-weight: 700;">Abdelrhman Rayis</div>
+                            <div style="font-size: 0.85rem; opacity: 0.8;">Lead Instructor</div>
+                        </div>
+                        <a href="/?my-workshops=0" class="btn-primary" style="text-decoration: none; padding: 0.8rem 2rem; font-size: 1rem; border-radius: 999px; margin: 0;">Enroll in Course — Free</a>
                     </div>
                 </div>
                 
-                <a href="/" class="btn-primary" style="text-decoration: none; padding: 0.8rem 2rem; font-size: 1.1rem; background: white; color: #4338ca; border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">Enroll Now — Free</a>
+                <!-- Graphic / Hero Image area -->
+                <div class="market-hero-visual" style="border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="AI Neural Network" style="width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 4/3;">
+                </div>
             </div>
         </div>
 
-        <!-- Course Meta Info -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
-            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0; text-align: center;">
-                <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">📚</div>
-                <div style="font-weight: 700; color: #1e293b;">5 Units</div>
-                <div style="color: #64748b; font-size: 0.9rem;">Comprehensive structure</div>
+        <!-- Course Meta Info using hero-props -->
+        <div class="hero-props" style="margin-top: -1.5rem;">
+            <div class="hero-prop-card hero-prop-card-light" style="text-align: center; padding: 1.5rem;">
+                <h3 style="font-size: 1.8rem; margin: 0 0 0.2rem; color: var(--refresh-brand);">5 Units</h3>
+                <p style="margin: 0; font-size: 0.95rem;">Comprehensive curriculum structure</p>
             </div>
-            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0; text-align: center;">
-                <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🎬</div>
-                <div style="font-weight: 700; color: #1e293b;">12 Lessons</div>
-                <div style="color: #64748b; font-size: 0.9rem;">Step-by-step guidance</div>
+            <div class="hero-prop-card hero-prop-card-light" style="text-align: center; padding: 1.5rem;">
+                <h3 style="font-size: 1.8rem; margin: 0 0 0.2rem; color: var(--refresh-brand);">12 Lessons</h3>
+                <p style="margin: 0; font-size: 0.95rem;">Step-by-step practical guidance</p>
             </div>
-            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0; text-align: center;">
-                <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">⏱️</div>
-                <div style="font-weight: 700; color: #1e293b;">6 Weeks</div>
-                <div style="color: #64748b; font-size: 0.9rem;">Self-paced or live cohort</div>
+            <div class="hero-prop-card hero-prop-card-light" style="text-align: center; padding: 1.5rem;">
+                <h3 style="font-size: 1.8rem; margin: 0 0 0.2rem; color: var(--refresh-brand);">6 Weeks</h3>
+                <p style="margin: 0; font-size: 0.95rem;">Self-paced or live cohort timeline</p>
             </div>
         </div>
 
         <!-- Syllabus Section -->
-        <h2 style="font-size: 2rem; color: #0f172a; margin-bottom: 2rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">Course Syllabus <span style="color: #64748b; font-size: 1.2rem; font-weight: 400; margin-left: 0.5rem;">(Arabic)</span></h2>
+        <div class="syllabus-container">
+            <h2 class="syllabus-title">Course Syllabus <span style="color: var(--refresh-slate); font-size: 1.1rem; font-weight: 500; margin-left: 0.5rem;">(Arabic)</span></h2>
 
-        <!-- Unit 1 -->
-        <div class="syllabus-card">
-            <div class="syllabus-header arabic-text">
-                <span>الوحدة الأولى: أساسيات الوكلاء الأذكياء</span>
-                <span style="font-family: 'Inter', sans-serif; font-size: 0.85rem; background: #e2e8f0; padding: 0.2rem 0.6rem; border-radius: 12px; color: #475569;">Unit 1</span>
+            <!-- Unit 1 -->
+            <div class="syllabus-card">
+                <div class="syllabus-header">
+                    <span class="syllabus-badge">Unit 1</span>
+                    <span class="syllabus-header-text">الوحدة الأولى: أساسيات الوكلاء الأذكياء</span>
+                </div>
+                <div class="syllabus-body">
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <span>الدرس الأول: ما هو الوكيل الذكي؟</span>
+                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </li>
+                        <li class="lesson-item">
+                            <span>الدرس الثاني: الأركان الأربعة للوكيل الذكي</span>
+                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </li>
+                        <li class="lesson-item">
+                            <span>الدرس الثالث: لماذا الوكلاء الأذكياء يُحدثون فرقاً؟</span>
+                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </li>
+                        <li class="lesson-item">
+                            <span style="font-weight: 700; color: var(--refresh-ink);">تدريب الوحدة الأولى: تفكيك مهمة يومية</span>
+                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="syllabus-body arabic-text">
-                <ul class="lesson-list">
-                    <li class="lesson-item">
-                        <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span>الدرس الأول: ما هو الوكيل الذكي؟</span>
-                    </li>
-                    <li class="lesson-item">
-                        <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span>الدرس الثاني: الأركان الأربعة للوكيل الذكي</span>
-                    </li>
-                    <li class="lesson-item">
-                        <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span>الدرس الثالث: لماذا الوكلاء الأذكياء يُحدثون فرقاً؟</span>
-                    </li>
-                    <li class="lesson-item">
-                        <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                        <span style="font-weight: 600;">تدريب الوحدة الأولى: تفكيك مهمة يومية</span>
-                    </li>
-                </ul>
+
+            <!-- Unit 2 -->
+            <div class="syllabus-card">
+                <div class="syllabus-header">
+                    <span class="syllabus-badge">Unit 2</span>
+                    <span class="syllabus-header-text">الوحدة الثانية: الأدوات والمنصات</span>
+                </div>
+                <div class="syllabus-body">
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <span>طيف أدوات بناء الوكلاء (بدون كود، كود منخفض، أطر برمجية)</span>
+                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </li>
+                        <li class="lesson-item">
+                            <span>أبرز أُطر بناء الوكلاء في الساحة الحالية</span>
+                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Unit 3 -->
+            <div class="syllabus-card">
+                <div class="syllabus-header">
+                    <span class="syllabus-badge">Unit 3</span>
+                    <span class="syllabus-header-text">الوحدة الثالثة: تصميم أول وكيل ذكي لك</span>
+                </div>
+                <div class="syllabus-body">
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <span>صياغة المهمّة وهندسة الأوامر (Prompt Engineering)</span>
+                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </li>
+                        <li class="lesson-item">
+                            <span>اختبار كسر الوكيل وإصلاحه (Red Teaming)</span>
+                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Unit 4 -->
+            <div class="syllabus-card">
+                <div class="syllabus-header">
+                    <span class="syllabus-badge">Unit 4</span>
+                    <span class="syllabus-header-text">الوحدة الرابعة: سير العمل والتعاون</span>
+                </div>
+                <div class="syllabus-body">
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <span>أنماط سير عمل الوكلاء (التسلسلي، الهرمي، التعاوني)</span>
+                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </li>
+                        <li class="lesson-item">
+                            <span style="font-weight: 700; color: var(--refresh-ink);">مثال تطبيقيّ: بناء نظام بحث وتقرير آليّ</span>
+                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Unit 5 -->
+            <div class="syllabus-card">
+                <div class="syllabus-header">
+                    <span class="syllabus-badge">Unit 5</span>
+                    <span class="syllabus-header-text">الوحدة الخامسة: الاختبار والممارسات الفضلى</span>
+                </div>
+                <div class="syllabus-body">
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <span>دورة التطوير التكراريّة للوكلاء</span>
+                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </li>
+                        <li class="lesson-item">
+                            <span>مزالق شائعة وكيف تتجنّبها بحكمة</span>
+                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        </li>
+                        <li class="lesson-item">
+                            <span>نماذج لغوية عربيّة لتشغيل وكلائك (Jais, ALLaM, Falcon)</span>
+                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem; margin-bottom: 2rem;">
+                <a href="/?my-workshops=0" class="btn-primary" style="text-decoration: none; padding: 1.2rem 3rem; font-size: 1.2rem; border-radius: 999px;">Enroll in this Workshop Now</a>
+                <p style="margin-top: 1rem; color: var(--refresh-slate); font-size: 0.95rem;">Registration is free. Handled via the main Warsha Platform.</p>
             </div>
         </div>
 
-        <!-- Unit 2 -->
-        <div class="syllabus-card">
-            <div class="syllabus-header arabic-text">
-                <span>الوحدة الثانية: الأدوات والمنصات</span>
-                <span style="font-family: 'Inter', sans-serif; font-size: 0.85rem; background: #e2e8f0; padding: 0.2rem 0.6rem; border-radius: 12px; color: #475569;">Unit 2</span>
-            </div>
-            <div class="syllabus-body arabic-text">
-                <ul class="lesson-list">
-                    <li class="lesson-item">
-                        <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span>طيف أدوات بناء الوكلاء (بدون كود، كود منخفض، أطر برمجية)</span>
-                    </li>
-                    <li class="lesson-item">
-                        <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span>أبرز أُطر بناء الوكلاء في الساحة الحالية</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    </div>
 
-        <!-- Unit 3 -->
-        <div class="syllabus-card">
-            <div class="syllabus-header arabic-text">
-                <span>الوحدة الثالثة: تصميم أول وكيل ذكي لك</span>
-                <span style="font-family: 'Inter', sans-serif; font-size: 0.85rem; background: #e2e8f0; padding: 0.2rem 0.6rem; border-radius: 12px; color: #475569;">Unit 3</span>
-            </div>
-            <div class="syllabus-body arabic-text">
-                <ul class="lesson-list">
-                    <li class="lesson-item">
-                        <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span>صياغة المهمّة وهندسة الأوامر (Prompt Engineering)</span>
-                    </li>
-                    <li class="lesson-item">
-                        <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                        <span>اختبار كسر الوكيل وإصلاحه (Red Teaming)</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Unit 4 -->
-        <div class="syllabus-card">
-            <div class="syllabus-header arabic-text">
-                <span>الوحدة الرابعة: سير العمل والتعاون</span>
-                <span style="font-family: 'Inter', sans-serif; font-size: 0.85rem; background: #e2e8f0; padding: 0.2rem 0.6rem; border-radius: 12px; color: #475569;">Unit 4</span>
-            </div>
-            <div class="syllabus-body arabic-text">
-                <ul class="lesson-list">
-                    <li class="lesson-item">
-                        <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span>أنماط سير عمل الوكلاء (التسلسلي، الهرمي، التعاوني)</span>
-                    </li>
-                    <li class="lesson-item">
-                        <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-                        <span style="font-weight: 600;">مثال تطبيقيّ: بناء نظام بحث وتقرير آليّ</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Unit 5 -->
-        <div class="syllabus-card">
-            <div class="syllabus-header arabic-text">
-                <span>الوحدة الخامسة: الاختبار والممارسات الفضلى</span>
-                <span style="font-family: 'Inter', sans-serif; font-size: 0.85rem; background: #e2e8f0; padding: 0.2rem 0.6rem; border-radius: 12px; color: #475569;">Unit 5</span>
-            </div>
-            <div class="syllabus-body arabic-text">
-                <ul class="lesson-list">
-                    <li class="lesson-item">
-                        <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span>دورة التطوير التكراريّة للوكلاء</span>
-                    </li>
-                    <li class="lesson-item">
-                        <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                        <span>مزالق شائعة وكيف تتجنّبها بحكمة</span>
-                    </li>
-                    <li class="lesson-item">
-                        <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span>نماذج لغوية عربيّة لتشغيل وكلائك (Jais, ALLaM, Falcon)</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 4rem; margin-bottom: 2rem;">
-            <a href="/" class="btn-primary" style="text-decoration: none; padding: 1rem 3rem; font-size: 1.2rem;">Enroll in this Workshop Now</a>
-            <p style="margin-top: 1rem; color: #64748b; font-size: 0.95rem;">Registration is free. Managed via Warsha Platform.</p>
-        </div>
-
-    </main>
-
-    <footer style="text-align: center; padding: 2rem; border-top: 1px solid #e2e8f0; color: #94a3b8; font-size: 0.9rem; margin-top: 3rem;">
-        &copy; 2026 Warsha.live Learning Platform. All rights reserved.
+    <!-- Same footer as the main site -->
+    <footer style="text-align: center; padding: 3rem 0; border-top: 1px solid var(--refresh-line); margin-top: 4rem; color: var(--refresh-slate); background: var(--refresh-bg);">
+        <p>&copy; 2026 Warsha. All rights reserved.</p>
     </footer>
 
 </body>
