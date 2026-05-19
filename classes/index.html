@@ -106,6 +106,25 @@
   </div>
 
   <script>
+    
+    // --- Autofill user names if logged in ---
+    document.addEventListener("DOMContentLoaded", () => {
+      try {
+        const savedUser = localStorage.getItem('currentUser');
+        if (savedUser) {
+          const user = JSON.parse(savedUser);
+          if (user && user.name) {
+            const joinNameInput = document.getElementById('joinName');
+            const educatorNameInput = document.getElementById('educatorName');
+            if (joinNameInput) joinNameInput.value = user.name;
+            if (educatorNameInput) educatorNameInput.value = user.name;
+          }
+        }
+      } catch (e) {
+        console.error("Error autofilling names:", e);
+      }
+    });
+
     function setStatus(el, type, message) {
       el.className = 'status-msg ' + type;
       el.textContent = message;
