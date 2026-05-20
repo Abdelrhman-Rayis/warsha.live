@@ -740,18 +740,15 @@
         // Auto-load preferred or default language on load
         window.addEventListener('load', () => {
             try {
-                // Force AR on initial load, ignore saved preference to ensure Arabic is absolute default for new visits
+                // Determine language: URL param > LocalStorage > Default 'ar'
                 const urlParams = new URLSearchParams(window.location.search);
                 const langParam = urlParams.get('lang');
+                const savedPref = localStorage.getItem('course_lang_pref');
                 
-                if (langParam === 'en') {
+                if (langParam === 'en' || (langParam !== 'ar' && savedPref === 'en')) {
                     switchLang('en');
-                } else if (langParam === 'ar') {
-                    switchLang('ar');
                 } else {
-                    const savedPref = localStorage.getItem('course_lang_pref');
-                    // Only use saved preference if it explicitly exists, otherwise default to 'ar'
-                    switchLang(savedPref === 'en' ? 'en' : 'ar');
+                    switchLang('ar');
                 }
             } catch (e) {
                 switchLang('ar');
