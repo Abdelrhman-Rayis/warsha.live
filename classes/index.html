@@ -144,17 +144,26 @@
         });
         const data = await resp.json();
         if (!resp.ok) throw new Error(data.error || 'Failed');
-        setStatus(status, 'success', 'Class ready! Opening warsha.live Classroom…');
+        
+        document.getElementById('createForm').style.display = 'none';
+        setStatus(status, '', ''); 
+        
         const shareUrl = location.origin + '/classes/?join=' + encodeURIComponent(data.meetingId);
-        document.getElementById('shareLink').innerHTML =
-          '<strong>Meeting ID (copy this for students):</strong><br>' +
-          '<input readonly value="' + data.meetingId + '" style="width:100%;padding:0.5rem;margin:0.35rem 0;border:2px solid #b08d3c;border-radius:6px;font-family:monospace;font-size:1rem;text-align:center;background:#fff;" onclick="this.select();document.execCommand(\'copy\')">' +
-          '<br><small>Share link: ' + shareUrl + '</small>';
+        
+        share.innerHTML = `
+          <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; margin-top: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h3 style="margin-top:0; color:#0f766e; margin-bottom: 0.5rem; font-size: 1.4rem;">Class Ready!</h3>
+            <p style="margin-bottom: 1.2rem; color: #475569; font-size: 0.95rem;">Share this link with your students. They won't need a code.</p>
+            <div style="display:flex; gap:0.5rem; margin-bottom: 1.5rem;">
+              <input type="text" readonly value="${shareUrl}" id="copyUrlInput" style="margin:0; flex:1; background:#fff; padding: 0.8rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.85rem; outline: none;" onclick="this.select();">
+              <button type="button" onclick="document.getElementById('copyUrlInput').select(); document.execCommand('copy'); this.textContent='Copied!'; this.style.background='#10b981'; this.style.color='#fff'; setTimeout(()=>{this.textContent='Copy'; this.style.background='#cbd5e1'; this.style.color='#1e293b';}, 2500);" style="width:auto; padding: 0.8rem 1.2rem; background:#cbd5e1; color:#1e293b; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: all 0.2s;">Copy</button>
+            </div>
+            <a href="${data.moderatorJoinUrl}" target="_blank" rel="noopener" style="display:block; width:100%; padding:1rem; background:#b8924a; color:#1a1f2e; font-weight:bold; text-decoration:none; border-radius:6px; transition: background 0.2s; font-size: 1.1rem;">Join Classroom Now &rarr;</a>
+          </div>
+        `;
         share.classList.add('visible');
-        window.open(data.moderatorJoinUrl, '_blank', 'noopener');
       } catch (err) {
         setStatus(status, 'error', err.message);
-      } finally {
         btn.disabled = false;
         btn.textContent = 'Create & join as moderator';
       }
@@ -174,7 +183,20 @@
     // Prefill the student form if linked via /classes/?join=<meetingId>.
     const prefill = new URLSearchParams(location.search).get('join');
     if (prefill) {
-      document.getElementById('joinMeetingId').value = prefill;
+      const joinInput = document.getElementById('joinMeetingId');
+      joinInput.value = prefill;
+      
+      // Hide the meeting ID field completely
+      joinInput.style.display = 'none';
+      const joinLabel = document.querySelector('label[for="joinMeetingId"]');
+      if (joinLabel) joinLabel.style.display = 'none';
+      
+      // Add a nice welcome message instead
+      const form = document.getElementById('joinForm');
+      const welcomeMsg = document.createElement('div');
+      welcomeMsg.innerHTML = '<div style="background: #f0fdf4; color: #166534; padding: 1rem; border-radius: 6px; margin-bottom: 1.5rem; text-align: center; border: 1px solid #bbf7d0;"><strong>✓ Ready to join</strong><br><small>Just enter your name below.</small></div>';
+      form.insertBefore(welcomeMsg, form.firstChild);
+      
       document.getElementById('joinName').focus();
       
       // Hide educator elements to keep it clean for students joining via link
