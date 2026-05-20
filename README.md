@@ -3,6 +3,7 @@
 A complete educational platform designed to provide an effective and interactive learning experience.
 
 ---
+<img width="1494" height="853" alt="image" src="https://github.com/user-attachments/assets/5ddbf56a-901b-420d-9a72-b1c5af45d5e5" />
 
 ## Key Features
 
