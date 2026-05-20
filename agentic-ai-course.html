@@ -213,10 +213,11 @@
 
         /* Native RTL Overrides for Syllabus Cards */
         html[dir="rtl"] .syllabus-title {
-            text-align: right;
+            text-align: center;
         }
         html[dir="rtl"] .syllabus-header {
-            flex-direction: row-reverse;
+            justify-content: center;
+            gap: 15px;
         }
         html[dir="rtl"] .syllabus-body {
             direction: rtl;
@@ -235,7 +236,8 @@
 
         /* Native LTR Enforcements for Syllabus Cards */
         html[dir="ltr"] .syllabus-header {
-            flex-direction: row;
+            justify-content: center;
+            gap: 15px;
         }
         html[dir="ltr"] .lesson-item {
             flex-direction: row;
