@@ -104,23 +104,9 @@
   <script>
     
     // --- Autofill user names if logged in ---
-    // --- Autofill user names if logged in ---
     window.addEventListener("load", () => {
       try {
         const savedUser = localStorage.getItem('currentUser');
-        if (savedUser) {
-          const user = JSON.parse(savedUser);
-          if (user && user.name) {
-            const joinNameInput = document.getElementById('joinName');
-            const educatorNameInput = document.getElementById('educatorName');
-            if (joinNameInput) joinNameInput.value = user.name;
-            if (educatorNameInput) educatorNameInput.value = user.name;
-          }
-        }
-      } catch (e) {
-        console.error("Error autofilling names:", e);
-      }
-    });
         if (savedUser) {
           const user = JSON.parse(savedUser);
           if (user && user.name) {
