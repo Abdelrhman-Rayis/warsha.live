@@ -24,7 +24,7 @@
       .class-card button { width: 100%; padding: 1rem; background: #1a1f2e; color: #fff; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
       .class-card button:hover { background: #000000; }
       .or-divider { display: flex; align-items: center; color: #cbd5e1; font-weight: 300; }
-      @media (max-width: 768px) { .classes-grid { grid-template-columns: 1fr; } .or-divider { display: none; } }
+      @media (max-width: 768px) { .classes-wrap { padding: 1.5rem 1rem; } .classes-grid { grid-template-columns: 1fr; gap: 1.5rem; } .class-card { padding: 1.5rem; } .or-divider { display: none; } }
     </style>
 
 </style>
@@ -37,7 +37,7 @@
       <p>Start a session as an educator, or join one as a student.</p>
     </header>
 
-    <div class="classes-grid" style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 3rem; align-items: start; max-width: 1000px; margin: 2rem auto;">
+    <div class="classes-grid" >
 
       
       <section class="class-card">
@@ -58,7 +58,7 @@
 
       <div class="or-divider"><span>OR</span></div>
 
-      <section class="class-card" style="width: 100%; max-width: 500px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" style="width: 100%; max-width: 500px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+      <section class="class-card" >
         <span class="role-tag">Educator</span>
         <h2>Start a new class</h2>
         <form id="createForm">
