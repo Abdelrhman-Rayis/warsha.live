@@ -230,6 +230,19 @@
             margin-left: 0;
             margin-right: 0;
         }
+
+        /* Native LTR Enforcements for Syllabus Cards */
+        html[dir="ltr"] .syllabus-header {
+            flex-direction: row;
+        }
+        html[dir="ltr"] .lesson-item {
+            flex-direction: row;
+            text-align: left;
+        }
+        html[dir="ltr"] .lesson-icon {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
     </style>
 </head>
 <body>
