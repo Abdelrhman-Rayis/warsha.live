@@ -222,9 +222,11 @@
             direction: rtl;
             text-align: right;
         }
+        /* Override specifically for Lesson Items in RTL to ensure text is on the right, icon on the left */
         html[dir="rtl"] .lesson-item {
             flex-direction: row-reverse;
             text-align: right;
+            justify-content: flex-end;
         }
         html[dir="rtl"] .lesson-icon {
             margin-left: 10px;
@@ -238,6 +240,7 @@
         html[dir="ltr"] .lesson-item {
             flex-direction: row;
             text-align: left;
+            justify-content: flex-start;
         }
         html[dir="ltr"] .lesson-icon {
             margin-left: 0;
