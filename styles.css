@@ -3277,3 +3277,13 @@ body {
         box-shadow: 0 0 0 0 rgba(255, 59, 48, 0);
     }
 }
+
+/* Hide elements on mobile for responsiveness */
+@media (max-width: 768px) {
+    .market-logo {
+        display: none !important;
+    }
+    #categoryRow {
+        display: none !important;
+    }
+}
