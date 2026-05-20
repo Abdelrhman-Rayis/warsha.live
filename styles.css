@@ -3312,3 +3312,21 @@ body {
         margin-bottom: 5px;
     }
 }
+
+@media (max-width: 768px) {
+    .market-brand-row {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .market-search {
+        flex: 1;
+        min-width: 200px;
+    }
+    .mobile-menu-btn {
+        margin-left: 0;
+    }
+}
