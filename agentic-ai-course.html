@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +7,12 @@
     <meta name="description" content="Learn to design, build, and deploy autonomous AI agents.">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     
-    <!-- Using the exact same fonts and styles as the main site -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     
     <style>
-        /* Specific tweaks for the Arabic syllabus on top of the main styles */
         .syllabus-container {
             width: min(800px, calc(100% - 32px));
             margin: 3rem auto;
@@ -53,7 +52,6 @@
         
         .syllabus-header-text {
             font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
-            direction: rtl;
             font-weight: 700;
             color: var(--refresh-ink);
             font-size: 1.15rem;
@@ -74,7 +72,6 @@
         .syllabus-body {
             padding: 1.5rem;
             font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
-            direction: rtl;
         }
         
         .lesson-list {
@@ -88,345 +85,541 @@
         
         .lesson-item {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 1rem;
             color: var(--refresh-slate);
             font-size: 1.05rem;
         }
         
         .lesson-icon {
-            color: var(--refresh-accentStrong);
             color: #d97706; /* refresh-accent-strong fallback */
             flex-shrink: 0;
             margin-top: 4px;
+        }
+
+        /* Pricing CSS */
+        .pricing-section-container {
+            width: min(700px, calc(100% - 32px));
+            margin: 3rem auto 3rem auto;
+        }
+        .pricing-grid-small {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            align-items: stretch;
+        }
+        .p-card {
+            background: #ffffff;
+            border: 1px solid var(--refresh-line, #e2e8f0);
+            border-radius: 4px;
+            padding: 1.5rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+            transition: all 0.25s ease;
+        }
+        .p-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+        }
+        .p-card-early {
+            background: #fffdf5;
+            border: 2px solid #b8924a;
+            position: relative;
+        }
+        .p-card-early:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 8px 24px rgba(184, 146, 74, 0.12);
+            border-color: #8b6e2c;
+        }
+        .p-badge {
+            position: absolute;
+            top: -11px;
+            right: 20px;
+            background: #b8924a;
+            color: #1a1f2e;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .p-title {
+            font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+            font-size: 1.25rem;
+            color: #1a1f2e;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        .p-desc {
+            color: #5b6478;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+        }
+        .p-price {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #1a1f2e;
+            line-height: 1;
+            margin-bottom: 1.2rem;
+        }
+        .p-price span {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #5b6478;
+        }
+        .p-btn {
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .p-btn-gold {
+            background: #b8924a;
+            color: #1a1f2e;
+            border: 1px solid #b8924a;
+        }
+        .p-btn-gold:hover {
+            background: #8b6e2c;
+            border-color: #8b6e2c;
+        }
+        .p-btn-ink {
+            background: #1a1f2e;
+            color: #ffffff;
+            border: 1px solid #1a1f2e;
+        }
+        .p-btn-ink:hover {
+            background: #000000;
+            border-color: #000000;
+        }
+
+        /* Language Switcher CSS */
+        [data-lang]:not(.active) {
+            display: none !important;
+        }
+        .lang-toggle button.active {
+            background: var(--refresh-ink, #1a1f2e) !important;
+            color: #ffffff !important;
         }
     </style>
 </head>
 <body>
 
     <div class="home-brochure">
-        <!-- Exact Top Navbar from main site -->
+        <!-- Bilingual Top Navbar -->
         <section class="market-topband" style="background: white; border-bottom: 1px solid var(--refresh-line);">
-            <div class="market-brand-row">
-                <a href="/" style="text-decoration: none;"><h1 class="market-logo" style="color: var(--refresh-ink);">Warsha</h1></a>
-                <div style="flex: 1;"></div>
-                <div class="market-links">
-                    <a href="/" class="market-link-btn" style="text-decoration: none;">&larr; Back to Platform</a>
+            <div class="market-brand-row" style="display: flex; align-items: center; justify-content: space-between; width: min(1160px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0;">
+                <a href="/" style="text-decoration: none;"><h1 class="market-logo" style="color: var(--refresh-ink); margin: 0;">Warsha</h1></a>
+                <div style="display: flex; align-items: center; gap: 1.5rem;">
+                    <div class="lang-toggle" style="display: flex; gap: 4px; background: #fafafa; border: 1px solid var(--refresh-line); border-radius: 999px; padding: 3px; font-size: 12px;">
+                        <button id="btn-ar" class="active" onclick="switchLang('ar')" style="border: 0; background: transparent; padding: 6px 14px; border-radius: 999px; cursor: pointer; font-weight: 700; color: #5b6478;">عربي</button>
+                        <button id="btn-en" onclick="switchLang('en')" style="border: 0; background: transparent; padding: 6px 14px; border-radius: 999px; cursor: pointer; font-weight: 700; color: #5b6478;">EN</button>
+                    </div>
+                    <a href="/" class="market-link-btn" style="text-decoration: none; color: var(--refresh-ink); font-weight: 600; font-size: 0.9rem;">
+                        <span data-lang="ar" class="active">&larr; العودة للمنصة</span>
+                        <span data-lang="en">&larr; Back to Platform</span>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Course Hero Section using Warsha's native hero styles -->
-        <div class="market-hero" style="margin-top: 2rem; border-radius: 16px; border: 1px solid var(--refresh-line); background: var(--refresh-bg);">
-            <div class="market-hero-inner">
-                <div class="market-hero-content">
-                    <div style="display: inline-flex; align-items: center; gap: 8px; background: #fffdf5; border: 1px solid #b8924a; padding: 6px 12px; border-radius: 4px; font-family: 'Cairo', 'IBM Plex Sans Arabic', sans-serif; font-size: 0.85rem; font-weight: 700; color: #8b6e2c; margin-bottom: 1.2rem; box-shadow: 0 2px 8px rgba(184, 146, 74, 0.08);">
-                        <span>💰</span> Early Bird Offer: $49 USD <span style="font-weight: 500; color: #5b6478; text-decoration: line-through; margin-left: 4px; margin-right: 4px;">$99</span> (Save 50%)
-                    </div>
-                    <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1.5rem; font-family: 'IBM Plex Sans Arabic', sans-serif; direction: rtl; color: var(--refresh-ink);">هندسة وتصميم <span style="background: linear-gradient(90deg, #0f766e, #b45309); -webkit-background-clip: text; background-clip: text; color: transparent;">وكلاء الذكاء الاصطناعي</span></h2>
-                    <p class="market-sub" style="font-size: 1.15rem; line-height: 1.8; max-width: 90%; font-family: 'IBM Plex Sans Arabic', sans-serif; direction: rtl; color: #475569;">
-                        تعلم تصميم، بناء، ونشر وكلاء ذكاء اصطناعي مستقلين قادرين على التفكير، استخدام الأدوات، وتنسيق مسارات العمل المعقدة. من الصفر إلى الاحتراف!
-                    </p>
-                    
-                    <div class="market-hero-actions" style="margin-top: 2.5rem; align-items: center;">
-                        <img src="https://api.dicebear.com/9.x/initials/svg?seed=Abdelrhman%20Rayis&radius=50&size=120&backgroundType=gradientLinear" alt="Abdelrhman Rayis" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--refresh-line);">
-                        <div style="color: var(--refresh-ink); margin-left: 0.5rem; margin-right: 1.5rem;">
-                            <div style="font-weight: 700;">Abdelrhman Rayis</div>
-                            <div style="font-size: 0.85rem; color: #475569;">Lead Instructor</div>
+        <!-- ==================== ARABIC VERSION (DEFAULT) ==================== -->
+        <div data-lang="ar" class="active" style="direction: rtl; text-align: right;">
+            <!-- Course Hero Section -->
+            <div class="market-hero" style="margin-top: 2rem; border-radius: 16px; border: 1px solid var(--refresh-line); background: var(--refresh-bg);">
+                <div class="market-hero-inner">
+                    <div class="market-hero-content">
+                        <div style="display: inline-flex; align-items: center; gap: 8px; background: #fffdf5; border: 1px solid #b8924a; padding: 6px 12px; border-radius: 4px; font-family: 'Cairo', 'IBM Plex Sans Arabic', sans-serif; font-size: 0.85rem; font-weight: 700; color: #8b6e2c; margin-bottom: 1.2rem; box-shadow: 0 2px 8px rgba(184, 146, 74, 0.08);">
+                            <span>💰</span> عرض التسجيل المبكر: $49 فقط <span style="font-weight: 500; color: #5b6478; text-decoration: line-through; margin-left: 4px; margin-right: 4px;">$99</span> (وفر 50%)
                         </div>
-                        <a href="/agentic-ai-form.html" class="btn-primary" style="text-decoration: none; padding: 0.8rem 2rem; font-size: 1rem; border-radius: 999px; margin: 0;">Enroll in Course</a>
-                    </div>
-                </div>
-                
-                <!-- Graphic / Hero Image area -->
-                <div class="market-hero-visual" style="border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
-                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="AI Neural Network" style="width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 4/3;">
-                </div>
-            </div>
-        </div>
-
-        <!-- Course Meta Info using hero-props -->
-        <div class="hero-props" style="margin-top: -1.5rem;">
-            <div class="hero-prop-card hero-prop-card-light" style="text-align: center; padding: 1.5rem;">
-                <h3 style="font-size: 1.8rem; margin: 0 0 0.2rem; color: var(--refresh-brand);">5 Units</h3>
-                <p style="margin: 0; font-size: 0.95rem;">Comprehensive curriculum structure</p>
-            </div>
-            <div class="hero-prop-card hero-prop-card-light" style="text-align: center; padding: 1.5rem;">
-                <h3 style="font-size: 1.8rem; margin: 0 0 0.2rem; color: var(--refresh-brand);">12 Lessons</h3>
-                <p style="margin: 0; font-size: 0.95rem;">Step-by-step practical guidance</p>
-            </div>
-            <div class="hero-prop-card hero-prop-card-light" style="text-align: center; padding: 1.5rem;">
-                <h3 style="font-size: 1.8rem; margin: 0 0 0.2rem; color: var(--refresh-brand);">2 Weeks</h3>
-                <p style="margin: 0; font-size: 0.95rem;">Self-paced or live cohort timeline</p>
-            </div>
-        </div>
-
-        <!-- Pricing Section -->
-        <style>
-            .pricing-section-container {
-                width: min(700px, calc(100% - 32px));
-                margin: 4rem auto 2rem auto;
-            }
-            .pricing-grid-small {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-                gap: 1.5rem;
-                align-items: stretch;
-            }
-            .p-card {
-                background: #ffffff;
-                border: 1px solid var(--refresh-line, #e2e8f0);
-                border-radius: 4px;
-                padding: 1.5rem 1.75rem;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.01);
-                transition: all 0.25s ease;
-            }
-            .p-card:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 16px rgba(0,0,0,0.04);
-            }
-            .p-card-early {
-                background: #fffdf5;
-                border: 2px solid var(--brand-gold, #b8924a);
-                position: relative;
-            }
-            .p-card-early:hover {
-                transform: translateY(-3px) scale(1.01);
-                box-shadow: 0 8px 24px rgba(184, 146, 74, 0.12);
-                border-color: var(--brand-gold-dark, #8b6e2c);
-            }
-            .p-badge {
-                position: absolute;
-                top: -11px;
-                right: 20px;
-                background: var(--brand-gold, #b8924a);
-                color: var(--brand-ink, #1a1f2e);
-                font-size: 0.7rem;
-                font-weight: 800;
-                padding: 3px 10px;
-                border-radius: 4px;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-            }
-            .p-title {
-                font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
-                font-size: 1.25rem;
-                color: var(--brand-ink, #1a1f2e);
-                margin-bottom: 0.5rem;
-                font-weight: 700;
-            }
-            .p-desc {
-                color: var(--text-muted, #5b6478);
-                font-size: 0.85rem;
-                margin-bottom: 1.5rem;
-                line-height: 1.5;
-                font-family: 'IBM Plex Sans Arabic', sans-serif;
-                direction: rtl;
-            }
-            .p-price {
-                font-family: 'Manrope', sans-serif;
-                font-size: 2.2rem;
-                font-weight: 800;
-                color: var(--brand-ink, #1a1f2e);
-                line-height: 1;
-                margin-bottom: 1.2rem;
-            }
-            .p-price span {
-                font-size: 1rem;
-                font-weight: 600;
-                color: var(--text-muted, #5b6478);
-            }
-            .p-btn {
-                text-decoration: none;
-                display: block;
-                text-align: center;
-                padding: 0.75rem;
-                border-radius: 4px;
-                font-weight: 700;
-                font-size: 0.9rem;
-                transition: all 0.2s;
-            }
-            .p-btn-gold {
-                background: var(--brand-gold, #b8924a);
-                color: var(--brand-ink, #1a1f2e);
-                border: 1px solid var(--brand-gold, #b8924a);
-            }
-            .p-btn-gold:hover {
-                background: var(--brand-gold-dark, #8b6e2c);
-                border-color: var(--brand-gold-dark, #8b6e2c);
-            }
-            .p-btn-ink {
-                background: var(--brand-ink, #1a1f2e);
-                color: #ffffff;
-                border: 1px solid var(--brand-ink, #1a1f2e);
-            }
-            .p-btn-ink:hover {
-                background: #000000;
-                border-color: #000000;
-            }
-        </style>
-
-        <div class="pricing-section-container">
-            <h2 style="font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif; text-align: center; color: var(--refresh-ink); font-size: 1.6rem; margin-bottom: 2rem; border-bottom: none; padding-bottom: 0;">Course Pricing &amp; Offers</h2>
-            
-            <div class="pricing-grid-small">
-                
-                <!-- Early Bird Card -->
-                <div class="p-card p-card-early">
-                    <div class="p-badge">Limited Time</div>
-                    <div>
-                        <span style="font-family: 'Cairo', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--brand-gold, #b8924a); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.25rem;">Special Offer</span>
-                        <h3 class="p-title">Early Bird</h3>
-                        <p class="p-desc">
-                            سجل مبكراً واحصل على السعر المخفض لتغطية كافة فصول الكورس وجميع التدريبات العملية.
+                        <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1.5rem; font-family: 'IBM Plex Sans Arabic', sans-serif; direction: rtl; color: var(--refresh-ink);">هندسة وتصميم <span style="background: linear-gradient(90deg, #0f766e, #b45309); -webkit-background-clip: text; background-clip: text; color: transparent;">وكلاء الذكاء الاصطناعي</span></h2>
+                        <p class="market-sub" style="font-size: 1.15rem; line-height: 1.8; max-width: 90%; font-family: 'IBM Plex Sans Arabic', sans-serif; direction: rtl; color: #475569; margin-bottom: 0;">
+                            تعلم تصميم، بناء، ونشر وكلاء ذكاء اصطناعي مستقلين قادرين على التفكير، استخدام الأدوات، وتنسيق مسارات العمل المعقدة. من الصفر إلى الاحتراف!
                         </p>
+                        
+                        <div class="market-hero-actions" style="margin-top: 2.5rem; align-items: center; justify-content: flex-start; flex-direction: row;">
+                            <img src="https://api.dicebear.com/9.x/initials/svg?seed=Abdelrhman%20Rayis&radius=50&size=120&backgroundType=gradientLinear" alt="Abdelrhman Rayis" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--refresh-line);">
+                            <div style="color: var(--refresh-ink); margin-left: 1.5rem; margin-right: 1rem; text-align: right;">
+                                <div style="font-weight: 700;">Abdelrhman Rayis</div>
+                                <div style="font-size: 0.85rem; color: #475569;">المحاضر الرئيسي</div>
+                            </div>
+                            <a href="/agentic-ai-form.html" class="btn-primary" style="text-decoration: none; padding: 0.8rem 2rem; font-size: 1rem; border-radius: 999px; margin: 0; margin-right: auto; margin-left: 0;">سجل في الكورس</a>
+                        </div>
                     </div>
-                    <div>
-                        <div class="p-price">$49 <span>USD</span></div>
-                        <a href="/agentic-ai-form.html" class="p-btn p-btn-gold">Enroll Early Bird &rarr;</a>
+                    
+                    <div class="market-hero-visual" style="border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.03); border: 1px solid var(--refresh-line);">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="AI Neural Network" style="width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 4/3;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Meta Info -->
+            <div class="hero-props" style="margin-top: -1.5rem;">
+                <div class="hero-prop-card hero-prop-card-light" style="text-align: center; padding: 1.5rem;">
+                    <h3 style="font-size: 1.8rem; margin: 0 0 0.2rem; color: var(--refresh-brand);">5 وحدات</h3>
+                    <p style="margin: 0; font-size: 0.95rem; color: var(--refresh-slate);">هيكل المنهج الشامل</p>
+                </div>
+                <div class="hero-prop-card hero-prop-card-light" style="text-align: center; padding: 1.5rem;">
+                    <h3 style="font-size: 1.8rem; margin: 0 0 0.2rem; color: var(--refresh-brand);">12 درساً</h3>
+                    <p style="margin: 0; font-size: 0.95rem; color: var(--refresh-slate);">تطبيقات وتوجيهات عملية</p>
+                </div>
+                <div class="hero-prop-card hero-prop-card-light" style="text-align: center; padding: 1.5rem;">
+                    <h3 style="font-size: 1.8rem; margin: 0 0 0.2rem; color: var(--refresh-brand);">أسبوعين</h3>
+                    <p style="margin: 0; font-size: 0.95rem; color: var(--refresh-slate);">سرعة مرنة أو مشاركة حية</p>
+                </div>
+            </div>
+
+            <!-- Pricing Section -->
+            <div class="pricing-section-container">
+                <h2 style="font-family: 'IBM Plex Sans Arabic', sans-serif; text-align: center; color: var(--refresh-ink); font-size: 1.6rem; margin-bottom: 2rem; border-bottom: none; padding-bottom: 0;">أسعار الاشتراك والعروض</h2>
+                <div class="pricing-grid-small">
+                    <!-- Early Bird Card -->
+                    <div class="p-card p-card-early">
+                        <div class="p-badge">لفترة محدودة</div>
+                        <div>
+                            <span style="font-family: 'Cairo', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--brand-gold, #b8924a); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.25rem;">عرض خاص</span>
+                            <h3 class="p-title">التسجيل المبكر</h3>
+                            <p class="p-desc" style="direction: rtl;">سجل مبكراً واحصل على السعر المخفض لتغطية كافة فصول الكورس وجميع التدريبات العملية.</p>
+                        </div>
+                        <div>
+                            <div class="p-price">$49 <span>USD</span></div>
+                            <a href="/agentic-ai-form.html" class="p-btn p-btn-gold">سجل الآن مبكراً &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Standard Card -->
+                    <div class="p-card">
+                        <div>
+                            <span style="font-family: 'Cairo', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--text-muted, #5b6478); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.25rem;">الاشتراك الكامل</span>
+                            <h3 class="p-title">السعر القياسي</h3>
+                            <p class="p-desc" style="direction: rtl;">الاشتراك القياسي للمطورين والمهنيين بعد انتهاء فترة التسجيل المبكر لتغطية جميع محتويات المنهج.</p>
+                        </div>
+                        <div>
+                            <div class="p-price">$99 <span>USD</span></div>
+                            <a href="/agentic-ai-form.html" class="p-btn p-btn-ink">سجل السعر القياسي &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Syllabus Section -->
+            <div class="syllabus-container">
+                <h2 class="syllabus-title" style="text-align: right;">منهج ومحاور الكورس</h2>
+                <!-- Unit 1 -->
+                <div class="syllabus-card">
+                    <div class="syllabus-header" style="flex-direction: row-reverse;">
+                        <span class="syllabus-badge">الوحدة 1</span>
+                        <span class="syllabus-header-text">الوحدة الأولى: أساسيات الوكلاء الأذكياء</span>
+                    </div>
+                    <div class="syllabus-body" style="direction: rtl;">
+                        <ul class="lesson-list">
+                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>الدرس الأول: ما هو الوكيل الذكي؟</span>
+                            </li>
+                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>الدرس الثاني: الأركان الأربعة للوكيل الذكي</span>
+                            </li>
+                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>الدرس الثالث: لماذا الوكلاء الأذكياء يُحدثون فرقاً؟</span>
+                            </li>
+                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px; color: #d97706;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                                <span style="font-weight: 700; color: var(--refresh-ink);">تدريب الوحدة الأولى: تفكيك مهمة يومية وبنائها عبر وكيليك</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Unit 2 -->
+                <div class="syllabus-card">
+                    <div class="syllabus-header" style="flex-direction: row-reverse;">
+                        <span class="syllabus-badge">الوحدة 2</span>
+                        <span class="syllabus-header-text">الوحدة الثانية: الأدوات والمنصات لتمكين وكيلك</span>
+                    </div>
+                    <div class="syllabus-body" style="direction: rtl;">
+                        <ul class="lesson-list">
+                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>طيف أدوات بناء الوكلاء (بدون كود، كود منخفض، أطر برمجية)</span>
+                            </li>
+                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>أبرز أُطر بناء الوكلاء في الساحة الحالية (CrewAI, LangGraph, AutoGen)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Unit 3 -->
+                <div class="syllabus-card">
+                    <div class="syllabus-header" style="flex-direction: row-reverse;">
+                        <span class="syllabus-badge">الوحدة 3</span>
+                        <span class="syllabus-header-text">الوحدة الثالثة: تصميم أول وكيل ذكي لك</span>
+                    </div>
+                    <div class="syllabus-body" style="direction: rtl;">
+                        <ul class="lesson-list">
+                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>صياغة المهمّة وهندسة الأوامر وهيكلة المهام (Prompt Engineering)</span>
+                            </li>
+                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px; color: #dc2626;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                <span>اختبار كسر الوكيل وإصلاحه وحوكمة معايير الأمان (Red Teaming)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Unit 4 -->
+                <div class="syllabus-card">
+                    <div class="syllabus-header" style="flex-direction: row-reverse;">
+                        <span class="syllabus-badge">الوحدة 4</span>
+                        <span class="syllabus-header-text">الوحدة الرابعة: سير العمل والتعاون الجماعي للوكلاء</span>
+                    </div>
+                    <div class="syllabus-body" style="direction: rtl;">
+                        <ul class="lesson-list">
+                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>أنماط سير عمل الوكلاء (التسلسلي، الهرمي، التعاوني)</span>
+                            </li>
+                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px; color: #d97706;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                                <span style="font-weight: 700; color: var(--refresh-ink);">مثال تطبيقيّ: بناء نظام بحث وكتابة تقارير آليّ بالكامل</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Unit 5 -->
+                <div class="syllabus-card">
+                    <div class="syllabus-header" style="flex-direction: row-reverse;">
+                        <span class="syllabus-badge">الوحدة 5</span>
+                        <span class="syllabus-header-text">الوحدة الخامسة: الاختبار والممارسات الفضلى</span>
+                    </div>
+                    <div class="syllabus-body" style="direction: rtl;">
+                        <ul class="lesson-list">
+                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>دورة التطوير التكراريّة للوكلاء وضمان دقة المخرجات</span>
+                            </li>
+                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px; color: #dc2626;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                <span>مزالق شائعة في تصميم الأنظمة المستقلة وكيف تتجنّبها بحكمة</span>
+                            </li>
+                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>نماذج لغوية عربيّة بالكامل لتشغيل وكلائك (Jais, ALLaM, Falcon)</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Standard Card -->
-                <div class="p-card">
-                    <div>
-                        <span style="font-family: 'Cairo', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--text-muted, #5b6478); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.25rem;">Full Access</span>
-                        <h3 class="p-title">Standard</h3>
-                        <p class="p-desc">
-                            الاشتراك القياسي للمطورين والمهنيين بعد انتهاء فترة التسجيل المبكر لتغطية جميع محتويات المنهج.
+                <div style="text-align: center; margin-top: 4rem; margin-bottom: 2rem;">
+                    <a href="/agentic-ai-form.html" class="btn-primary" style="text-decoration: none; padding: 1.2rem 3rem; font-size: 1.2rem; border-radius: 999px;">سجل في الكورس الآن</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== ENGLISH VERSION ==================== -->
+        <div data-lang="en" style="direction: ltr; text-align: left;">
+            <!-- Course Hero Section -->
+            <div class="market-hero" style="margin-top: 2rem; border-radius: 16px; border: 1px solid var(--refresh-line); background: var(--refresh-bg);">
+                <div class="market-hero-inner">
+                    <div class="market-hero-content">
+                        <div style="display: inline-flex; align-items: center; gap: 8px; background: #fffdf5; border: 1px solid #b8924a; padding: 6px 12px; border-radius: 4px; font-family: 'Cairo', 'IBM Plex Sans Arabic', sans-serif; font-size: 0.85rem; font-weight: 700; color: #8b6e2c; margin-bottom: 1.2rem; box-shadow: 0 2px 8px rgba(184, 146, 74, 0.08);">
+                            <span>💰</span> Early Bird Offer: $49 USD <span style="font-weight: 500; color: #5b6478; text-decoration: line-through; margin-left: 4px; margin-right: 4px;">$99</span> (Save 50%)
+                        </div>
+                        <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1.5rem; font-family: 'Inter', sans-serif; color: var(--refresh-ink);">Engineering &amp; Designing <span style="background: linear-gradient(90deg, #0f766e, #b45309); -webkit-background-clip: text; background-clip: text; color: transparent;">Intelligent AI Agents</span></h2>
+                        <p class="market-sub" style="font-size: 1.15rem; line-height: 1.8; max-width: 90%; font-family: 'Inter', sans-serif; color: #475569; margin-bottom: 0;">
+                            Learn to design, build, and deploy autonomous AI agents capable of reasoning, utilizing tools, and coordinating complex workflows. From zero to hero!
                         </p>
+                        
+                        <div class="market-hero-actions" style="margin-top: 2.5rem; align-items: center; justify-content: flex-start; flex-direction: row;">
+                            <img src="https://api.dicebear.com/9.x/initials/svg?seed=Abdelrhman%20Rayis&radius=50&size=120&backgroundType=gradientLinear" alt="Abdelrhman Rayis" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--refresh-line);">
+                            <div style="color: var(--refresh-ink); margin-left: 1rem; margin-right: 1.5rem; text-align: left;">
+                                <div style="font-weight: 700;">Abdelrhman Rayis</div>
+                                <div style="font-size: 0.85rem; color: #475569;">Lead Instructor</div>
+                            </div>
+                            <a href="/agentic-ai-form.html" class="btn-primary" style="text-decoration: none; padding: 0.8rem 2rem; font-size: 1rem; border-radius: 999px; margin: 0; margin-left: auto; margin-right: 0;">Enroll in Course</a>
+                        </div>
                     </div>
-                    <div>
-                        <div class="p-price">$99 <span>USD</span></div>
-                        <a href="/agentic-ai-form.html" class="p-btn p-btn-ink">Enroll Standard &rarr;</a>
+                    
+                    <div class="market-hero-visual" style="border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.03); border: 1px solid var(--refresh-line);">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="AI Neural Network" style="width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 4/3;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Meta Info -->
+            <div class="hero-props" style="margin-top: -1.5rem;">
+                <div class="hero-prop-card hero-prop-card-light" style="text-align: center; padding: 1.5rem;">
+                    <h3 style="font-size: 1.8rem; margin: 0 0 0.2rem; color: var(--refresh-brand);">5 Units</h3>
+                    <p style="margin: 0; font-size: 0.95rem; color: var(--refresh-slate);">Comprehensive curriculum structure</p>
+                </div>
+                <div class="hero-prop-card hero-prop-card-light" style="text-align: center; padding: 1.5rem;">
+                    <h3 style="font-size: 1.8rem; margin: 0 0 0.2rem; color: var(--refresh-brand);">12 Lessons</h3>
+                    <p style="margin: 0; font-size: 0.95rem; color: var(--refresh-slate);">Step-by-step practical guidance</p>
+                </div>
+                <div class="hero-prop-card hero-prop-card-light" style="text-align: center; padding: 1.5rem;">
+                    <h3 style="font-size: 1.8rem; margin: 0 0 0.2rem; color: var(--refresh-brand);">2 Weeks</h3>
+                    <p style="margin: 0; font-size: 0.95rem; color: var(--refresh-slate);">Self-paced or live cohort timeline</p>
+                </div>
+            </div>
+
+            <!-- Pricing Section -->
+            <div class="pricing-section-container">
+                <h2 style="font-family: 'Inter', sans-serif; text-align: center; color: var(--refresh-ink); font-size: 1.6rem; margin-bottom: 2rem; border-bottom: none; padding-bottom: 0;">Course Pricing &amp; Offers</h2>
+                <div class="pricing-grid-small">
+                    <!-- Early Bird Card -->
+                    <div class="p-card p-card-early">
+                        <div class="p-badge">Limited Time</div>
+                        <div>
+                            <span style="font-family: 'Cairo', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--brand-gold, #b8924a); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.25rem;">Special Offer</span>
+                            <h3 class="p-title">Early Bird</h3>
+                            <p class="p-desc">Register early and lock in the discounted rate covering all course modules and practical hands-on projects.</p>
+                        </div>
+                        <div>
+                            <div class="p-price">$49 <span>USD</span></div>
+                            <a href="/agentic-ai-form.html" class="p-btn p-btn-gold">Enroll Early Bird &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Standard Card -->
+                    <div class="p-card">
+                        <div>
+                            <span style="font-family: 'Cairo', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--text-muted, #5b6478); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.25rem;">Full Access</span>
+                            <h3 class="p-title">Standard</h3>
+                            <p class="p-desc">Standard enrollment for developers and professionals after the early bird period closes, covering the full curriculum.</p>
+                        </div>
+                        <div>
+                            <div class="p-price">$99 <span>USD</span></div>
+                            <a href="/agentic-ai-form.html" class="p-btn p-btn-ink">Enroll Standard &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Syllabus Section -->
+            <div class="syllabus-container">
+                <h2 class="syllabus-title">Course Syllabus</h2>
+                <!-- Unit 1 -->
+                <div class="syllabus-card">
+                    <div class="syllabus-header">
+                        <span class="syllabus-badge">Unit 1</span>
+                        <span class="syllabus-header-text">Unit 1: Fundamentals of Intelligent Agents</span>
+                    </div>
+                    <div class="syllabus-body">
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Lesson 1: What is an Intelligent Agent?</span>
+                            </li>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Lesson 2: The Four Pillars of an Intelligent Agent</span>
+                            </li>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Lesson 3: Why Do Intelligent Agents Make a Difference?</span>
+                            </li>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #d97706;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                                <span style="font-weight: 700; color: var(--refresh-ink);">Unit 1 Project: Deconstructing and Automating a Daily Task</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Unit 2 -->
+                <div class="syllabus-card">
+                    <div class="syllabus-header">
+                        <span class="syllabus-badge">Unit 2</span>
+                        <span class="syllabus-header-text">Unit 2: Agent Tools and Platforms</span>
+                    </div>
+                    <div class="syllabus-body">
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Lesson 1: The Spectrum of Agent Tools (No-Code, Low-Code, Developer Frameworks)</span>
+                            </li>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Lesson 2: Top Developer Frameworks (CrewAI, LangGraph, AutoGen)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Unit 3 -->
+                <div class="syllabus-card">
+                    <div class="syllabus-header">
+                        <span class="syllabus-badge">Unit 3</span>
+                        <span class="syllabus-header-text">Unit 3: Designing Your First Intelligent Agent</span>
+                    </div>
+                    <div class="syllabus-body">
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Lesson 1: Task Crafting, Prompt Engineering &amp; Agent Behavior</span>
+                            </li>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #dc2626;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                <span>Lesson 2: Agent Red Teaming, Vulnerability Testing &amp; Governance</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Unit 4 -->
+                <div class="syllabus-card">
+                    <div class="syllabus-header">
+                        <span class="syllabus-badge">Unit 4</span>
+                        <span class="syllabus-header-text">Unit 4: Workflows and Collaborative Multi-Agent Systems</span>
+                    </div>
+                    <div class="syllabus-body">
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Lesson 1: Multi-Agent Architectures (Sequential, Hierarchical, Collaborative)</span>
+                            </li>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #d97706;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                                <span style="font-weight: 700; color: var(--refresh-ink);">Unit 4 Project: Building an Automated Multi-Agent Research System</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Unit 5 -->
+                <div class="syllabus-card">
+                    <div class="syllabus-header">
+                        <span class="syllabus-badge">Unit 5</span>
+                        <span class="syllabus-header-text">Unit 5: Testing, Evaluation and Best Practices</span>
+                    </div>
+                    <div class="syllabus-body">
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Lesson 1: The Iterative Agent Development Cycle &amp; Alignment Loops</span>
+                            </li>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #dc2626;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                <span>Lesson 2: Core Architectural Pitfalls &amp; System Failures (And How to Fix Them)</span>
+                            </li>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Lesson 3: Arabic Large Language Models (Jais, ALLaM, Falcon)</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
-            </div>
-        </div>
-
-        <!-- Syllabus Section -->
-        <div class="syllabus-container">
-            <h2 class="syllabus-title">Course Syllabus <span style="color: var(--refresh-slate); font-size: 1.1rem; font-weight: 500; margin-left: 0.5rem;">(Arabic)</span></h2>
-
-            <!-- Unit 1 -->
-            <div class="syllabus-card">
-                <div class="syllabus-header">
-                    <span class="syllabus-badge">Unit 1</span>
-                    <span class="syllabus-header-text">الوحدة الأولى: أساسيات الوكلاء الأذكياء</span>
-                </div>
-                <div class="syllabus-body">
-                    <ul class="lesson-list">
-                        <li class="lesson-item">
-                            <span>الدرس الأول: ما هو الوكيل الذكي؟</span>
-                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </li>
-                        <li class="lesson-item">
-                            <span>الدرس الثاني: الأركان الأربعة للوكيل الذكي</span>
-                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </li>
-                        <li class="lesson-item">
-                            <span>الدرس الثالث: لماذا الوكلاء الأذكياء يُحدثون فرقاً؟</span>
-                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </li>
-                        <li class="lesson-item">
-                            <span style="font-weight: 700; color: var(--refresh-ink);">تدريب الوحدة الأولى: تفكيك مهمة يومية</span>
-                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                        </li>
-                    </ul>
+                <div style="text-align: center; margin-top: 4rem; margin-bottom: 2rem;">
+                    <a href="/agentic-ai-form.html" class="btn-primary" style="text-decoration: none; padding: 1.2rem 3rem; font-size: 1.2rem; border-radius: 999px;">Enroll in this Course Now</a>
                 </div>
             </div>
-
-            <!-- Unit 2 -->
-            <div class="syllabus-card">
-                <div class="syllabus-header">
-                    <span class="syllabus-badge">Unit 2</span>
-                    <span class="syllabus-header-text">الوحدة الثانية: الأدوات والمنصات</span>
-                </div>
-                <div class="syllabus-body">
-                    <ul class="lesson-list">
-                        <li class="lesson-item">
-                            <span>طيف أدوات بناء الوكلاء (بدون كود، كود منخفض، أطر برمجية)</span>
-                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </li>
-                        <li class="lesson-item">
-                            <span>أبرز أُطر بناء الوكلاء في الساحة الحالية</span>
-                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Unit 3 -->
-            <div class="syllabus-card">
-                <div class="syllabus-header">
-                    <span class="syllabus-badge">Unit 3</span>
-                    <span class="syllabus-header-text">الوحدة الثالثة: تصميم أول وكيل ذكي لك</span>
-                </div>
-                <div class="syllabus-body">
-                    <ul class="lesson-list">
-                        <li class="lesson-item">
-                            <span>صياغة المهمّة وهندسة الأوامر (Prompt Engineering)</span>
-                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </li>
-                        <li class="lesson-item">
-                            <span>اختبار كسر الوكيل وإصلاحه (Red Teaming)</span>
-                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Unit 4 -->
-            <div class="syllabus-card">
-                <div class="syllabus-header">
-                    <span class="syllabus-badge">Unit 4</span>
-                    <span class="syllabus-header-text">الوحدة الرابعة: سير العمل والتعاون</span>
-                </div>
-                <div class="syllabus-body">
-                    <ul class="lesson-list">
-                        <li class="lesson-item">
-                            <span>أنماط سير عمل الوكلاء (التسلسلي، الهرمي، التعاوني)</span>
-                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </li>
-                        <li class="lesson-item">
-                            <span style="font-weight: 700; color: var(--refresh-ink);">مثال تطبيقيّ: بناء نظام بحث وتقرير آليّ</span>
-                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Unit 5 -->
-            <div class="syllabus-card">
-                <div class="syllabus-header">
-                    <span class="syllabus-badge">Unit 5</span>
-                    <span class="syllabus-header-text">الوحدة الخامسة: الاختبار والممارسات الفضلى</span>
-                </div>
-                <div class="syllabus-body">
-                    <ul class="lesson-list">
-                        <li class="lesson-item">
-                            <span>دورة التطوير التكراريّة للوكلاء</span>
-                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </li>
-                        <li class="lesson-item">
-                            <span>مزالق شائعة وكيف تتجنّبها بحكمة</span>
-                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                        </li>
-                        <li class="lesson-item">
-                            <span>نماذج لغوية عربيّة لتشغيل وكلائك (Jais, ALLaM, Falcon)</span>
-                            <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        <div style="text-align: center; margin-top: 4rem; margin-bottom: 2rem;">
-            <a href="/agentic-ai-form.html" class="btn-primary" style="text-decoration: none; padding: 1.2rem 3rem; font-size: 1.2rem; border-radius: 999px;">Enroll in this Workshop Now</a>
-        </div>
         </div>
 
     </div>
@@ -435,6 +628,60 @@
     <footer style="text-align: center; padding: 3rem 0; border-top: 1px solid var(--refresh-line); margin-top: 4rem; color: var(--refresh-slate); background: var(--refresh-bg);">
         <p>&copy; 2026 Warsha. All rights reserved.</p>
     </footer>
+
+    <!-- Interactive Vanilla JS Language Toggle Interceptor -->
+    <script>
+        function switchLang(lang) {
+            // Update HTML dir and lang properties
+            if (lang === 'ar') {
+                document.documentElement.setAttribute('lang', 'ar');
+                document.documentElement.setAttribute('dir', 'rtl');
+            } else {
+                document.documentElement.setAttribute('lang', 'en');
+                document.documentElement.setAttribute('dir', 'ltr');
+            }
+
+            // Toggle active classes on toggler buttons
+            const btnAr = document.getElementById('btn-ar');
+            const btnEn = document.getElementById('btn-en');
+            if (btnAr && btnEn) {
+                if (lang === 'ar') {
+                    btnAr.classList.add('active');
+                    btnEn.classList.remove('active');
+                } else {
+                    btnEn.classList.add('active');
+                    btnAr.classList.remove('active');
+                }
+            }
+
+            // Toggle active classes on data-lang container blocks
+            const langBlocks = document.querySelectorAll('[data-lang]');
+            langBlocks.forEach(block => {
+                if (block.getAttribute('data-lang') === lang) {
+                    block.classList.add('active');
+                } else {
+                    block.classList.remove('active');
+                }
+            });
+
+            // Save user preference
+            try {
+                localStorage.setItem('course_lang_pref', lang);
+            } catch (e) {
+                console.error("Local storage error:", e);
+            }
+        }
+
+        // Auto-load preferred or default language on load
+        window.addEventListener('load', () => {
+            try {
+                const savedPref = localStorage.getItem('course_lang_pref') || 'ar';
+                switchLang(savedPref);
+            } catch (e) {
+                switchLang('ar');
+            }
+        });
+    </script>
 
 </body>
 </html>
