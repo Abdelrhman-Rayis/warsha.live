@@ -210,6 +210,27 @@
             background: var(--refresh-ink, #1a1f2e) !important;
             color: #ffffff !important;
         }
+
+        /* Native RTL Overrides for Syllabus Cards */
+        html[dir="rtl"] .syllabus-title {
+            text-align: right;
+        }
+        html[dir="rtl"] .syllabus-header {
+            flex-direction: row-reverse;
+        }
+        html[dir="rtl"] .syllabus-body {
+            direction: rtl;
+            text-align: right;
+        }
+        html[dir="rtl"] .lesson-item {
+            flex-direction: row-reverse;
+            justify-content: flex-start;
+            text-align: right;
+        }
+        html[dir="rtl"] .lesson-icon {
+            margin-left: 10px;
+            margin-right: 0;
+        }
     </style>
 </head>
 <body>
@@ -280,29 +301,29 @@
 
             <!-- Syllabus Section -->
             <div class="syllabus-container" style="margin-bottom: 4rem;">
-                <h2 class="syllabus-title" style="text-align: right;">منهج ومحاور الكورس</h2>
+                <h2 class="syllabus-title">منهج ومحاور الكورس</h2>
                 <!-- Unit 1 -->
                 <div class="syllabus-card">
-                    <div class="syllabus-header" style="flex-direction: row-reverse;">
+                    <div class="syllabus-header">
                         <span class="syllabus-badge">الوحدة 1</span>
                         <span class="syllabus-header-text">الوحدة الأولى: أساسيات الوكلاء الأذكياء</span>
                     </div>
-                    <div class="syllabus-body" style="direction: rtl;">
+                    <div class="syllabus-body">
                         <ul class="lesson-list">
-                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
-                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                 <span>الدرس الأول: ما هو الوكيل الذكي؟</span>
                             </li>
-                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
-                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                 <span>الدرس الثاني: الأركان الأربعة للوكيل الذكي</span>
                             </li>
-                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
-                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                 <span>الدرس الثالث: لماذا الوكلاء الأذكياء يُحدثون فرقاً؟</span>
                             </li>
-                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
-                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px; color: #d97706;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #d97706;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                                 <span style="font-weight: 700; color: var(--refresh-ink);">تدريب الوحدة الأولى: تفكيك مهمة يومية وبنائها عبر وكيليك</span>
                             </li>
                         </ul>
@@ -310,18 +331,18 @@
                 </div>
                 <!-- Unit 2 -->
                 <div class="syllabus-card">
-                    <div class="syllabus-header" style="flex-direction: row-reverse;">
+                    <div class="syllabus-header">
                         <span class="syllabus-badge">الوحدة 2</span>
                         <span class="syllabus-header-text">الوحدة الثانية: الأدوات والمنصات لتمكين وكيلك</span>
                     </div>
-                    <div class="syllabus-body" style="direction: rtl;">
+                    <div class="syllabus-body">
                         <ul class="lesson-list">
-                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
-                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                 <span>طيف أدوات بناء الوكلاء (بدون كود، كود منخفض، أطر برمجية)</span>
                             </li>
-                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
-                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                 <span>أبرز أُطر بناء الوكلاء في الساحة الحالية (CrewAI, LangGraph, AutoGen)</span>
                             </li>
                         </ul>
@@ -329,18 +350,18 @@
                 </div>
                 <!-- Unit 3 -->
                 <div class="syllabus-card">
-                    <div class="syllabus-header" style="flex-direction: row-reverse;">
+                    <div class="syllabus-header">
                         <span class="syllabus-badge">الوحدة 3</span>
                         <span class="syllabus-header-text">الوحدة الثالثة: تصميم أول وكيل ذكي لك</span>
                     </div>
-                    <div class="syllabus-body" style="direction: rtl;">
+                    <div class="syllabus-body">
                         <ul class="lesson-list">
-                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
-                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                 <span>صياغة المهمّة وهندسة الأوامر وهيكلة المهام (Prompt Engineering)</span>
                             </li>
-                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
-                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px; color: #dc2626;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #dc2626;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                                 <span>اختبار كسر الوكيل وإصلاحه وحوكمة معايير الأمان (Red Teaming)</span>
                             </li>
                         </ul>
@@ -348,18 +369,18 @@
                 </div>
                 <!-- Unit 4 -->
                 <div class="syllabus-card">
-                    <div class="syllabus-header" style="flex-direction: row-reverse;">
+                    <div class="syllabus-header">
                         <span class="syllabus-badge">الوحدة 4</span>
                         <span class="syllabus-header-text">الوحدة الرابعة: سير العمل والتعاون الجماعي للوكلاء</span>
                     </div>
-                    <div class="syllabus-body" style="direction: rtl;">
+                    <div class="syllabus-body">
                         <ul class="lesson-list">
-                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
-                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                 <span>أنماط سير عمل الوكلاء (التسلسلي، الهرمي، التعاوني)</span>
                             </li>
-                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
-                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px; color: #d97706;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #d97706;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
                                 <span style="font-weight: 700; color: var(--refresh-ink);">مثال تطبيقيّ: بناء نظام بحث وكتابة تقارير آليّ بالكامل</span>
                             </li>
                         </ul>
@@ -367,22 +388,22 @@
                 </div>
                 <!-- Unit 5 -->
                 <div class="syllabus-card">
-                    <div class="syllabus-header" style="flex-direction: row-reverse;">
+                    <div class="syllabus-header">
                         <span class="syllabus-badge">الوحدة 5</span>
                         <span class="syllabus-header-text">الوحدة الخامسة: الاختبار والممارسات الفضلى</span>
                     </div>
-                    <div class="syllabus-body" style="direction: rtl;">
+                    <div class="syllabus-body">
                         <ul class="lesson-list">
-                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
-                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                 <span>دورة التطوير التكراريّة للوكلاء وضمان دقة المخرجات</span>
                             </li>
-                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
-                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px; color: #dc2626;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #dc2626;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                                 <span>مزالق شائعة في تصميم الأنظمة المستقلة وكيف تتجنّبها بحكمة</span>
                             </li>
-                            <li class="lesson-item" style="flex-direction: row-reverse; justify-content: flex-start;">
-                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 10px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <li class="lesson-item">
+                                <svg class="lesson-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                 <span>نماذج لغوية عربيّة بالكامل لتشغيل وكلائك (Jais, ALLaM, Falcon)</span>
                             </li>
                         </ul>
@@ -400,7 +421,7 @@
                         <div>
                             <span style="font-family: 'Cairo', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--brand-gold, #b8924a); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.25rem;">عرض خاص</span>
                             <h3 class="p-title">التسجيل المبكر</h3>
-                            <p class="p-desc" style="direction: rtl;">سجل مبكراً واحصل على السعر المخفض لتغطية كافة فصول الكورس وجميع التدريبات العملية.</p>
+                            <p class="p-desc">سجل مبكراً واحصل على السعر المخفض لتغطية كافة فصول الكورس وجميع التدريبات العملية.</p>
                         </div>
                         <div>
                             <div class="p-price">$49 <span>USD</span></div>
@@ -412,7 +433,7 @@
                         <div>
                             <span style="font-family: 'Cairo', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--text-muted, #5b6478); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.25rem;">الاشتراك الكامل</span>
                             <h3 class="p-title">السعر القياسي</h3>
-                            <p class="p-desc" style="direction: rtl;">الاشتراك القياسي للمطورين والمهنيين بعد انتهاء فترة التسجيل المبكر لتغطية جميع محتويات المنهج.</p>
+                            <p class="p-desc">الاشتراك القياسي للمطورين والمهنيين بعد انتهاء فترة التسجيل المبكر لتغطية جميع محتويات المنهج.</p>
                         </div>
                         <div>
                             <div class="p-price">$99 <span>USD</span></div>
