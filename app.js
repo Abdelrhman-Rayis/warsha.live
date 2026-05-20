@@ -1797,9 +1797,17 @@ window.handleLaunchWarsha = handleLaunchWarsha;
 document.getElementById('workshopSearch').addEventListener('input', (e) => {
     const term = e.target.value.toLowerCase();
     const grid = document.getElementById('trendingGrid');
+    
+    // Auto-scroll to grid if they start typing
+    if (term.length > 0 && window.scrollY < 300) {
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    
     const cards = grid.querySelectorAll('.trend-card');
     cards.forEach(card => {
         const title = card.querySelector('h4').textContent.toLowerCase();
-        card.style.display = title.includes(term) ? '' : 'none';
+        // optionally check description or category too
+        const desc = card.textContent.toLowerCase();
+        card.style.display = desc.includes(term) ? '' : 'none';
     });
 });
