@@ -3,38 +3,128 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Issue #001 - The agent moment has arrived | AI in the Khaleej Classroom</title>
+<title>Issue #001: The agent moment has arrived | AI in the Khaleej Classroom</title>
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Fraunces:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #faf8f3; --ink: #1a1f2e; --muted: #5b6478; --accent: #b08d3c; --accent-light: rgba(176,141,60,0.08); --card: #ffffff; --border: #e6e1d4;
+    --bg: #faf8f3;
+    --ink: #1a1f2e;
+    --muted: #5b6478;
+    --accent: #b08d3c;
+    --accent-light: rgba(176,141,60,0.08);
+    --card: #ffffff;
+    --border: #e6e1d4;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
   .container { max-width: 680px; margin: 0 auto; padding: 0 24px; }
-  .nav { padding: 20px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+  .nav { padding: 24px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
   .brand { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
   
   .issue-header { text-align: center; margin-bottom: 40px; }
   .issue-number { font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 10px; }
-  h1 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(28px, 4vw, 36px); line-height: 1.2; font-weight: 600; margin-bottom: 24px; }
+  h1 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(28px, 4vw, 38px); line-height: 1.2; font-weight: 600; margin-bottom: 24px; letter-spacing: -0.01em; }
   
   .content { font-size: 16px; color: #334155; }
-  .content h2 { font-family: 'Fraunces', Georgia, serif; font-size: 22px; margin: 40px 0 16px; color: var(--ink); }
-  .content h3 { font-family: 'Fraunces', Georgia, serif; font-size: 18px; margin: 24px 0 12px; color: var(--ink); }
+  .content h2 { font-family: 'Fraunces', Georgia, serif; font-size: 22px; margin: 44px 0 18px; color: var(--ink); font-weight: 600; }
+  .content h3 { font-family: 'Fraunces', Georgia, serif; font-size: 18px; margin: 28px 0 12px; color: var(--ink); font-weight: 600; }
   .content p { margin-bottom: 20px; }
-  .content ul { margin-bottom: 24px; padding-left: 24px; }
-  .content li { margin-bottom: 10px; }
+  .content ul { margin-bottom: 24px; padding-left: 20px; }
+  .content li { margin-bottom: 12px; }
+  .content strong { color: var(--ink); }
   
-  .prompt-box { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 20px; border-radius: 4px; margin: 24px 0; font-family: monospace; font-size: 14px; white-space: pre-wrap; }
+  .prompt-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    padding: 24px;
+    border-radius: 4px;
+    margin: 28px 0;
+    font-family: monospace;
+    font-size: 14px;
+    white-space: pre-wrap;
+    color: #1e293b;
+    line-height: 1.6;
+  }
   
-  .cta-box { background: var(--ink); color: white; padding: 32px; border-radius: 12px; text-align: center; margin: 60px 0; }
-  .cta-box h3 { color: white; margin-top: 0; }
-  .cta-box a { display: inline-block; background: var(--accent); color: var(--ink); padding: 14px 28px; border-radius: 6px; font-weight: 600; text-decoration: none; margin-top: 16px; transition: opacity 0.2s; }
-  .cta-box a:hover { opacity: 0.9; }
+  .accent-box {
+    background: #fff8e7;
+    border: 1px solid #e6d5a8;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 20px 0;
+    color: #8b6e2c;
+    font-size: 14px;
+  }
+  
+  .alert-box {
+    background: #fef2f2;
+    border-left: 4px solid #dc2626;
+    border-radius: 0 6px 6px 0;
+    padding: 18px 22px;
+    margin: 24px 0;
+    color: #991b1b;
+    font-size: 14.5px;
+  }
+
+  .arabic-section {
+    direction: rtl;
+    text-align: right;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+    padding-top: 40px;
+  }
+  .arabic-section h2 {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-weight: 700;
+  }
+  .arabic-section p {
+    color: #334155;
+  }
+
+  .cta-box {
+    background: var(--ink);
+    color: white;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 60px 0;
+  }
+  .cta-box h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    color: white;
+    margin-top: 0;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .cta-box p {
+    color: #cbd5e1;
+    margin-bottom: 24px;
+  }
+  .cta-box a {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .cta-box a:hover {
+    background: #8b6e2c;
+  }
 </style>
 </head>
 <body>
@@ -51,23 +141,24 @@
     <div class="content">
       <h2>01. What Gulf faculty should do this semester</h2>
       <p>The practical shift in higher education is no longer just “chatting with AI.” It is “placing AI inside real academic work.” OpenAI is pitching ChatGPT Edu as a campus-wide layer for students, faculty, researchers, and administrators, and has now extended that logic into workspace agents that can run recurring workflows across tools with approvals and admin controls. Anthropic’s education offer is centered on Projects and Learning mode, which frames AI as a bounded academic workspace rather than a one-off conversation. Google is doing the same from a source-grounded angle with NotebookLM and assignable Gems and notebooks in Classroom.</p>
+      
       <p>For Gulf universities, that matters for three reasons. First, faculty are the people who actually decide whether AI becomes academically useful or administratively chaotic. Second, Arabic-medium and bilingual teaching adds a real quality-control layer that generic US-centered newsletters usually ignore. Third, the governance question is now immediate: once AI can touch files, notes, messages, timetables, or student-facing workflows, the conversation moves from “tool choice” to “institutional responsibility.”</p>
       
       <h3>A pedagogy pattern worth stealing</h3>
       <p>The most promising course pattern right now is the course-specific GPT or course-specific project notebook. The idea is simple: create one bounded assistant that knows your syllabus, your readings, your rubric, your assignment instructions, and a few high-quality examples of the kinds of feedback you already give. Then tell it clearly what it must never do. OpenAI explicitly recommends course- and task-specific GPTs for university workspaces, and OpenAI’s own higher-ed agent guidance stresses that good assistants start with one clear job, trusted knowledge sources, clear steps, review points, and an owner. Anthropic’s Projects are built for the same pattern: self-contained workspaces with uploaded context and project-specific instructions.</p>
       
-      <p>This works best when the assistant is not framed as “write for the student,” but as “coach the student through course thinking.” Anthropic’s Learning mode is especially explicit here: guide rather than answer, use Socratic questioning, emphasize core concepts, and provide useful templates instead of shortcuts. That is the right pedagogic frame for Gulf faculty as well, especially in programs where plagiarism anxiety would otherwise kill adoption before it starts.</p>
+      <p>This works best when the assistant is not mapped as “write for the student,” but as “coach the student through course thinking.” Anthropic’s Learning mode is especially explicit here: guide rather than answer, use Socratic questioning, emphasize core concepts, and provide useful templates instead of shortcuts. That is the right pedagogic frame for Gulf faculty as well, especially in programs where plagiarism anxiety would otherwise kill adoption before it starts.</p>
       
       <p><strong>A workable five-step recipe is:</strong></p>
       <ul>
-        <li>Pick one course and one repeated friction point. Do not begin with “AI for my whole teaching load.” Begin with one bounded job such as weekly reading checks, draft outline coaching, lab report troubleshooting, or exam revision prompts. OpenAI’s own higher-ed guidance repeatedly recommends starting with one job because broad agents drift and are harder to trust.</li>
-        <li>Upload only trusted materials: syllabus, readings, rubric, model answers, sample comments, and department-approved writing conventions.</li>
-        <li>Write behavioral rules before anything else: what the assistant should produce, what it must refuse, and when it should ask the student to go back to the source text.</li>
-        <li>Pilot with a small group first, then collect failure modes: unsupported claims, over-helpful drafting, weak citation, terminology drift, or Arabic transliteration errors.</li>
-        <li>Review and revise weekly. A course-specific assistant is not a static asset. It is a teaching artifact.</li>
+        <li><strong>Pick one course and one repeated friction point:</strong> Do not begin with “AI for my whole teaching load.” Begin with one bounded job such as weekly reading checks, draft outline coaching, lab report troubleshooting, or exam revision prompts. OpenAI’s own higher-ed guidance repeatedly recommends starting with one job because broad agents drift and are harder to trust.</li>
+        <li><strong>Upload only trusted materials:</strong> syllabus, readings, rubric, model answers, sample comments, and department-approved writing conventions.</li>
+        <li><strong>Write behavioral rules before anything else:</strong> what the assistant should produce, what it must refuse, and when it should ask the student to go back to the source text.</li>
+        <li><strong>Pilot with a small group first, then collect failure modes:</strong> unsupported claims, over-helpful drafting, weak citation, terminology drift, or Arabic transliteration errors.</li>
+        <li><strong>Review and revise weekly:</strong> A course-specific assistant is not a static asset. It is a teaching artifact.</li>
       </ul>
 
-      <h3>Starter system prompt. Copy, paste, edit the bracketed parts:</h3>
+      <h3>Starter system prompt (Copy, paste, edit the bracketed parts):</h3>
       <div class="prompt-box">You are a study partner for [COURSE NAME], taught by [INSTRUCTOR NAME] at [UNIVERSITY]. Your job is to help students [PICK ONE: understand difficult concepts / improve their writing / practice problem-solving / prepare for exams]. You speak in a [warm but rigorous / formal / Socratic] register.
 
 Hard rules:
@@ -83,26 +174,69 @@ Language: respond in the language the student writes to you in. For Arabic-langu
       <p>For Arabic-medium or bilingual courses, create a one-page terminology sheet and upload it alongside the syllabus. Use Modern Standard Arabic for core explanations unless the course explicitly wants dialectal examples. Check any scanned Arabic PDFs before using them as source material: Google documents real source and citation limits in NotebookLM, and Arabic OCR research still treats cursive script, diacritics, and typography as persistent technical challenges.</p>
 
       <h2>02. A tool worth your time: NotebookLM</h2>
-      <p><strong>What it is.</strong> Google's research notebook tool. You upload sources (PDFs, articles, slides, your own notes) and ask questions. It answers only from those sources, with citations to the exact passage. There is also an "audio overview" feature that turns your sources into a podcast-style discussion between two synthetic voices.</p>
+      <p><strong>What it is:</strong> Google's research notebook tool. You upload sources (PDFs, articles, slides, your own notes) and ask questions. It answers only from those sources, with citations to the exact passage. There is also an "audio overview" feature that turns your sources into a podcast-style discussion between two synthetic voices.</p>
+      
       <p><strong>Why does it earn its place?</strong> NotebookLM is the first AI tool I have tested that is built for the researcher's workflow rather than the writer's. It refuses to invent. It cites. It is faster than re-reading. For literature reviews, dissertation supervision, and grant prep, the ROI is high. Google also states that NotebookLM now supports 80+ languages, including Arabic output, and that for Google Workspace for Education, it is a core service rather than a side experiment.</p>
+
+      <h3>Three concrete uses I tested this month</h3>
+      <ul>
+        <li><strong>Literature review accelerator:</strong> Upload five to ten core papers, then ask for themes, agreements, disagreements, missing questions, and pull-quotes with citations. This is especially useful for early-stage dissertation supervision or grant scoping because the source-grounding sharply reduces the “generic bloggy summary” problem common in open-ended chat tools. Google explicitly markets NotebookLM for literature review, research acceleration, and grounded questioning from uploaded sources.</li>
+        <li><strong>Lecture and seminar preparation:</strong> Upload your readings, past lecture notes, and slide deck. Ask NotebookLM for a 50-minute seminar structure, likely misconceptions, and discussion questions tied back to the assigned text. Because teachers can integrate NotebookLM into Google Classroom, this also creates a clean teacher-to-student workflow for institutions already using Google’s education stack.</li>
+        <li><strong>Student-facing study pack:</strong> Use one notebook to generate a study guide, FAQ, glossary, flashcards, and an Audio Overview from the same course materials. Google’s Classroom documentation is also useful here: when a teacher assigns a notebook, students can use the chat and interact with generated study items, but they cannot edit the sources or generate study items themselves. That containment is a feature if your aim is guided learning.</li>
+      </ul>
+
+      <h3>Where it falls short for Arabic-language work</h3>
+      <ul>
+        <li>Arabic text and Arabic Audio Overviews are now officially supported.</li>
+        <li><strong>OCR on Arabic-script PDFs is inconsistent:</strong> Scanned books from Gulf publishers, especially older ones, are frequently mis-OCR'd before NotebookLM can index them. Run the PDFs through a dedicated Arabic OCR pass first (ABBYY FineReader, Adobe Acrobat Pro, or Tesseract with Arabic language packs) before uploading.</li>
+        <li><strong>Citation accuracy is lower on Arabic sources</strong> than on English sources in my testing. Verify citations before quoting.</li>
+      </ul>
+
+      <h2>03. A governance warning worth taking seriously: agents are coming, but no Gulf accreditor has guidance for them yet</h2>
+      <p>OpenAI, Anthropic, and Google have all moved aggressively into "agent" territory in the last two months. An agent is fundamentally different from a chatbot. Workspace agents can gather context from systems, follow team processes, run in the cloud, ask for approval for sensitive actions, edit files, send emails, or add calendar events. OpenAI Edu admins can control which tools and actions users can access. That means the relevant question is no longer “Is this like ChatGPT?” It is “What permissions, data, approvals, and audit paths does this workflow require?”</p>
+      
+      <p>For Gulf institutions, the prudent message is not alarmism. It is sequencing. In the UAE, the Personal Data Protection Law explicitly raises the compliance threshold when new technologies create high-risk processing, requires appropriate technical and regulatory measures, and requires impact assessment in certain modern-technology, high-risk cases. Saudi Arabia’s National Data Governance Platform now includes an AI Ethics Assessment tool and related governance services such as AI service provider accreditation.</p>
+      
+      <p><strong>Your move this week:</strong> Do not deploy agents into institutional systems just because they look useful in a demo. Ask for written sign-off from the dean, CTL, IT, or data-governance owner before any AI workflow can read student data, send communications, edit shared files, or touch recurring administrative processes.</p>
+      <p>If you are piloting right now, keep the first version bound to course materials or non-sensitive research support. Require a one-page spec for every pilot:</p>
+      <ul>
+        <li>the job to be done</li>
+        <li>the sources it may use</li>
+        <li>the outputs it may produce</li>
+        <li>what it must never do</li>
+        <li>where human review is mandatory</li>
+        <li>who owns the workflow</li>
+      </ul>
 
       <h2>A video pick for this week</h2>
       <p><strong>Video pick:</strong> Watch the first 20 minutes of OpenAI Forum’s <em>Harvard’s AI-Enhanced Classroom: Revolutionizing Learning with Custom GPTs</em>. The full session runs 1:13:03, but the opening 20 minutes are enough to justify the time.</p>
       
-      <p><strong>Three takeaways matter.</strong></p>
+      <p><strong>Three takeaways matter:</strong></p>
       <ul>
-        <li><strong>AI adoption in universities happens in layers.</strong> OpenAI’s education team frames the journey as individual use, then team-level workflows, then organization-wide AI touchpoints. That is a much better framing for chairs and CTLs than “ban or allow ChatGPT.”</li>
-        <li><strong>Course-specific GPTs matter when they are tied to course knowledge.</strong> The session explicitly provides examples, such as orientation GPTs and class-specific assistants, that help students ask questions grounded in the program's actual knowledge.</li>
-        <li><strong>Access and cost are still real adoption constraints.</strong> The Q&A openly raises the challenge that custom GPT collaboration is stronger inside paid workspaces such as ChatGPT Edu or Teams, while the free product has limits. That is exactly why this newsletter focuses on bounded pedagogy patterns and institution-safe trial designs, rather than the most advanced premium features.</li>
+        <li><strong>AI adoption in universities happens in layers:</strong> OpenAI’s education team frames the journey as individual use, then team-level workflows, then organization-wide AI touchpoints. That is a much better framing for chairs and CTLs than “ban or allow ChatGPT.”</li>
+        <li><strong>Course-specific GPTs matter when they are tied to course knowledge:</strong> The session explicitly provides examples, such as orientation GPTs and class-specific assistants, that help students ask questions grounded in the program's actual knowledge.</li>
+        <li><strong>Access and cost are still real adoption constraints:</strong> The Q&A openly raises the challenge that custom GPT collaboration is stronger inside paid workspaces such as ChatGPT Edu or Teams, while the free product has limits. That is exactly why this newsletter focuses on bounded pedagogy patterns and institution-safe trial designs, rather than the most advanced premium features.</li>
       </ul>
-      <p><strong>Watch if you teach…</strong> large-enrolment courses, writing-heavy modules, business and policy subjects, research methods, or any course where students repeatedly need help interpreting course-specific material rather than just “finding an answer.”</p>
+      <p><strong>Watch if you teach:</strong> large-enrolment courses, writing-heavy modules, business and policy subjects, research methods, or any course where students repeatedly need help interpreting course-specific material rather than just “finding an answer.”</p>
+    </div>
+
+    <!-- ARABIC EXECUTIVE SUMMARY -->
+    <div class="arabic-section">
+      <h2>المستخلص العربي</h2>
+      <p>يشير هذا العدد إلى تحوّل مهم في التعليم العالي: الذكاء الاصطناعي لم يعد مجرد أداة دردشة، بل بدأ يدخل في سير العمل الأكاديمي نفسه. لهذا يحتاج عضو هيئة التدريس في الخليج إلى متابعة لصيقة للتطورات في استخدام الذكاء الاصطناعي في الخليج. الاقتراح هنا ثلاثي وواضح:</p>
+      <ul style="padding-right: 20px; list-style-type: disc;">
+        <li style="margin-bottom: 12px;"><strong>أولاً:</strong> بناء مساعد خاص بالمقرر يعتمد على المقرر والقراءات والروبرك ويقود الطالب إلى التفكير بدلاً من كتابة الواجب عنه.</li>
+        <li style="margin-bottom: 12px;"><strong>ثانياً:</strong> استخدام NotebookLM كأداة بحث وتعليم قائمة على المصادر التي ترفعها أنت، مع استشهادات داخلية، مع الانتباه إلى جودة ملفات الـPDF وOCR ودقة المصطلحات العربية.</li>
+        <li style="margin-bottom: 12px;"><strong>ثالثاً:</strong> التعامل مع الوكلاء والأدوات التي تمس الأنظمة الجامعية باعتبارها قضية حوكمة لا مجرد إنتاجية.</li>
+      </ul>
+      <p>الهدف من النشرة بسيط: رسالة صباح الأحد، تُقرأ في 12 دقيقة وتفيدك يوم الإثنين. العدد الأول مجاني، ثم اشتراك المؤسسين 20 دولاراً شهرياً أو 200 دولاراً سنوياً.</p>
     </div>
 
     <div class="cta-box">
-      <h3>End-of-issue subscribe block</h3>
-      <p style="color: #cbd5e1; margin-bottom: 16px;">If you want one Sunday briefing that filters the noise, pressure-tests the tools, and translates them for Gulf classrooms, subscribe here.</p>
-      <p style="color: #cbd5e1; font-size: 14px;">Issue #001 is open access. Starting with Issue #002, the first 100 subscribers lock in $20/month for life.</p>
-      <a href="index.html#subscribe">Subscribe Now</a>
+      <h3>Keep up with the fast-moving AI landscape</h3>
+      <p>If you want one Sunday briefing that filters the noise, pressure-tests the tools, and translates them for Gulf classrooms, subscribe here.</p>
+      <p style="font-size: 14px; opacity: 0.8;">Issue #001 is open access. Starting with Issue #002, the first 100 subscribers lock in $20/month for life.</p>
+      <a href="index.html#subscribe-en">Subscribe Now</a>
     </div>
     
   </div>
