@@ -2462,5 +2462,23 @@
     "full_name": "Dr. Priti Verma",
     "institution": "Higher Colleges of Technology (HCT)",
     "department": "Education"
+  },
+  {
+    "email": "abdelrhman.rayis@gmail.com",
+    "first_name": "Abdelrhman",
+    "institution": "Subscriber",
+    "department": null
+  },
+  {
+    "email": "a.rayis@keele.ac.uk",
+    "first_name": "Abdelrhman",
+    "institution": "Subscriber",
+    "department": null
+  },
+  {
+    "email": "mazinsharfe@gmail.com",
+    "first_name": "Mazin",
+    "institution": "Subscriber",
+    "department": null
   }
 ]
