@@ -1,0 +1,11 @@
+{
+  "issue": "001",
+  "subject": "What Gulf faculty should do about AI this semester",
+  "from_name": "AI in the Khaleej Classroom",
+  "from_email": "newsletter@warsha.live",
+  "reply_to": "newsletter@warsha.live",
+  "html_file": "issue-001-email.html",
+  "text_file": "issue-001-email.txt",
+  "unsubscribe_mailto": "unsubscribe@warsha.live",
+  "unsubscribe_url_template": "https://warsha.live/unsubscribe?e={EMAIL}"
+}

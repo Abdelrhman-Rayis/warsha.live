@@ -227,7 +227,64 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  
+  // --- Newsletter unsubscribe ---
+  // GET  /unsubscribe?e=<email>  -> serves a confirmation page
+  // POST /api/unsubscribe         -> body: { email } -> persists to data/unsubscribes.json
+  if (req.method === 'GET' && req.url.startsWith('/unsubscribe')) {
+    const u = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+    const e = (u.searchParams.get('e') || '').toLowerCase();
+    const safeEmail = e.replace(/[^A-Za-z0-9._%+\-@]/g, '');
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(`<!doctype html><html><head><meta charset="utf-8"><title>Unsubscribe — AI in the Khaleej Classroom</title>
+<style>body{font-family:Georgia,serif;max-width:560px;margin:60px auto;padding:0 24px;color:#1a1a1a;line-height:1.6}
+h1{font-size:22px;margin:0 0 16px}button{background:#1a1a1a;color:#fff;border:0;padding:12px 22px;font-size:15px;border-radius:4px;cursor:pointer}
+.muted{color:#7a6b4e;font-size:14px}#ok{display:none;background:#f0f7ec;border:1px solid #c8e0b8;padding:14px;border-radius:4px;margin-top:18px}</style></head><body>
+<h1>Unsubscribe from AI in the Khaleej Classroom</h1>
+<p>We will stop emailing <strong>${safeEmail || 'this address'}</strong>. Confirm below:</p>
+<form id="f"><button type="submit">Unsubscribe ${safeEmail || ''}</button></form>
+<div id="ok">Done. You will not receive further emails from us.</div>
+<p class="muted" style="margin-top:32px">If you reached this page by mistake, just close it — nothing changes until you click the button.</p>
+<script>
+document.getElementById('f').addEventListener('submit', async function(ev){
+  ev.preventDefault();
+  const r = await fetch('/api/unsubscribe', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email: ${JSON.stringify(safeEmail)}})});
+  if (r.ok) { document.getElementById('f').style.display='none'; document.getElementById('ok').style.display='block'; }
+  else { alert('Could not unsubscribe right now. Please email unsubscribe@warsha.live.'); }
+});
+</script></body></html>`);
+    return;
+  }
+
+  if (req.method === 'POST' && req.url === '/api/unsubscribe') {
+    let body = '';
+    req.on('data', c => body += c.toString());
+    req.on('end', () => {
+      try {
+        const { email } = JSON.parse(body || '{}');
+        const e = String(email || '').trim().toLowerCase();
+        if (!e || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) {
+          sendJson(res, 400, { error: 'Invalid email' });
+          return;
+        }
+        const dataDir = path.join(rootDir, 'data');
+        if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+        const dbPath = path.join(dataDir, 'unsubscribes.json');
+        let list = [];
+        if (fs.existsSync(dbPath)) {
+          try { list = JSON.parse(fs.readFileSync(dbPath, 'utf8')); } catch (_) { list = []; }
+        }
+        if (!list.find(r => r.email === e)) {
+          list.push({ email: e, timestamp: new Date().toISOString() });
+          fs.writeFileSync(dbPath, JSON.stringify(list, null, 2));
+        }
+        sendJson(res, 200, { success: true });
+      } catch (err) {
+        sendJson(res, 500, { error: 'Server error' });
+      }
+    });
+    return;
+  }
+
   // --- AI Agentic Course Applications ---
   if (req.method === 'POST' && req.url === '/api/apply-ai') {
     let body = '';

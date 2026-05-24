@@ -1,0 +1,2466 @@
+[
+  {
+    "email": "halashwal@uaeu.ac.ae",
+    "first_name": "Hany",
+    "full_name": "Hany Al Ashwal",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "fady.alnajjar@uaeu.ac.ae",
+    "first_name": "Fady",
+    "full_name": "Fady Alnajjar",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "rawhi@uaeu.ac.ae",
+    "first_name": "Rawhi",
+    "full_name": "Rawhi Nasser Al Rae",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "hamer@uaeu.ac.ae",
+    "first_name": "Hoda",
+    "full_name": "Hoda Amer",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "ebadidi@uaeu.ac.ae",
+    "first_name": "Moulay",
+    "full_name": "Moulay Badidi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "rdamseh@uaeu.ac.ae",
+    "first_name": "Rafat",
+    "full_name": "Rafat Damseh",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "omar.elharrouss@uaeu.ac.ae",
+    "first_name": "Omar",
+    "full_name": "Omar El Harrouss",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "htalaat@uaeu.ac.ae",
+    "first_name": "Hadeel",
+    "full_name": "Hadeel Talaat El-Kassabi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "esraa@uaeu.ac.ae",
+    "first_name": "Esraa",
+    "full_name": "Esraa Gasim",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "mgochoo@uaeu.ac.ae",
+    "first_name": "Munkhjargal",
+    "full_name": "Munkhjargal Gochoo",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "harous@uaeu.ac.ae",
+    "first_name": "Saad",
+    "full_name": "Saad Harous",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "amer.ibrahim@uaeu.ac.ae",
+    "first_name": "Amer",
+    "full_name": "Amer Ibrahim",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "leila@uaeu.ac.ae",
+    "first_name": "Leila",
+    "full_name": "Leila Ismail",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "mustaqeemkhan@uaeu.ac.ae",
+    "first_name": "Mustaqeem",
+    "full_name": "Mustaqeem Khan",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "yasir.mahmood@uaeu.ac.ae",
+    "first_name": "Yasir",
+    "full_name": "Yasir Mahmood",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "mohammed.mediani@uaeu.ac.ae",
+    "first_name": "Mohammed",
+    "full_name": "Mohammed Mediani",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "sofia.ouhbi@uaeu.ac.ae",
+    "first_name": "Sofia",
+    "full_name": "Sofia Ouhbi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "jamil.ahmad@uaeu.ac.ae",
+    "first_name": "Jamil",
+    "full_name": "Jamil Ahmad Shakeel Ahmad",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "msharaf@uaeu.ac.ae",
+    "first_name": "Mohamed",
+    "full_name": "Mohamed Sharaf",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "nzaki@uaeu.ac.ae",
+    "first_name": "Nazar",
+    "full_name": "Nazar Siedahmed",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "nisha.t@uaeu.ac.ae",
+    "first_name": "Nisha",
+    "full_name": "Nisha Thorakkattu Madathil",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "sherzod@uaeu.ac.ae",
+    "first_name": "Sherzod",
+    "full_name": "Sherzod Turaev",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer Science and Software Engineering"
+  },
+  {
+    "email": "azzam@uaeu.ac.ae",
+    "first_name": "Azzam",
+    "full_name": "Azzam Al-Safar",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "aalwarafy@uaeu.ac.ae",
+    "first_name": "Abdulmalik",
+    "full_name": "Abdulmalik Al Warafy",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "ms-alyammahi@uaeu.ac.ae",
+    "first_name": "Maryam",
+    "full_name": "Maryam AlYammahi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "abeg@uaeu.ac.ae",
+    "first_name": "Azam",
+    "full_name": "Azam Beg",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "belkacem@uaeu.ac.ae",
+    "first_name": "Abdelkader",
+    "full_name": "Abdelkader Nasr E Belkacem",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "farman@uaeu.ac.ae",
+    "first_name": "Farman",
+    "full_name": "Farman Ullah Gul Rauf",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "mhayajneh@uaeu.ac.ae",
+    "first_name": "Mohammad",
+    "full_name": "Mohammad Hayajneh",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "walidibr@uaeu.ac.ae",
+    "first_name": "Walid",
+    "full_name": "Walid Ibrahim",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "halex@uaeu.ac.ae",
+    "first_name": "Henry",
+    "full_name": "Henry Ignatious",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "fekrik@uaeu.ac.ae",
+    "first_name": "Fekri",
+    "full_name": "Fekri Kharbash",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "shawqi@uaeu.ac.ae",
+    "first_name": "Shawqi",
+    "full_name": "Shawqi Kharbash",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "parag@uaeu.ac.ae",
+    "first_name": "Parag",
+    "full_name": "Parag Kulkarni",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "alakas@uaeu.ac.ae",
+    "first_name": "Abderrahmane",
+    "full_name": "Abderrahmane Lakas",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "scliao@uaeu.ac.ae",
+    "first_name": "Shengcai",
+    "full_name": "Shengcai Liao",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "basheera@uaeu.ac.ae",
+    "first_name": "Basheer",
+    "full_name": "Basheer Ahmed Madappuram",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "bassem.mokhtar@uaeu.ac.ae",
+    "first_name": "Bassem",
+    "full_name": "Bassem Mokhtar",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "m.naouss@uaeu.ac.ae",
+    "first_name": "Mohammad",
+    "full_name": "Mohammad Naouss",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "mobeen.rehman@uaeu.ac.ae",
+    "first_name": "Mobeen",
+    "full_name": "Mobeen Ur Rehman Nisar Ahmed",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "f.sallabi@uaeu.ac.ae",
+    "first_name": "Farag",
+    "full_name": "Farag Sallabi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "muhammad.zia@uaeu.ac.ae",
+    "first_name": "Muhammad",
+    "full_name": "Muhammad Talha Zia",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "shaima.alkaabi@uaeu.ac.ae",
+    "first_name": "Shaimaa",
+    "full_name": "Shaimaa Alkaabi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Computer and Network Engineering"
+  },
+  {
+    "email": "amirahmad@uaeu.ac.ae",
+    "first_name": "Amir",
+    "full_name": "Amir Ahmad",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "munaalebri@uaeu.ac.ae",
+    "first_name": "Muna",
+    "full_name": "Muna Alebri",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "k.alfalahi@uaeu.ac.ae",
+    "first_name": "Kanna",
+    "full_name": "Kanna Gharib Alfalahi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "ahmed.alfaresi@uaeu.ac.ae",
+    "first_name": "Ahmed",
+    "full_name": "Ahmed Al Faresi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "yousef-a@uaeu.ac.ae",
+    "first_name": "Yousef",
+    "full_name": "Yousef Al Hammadi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "shayma.alkobaisi@uaeu.ac.ae",
+    "first_name": "Shayma",
+    "full_name": "Shayma Alkobaisi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "maloqaily@uaeu.ac.ae",
+    "first_name": "Moayad",
+    "full_name": "Moayad Aloqaily",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "nalqirim@uaeu.ac.ae",
+    "first_name": "Nabeel",
+    "full_name": "Nabeel Al-Qirim",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "salrabaee@uaeu.ac.ae",
+    "first_name": "Saed",
+    "full_name": "Saed Alrabaee",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "ali.awad@uaeu.ac.ae",
+    "first_name": "Ali",
+    "full_name": "Ali Ismail Awad",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "mbanat@uaeu.ac.ae",
+    "first_name": "Mohammad",
+    "full_name": "Mohammad Ja'far Banat",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "ebarka@uaeu.ac.ae",
+    "first_name": "Ezedin",
+    "full_name": "Ezedin Baraka Baraka",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "hossien@uaeu.ac.ae",
+    "first_name": "Hossien",
+    "full_name": "Hossien Eldeeb",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "norziana@uaeu.ac.ae",
+    "first_name": "Norziana",
+    "full_name": "Norziana Jamil",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "lamaazi.hanane@uaeu.ac.ae",
+    "first_name": "Hanane",
+    "full_name": "Hanane Lamaazi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "m.masud@uaeu.ac.ae",
+    "first_name": "Mohammad",
+    "full_name": "Mohammad Masud",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "thangavelm@uaeu.ac.ae",
+    "first_name": "Thangavel",
+    "full_name": "Thangavel Murugan",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "tonyng@uaeu.ac.ae",
+    "first_name": "To",
+    "full_name": "To Tony Ng",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "deepak.puthal@uaeu.ac.ae",
+    "first_name": "Deepak",
+    "full_name": "Deepak Puthal",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "mqbeah@uaeu.ac.ae",
+    "first_name": "Mohammad",
+    "full_name": "Mohammad Mesbah Qbea'h",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "faheemqureshi@uaeu.ac.ae",
+    "first_name": "Muhammad",
+    "full_name": "Muhammad Faheem Qureshi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "serhanim@uaeu.ac.ae",
+    "first_name": "Mohamed",
+    "full_name": "Mohamed Serhani",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "k.shuaib@uaeu.ac.ae",
+    "first_name": "Khaled",
+    "full_name": "Khaled Ali Shuaib Shuaib",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "trabelsi@uaeu.ac.ae",
+    "first_name": "Zouheir",
+    "full_name": "Zouheir Trabelsi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Information System and Security"
+  },
+  {
+    "email": "abdukhalik@uaeu.ac.ae",
+    "first_name": "Kanat",
+    "full_name": "Kanat Abdukhalikov",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "houssam.a@uaeu.ac.ae",
+    "first_name": "Houssam",
+    "full_name": "Houssam Abdul Rahman",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "fatima.alawadhi@uaeu.ac.ae",
+    "first_name": "Fatima",
+    "full_name": "Fatima Hassan Alawadhi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "msalim@uaeu.ac.ae",
+    "first_name": "Mohammed",
+    "full_name": "Mohammed Ahmed AlHammadi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "q.almdallal@uaeu.ac.ae",
+    "first_name": "Qasem",
+    "full_name": "Qasem Mustafa Al-Mdallal",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "aalrawashdeh@uaeu.ac.ae",
+    "first_name": "Ahmed",
+    "full_name": "Ahmed Al Rawashdeh",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "eman_sarairah@uaeu.ac.ae",
+    "first_name": "Eman",
+    "full_name": "Eman Yousef Al-Sarairah",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "alya.alshehhi@uaeu.ac.ae",
+    "first_name": "Alia",
+    "full_name": "Alia Saif Alshehhi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "arwab@uaeu.ac.ae",
+    "first_name": "Arwa",
+    "full_name": "Arwa Baabdulla",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "baloghzs@uaeu.ac.ae",
+    "first_name": "Zsolt",
+    "full_name": "Zsolt Balogh",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "salem.bensaid@uaeu.ac.ae",
+    "first_name": "Salem",
+    "full_name": "Salem Ben Said",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "v.bodi@uaeu.ac.ae",
+    "first_name": "Viktor",
+    "full_name": "Viktor Bodi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "nafaachbili@uaeu.ac.ae",
+    "first_name": "Nafaa",
+    "full_name": "Nafaa Chbili",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "adiene@uaeu.ac.ae",
+    "first_name": "Adama",
+    "full_name": "Adama Diene",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "duyho@uaeu.ac.ae",
+    "first_name": "Ho",
+    "full_name": "Ho Duy",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "melbachraoui@uaeu.ac.ae",
+    "first_name": "Mohamed",
+    "full_name": "Mohamed El Bachraoui",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "youssef_elkhatib@uaeu.ac.ae",
+    "first_name": "Youssef",
+    "full_name": "Youssef Abdul Monehm El Khatib",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "ugoginava@uaeu.ac.ae",
+    "first_name": "Ushangi",
+    "full_name": "Ushangi Goginava",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "j.gong@uaeu.ac.ae",
+    "first_name": "Jianhua",
+    "full_name": "Jianhua Gong",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "mahajji@uaeu.ac.ae",
+    "first_name": "Mohamed",
+    "full_name": "Mohamed Ali Hajji",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "shumaila.javed@uaeu.ac.ae",
+    "first_name": "Shumaila",
+    "full_name": "Shumaila Javed",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "sehjung.kim@uaeu.ac.ae",
+    "first_name": "Sehjeong",
+    "full_name": "Sehjeong Kim",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "hohon.leung@uaeu.ac.ae",
+    "first_name": "Ho",
+    "full_name": "Ho Hon Leung",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "a.lyaghfouri@uaeu.ac.ae",
+    "first_name": "Abdeslem",
+    "full_name": "Abdeslem Lyaghfouri",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "zmakumbe@uaeu.ac.ae",
+    "first_name": "Zororo",
+    "full_name": "Zororo Stanlake Makumbe",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "farrukh.m@uaeu.ac.ae",
+    "first_name": "Farrukh",
+    "full_name": "Farrukh Mukhamedov",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "rababah@uaeu.ac.ae",
+    "first_name": "Abdallah",
+    "full_name": "Abdallah Rababah",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "frihan@uaeu.ac.ae",
+    "first_name": "Fathalla",
+    "full_name": "Fathalla Ali Rihan",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "rafeiro@uaeu.ac.ae",
+    "first_name": "Humberto",
+    "full_name": "Humberto Gil Silva Rafeiro",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "m.syam@uaeu.ac.ae",
+    "first_name": "Muhammed",
+    "full_name": "Muhammed Ibrahem Syam",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "a-tridane@uaeu.ac.ae",
+    "first_name": "Abdessamad",
+    "full_name": "Abdessamad Tridane",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "ayham.zaitouny@uaeu.ac.ae",
+    "first_name": "Ayham",
+    "full_name": "Ayham Zaitouny",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Mathematical Sciences"
+  },
+  {
+    "email": "lalhmoudi@uaeu.ac.ae",
+    "first_name": "Lemya",
+    "full_name": "Lemya Alhmoudi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Special and Gifted Education"
+  },
+  {
+    "email": "o.almuhairy@uaeu.ac.ae",
+    "first_name": "Ousha",
+    "full_name": "Ousha Ahmed Al Muhairi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Special and Gifted Education"
+  },
+  {
+    "email": "moh.alrashaida@uaeu.ac.ae",
+    "first_name": "Mohammad",
+    "full_name": "Mohammad Al Rashaida",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Special and Gifted Education"
+  },
+  {
+    "email": "myrabacsal@uaeu.ac.ae",
+    "first_name": "Rhoda",
+    "full_name": "Rhoda Myra Bacsal",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Special and Gifted Education"
+  },
+  {
+    "email": "mustafa.baloglu@uaeu.ac.ae",
+    "first_name": "Mustafa",
+    "full_name": "Mustafa Baloglu",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Special and Gifted Education"
+  },
+  {
+    "email": "maria.efstratopoulou@uaeu.ac.ae",
+    "first_name": "Maria",
+    "full_name": "Maria Efstratopoulou",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Special and Gifted Education"
+  },
+  {
+    "email": "halae@uaeu.ac.ae",
+    "first_name": "Hala",
+    "full_name": "Hala Mutwalli El Howeris",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Special and Gifted Education"
+  },
+  {
+    "email": "ahamdan@uaeu.ac.ae",
+    "first_name": "Ahmed",
+    "full_name": "Ahmed Hamdan",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Special and Gifted Education"
+  },
+  {
+    "email": "alzyoudi@uaeu.ac.ae",
+    "first_name": "MOH'D",
+    "full_name": "MOH'D Hamzeh Meqbel Alzyoudi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Special and Gifted Education"
+  },
+  {
+    "email": "ashraf.m@uaeu.ac.ae",
+    "first_name": "Ashraf",
+    "full_name": "Ashraf Moustafa",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Special and Gifted Education"
+  },
+  {
+    "email": "maxwell.p@uaeu.ac.ae",
+    "first_name": "MAXWELL",
+    "full_name": "MAXWELL OPOKU",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Special and Gifted Education"
+  },
+  {
+    "email": "mohd.abdulla@uaeu.ac.ae",
+    "first_name": "Mohammad",
+    "full_name": "Mohammad Jassim Al Ali",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "jalex@uaeu.ac.ae",
+    "first_name": "Jogymol",
+    "full_name": "Jogymol Alex",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "monahumaid@uaeu.ac.ae",
+    "first_name": "Mona",
+    "full_name": "Mona Aljanahi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "ahmed.alkaabi@uaeu.ac.ae",
+    "first_name": "Ahmed",
+    "full_name": "Ahmed Al Kaabi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "latifa.s@uaeu.ac.ae",
+    "first_name": "Latifa",
+    "full_name": "Latifa Alketbi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "b.khanbooli@uaeu.ac.ae",
+    "first_name": "Badreyya",
+    "full_name": "Badreyya AlKhanbooli",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "almekhlafi@uaeu.ac.ae",
+    "first_name": "Abdul",
+    "full_name": "Abdul Rahman Ghaleb Al-Mekhlafi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "ebrahimy@uaeu.ac.ae",
+    "first_name": "Ebrahim",
+    "full_name": "Ebrahim Yousef Al Mujaini",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "alik@uaeu.ac.ae",
+    "first_name": "Ali",
+    "full_name": "Ali Khalfan Al Naqbi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "nalsheikh@uaeu.ac.ae",
+    "first_name": "Negmeldin",
+    "full_name": "Negmeldin Omer Al Sheikh",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "k.suwaidi@uaeu.ac.ae",
+    "first_name": "Khalifa",
+    "full_name": "Khalifa Ali Al Suwaidi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "shaikaha@uaeu.ac.ae",
+    "first_name": "Shaikhah",
+    "full_name": "Shaikhah Al Taneijy",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "fiona.s@uaeu.ac.ae",
+    "first_name": "Fiona",
+    "full_name": "Fiona Sally Baker",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "der-thanqchen@uaeu.ac.ae",
+    "first_name": "Der-Thanq",
+    "full_name": "Der-Thanq Chen",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "jcostley@uaeu.ac.ae",
+    "first_name": "Jamie",
+    "full_name": "Jamie Costley",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "cfyle@uaeu.ac.ae",
+    "first_name": "Clifford",
+    "full_name": "Clifford Omodele Nelson Fyle",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "mkasem@uaeu.ac.ae",
+    "first_name": "Mohamed",
+    "full_name": "Mohamed Gaber Kasem Gad El Moola",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "jarrah@uaeu.ac.ae",
+    "first_name": "Adeeb",
+    "full_name": "Adeeb Mohmad Jarrah",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "g_almurshidi@uaeu.ac.ae",
+    "first_name": "Ghadah",
+    "full_name": "Ghadah Morshedi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "lgnd@uaeu.ac.ae",
+    "first_name": "Laurent",
+    "full_name": "Laurent Ndijuye",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "george.odhiambo@uaeu.ac.ae",
+    "first_name": "George",
+    "full_name": "George Odhiambo",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "dpalf@uaeu.ac.ae",
+    "first_name": "David",
+    "full_name": "David Palfreyman",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "jpark@uaeu.ac.ae",
+    "first_name": "Jae",
+    "full_name": "Jae Hyung Park",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "qablan@uaeu.ac.ae",
+    "first_name": "Ahmad",
+    "full_name": "Ahmad Qablan",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "mshaban@uaeu.ac.ae",
+    "first_name": "Mohamad",
+    "full_name": "Mohamad Sadeg Shaban",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "ali.shehadeh@uaeu.ac.ae",
+    "first_name": "Ali",
+    "full_name": "Ali Ali Shehadeh",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "tairab@uaeu.ac.ae",
+    "first_name": "Hassan",
+    "full_name": "Hassan Hamid Tairab",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "r.takriti@uaeu.ac.ae",
+    "first_name": "Rachel",
+    "full_name": "Rachel Takriti",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "lise.westaway@uaeu.ac.ae",
+    "first_name": "Lise",
+    "full_name": "Lise Westaway",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "qilong.zhang@uaeu.ac.ae",
+    "first_name": "Qilong",
+    "full_name": "Qilong Zhang",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Curriculum&Method of Instruct"
+  },
+  {
+    "email": "m.ihsan@uaeu.ac.ae",
+    "first_name": "Mohammed",
+    "full_name": "Mohammed Abdullah",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Physical Education"
+  },
+  {
+    "email": "jamal.bindarwish@uaeu.ac.ae",
+    "first_name": "Jamal",
+    "full_name": "Jamal Saeed Alneaimi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Physical Education"
+  },
+  {
+    "email": "abdulsalamj@uaeu.ac.ae",
+    "first_name": "Abdulsalam",
+    "full_name": "Abdulsalam Salem Al Zaabi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Physical Education"
+  },
+  {
+    "email": "larafcarneiro@uaeu.ac.ae",
+    "first_name": "Lara",
+    "full_name": "Lara Carneiro",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Physical Education"
+  },
+  {
+    "email": "pfigueiredo@uaeu.ac.ae",
+    "first_name": "Pedro",
+    "full_name": "Pedro De Figueiredo",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Physical Education"
+  },
+  {
+    "email": "agrasten@uaeu.ac.ae",
+    "first_name": "Arto",
+    "full_name": "Arto Grasten",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Physical Education"
+  },
+  {
+    "email": "shraimzubaida@uaeu.ac.ae",
+    "first_name": "Zubaida",
+    "full_name": "Zubaida Faris Shraim",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Physical Education"
+  },
+  {
+    "email": "h.almazrouei@uaeu.ac.ae",
+    "first_name": "Hanan",
+    "full_name": "Hanan Almazrouei",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Leadership and Organizational Agility"
+  },
+  {
+    "email": "alzahmi@uaeu.ac.ae",
+    "first_name": "Rashed",
+    "full_name": "Rashed Alzahmi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Leadership and Organizational Agility"
+  },
+  {
+    "email": "ghulamaliarain@uaeu.ac.ae",
+    "first_name": "Ghulam",
+    "full_name": "Ghulam A Arain",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Leadership and Organizational Agility"
+  },
+  {
+    "email": "mayowa.babalola@uaeu.ac.ae",
+    "first_name": "Mayowa",
+    "full_name": "Mayowa Babalola",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Leadership and Organizational Agility"
+  },
+  {
+    "email": "omer@uaeu.ac.ae",
+    "first_name": "Muhammad",
+    "full_name": "Muhammad Farooq",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Leadership and Organizational Agility"
+  },
+  {
+    "email": "abdul.karim@uaeu.ac.ae",
+    "first_name": "Abdul",
+    "full_name": "Abdul Karim Khan",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Leadership and Organizational Agility"
+  },
+  {
+    "email": "kababneh@uaeu.ac.ae",
+    "first_name": "Khaldoun",
+    "full_name": "Khaldoun Ababneh",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Management - (CBE)"
+  },
+  {
+    "email": "aabdelmaksoud@uaeu.ac.ae",
+    "first_name": "Ahmed",
+    "full_name": "Ahmed Bahgat Abdel-Maksoud",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Accounting and Finance"
+  },
+  {
+    "email": "hussein_abdoh@uaeu.ac.ae",
+    "first_name": "Hussein",
+    "full_name": "Hussein Abdoh",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Accounting and Finance"
+  },
+  {
+    "email": "kghoudi@uaeu.ac.ae",
+    "first_name": "Kilani",
+    "full_name": "Kilani Ghoudi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Statistics and Business Analytics"
+  },
+  {
+    "email": "chafikb@uaeu.ac.ae",
+    "first_name": "Chafik",
+    "full_name": "Chafik Bouhaddioui",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Statistics"
+  },
+  {
+    "email": "raja.lahiani@uaeu.ac.ae",
+    "first_name": "Raja",
+    "full_name": "Raja Lahiani",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Languages and Literature"
+  },
+  {
+    "email": "shadi.abuayyash@uaeu.ac.ae",
+    "first_name": "Shadi",
+    "full_name": "Shadi Abuayyash",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Media & Creative Industries"
+  },
+  {
+    "email": "k.alhosani@uaeu.ac.ae",
+    "first_name": "Khaleel",
+    "full_name": "Khaleel A. Alhosani",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Civil and Environmental Engineering"
+  },
+  {
+    "email": "m.abdelsamie@uaeu.ac.ae",
+    "first_name": "Mohamed",
+    "full_name": "Mohamed Abdelsamie",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Civil and Environmental Engineering"
+  },
+  {
+    "email": "mhafez@uaeu.ac.ae",
+    "first_name": "Mohammed",
+    "full_name": "Mohammed Abdel Hafez",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department Electrical and Communication Engineering"
+  },
+  {
+    "email": "atef.abdrabou@uaeu.ac.ae",
+    "first_name": "Atef",
+    "full_name": "Atef Abdrabou",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department Electrical and Communication Engineering"
+  },
+  {
+    "email": "ahmed.abdelaal@uaeu.ac.ae",
+    "first_name": "Ahmed",
+    "full_name": "Ahmed Abdelaal",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Chemical & Petroleum Engineering"
+  },
+  {
+    "email": "nayef@uaeu.ac.ae",
+    "first_name": "Nayef",
+    "full_name": "Nayef Mohamed Ghasem",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Chemical and Petroleum Engineering"
+  },
+  {
+    "email": "s.mansour@uaeu.ac.ae",
+    "first_name": "Sahar",
+    "full_name": "Sahar A.Kitaz",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Biology"
+  },
+  {
+    "email": "a.abada@uaeu.ac.ae",
+    "first_name": "Abdessamad",
+    "full_name": "Abdessamad Abada",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Physics"
+  },
+  {
+    "email": "habdelrehim@uaeu.ac.ae",
+    "first_name": "Hesham",
+    "full_name": "Hesham Abdelrehim",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Chemistry"
+  },
+  {
+    "email": "s.abdulhamid@uaeu.ac.ae",
+    "first_name": "Saber",
+    "full_name": "Saber Abd Alla Abd El Baki",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Chemistry"
+  },
+  {
+    "email": "osman.abdelghany@uaeu.ac.ae",
+    "first_name": "Osman",
+    "full_name": "Osman Abdelghany",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Geoscience"
+  },
+  {
+    "email": "tksiksi@uaeu.ac.ae",
+    "first_name": "Taoufik",
+    "full_name": "Taoufik Saleh Ksiksi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Biology Department"
+  },
+  {
+    "email": "kabdelaziz@uaeu.ac.ae",
+    "first_name": "Karim",
+    "full_name": "Karim Abdel Aziz",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Department of Psychiatry"
+  },
+  {
+    "email": "shabnam.abdoola@uaeu.ac.ae",
+    "first_name": "Shabnam",
+    "full_name": "Shabnam Abdoola",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Speech Language Pathology (CMHS)"
+  },
+  {
+    "email": "ahmed.nagy@uaeu.ac.ae",
+    "first_name": "Ahmed",
+    "full_name": "Ahmed Nagy Abdelrahman",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Speech Language Pathology (CMHS)"
+  },
+  {
+    "email": "badam@uaeu.ac.ae",
+    "first_name": "Balazs",
+    "full_name": "Balazs Adam",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Institute of Public Health"
+  },
+  {
+    "email": "luai.ahmed@uaeu.ac.ae",
+    "first_name": "Luai",
+    "full_name": "Luai Ahmed",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Institute of Public Health; Zayed Center Health Sciences"
+  },
+  {
+    "email": "ahmedm@uaeu.ac.ae",
+    "first_name": "Mohammed",
+    "full_name": "Mohammed Ahmed",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Institute of Public Health"
+  },
+  {
+    "email": "adnanagha@uaeu.ac.ae",
+    "first_name": "Adnan",
+    "full_name": "Adnan Agha",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Internal Medicine"
+  },
+  {
+    "email": "davidalao@uaeu.ac.ae",
+    "first_name": "David",
+    "full_name": "David Alao",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Internal Medicine"
+  },
+  {
+    "email": "khulouda@uaeu.ac.ae",
+    "first_name": "Khuloud",
+    "full_name": "Khuloud AlDhaheri",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Internal Medicine"
+  },
+  {
+    "email": "a.aldhanhani@uaeu.ac.ae",
+    "first_name": "Ali",
+    "full_name": "Ali Mohamed Al Dhanhani",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Internal Medicine"
+  },
+  {
+    "email": "moien.khan@uaeu.ac.ae",
+    "first_name": "Moienudeen",
+    "full_name": "Moienudeen Khan Abdul Basith",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Family Medicine"
+  },
+  {
+    "email": "almarzooqi.doc@uaeu.ac.ae",
+    "first_name": "Falah",
+    "full_name": "Falah AlMarzooqi",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Family Medicine"
+  },
+  {
+    "email": "lolwa.mukini@uaeu.ac.ae",
+    "first_name": "Lolowa",
+    "full_name": "Lolowa Al Mekhaini",
+    "institution": "United Arab Emirates University (UAEU)",
+    "department": "Family Medicine; Pediatrics"
+  },
+  {
+    "email": "paul.hopkinson@zu.ac.ae",
+    "first_name": "Paul",
+    "full_name": "Paul J Hopkinson",
+    "institution": "Zayed University (ZU)",
+    "department": "Dean's Office"
+  },
+  {
+    "email": "efstathios.polyzos@zu.ac.ae",
+    "first_name": "Efstathios",
+    "full_name": "Efstathios Polyzos",
+    "institution": "Zayed University (ZU)",
+    "department": "Dean's Office"
+  },
+  {
+    "email": "jacklyn.gentile@zu.ac.ae",
+    "first_name": "Jacklyn",
+    "full_name": "Jacklyn Gentile",
+    "institution": "Zayed University (ZU)",
+    "department": "Dean's Office"
+  },
+  {
+    "email": "michael.brock@zu.ac.ae",
+    "first_name": "Mike",
+    "full_name": "Mike Brock",
+    "institution": "Zayed University (ZU)",
+    "department": "Dean's Office"
+  },
+  {
+    "email": "zeina.hojeij@zu.ac.ae",
+    "first_name": "Zeina",
+    "full_name": "Zeina Hojeij",
+    "institution": "Zayed University (ZU)",
+    "department": "Dean's Office"
+  },
+  {
+    "email": "jamal.al-karaki@zu.ac.ae",
+    "first_name": "Jamal",
+    "full_name": "Jamal Al-Karaki",
+    "institution": "Zayed University (ZU)",
+    "department": "Chair of Computation Systems"
+  },
+  {
+    "email": "amjad.abuelsamen@zu.ac.ae",
+    "first_name": "Amjad",
+    "full_name": "Amjad Abu ELSamen",
+    "institution": "Zayed University (ZU)",
+    "department": "Chair of Business Transformation"
+  },
+  {
+    "email": "areej.elsayary@zu.ac.ae",
+    "first_name": "Areej",
+    "full_name": "Areej ElSayary",
+    "institution": "Zayed University (ZU)",
+    "department": "Chair of GenEd"
+  },
+  {
+    "email": "aaina.menon@zu.ac.ae",
+    "first_name": "Aaina",
+    "full_name": "Aaina Menon",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "adam.gentile@zu.ac.ae",
+    "first_name": "Adam",
+    "full_name": "Adam Gentile",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "afshan.parkar@zu.ac.ae",
+    "first_name": "Afshan",
+    "full_name": "Afshan Parkar",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "ahmed.aboud@zu.ac.ae",
+    "first_name": "Ahmed",
+    "full_name": "Ahmed Aboud",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "ahmad.aljanadbah@zu.ac.ae",
+    "first_name": "Ahmad",
+    "full_name": "Ahmad Aljanadbah",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "ajda.osifo@zu.ac.ae",
+    "first_name": "Ajda",
+    "full_name": "Ajda Osifo",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "alliya.anderson@zu.ac.ae",
+    "first_name": "Alliya",
+    "full_name": "Alliya Anderson",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "bridget.rice@zu.ac.ae",
+    "first_name": "Bridget",
+    "full_name": "Bridget Rice",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "cristina.greco@zu.ac.ae",
+    "first_name": "Cristina",
+    "full_name": "Cristina Greco",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "dragana.mancic@zu.ac.ae",
+    "first_name": "Dragana",
+    "full_name": "Dragana Mancic",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "faheem.ullah@zu.ac.ae",
+    "first_name": "Faheem",
+    "full_name": "Faheem Ullah",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "guy.meredith@zu.ac.ae",
+    "first_name": "Guy",
+    "full_name": "Guy Meredith",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "hanar.atroshi@zu.ac.ae",
+    "first_name": "Hanar",
+    "full_name": "Hanar Atroshi",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "josep.martiarnau@zu.ac.ae",
+    "first_name": "Josep",
+    "full_name": "Josep Marti",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "leonard.chirenje@zu.ac.ae",
+    "first_name": "Leonard",
+    "full_name": "Leonard Chirenje",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "mostafa.mohamed@zu.ac.ae",
+    "first_name": "Mostafa",
+    "full_name": "Mostafa Mohamad",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "mohammad.alalaween@zu.ac.ae",
+    "first_name": "Mohammad",
+    "full_name": "Mohammad Alalaween",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "muhammadimran.taj@zu.ac.ae",
+    "first_name": "Muhammad",
+    "full_name": "Muhammad Imran Taj",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "muhammad.khan@zu.ac.ae",
+    "first_name": "Muhammad",
+    "full_name": "Muhammad Al-Zafar Khan",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "z11404@zu.ac.ae",
+    "first_name": "Mirjana",
+    "full_name": "Mirjana Zivanovic",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "racha.elmajanini@zu.ac.ae",
+    "first_name": "Racha",
+    "full_name": "Racha Elmajanini",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "salwa.husain@zu.ac.ae",
+    "first_name": "Salwa",
+    "full_name": "Salwa Husain",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "suzanna.elmassah@zu.ac.ae",
+    "first_name": "Suzanna",
+    "full_name": "Suzanna Elmassah",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "tony.myers@zu.ac.ae",
+    "first_name": "Tony",
+    "full_name": "Tony Myers",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "vasilia.alkhaldi@zu.ac.ae",
+    "first_name": "Vasilia",
+    "full_name": "Vasilia AlKhaldi",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "yasser.eliwa@zu.ac.ae",
+    "first_name": "Yasser",
+    "full_name": "Yasser Eliwa",
+    "institution": "Zayed University (ZU)",
+    "department": "Abu Dhabi Faculty"
+  },
+  {
+    "email": "abdulmonem.fetyan@zu.ac.ae",
+    "first_name": "Abdulmonem",
+    "full_name": "Abdulmonem Fetyan",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "alvaro.suberosaenz@zu.ac.ae",
+    "first_name": "Alvaro",
+    "full_name": "Alvaro Subero-Saenz",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "amir.kaviani@zu.ac.ae",
+    "first_name": "Amir",
+    "full_name": "Amir Kaviani",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "anna.tarabasz@zu.ac.ae",
+    "first_name": "Anna",
+    "full_name": "Anna Tarabasz",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "dana.saleh@zu.ac.ae",
+    "first_name": "Dana",
+    "full_name": "Dana Saleh",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "gerald.elvey@zu.ac.ae",
+    "first_name": "Gerald",
+    "full_name": "Gerald Elvey",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "jotsna.rajan@zu.ac.ae",
+    "first_name": "Jotsna",
+    "full_name": "Jotsna Rajan",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "joshua.kolapo@zu.ac.ae",
+    "first_name": "Joshua",
+    "full_name": "Joshua Kolapo",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "linda.smail@zu.ac.ae",
+    "first_name": "Linda",
+    "full_name": "Linda Smail",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "maha.hadid@zu.ac.ae",
+    "first_name": "Maha",
+    "full_name": "Maha Hadid",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "mazna.patka@zu.ac.ae",
+    "first_name": "Mazna",
+    "full_name": "Mazna Patka",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "mehreen.mookerjee@zu.ac.ae",
+    "first_name": "Mehreen",
+    "full_name": "Mehreen Mookerjee",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "nishara.nizamuddin@zu.ac.ae",
+    "first_name": "Nishara",
+    "full_name": "Nishara Nizamuddin",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "ons.al-shamaileh@zu.ac.ae",
+    "first_name": "Ons",
+    "full_name": "Ons Al-Shamaileh",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "preeya.reddy@zu.ac.ae",
+    "first_name": "Preeya",
+    "full_name": "Preeya Reddy",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "suha.karaki@zu.ac.ae",
+    "first_name": "Suha",
+    "full_name": "Suha Karaki",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "sujith.mathew@zu.ac.ae",
+    "first_name": "Sujith",
+    "full_name": "Sujith Samuel Mathew",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "susanne.kranz@zu.ac.ae",
+    "first_name": "Susanne",
+    "full_name": "Susanne Kranz",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "tarannum.parkar@zu.ac.ae",
+    "first_name": "Tarannum",
+    "full_name": "Tarannum Parkar",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "vijetha.koppa@zu.ac.ae",
+    "first_name": "Vijetha",
+    "full_name": "Vijetha Koppa",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "vladimir.dzenopoljac@zu.ac.ae",
+    "first_name": "Vladimir",
+    "full_name": "Vladimir Dzenopoljac",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "zia.saunders@zu.ac.ae",
+    "first_name": "Zia",
+    "full_name": "Zia Saunders",
+    "institution": "Zayed University (ZU)",
+    "department": "Dubai Faculty"
+  },
+  {
+    "email": "bidisha.banerjee@zu.ac.ae",
+    "first_name": "Bidisha",
+    "full_name": "Bidisha Banerjee",
+    "institution": "Zayed University (ZU)",
+    "department": "Adjunct Faculty"
+  },
+  {
+    "email": "ioulia.aravantinouleonidi@zu.ac.ae",
+    "first_name": "Ioulia",
+    "full_name": "Ioulia Aravantinou Leonidi",
+    "institution": "Zayed University (ZU)",
+    "department": "Adjunct Faculty"
+  },
+  {
+    "email": "khaled.almezaini@zu.ac.ae",
+    "first_name": "Khaled",
+    "full_name": "Khaled AlMezaini",
+    "institution": "Zayed University (ZU)",
+    "department": "Associate Dean / College Administration"
+  },
+  {
+    "email": "asma.obaid@zu.ac.ae",
+    "first_name": "Asma",
+    "full_name": "Asma Obaid",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Students Affairs - DXB"
+  },
+  {
+    "email": "bashir.abu-hamour@zu.ac.ae",
+    "first_name": "Bashir",
+    "full_name": "Bashir Abu-Hamour",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Students Affairs - AUH"
+  },
+  {
+    "email": "magdalena.karolak@zu.ac.ae",
+    "first_name": "Magdalena",
+    "full_name": "Magdalena Karolak",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Research and Outreach"
+  },
+  {
+    "email": "jonathan.fulton@zu.ac.ae",
+    "first_name": "Jonathan",
+    "full_name": "Jonathan Fulton",
+    "institution": "Zayed University (ZU)",
+    "department": "Graduate Program Coordinator MDIA"
+  },
+  {
+    "email": "hulya.yagcioglu@zu.ac.ae",
+    "first_name": "Hulya",
+    "full_name": "Hulya Yagcioglu",
+    "institution": "Zayed University (ZU)",
+    "department": "FYE-140 Coordinator"
+  },
+  {
+    "email": "alanood.alshamsi@zu.ac.ae",
+    "first_name": "Alanood",
+    "full_name": "Alanood Alshamsi",
+    "institution": "Zayed University (ZU)",
+    "department": "Education Department"
+  },
+  {
+    "email": "kate.tindle@zu.ac.ae",
+    "first_name": "Kate",
+    "full_name": "Kate Tindle",
+    "institution": "Zayed University (ZU)",
+    "department": "Language Studies Department"
+  },
+  {
+    "email": "peter.tall@zu.ac.ae",
+    "first_name": "Peter",
+    "full_name": "Peter Tall",
+    "institution": "Zayed University (ZU)",
+    "department": "Language Studies Department"
+  },
+  {
+    "email": "omar.alfandi@zu.ac.ae",
+    "first_name": "Omar",
+    "full_name": "Omar AlFandi",
+    "institution": "Zayed University (ZU)",
+    "department": "Dean's Office"
+  },
+  {
+    "email": "muna.bader@zu.ac.ae",
+    "first_name": "Muna",
+    "full_name": "Muna Bader",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Student Affairs AUH"
+  },
+  {
+    "email": "mohammed.hussain@zu.ac.ae",
+    "first_name": "Mohammed",
+    "full_name": "Mohammed Hussain",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Research and Outreach"
+  },
+  {
+    "email": "fatma.taher@zu.ac.ae",
+    "first_name": "Fatma",
+    "full_name": "Fatma Taher",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Student Affairs DXB"
+  },
+  {
+    "email": "maher.alaraj@zu.ac.ae",
+    "first_name": "Maher",
+    "full_name": "Maher Alaraj",
+    "institution": "Zayed University (ZU)",
+    "department": "Chair - Information Systems and Technology Management"
+  },
+  {
+    "email": "monther.aldwairi@zu.ac.ae",
+    "first_name": "Monther",
+    "full_name": "Monther Aldwairi",
+    "institution": "Zayed University (ZU)",
+    "department": "Graduate Program Coordinator, MS IT Cyber Security"
+  },
+  {
+    "email": "farkhund.iqbal@zu.ac.ae",
+    "first_name": "Farkhund",
+    "full_name": "Farkhund Iqbal",
+    "institution": "Zayed University (ZU)",
+    "department": "Graduate Program Coordinator, MS IT - AUH"
+  },
+  {
+    "email": "feras.al-obeidat@zu.ac.ae",
+    "first_name": "Feras",
+    "full_name": "Feras Al Obeidat",
+    "institution": "Zayed University (ZU)",
+    "department": "Graduate Program Coordinator, MS Information Systems"
+  },
+  {
+    "email": "basel.almourad@zu.ac.ae",
+    "first_name": "Basel",
+    "full_name": "Basel Almourad",
+    "institution": "Zayed University (ZU)",
+    "department": "Computing and Applied Technology - Dubai"
+  },
+  {
+    "email": "emad.bataineh@zu.ac.ae",
+    "first_name": "Emad",
+    "full_name": "Emad Bataineh",
+    "institution": "Zayed University (ZU)",
+    "department": "Computing and Applied Technology - Dubai"
+  },
+  {
+    "email": "huwida.said@zu.ac.ae",
+    "first_name": "Huwida",
+    "full_name": "Huwida Said",
+    "institution": "Zayed University (ZU)",
+    "department": "Computing and Applied Technology - Dubai"
+  },
+  {
+    "email": "mohamad.badra@zu.ac.ae",
+    "first_name": "Mohamad",
+    "full_name": "Mohamad Badra",
+    "institution": "Zayed University (ZU)",
+    "department": "Computing and Applied Technology - Dubai"
+  },
+  {
+    "email": "ouns.bouachir@zu.ac.ae",
+    "first_name": "Ouns",
+    "full_name": "Ouns Bouachir",
+    "institution": "Zayed University (ZU)",
+    "department": "Computing and Applied Technology - Dubai"
+  },
+  {
+    "email": "salam.khanji@zu.ac.ae",
+    "first_name": "Salam",
+    "full_name": "Salam Khanji",
+    "institution": "Zayed University (ZU)",
+    "department": "Computing and Applied Technology - Dubai"
+  },
+  {
+    "email": "salsabeel.alfalah@zu.ac.ae",
+    "first_name": "Salsabeel",
+    "full_name": "Salsabeel Alfalah",
+    "institution": "Zayed University (ZU)",
+    "department": "Computing and Applied Technology - Dubai"
+  },
+  {
+    "email": "ahed.abugabah@zu.ac.ae",
+    "first_name": "Ahed",
+    "full_name": "Ahed Abugabah",
+    "institution": "Zayed University (ZU)",
+    "department": "Information Systems and Technology Management - Abu Dhabi"
+  },
+  {
+    "email": "ahmed.shuhaiber@zu.ac.ae",
+    "first_name": "Ahmed",
+    "full_name": "Ahmed Shuhaiber",
+    "institution": "Zayed University (ZU)",
+    "department": "Information Systems and Technology Management - Abu Dhabi"
+  },
+  {
+    "email": "edmund.evangelista@zu.ac.ae",
+    "first_name": "Edmund",
+    "full_name": "Edmund Evangelista",
+    "institution": "Zayed University (ZU)",
+    "department": "Information Systems and Technology Management - Abu Dhabi"
+  },
+  {
+    "email": "heba.ismail@zu.ac.ae",
+    "first_name": "Heba",
+    "full_name": "Heba Ismail",
+    "institution": "Zayed University (ZU)",
+    "department": "Information Systems and Technology Management - Abu Dhabi"
+  },
+  {
+    "email": "ikbal.taleb@zu.ac.ae",
+    "first_name": "Ikbal",
+    "full_name": "Ikbal Taleb",
+    "institution": "Zayed University (ZU)",
+    "department": "Information Systems and Technology Management - Abu Dhabi"
+  },
+  {
+    "email": "joao.negreiros@zu.ac.ae",
+    "first_name": "Joao",
+    "full_name": "Joao Negreiros",
+    "institution": "Zayed University (ZU)",
+    "department": "Information Systems and Technology Management - Abu Dhabi"
+  },
+  {
+    "email": "mohammad.tubishat@zu.ac.ae",
+    "first_name": "Mohammad",
+    "full_name": "Mohammad Tubishat",
+    "institution": "Zayed University (ZU)",
+    "department": "Information Systems and Technology Management - Abu Dhabi"
+  },
+  {
+    "email": "mousa.al-kfairy@zu.ac.ae",
+    "first_name": "Mousa",
+    "full_name": "Mousa Al-kfairy",
+    "institution": "Zayed University (ZU)",
+    "department": "Information Systems and Technology Management - Abu Dhabi"
+  },
+  {
+    "email": "nadia.dahmani@zu.ac.ae",
+    "first_name": "Nadia",
+    "full_name": "Nadia Dahmani",
+    "institution": "Zayed University (ZU)",
+    "department": "Information Systems and Technology Management - Abu Dhabi"
+  },
+  {
+    "email": "ravishankar.sharma@zu.ac.ae",
+    "first_name": "Ravishankar",
+    "full_name": "Ravishankar Sharma",
+    "institution": "Zayed University (ZU)",
+    "department": "Information Systems and Technology Management - Abu Dhabi"
+  },
+  {
+    "email": "dina.tbaishat@zu.ac.ae",
+    "first_name": "Dina",
+    "full_name": "Dina Tbaishat",
+    "institution": "Zayed University (ZU)",
+    "department": "Information Systems and Technology Management - Dubai"
+  },
+  {
+    "email": "farhi.marir@zu.ac.ae",
+    "first_name": "Farhi",
+    "full_name": "Farhi Marir",
+    "institution": "Zayed University (ZU)",
+    "department": "Information Systems and Technology Management - Dubai"
+  },
+  {
+    "email": "syed.duani@zu.ac.ae",
+    "first_name": "Syed",
+    "full_name": "Syed Duani",
+    "institution": "Zayed University (ZU)",
+    "department": "Information Systems and Technology Management - Dubai"
+  },
+  {
+    "email": "catherine.nickerson@zu.ac.ae",
+    "first_name": "Catherine",
+    "full_name": "Catherine Nickerson",
+    "institution": "Zayed University (ZU)",
+    "department": "Dean's Office"
+  },
+  {
+    "email": "ahmed.abdel-maksoud@zu.ac.ae",
+    "first_name": "Ahmed",
+    "full_name": "Ahmed Abdel-Maksoud",
+    "institution": "Zayed University (ZU)",
+    "department": "Associate Dean / College Administration"
+  },
+  {
+    "email": "anestis.fotiadis@zu.ac.ae",
+    "first_name": "Anestis",
+    "full_name": "Anestis Fotiadis",
+    "institution": "Zayed University (ZU)",
+    "department": "Associate Dean / College Administration"
+  },
+  {
+    "email": "abiot.tessema@zu.ac.ae",
+    "first_name": "Abiot",
+    "full_name": "Abiot Tessema",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Students Affairs - AUH"
+  },
+  {
+    "email": "saifeddin.al-imamy@zu.ac.ae",
+    "first_name": "Saifeddin",
+    "full_name": "Saifeddin Al Imamy",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Students Affairs - DXB"
+  },
+  {
+    "email": "brendan.galbraith@zu.ac.ae",
+    "first_name": "Brendan",
+    "full_name": "Brendan Galbraith",
+    "institution": "Zayed University (ZU)",
+    "department": "Management"
+  },
+  {
+    "email": "muhammad.hassan@zu.ac.ae",
+    "first_name": "Muhammad",
+    "full_name": "Muhammad Hassan",
+    "institution": "Zayed University (ZU)",
+    "department": "Management"
+  },
+  {
+    "email": "rwan.elkhatib@zu.ac.ae",
+    "first_name": "Rwan",
+    "full_name": "Rwan El-Khatib",
+    "institution": "Zayed University (ZU)",
+    "department": "Finance"
+  },
+  {
+    "email": "moosung.kim@zu.ac.ae",
+    "first_name": "Moo",
+    "full_name": "Moo Sung Kim",
+    "institution": "Zayed University (ZU)",
+    "department": "Marketing"
+  },
+  {
+    "email": "fathima.saleem@zu.ac.ae",
+    "first_name": "Fathima",
+    "full_name": "Fathima Saleem",
+    "institution": "Zayed University (ZU)",
+    "department": "Marketing"
+  },
+  {
+    "email": "alejandro.sposato@zu.ac.ae",
+    "first_name": "Alejandro",
+    "full_name": "Alejandro Sposato",
+    "institution": "Zayed University (ZU)",
+    "department": "Management"
+  },
+  {
+    "email": "alexandra.henderson@zu.ac.ae",
+    "first_name": "Alexandra",
+    "full_name": "Alexandra Henderson",
+    "institution": "Zayed University (ZU)",
+    "department": "Management"
+  },
+  {
+    "email": "graham.manville@zu.ac.ae",
+    "first_name": "Graham",
+    "full_name": "Graham Manville",
+    "institution": "Zayed University (ZU)",
+    "department": "Management"
+  },
+  {
+    "email": "ian.michael@zu.ac.ae",
+    "first_name": "Ian",
+    "full_name": "Ian Michael",
+    "institution": "Zayed University (ZU)",
+    "department": "Marketing"
+  },
+  {
+    "email": "ismail.badraoui@zu.ac.ae",
+    "first_name": "Ismail",
+    "full_name": "Ismail Badraoui",
+    "institution": "Zayed University (ZU)",
+    "department": "Management"
+  },
+  {
+    "email": "konstantinos.syriopoulos@zu.ac.ae",
+    "first_name": "Konstantinos",
+    "full_name": "Konstantinos Syriopoulos",
+    "institution": "Zayed University (ZU)",
+    "department": "Finance"
+  },
+  {
+    "email": "maqsood.memon@zu.ac.ae",
+    "first_name": "Maqsood",
+    "full_name": "Maqsood Memon",
+    "institution": "Zayed University (ZU)",
+    "department": "Management"
+  },
+  {
+    "email": "mohammed.sualihu@zu.ac.ae",
+    "first_name": "Mohammed",
+    "full_name": "Mohammed Sualihu",
+    "institution": "Zayed University (ZU)",
+    "department": "Accounting"
+  },
+  {
+    "email": "muhaammad.farooq@zu.ac.ae",
+    "first_name": "Muhammad",
+    "full_name": "Muhammad Omer Farooq",
+    "institution": "Zayed University (ZU)",
+    "department": "Marketing"
+  },
+  {
+    "email": "natasa.slakvalek@zu.ac.ae",
+    "first_name": "Natasa",
+    "full_name": "Natasa Slak",
+    "institution": "Zayed University (ZU)",
+    "department": "Marketing"
+  },
+  {
+    "email": "perla.mardini@zu.ac.ae",
+    "first_name": "Perla",
+    "full_name": "Perla Mardini",
+    "institution": "Zayed University (ZU)",
+    "department": "Accounting"
+  },
+  {
+    "email": "tugra.akarsu@zu.ac.ae",
+    "first_name": "Tugra",
+    "full_name": "Tugra Akarsu",
+    "institution": "Zayed University (ZU)",
+    "department": "Marketing"
+  },
+  {
+    "email": "wasseem.abaza@zu.ac.ae",
+    "first_name": "Wasseem",
+    "full_name": "Wasseem Abaza",
+    "institution": "Zayed University (ZU)",
+    "department": "Marketing"
+  },
+  {
+    "email": "yaxin.wen@zu.ac.ae",
+    "first_name": "Yaxin",
+    "full_name": "Yaxin Wen",
+    "institution": "Zayed University (ZU)",
+    "department": "Finance"
+  },
+  {
+    "email": "zaghum.umar@zu.ac.ae",
+    "first_name": "Zaghum",
+    "full_name": "Zaghum Umar",
+    "institution": "Zayed University (ZU)",
+    "department": "Finance"
+  },
+  {
+    "email": "zayyad.abdul-baki@zu.ac.ae",
+    "first_name": "Zayyad",
+    "full_name": "Zayyad Abdul Baki",
+    "institution": "Zayed University (ZU)",
+    "department": "Accounting"
+  },
+  {
+    "email": "anastasia.spyridou@zu.ac.ae",
+    "first_name": "Anastasia",
+    "full_name": "Anastasia Spyridou",
+    "institution": "Zayed University (ZU)",
+    "department": "Adjunct - Finance"
+  },
+  {
+    "email": "janet.bellotto@zu.ac.ae",
+    "first_name": "Janet",
+    "full_name": "Janet Bellotto",
+    "institution": "Zayed University (ZU)",
+    "department": "Dean's Office"
+  },
+  {
+    "email": "ioannis.papavasileiou@zu.ac.ae",
+    "first_name": "Ioannis",
+    "full_name": "Ioannis Papavasileiou",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Research and Outreach"
+  },
+  {
+    "email": "maruan.halabi@zu.ac.ae",
+    "first_name": "Maruan",
+    "full_name": "Maruan Halabi",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Student Affairs AUH"
+  },
+  {
+    "email": "peter.chanthanakone@zu.ac.ae",
+    "first_name": "Peter",
+    "full_name": "Peter Chanthanakone",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Student Affairs DXB"
+  },
+  {
+    "email": "jacqueline.soghman@zu.ac.ae",
+    "first_name": "Jacqueline",
+    "full_name": "Jacqueline Soghman",
+    "institution": "Zayed University (ZU)",
+    "department": "College-wide / department not shown on extracted directory section"
+  },
+  {
+    "email": "kara.mckeown@zu.ac.ae",
+    "first_name": "Kara",
+    "full_name": "Kara McKeown",
+    "institution": "Zayed University (ZU)",
+    "department": "College-wide / department not shown on extracted directory section"
+  },
+  {
+    "email": "katarzyna.dzikowska@zu.ac.ae",
+    "first_name": "Kasia",
+    "full_name": "Kasia Dzikowska",
+    "institution": "Zayed University (ZU)",
+    "department": "College-wide / department not shown on extracted directory section"
+  },
+  {
+    "email": "kelly.devrome@zu.ac.ae",
+    "first_name": "Kelly",
+    "full_name": "Kelly Devrome",
+    "institution": "Zayed University (ZU)",
+    "department": "College-wide / department not shown on extracted directory section"
+  },
+  {
+    "email": "lina.ahmad@zu.ac.ae",
+    "first_name": "Lina",
+    "full_name": "Lina Ahmad",
+    "institution": "Zayed University (ZU)",
+    "department": "College-wide / department not shown on extracted directory section"
+  },
+  {
+    "email": "james.terry@zu.ac.ae",
+    "first_name": "James",
+    "full_name": "James Terry",
+    "institution": "Zayed University (ZU)",
+    "department": "Dean's Office"
+  },
+  {
+    "email": "mutaz.mohammad@zu.ac.ae",
+    "first_name": "Mutaz",
+    "full_name": "Mutaz Mohammad",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Research"
+  },
+  {
+    "email": "fariba.shaikh@zu.ac.ae",
+    "first_name": "Fariba",
+    "full_name": "Fariba Shaikh",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Student Affairs"
+  },
+  {
+    "email": "lina.alkury@zu.ac.ae",
+    "first_name": "Lina",
+    "full_name": "Lina Al Kury",
+    "institution": "Zayed University (ZU)",
+    "department": "Department Chair - Life and Health Sciences"
+  },
+  {
+    "email": "muhammad.naseem@zu.ac.ae",
+    "first_name": "Muhammad",
+    "full_name": "Muhammad Naseem",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Chair, Environmental Sciences and Sustainability - DXB"
+  },
+  {
+    "email": "dalia.haroun@zu.ac.ae",
+    "first_name": "Dalia",
+    "full_name": "Dalia Haroun",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Chair, Life and Health Sciences - DXB"
+  },
+  {
+    "email": "yousef.nazzal@zu.ac.ae",
+    "first_name": "Yousef",
+    "full_name": "Yousef Nazzal",
+    "institution": "Zayed University (ZU)",
+    "department": "Graduate Program Coordinator for MSc in Env.Sci. & Sustainability"
+  },
+  {
+    "email": "myriam.abboud@zu.ac.ae",
+    "first_name": "Myriam",
+    "full_name": "Myriam Abboud",
+    "institution": "Zayed University (ZU)",
+    "department": "Graduate Program Coordinator for MSc in Nutrition and Dietetics"
+  },
+  {
+    "email": "ahmed.al-taani@zu.ac.ae",
+    "first_name": "Ahmed",
+    "full_name": "Ahmed Al-Taani",
+    "institution": "Zayed University (ZU)",
+    "department": "Environmental Sciences and Sustainability"
+  },
+  {
+    "email": "munawwar.khan@zu.ac.ae",
+    "first_name": "Munawwar",
+    "full_name": "Munawwar Ali Khan",
+    "institution": "Zayed University (ZU)",
+    "department": "Environmental Sciences and Sustainability"
+  },
+  {
+    "email": "jibran.iqbal@zu.ac.ae",
+    "first_name": "Jibran",
+    "full_name": "Jibran Iqbal",
+    "institution": "Zayed University (ZU)",
+    "department": "Environmental Sciences and Sustainability"
+  },
+  {
+    "email": "ada.natoli@zu.ac.ae",
+    "first_name": "Ada",
+    "full_name": "Ada Natoli",
+    "institution": "Zayed University (ZU)",
+    "department": "Environmental Sciences and Sustainability"
+  },
+  {
+    "email": "z10805@zu.ac.ae",
+    "first_name": "Imen",
+    "full_name": "Imen Ben Salem",
+    "institution": "Zayed University (ZU)",
+    "department": "Environmental Sciences and Sustainability"
+  },
+  {
+    "email": "kenesha.wilson@zu.ac.ae",
+    "first_name": "Kenesha",
+    "full_name": "Kenesha Wilson",
+    "institution": "Zayed University (ZU)",
+    "department": "Environmental Sciences and Sustainability"
+  },
+  {
+    "email": "zahir.vally@zu.ac.ae",
+    "first_name": "Zahir",
+    "full_name": "Zahir Vally",
+    "institution": "Zayed University (ZU)",
+    "department": "Psychology"
+  },
+  {
+    "email": "valeriepriscilla.goby@zu.ac.ae",
+    "first_name": "Valerie",
+    "full_name": "Valerie Priscilla Goby",
+    "institution": "Zayed University (ZU)",
+    "department": "Associate Dean / College Administration"
+  },
+  {
+    "email": "nadia.rahman@zu.ac.ae",
+    "first_name": "Nadia",
+    "full_name": "Nadia Rahman",
+    "institution": "Zayed University (ZU)",
+    "department": "Chair"
+  },
+  {
+    "email": "khaled.gaweesh@zu.ac.ae",
+    "first_name": "Khaled",
+    "full_name": "Khaled Gaweesh",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Students - Abu Dhabi"
+  },
+  {
+    "email": "mian.asim@zu.ac.ae",
+    "first_name": "Mian",
+    "full_name": "Mian Asim",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Students - Dubai"
+  },
+  {
+    "email": "paolo.mura@zu.ac.ae",
+    "first_name": "Paolo",
+    "full_name": "Paolo Mura",
+    "institution": "Zayed University (ZU)",
+    "department": "Assistant Dean for Research and Outreach"
+  },
+  {
+    "email": "mohammad.alazaizeh@zu.ac.ae",
+    "first_name": "Mohammad",
+    "full_name": "Mohammad Alazaizeh",
+    "institution": "Zayed University (ZU)",
+    "department": "Graduate Programs Coordinator"
+  },
+  {
+    "email": "fokiya.akhtar@zu.ac.ae",
+    "first_name": "Fokiya",
+    "full_name": "Fokiya Akhtar",
+    "institution": "Zayed University (ZU)",
+    "department": "Faculty"
+  },
+  {
+    "email": "aamena.bulhoon@zu.ac.ae",
+    "first_name": "Amna",
+    "full_name": "Amna Bulhoon",
+    "institution": "Zayed University (ZU)",
+    "department": "Faculty"
+  },
+  {
+    "email": "elsayed.darwish@zu.ac.ae",
+    "first_name": "Elsayed",
+    "full_name": "Elsayed Darwish",
+    "institution": "Zayed University (ZU)",
+    "department": "Faculty"
+  },
+  {
+    "email": "filareti.kotsi@zu.ac.ae",
+    "first_name": "Filareti",
+    "full_name": "Filareti Kotsi",
+    "institution": "Zayed University (ZU)",
+    "department": "Faculty"
+  },
+  {
+    "email": "william.mccarthy@zu.ac.ae",
+    "first_name": "William",
+    "full_name": "William Mc Carthy",
+    "institution": "Zayed University (ZU)",
+    "department": "Faculty"
+  },
+  {
+    "email": "azmat.rasul@zu.ac.ae",
+    "first_name": "Azmat",
+    "full_name": "Azmat Rasul",
+    "institution": "Zayed University (ZU)",
+    "department": "Faculty"
+  },
+  {
+    "email": "hilke.steenkamp@zu.ac.ae",
+    "first_name": "Hilke",
+    "full_name": "Hilke Steenkamp",
+    "institution": "Zayed University (ZU)",
+    "department": "Faculty"
+  },
+  {
+    "email": "thorsten.lomker@zu.ac.ae",
+    "first_name": "Thorsten",
+    "full_name": "Thorsten Lomker",
+    "institution": "Zayed University (ZU)",
+    "department": "College-wide / department not shown on extracted directory section"
+  },
+  {
+    "email": "dxanthidis@hct.ac.ae",
+    "first_name": "Dimitrios",
+    "full_name": "Dimitrios Xanthidis",
+    "institution": "Higher Colleges of Technology (HCT)",
+    "department": "Computer Information Science"
+  },
+  {
+    "email": "jahamed@hct.ac.ae",
+    "first_name": "Jinesh",
+    "full_name": "Dr. Jinesh Ahamed",
+    "institution": "Higher Colleges of Technology (HCT)",
+    "department": "Computer Information Science"
+  },
+  {
+    "email": "halaqrabi@hct.ac.ae",
+    "first_name": "Hussain",
+    "full_name": "Hussain Al-Aqrabi",
+    "institution": "Higher Colleges of Technology (HCT)",
+    "department": "Computer Information Science"
+  },
+  {
+    "email": "miqbal1@hct.ac.ae",
+    "first_name": "Muhammad",
+    "full_name": "Muhammad Iqbal",
+    "institution": "Higher Colleges of Technology (HCT)",
+    "department": "Computer Information Science"
+  },
+  {
+    "email": "saoudi@hct.ac.ae",
+    "first_name": "Samer",
+    "full_name": "Samer Aoudi",
+    "institution": "Higher Colleges of Technology (HCT)",
+    "department": "Computer Information Science"
+  },
+  {
+    "email": "tbutt@hct.ac.ae",
+    "first_name": "Talal",
+    "full_name": "Talal Ashraf Butt",
+    "institution": "Higher Colleges of Technology (HCT)",
+    "department": "Computer Information Science"
+  },
+  {
+    "email": "pverma@hct.ac.ae",
+    "first_name": "Priti",
+    "full_name": "Dr. Priti Verma",
+    "institution": "Higher Colleges of Technology (HCT)",
+    "department": "Education"
+  }
+]

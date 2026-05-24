@@ -1,0 +1,61 @@
+AI in the Khaleej Classroom. Issue #001
+What Gulf faculty should do about AI this semester
+
+Hi {{first_name}},
+
+Most university AI debates have focused on student ChatGPT use. That debate
+is still alive. But the bigger shift is already here: AI is moving from
+chatbot to workflow. OpenAI is pushing campus-wide ChatGPT Edu and shared
+workspace agents for repeatable work, Anthropic is building tutor-style
+Learning mode into Claude Projects, and Google is making NotebookLM and
+Gems part of education workflows.
+
+That means Gulf faculty are no longer only deciding whether students may
+use AI. They are deciding where AI belongs in courses, research supervision,
+and institutional processes.
+
+PEDAGOGY PATTERN
+Build one course-specific assistant that knows your syllabus, rubric,
+readings, and sample feedback, then use it to help students think without
+writing the assignment for them. OpenAI explicitly supports course-specific
+GPTs in university workspaces, and Anthropic's Projects plus Learning mode
+show the same bounded-course pattern from a different angle.
+
+TOOL WORTH YOUR TIME
+NotebookLM is grounded in your own sources, returns inline citations, and
+now supports Arabic output. The real limits are source quality, OCR, and
+admin enablement.
+
+GOVERNANCE ACTION
+If a tool can act across university systems, treat it as governance, not
+just productivity. OpenAI's workspace agents can work across tools and ask
+for approvals on sensitive actions; UAE and Saudi public frameworks also
+expect higher-risk and AI-driven processing to be reviewed seriously.
+
+PROMPT TO STEAL THIS WEEK
+"You are a study partner for [COURSE NAME]. Use only the uploaded syllabus,
+readings, rubric, and feedback examples. Never write the assignment. Ask
+the next useful question instead."
+
+Read in 12 minutes. Use on Monday.
+
+Issue #001 is open access. Starting with Issue #002, the first 100
+subscribers lock in $20/month for life. After that, the standard rate
+rises to $30.
+
+Read Issue #001:
+https://warsha.live/ai-in-khaleej/issue-001.html?utm_source=launch&utm_medium=email&utm_campaign=issue001
+
+Subscribe:
+https://warsha.live/ai-in-khaleej/?utm_source=launch&utm_medium=email&utm_campaign=issue001#subscribe
+
+Mazin & Abdelrhman
+
+About the editors. Dr Abdelrhman, specialist in Geospatial AI, Keele
+University. Mazin, enthusiastic about Higher Education, LSE Alumni.
+
+You're receiving this because you're listed in a faculty directory at
+UAEU, Zayed University, or HCT. Unsubscribe:
+https://warsha.live/unsubscribe?e={{email_url}}
+
+AI in the Khaleej Classroom. Published by warsha.live
