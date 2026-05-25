@@ -392,7 +392,7 @@ document.getElementById('f').addEventListener('submit', async function(ev){
     <div style="font-family:Georgia,serif;font-size:14px;font-weight:600;color:#b08d3c;text-transform:uppercase;letter-spacing:1px;margin-bottom:24px;">AI in the Khaleej Classroom</div>
     <p style="margin:0 0 16px;">Hi ${data.name || 'there'},</p>
     <p style="margin:0 0 16px;">Thank you for subscribing.</p>
-    <p style="margin:0 0 16px;">Here is the deal. Issue #001 will land in your inbox this Sunday morning, Gulf time. Starting with Issue #002, the first 100 subscribers lock in $20/month for life. After that, the standard rate rises to $30.</p>
+    <p style="margin:0 0 16px;">Here is the deal. Issue #001 will land in your inbox this Monday morning, Gulf time. Starting with Issue #002, the first 100 subscribers lock in $20/month for life. After that, the standard rate rises to $30.</p>
     <p style="margin:0 0 24px;">If you are not sure yet, <a href="https://warsha.live/ai-in-khaleej/issue-001.html" style="color:#b08d3c;text-decoration:underline;">read Issue #001 first</a>. That is the point of making it free.</p>
     <p style="margin:0;color:#5b6478;">Mazin</p>
   </td></tr>
@@ -411,7 +411,7 @@ document.getElementById('f').addEventListener('submit', async function(ev){
     <div style="font-family:'IBM Plex Sans Arabic',Arial,sans-serif;font-size:14px;font-weight:700;color:#b08d3c;letter-spacing:1px;margin-bottom:24px;">الذكاء الاصطناعي في الفصل الخليجي</div>
     <p style="margin:0 0 16px;">مرحباً ${data.name || 'بك'}،</p>
     <p style="margin:0 0 16px;">شكرًا لاشتراكك.</p>
-    <p style="margin:0 0 16px;">إليك التفاصيل: سيصلك العدد الأول في صندوق بريدك صباح يوم الأحد المقبل بتوقيت الخليج. وبدءًا من العدد الثاني، سيثبت السعر لأول 100 مشترك عند 20 دولارًا شهريًا مدى الحياة. وبعد ذلك، سيرتفع السعر القياسي إلى 30 دولارًا.</p>
+    <p style="margin:0 0 16px;">إليك التفاصيل: سيصلك العدد الأول في صندوق بريدك صباح يوم الإثنين المقبل بتوقيت الخليج. وبدءًا من العدد الثاني، سيثبت السعر لأول 100 مشترك عند 20 دولارًا شهريًا مدى الحياة. وبعد ذلك، سيرتفع السعر القياسي إلى 30 دولارًا.</p>
     <p style="margin:0 0 24px;">إذا لم تكن متأكدًا بعد، يمكنك <a href="https://warsha.live/ai-in-khaleej/issue-001.html" style="color:#b08d3c;text-decoration:underline;">قراءة العدد الأول أولاً</a>؛ فهذا هو الهدف من كونه مجانيًا.</p>
     <p style="margin:0;color:#5b6478;">مازن</p>
   </td></tr>
